@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  padding: 0px;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+.getaway-wrapper {
+  padding: 20px 30px 10px 30px;
+}
+
+.getaway-wrapper h1 {
+  font-size: 2.5rem;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.inner-getaway {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.getaway-one {
+  width: 100%;
+  height: 100%;
+}
+
+.small-get {
+  width: 37rem;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  box-shadow: 0 5px 5px var(--text-color);
+  padding: 15px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.small-get:hover {
+  background-color: #8e8e8f94;
+}
+
+.getImage-container {
+  /* margin-top: -25px; */
+  width: 37rem;
+  height: 100%;
+}
+
+.getImage-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.first-step h1 {
+  font-size: 2.5rem;
+  margin-left: 15px;
+  padding-top: 40px;
+}
+
+.step-one {
+  margin-top: -10px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  width: 35rem;
+  height: 10rem;
+  background-color: #8e8e8f94;
+  padding: 20px;
+}
+
+.step-one:hover {
+  background-color: #8e8e8fc6;
+}
+
+.step-one h2 {
+  font-size: 2rem;
+  line-height: 10px;
+}
+.step-one p {
+  font-size: 1.3rem;
+}
+
+.steps-flex {
+  padding: 15px;
+  padding-top: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.note {
+  width: 45%;
+  float: right;
+  margin-top: -3 0px;
+  margin-bottom: 20px;
+}
+
+.note p {
+  font-size: 1.1rem;
+}
+
+.note-link {
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--text-color);
+}
+.note-link:hover {
+  text-decoration: underline;
+}

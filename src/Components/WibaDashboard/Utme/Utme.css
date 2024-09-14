@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  padding: 0px;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+.inner-utme {
+  padding: 5px 20px 10px 20px;
+  height: 100%;
+  font-family: "Raleway", sans-serif;
+}
+
+.below h1 {
+  padding-left: 10px;
+  font-size: 2.5rem;
+  line-height: 10px;
+}
+.below h3 {
+  padding-left: 10px;
+  font-weight: 500;
+}
+
+.utme-slide {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100px;
+  height: 340px;
+  /* overflow: hidden; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-radius: 10px;
+  box-shadow: 0 -2px 2px var(--text-color);
+}
+
+.img-container {
+  width: 100%;
+  height: 170px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.text-container {
+  color: var(--text-color);
+  padding: 15px;
+  padding-top: 0px;
+  border-radius: 10px;
+  box-shadow: 0 5px 5px var(--text-color);
+}
+
+.text-container h3 {
+  /* line-height: 20px; */
+  padding-bottom: 1px;
+  /* font-size: 1.2rem; */
+}
+.text-container h5 {
+  line-height: 1px;
+  padding-top: 1px;
+  font-weight: normal;
+}
+button.test-btn {
+  width: 100px;
+  padding: 7px;
+  font-size: 0.9rem;
+  border: none;
+  background-color: var(--logo-color);
+  color: var(--bg-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+button.test-btn:hover {
+  transform: scaleY(1.1);
+}
+
+/* slick slider */
+.slick-slide {
+  box-sizing: border-box;
+  width: 100px;
+}
+.slick-slide > div {
+  margin-right: 7px;
+  margin-left: 7px;
+}
+.slick-track {
+  display: flex;
+}
+.slick-list {
+  overflow: hidden;
+}

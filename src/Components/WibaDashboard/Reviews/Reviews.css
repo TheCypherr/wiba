@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  padding: 0px;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+.review-wrapper {
+  padding: 130px 30px 100px 30px;
+}
+.review-wrapper h1 {
+  font-size: 2.2rem;
+  padding-left: 20px;
+}
+
+.inner-review {
+  display: block;
+  /* align-items: center; */
+  justify-content: space-between;
+  padding: 0;
+  gap: 20px;
+}
+
+.inner-review .slick-slide > div {
+  margin: 0 15px;
+}
+.inner-review .slick-track {
+  display: flex;
+  gap: 30px;
+  padding: 0 !important;
+  margin-left: -25px;
+}
+
+.review-one {
+  padding: 20px;
+  margin-right: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid #d1d7dc;
+}
+
+.review-one h4 {
+  font-weight: 500;
+}
+.review-one span {
+  font-weight: 600;
+}
+
+.little {
+  display: flex;
+  align-items: center;
+}
+
+.img-contain {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.img-contain img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.small-word h5 {
+  font-weight: 500;
+}

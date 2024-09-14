@@ -1,0 +1,144 @@
+body {
+  margin: 0;
+  padding: 0px;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+.login-wrapper {
+  padding: 50px 20px 50px 20px;
+  height: 100%;
+}
+.login-wrapper h1 {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 15px;
+}
+
+.inner-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.loginSide-two {
+  box-shadow: 0 5px 5px var(--text-color);
+  width: 20rem;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-section1 {
+  padding: 10px;
+}
+
+.input-section1 input {
+  padding-left: 10px;
+  width: 300px;
+  height: 35px;
+  border: 1px solid var(--text-color);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-radius: 5px;
+}
+.input-section2 {
+  padding: 10px;
+  position: relative;
+}
+
+.input-section2 input {
+  padding-left: 10px;
+  width: 300px;
+  height: 35px;
+  border: 1px solid var(--text-color);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-radius: 5px;
+}
+
+span.show-password {
+  position: absolute;
+  top: 70%;
+  right: 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.input-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  font-size: 1.2rem;
+}
+p.error-message {
+  font-size: 0.8rem;
+}
+.in {
+  display: flex;
+  justify-content: space-between;
+}
+
+.in p {
+  padding-left: 2px;
+  margin-top: -20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.in p:hover {
+  text-decoration: underline;
+}
+
+button.login {
+  align-self: flex-start;
+  padding: 10px;
+  width: 80px;
+  border: none;
+  background-color: var(--logo-color);
+  color: var(--bg-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: transform 0.3s ease;
+  margin-left: 3px;
+  border-radius: 5px;
+}
+button.login:hover {
+  transform: scaleY(1.1);
+}
+
+.dont-have p {
+  font-size: 0.9rem;
+}
+.signup-link {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.signup-link:hover {
+  text-decoration: underline;
+}
+.signup-link0 {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.signup-link0:hover {
+  text-decoration: underline;
+}
