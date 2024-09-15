@@ -149,30 +149,7 @@ button.login:hover {
   text-decoration: underline;
 }
 
-/* Loading Bar */
-.load-slide {
-  width: 100%;
-  height: 5px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.load-bar {
-  height: 100%;
-  background-color: #2b33ff;
-  width: 0%;
-  animation: load-bar 2s ease-out forwards;
-}
-
-@keyframes load-bar {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
-  }
-}
+/* Success popup after successful login */
 
 .success-popup {
   position: fixed;

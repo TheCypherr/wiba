@@ -158,8 +158,8 @@ const Signup = () => {
       </div>
 
       {loading && (
-        <div className="load-slide1">
-          <div className="load-bar1"></div>
+        <div className="load-slide">
+          <div className="load-bar"></div>
         </div>
       )}
       {success && <div className="success-popup1">Sign up Successful!</div>}

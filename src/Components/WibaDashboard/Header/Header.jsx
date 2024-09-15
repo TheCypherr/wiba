@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import "./Header.css";
-import { Link } from "react-router-dom";
-import { FaSearch, FaSun, FaMoon } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  FaSearch,
+  FaSun,
+  FaMoon,
+  FaTimes,
+  FaBars,
+  FaChevronRight,
+} from "react-icons/fa";
 
 const Header = () => {
   const [activeMenu, setActiveMenu] = useState(null);
@@ -11,6 +18,25 @@ const Header = () => {
     textColor: false,
     logoTextColor: true,
   });
+  const navigate = useNavigate();
+
+  const handlePageReload = () => {
+    window.scrollTo(0, 0);
+    window.location.href = "/";
+  };
+
+  // State for loading
+  const [loading, setLoading] = useState(false);
+
+  const handlePageLoading = (targetPage) => {
+    setLoading(true); // start the loading
+
+    // simulate the loading time
+    setTimeout(() => {
+      setLoading(false); // stop loading after timeout
+      navigate(targetPage); // navigate to target page
+    }, 2000); // come back to adjust timer oooo
+  };
 
   const handleHeaderMenuToggle = (menuName) => {
     setActiveMenu((prev) => (prev === menuName ? null : menuName));
@@ -65,10 +91,17 @@ const Header = () => {
     setLogoTextColor(!theme.logoTextColor);
   };
 
+  // useState for dropdown menu
   const [isOpen, setIsOpen] = useState(false);
 
+  // onClick function to handle dropdown menu
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  // onClick function to close menubar onclick of menu items
+  const closeSideBar = () => {
+    setIsOpen(false);
   };
 
   const menuItems = [
@@ -76,16 +109,17 @@ const Header = () => {
       name: "Categories",
       subItems: [
         { label: "UTME Quiz", link: "/categories/utme" },
-        { label: "GST/GNS Practice Questions", link: "/categories/gst" },
-        { label: "BIO 101 Plant & Animal Aspect", link: "/categories/biology" },
-        { label: "CHM 101 Practice Questions", link: "/categories/chemistry" },
-        { label: "MAT 101", link: "/categories/mat101" },
-        { label: "MAT 103", link: "/categories/mat103" },
-        { label: "PHY 101 Practice Questions", link: "/categories/phy101" },
+        { label: "GST/GNS Quiz", link: "/categories/gst" },
+        { label: "BIO 101 Quiz", link: "/categories/biology" },
+        { label: "CHM 101 Quiz", link: "/categories/chemistry" },
+        { label: "MAT 101 Quiz", link: "/categories/mat101" },
+        { label: "MAT 103 Quiz", link: "/categories/mat103" },
+        { label: "PHY 101 Quiz", link: "/categories/phy101" },
       ],
     },
     {
       name: "Study Guide",
+      link: "/categories/studyGuide",
     },
     {
       name: "PDF Materials",
@@ -112,68 +146,211 @@ const Header = () => {
     <section className="header-wrapper">
       <div className={`inner-h ${isOpen ? "menu-open" : ""}`}>
         <div className="logo">
-          <Link to="/">
+          <Link onClick={handlePageReload}>
             <img src="/logo.png" alt="" />
           </Link>
         </div>
-        <div className="inner-one">
-          <nav>
-            <ul className="menu">
-              {menuItems.map((item, index) => (
-                <li
-                  key={index}
-                  className="menu-items-wrapper"
-                  onMouseEnter={() => handleHeaderMenuToggle(item.name)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <Link className="custom-links">{item.name}</Link>
-                  {activeMenu === item.name && item.subItems && (
-                    <ul className="sub-menu slideIn">
-                      {item.subItems.map((subItem, subIndex) => (
-                        <li key={subIndex} className="sub-menu-items">
-                          <Link to={subItem.link} className="custom-links">
-                            {subItem.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </nav>
+
+        <div
+          onClick={toggleMenu}
+          className={`icon-menu ${isOpen ? "menu-open-icon" : ""}`}
+        >
+          {isOpen ? (
+            <FaTimes size={25} className="fa-times" />
+          ) : (
+            <FaBars size={25} />
+          )}
         </div>
-        <div className="inner-two">
+
+        <div className="logo-new">
+          <Link onClick={handlePageReload}>
+            <img src="/logo.png" alt="" />
+          </Link>
+        </div>
+
+        <div className="search-div">
           <FaSearch
-            size={15}
+            size={20}
             style={{
               color: theme ? "var(--text-color)" : "var(--bg-color)",
             }}
-            className="search-icon"
+            className="search-icon-new"
           />
-          <input type="text" placeholder="Search for anything" />
         </div>
-        <div className="login-signup">
-          <button className="btn1">
-            <Link to="/login" className="link">
-              Log in
-            </Link>
-          </button>
 
-          <button className="btn2">
-            <Link to="/signup" className="link2">
-              Sign up
-            </Link>
-          </button>
-        </div>
-        <div onClick={handleTheme} className="icon-div">
-          {theme.background ? (
-            <FaMoon size={19} className="theme-icon" />
-          ) : (
-            <FaSun size={20} className="theme-icon" />
-          )}
+        {isOpen && <div className="back-drop"></div>}
+        {isOpen && (
+          <div className="inner-h-new">
+            <div className="login-signup">
+              <button className="btn1">
+                <Link
+                  to="#"
+                  onClick={() => {
+                    handlePageLoading("/login");
+                    closeSideBar();
+                  }}
+                  className="link"
+                >
+                  Log in
+                </Link>
+              </button>
+
+              <button className="btn2">
+                <Link
+                  to="#"
+                  onClick={() => {
+                    handlePageLoading("/signup");
+                    closeSideBar();
+                  }}
+                  className="link2"
+                >
+                  Sign up
+                </Link>
+              </button>
+            </div>
+
+            <div className="inner-one-new">
+              <nav>
+                <ul className="menu-new">
+                  {menuItems.map((item, index) => (
+                    <li
+                      key={index}
+                      className="menu-items-wrapper-new"
+                      onMouseEnter={() => handleHeaderMenuToggle(item.name)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <div className="arrow-new">
+                        <Link
+                          className="custom-links-new"
+                          to="#"
+                          onClick={() => {
+                            handlePageLoading(item.link);
+                            closeSideBar();
+                          }}
+                        >
+                          {item.name}
+                        </Link>
+                        <FaChevronRight />
+                      </div>
+                      {activeMenu === item.name && item.subItems && (
+                        <ul className="sub-menu-new slideIn">
+                          {item.subItems.map((subItem, subIndex) => (
+                            <li key={subIndex} className="sub-menu-items-new">
+                              <Link
+                                to="#"
+                                onClick={() => {
+                                  handlePageLoading(subItem.link);
+                                  closeSideBar();
+                                }}
+                                className="custom-links-new"
+                              >
+                                {subItem.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+
+            <div onClick={handleTheme} className="icon-div-new">
+              <p>Switch Theme</p>
+              {theme.background ? (
+                <FaMoon size={17} className="theme-icon-new" />
+              ) : (
+                <FaSun size={18} className="theme-icon-new" />
+              )}
+            </div>
+          </div>
+        )}
+
+        <div className="inner-h-old">
+          <div className="inner-one">
+            <nav>
+              <ul className="menu">
+                {menuItems.map((item, index) => (
+                  <li
+                    key={index}
+                    className="menu-items-wrapper"
+                    onMouseEnter={() => handleHeaderMenuToggle(item.name)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <Link
+                      className="custom-links"
+                      to="#"
+                      onClick={() => handlePageLoading(item.link)}
+                    >
+                      {item.name}
+                    </Link>
+                    {activeMenu === item.name && item.subItems && (
+                      <ul className="sub-menu slideIn">
+                        {item.subItems.map((subItem, subIndex) => (
+                          <li key={subIndex} className="sub-menu-items">
+                            <Link
+                              to="#"
+                              onClick={() => handlePageLoading(subItem.link)}
+                              className="custom-links"
+                            >
+                              {subItem.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+          <div className="inner-two">
+            <FaSearch
+              size={15}
+              style={{
+                color: theme ? "var(--text-color)" : "var(--bg-color)",
+              }}
+              className="search-icon"
+            />
+            <input type="text" placeholder="Search for anything" />
+          </div>
+          <div className="login-signup">
+            <button className="btn1">
+              <Link
+                to="#"
+                onClick={() => handlePageLoading("/login")}
+                className="link"
+              >
+                Log in
+              </Link>
+            </button>
+
+            <button className="btn2">
+              <Link
+                to="#"
+                onClick={() => handlePageLoading("/signup")}
+                className="link2"
+              >
+                Sign up
+              </Link>
+            </button>
+          </div>
+          <div onClick={handleTheme} className="icon-div">
+            {theme.background ? (
+              <FaMoon size={19} className="theme-icon" />
+            ) : (
+              <FaSun size={20} className="theme-icon" />
+            )}
+          </div>
         </div>
       </div>
+
+      {loading && (
+        <div className="load-slide">
+          <div className="load-bar"></div>
+        </div>
+      )}
     </section>
   );
 };

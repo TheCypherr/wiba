@@ -11,7 +11,7 @@ body {
 .signup-wrapper {
   padding: 50px 20px 50px 20px;
   height: 100%;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .signup-wrapper h1 {
@@ -124,30 +124,7 @@ button.signup {
   font-weight: bold;
 }
 
-/* Loading Bar */
-.load-slide1 {
-  width: 100%;
-  height: 5px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.load-bar1 {
-  height: 100%;
-  background-color: #2b33ff;
-  width: 0%;
-  animation: load-bar 2s ease-out forwards;
-}
-
-@keyframes load-bar {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
-  }
-}
+/* Success popup after successful signup */
 
 .success-popup1 {
   position: fixed;

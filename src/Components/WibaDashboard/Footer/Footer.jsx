@@ -3,6 +3,12 @@ import "./Footer.css";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  // Handle page reload onClick of logo at footer
+  const handlePageReload = () => {
+    window.location.href = "/";
+    // window.scrollTo(0, 0);
+  };
+
   return (
     <section className="footer-wrapper">
       <div className="top-foot">
@@ -32,7 +38,7 @@ const Footer = () => {
 
         <div className="four-side">
           <div className="four">
-            <Link to="/">
+            <Link onClick={handlePageReload}>
               <img src="/logo.png" alt="" />
             </Link>
             <p>© 2024 Wiba Inc.</p>
