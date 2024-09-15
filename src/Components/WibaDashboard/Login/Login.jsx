@@ -12,6 +12,8 @@ const Login = () => {
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   // Mock validation function for username/password
   const validateCredentials = () => {
@@ -39,17 +41,33 @@ const Login = () => {
     }
 
     // Check if username/password is invalid
-    if (!validateCredentials()) {
-      setUsernameError("Invalid username or password");
-      setPasswordError("Invalid username or password");
-      return;
-    }
+    // if (!validateCredentials()) {
+    //   setUsernameError("Invalid username or password");
+    //   setPasswordError("Invalid username or password");
+    //   return;
+    // }
+
+    // Simulate login process
+    setLoading(true); //show loading icon/slider
+
+    setTimeout(() => {
+      if (username === "cypher" && password === "password123") {
+        setLoading(false);
+        setSuccess(true);
+        setTimeout(() => {
+          navigate("/mainDashboard"); // if login is successful, redirect to main dashboard
+        }, 1500);
+      } else {
+        setLoading(false);
+        setUsernameError("Invalid username or password");
+        setPasswordError("Invalid username or password");
+      }
+    }, 2000);
 
     // If valid credentials, clear error and proceed with login
-    setError("");
-    console.log("Login successful");
+    // console.log("Login successful");
     // Add login logic (page-redirect or API call)
-    navigate("/mainDashboard");
+    // navigate("/mainDashboard");
   };
 
   // Toggle password visibility
@@ -89,18 +107,24 @@ const Login = () => {
                   </p>
                 )}
               </div>
-              <input
-                type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
-              />
-              <span
-                className="show-password"
-                onClick={togglePasswordVisibility}
-              >
-                {showPassword ? <FaEye size={15} /> : <FaEyeSlash size={15} />}
-              </span>
+              <div className="input-wrapper">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
+                />
+                <span
+                  className="show-password"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? (
+                    <FaEye size={15} />
+                  ) : (
+                    <FaEyeSlash size={15} />
+                  )}
+                </span>
+              </div>
             </div>
 
             {/* Display error message if any error */}
@@ -124,6 +148,13 @@ const Login = () => {
           </div>
         </div>
       </div>
+
+      {loading && (
+        <div className="load-slide">
+          <div className="load-bar"></div>
+        </div>
+      )}
+      {success && <div className="success-popup">Login Successful!</div>}
     </section>
   );
 };
