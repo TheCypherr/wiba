@@ -67,3 +67,52 @@ body {
   padding-left: 45px;
   font-weight: 500;
 }
+
+/* Portrait View Responsiveness */
+@media (max-width: 600px) {
+  .footer-wrapper {
+    padding: 5px 15px 10px 15px;
+  }
+  .top-foot h1 {
+    font-size: 1.2rem;
+    line-height: 25px;
+  }
+  .inner-footer {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .down-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    cursor: pointer;
+    padding-top: 20px;
+  }
+  .down-foot li {
+    padding: 5px;
+    list-style-type: none;
+    line-height: 25px;
+    font-weight: 500;
+    /* font-weight: 600; */
+    cursor: pointer;
+  }
+  .down-foot li:hover {
+    font-weight: 600;
+    text-decoration: underline;
+  }
+  .four-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .four img {
+    margin-top: 20px;
+    margin-bottom: -20px;
+    width: 150px;
+    cursor: pointer;
+  }
+}

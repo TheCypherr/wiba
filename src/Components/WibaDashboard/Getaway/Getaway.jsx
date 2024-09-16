@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Getaway.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Getaway = () => {
+  // State for showing the top loading
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handlePageLoading = (targetPage) => {
+    setLoading(true); // start the loading
+
+    setTimeout(() => {
+      setLoading(false);
+      navigate(targetPage);
+    }, 2000);
+  };
+
   return (
     <section className="getaway-wrapper">
       <h1>Your Gateway to Academic Excellence</h1>
@@ -112,13 +125,23 @@ const Getaway = () => {
         <div className="note">
           <p>
             Don't let exam challenges hold you back. <br />
-            <Link to="/" className="note-link">
+            <Link
+              to="#"
+              onClick={() => handlePageLoading("/login")}
+              className="note-link"
+            >
               <span>Join WIBA </span>
             </Link>
             and embark on a transformative academic journey.
           </p>
         </div>
       </div>
+
+      {loading && (
+        <div className="load-slide">
+          <div className="load-bar"></div>
+        </div>
+      )}
     </section>
   );
 };

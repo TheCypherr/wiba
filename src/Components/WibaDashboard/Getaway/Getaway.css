@@ -47,10 +47,27 @@ body {
   background-color: #8e8e8f94;
 }
 
+.get-icon {
+  width: 30%;
+  font-size: 3rem;
+  margin-right: 15px;
+  text-align: center;
+}
+.get-text {
+  width: 100%;
+}
+.get-text h2 {
+  line-height: 5px;
+}
+
+.getaway-two {
+  align-self: flex-start;
+}
+
 .getImage-container {
   /* margin-top: -25px; */
-  width: 37rem;
-  height: 100%;
+  width: 35rem;
+  height: 38rem;
 }
 
 .getImage-container img {
@@ -97,7 +114,7 @@ body {
 .note {
   width: 45%;
   float: right;
-  margin-top: -3 0px;
+  margin-top: -30px;
   margin-bottom: 20px;
 }
 
@@ -112,4 +129,173 @@ body {
 }
 .note-link:hover {
   text-decoration: underline;
+}
+
+/* Portrait View Responsiveness */
+@media (max-width: 600px) {
+  .getaway-wrapper h1 {
+    font-size: 1.9rem;
+  }
+  .inner-getaway {
+    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .getaway-two {
+    display: none;
+  }
+  .getaway-one {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .small-get {
+    width: 20rem;
+  }
+  .get-icon {
+    width: 30%;
+    font-size: 3rem;
+    margin-right: 15px;
+    text-align: center;
+  }
+  .get-text {
+    width: 100%;
+  }
+  .get-text h2 {
+    line-height: 5px;
+  }
+  .first-step h1 {
+    margin: auto;
+    font-size: 2.1rem;
+    text-align: center;
+  }
+  .steps-flex {
+    padding: 2px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-one {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    width: 20rem;
+    height: auto;
+    background-color: #8e8e8f94;
+    padding: 15px;
+    padding-top: 1px;
+    border-radius: 10px;
+  }
+  .step-one h2 {
+    font-size: 1.5rem;
+    line-height: 30px;
+  }
+  .step-one p {
+    font-size: 1.1rem;
+  }
+  .note {
+    width: 50%;
+    float: right;
+    margin-top: -10px;
+    margin-bottom: 20px;
+  }
+  .note p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Landscape and iPad View */
+@media (min-width: 600px) and (max-width: 900px) {
+  .getaway-wrapper h1 {
+    font-size: 2.1rem;
+  }
+  .inner-getaway {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  .getaway-two {
+    display: block;
+    margin-left: 20px;
+    align-self: flex-start;
+  }
+  .getImage-container {
+    width: 18rem;
+    height: 100%;
+  }
+
+  .getImage-container img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .small-get {
+    padding: 5px;
+    width: 21rem;
+  }
+  .get-icon {
+    width: 30%;
+    font-size: 3rem;
+    margin-right: 15px;
+    text-align: center;
+  }
+  .get-text {
+    width: 100%;
+  }
+  .get-text h2 {
+    line-height: 5px;
+  }
+  .first-step h1 {
+    margin: auto;
+    font-size: 2.1rem;
+    text-align: center;
+  }
+  .steps-flex {
+    margin: 0;
+    padding: 2px;
+    padding-top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .side-one,
+  .side-two {
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+  .step-one {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    width: 20rem;
+    height: 11rem;
+    background-color: #8e8e8f94;
+    padding: 15px;
+    padding-top: 1px;
+    border-radius: 10px;
+  }
+  .step-one h2 {
+    font-size: 1.5rem;
+    line-height: 30px;
+  }
+  .step-one p {
+    font-size: 1.1rem;
+  }
+  .note {
+    width: 40%;
+    float: right;
+    margin-top: -10px;
+    margin-bottom: 20px;
+  }
+  .note p {
+    font-size: 0.8rem;
+  }
 }

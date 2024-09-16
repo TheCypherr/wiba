@@ -101,3 +101,31 @@ button.test-btn:hover {
 .slick-list {
   overflow: hidden;
 }
+
+/* Portrait View Responsiveness */
+@media (max-width: 600px) {
+  .inner-utme {
+    padding: 5px 20px 10px 20px;
+  }
+  .slick-slide > div {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  .utme-slide {
+    width: 150px;
+  }
+  .below h1 {
+    padding-left: 10px;
+    font-size: 1.9rem;
+    line-height: 40px;
+  }
+  .below h3 {
+    margin-top: -10px;
+    padding-left: 10px;
+    font-weight: 500;
+  }
+}
+
+/* Landscape and iPad View */
+@media (min-width: 600px) and (max-width: 900px) {
+}

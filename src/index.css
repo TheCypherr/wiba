@@ -58,7 +58,7 @@ body {
 /* Loading Bar */
 .load-slide {
   width: 100%;
-  height: 5px;
+  height: 8px;
   position: absolute;
   top: 0;
   left: 0;
@@ -77,5 +77,28 @@ body {
   }
   to {
     width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .slick-prev,
+  .slick-next {
+    display: none;
+  }
+  .slick-prev::before,
+  .slick-next::before {
+    display: none;
+  }
+}
+
+/* Landscape and iPad View */
+@media (min-width: 600px) and (max-width: 900px) {
+  .slick-prev,
+  .slick-next {
+    display: none;
+  }
+  .slick-prev::before,
+  .slick-next::before {
+    display: none;
   }
 }

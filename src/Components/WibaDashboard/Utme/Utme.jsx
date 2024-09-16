@@ -43,6 +43,31 @@ const Utme = () => {
     nextArrow: <NextArrow />, //custom next arrow
     prevArrow: <PrevArrow />,
     afterChange: (current) => setCurrentSlide(current),
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: "20px",
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
     <section className="utme-wrapper">
@@ -61,7 +86,10 @@ const Utme = () => {
                 <img src="/math.webp" alt="" />
               </div>
               <div className="text-container">
-                <h3>Math CBT: JAMB Math Questions to test your Readiness</h3>
+                <h3>
+                  Math CBT: JAMB Math Questions to test your Readiness & Prepare
+                  you.
+                </h3>
                 <h5>Ace your Exams with WIBA</h5>
                 <button className="test-btn">Take TEST</button>
               </div>

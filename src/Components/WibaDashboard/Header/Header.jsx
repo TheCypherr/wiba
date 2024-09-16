@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Header.css";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -103,6 +103,15 @@ const Header = () => {
   const closeSideBar = () => {
     setIsOpen(false);
   };
+
+  // useEffect to prevent scrolling when menubar is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpen]);
 
   const menuItems = [
     {
@@ -259,9 +268,9 @@ const Header = () => {
             <div onClick={handleTheme} className="icon-div-new">
               <p>Switch Theme</p>
               {theme.background ? (
-                <FaMoon size={17} className="theme-icon-new" />
+                <FaMoon size={15} className="theme-icon-new" />
               ) : (
-                <FaSun size={18} className="theme-icon-new" />
+                <FaSun size={16} className="theme-icon-new" />
               )}
             </div>
           </div>

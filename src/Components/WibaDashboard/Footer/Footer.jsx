@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <section className="footer-wrapper">
       <div className="top-foot">
-        <h1>Goal driven students use WIBA to achieve their Exam Goals</h1>
+        <h1>Goal driven students use WIBA to achieve their Exam Goals.</h1>
       </div>
       <div className="underline" />
       <div className="inner-footer">
