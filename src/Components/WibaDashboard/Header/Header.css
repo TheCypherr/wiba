@@ -257,6 +257,18 @@ button.btn2:hover {
     z-index: 5;
     transition: opacity 0.3s ease-in-out;
   }
+  .search-back-drop {
+    position: fixed;
+    top: 10%;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    visibility: visible;
+    z-index: 5;
+    transition: opacity 0.3s ease-in-out;
+  }
 
   .icon-menu {
     display: block;

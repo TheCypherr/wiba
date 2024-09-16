@@ -122,7 +122,7 @@ const Header = () => {
   };
 
   // click function to close search bar onClick of any search result
-  const closeSearch = () => {
+  const closeSearchBar = () => {
     setSearch(false);
   };
 
@@ -183,7 +183,10 @@ const Header = () => {
         </div>
 
         <div
-          onClick={toggleMenu}
+          onClick={() => {
+            toggleMenu();
+            closeSearchBar();
+          }}
           className={`icon-menu ${isOpen ? "menu-open-icon" : ""}`}
         >
           {isOpen ? (
@@ -221,6 +224,7 @@ const Header = () => {
             )}
           </div>
 
+          {search && <div className="search-back-drop"></div>}
           {search && (
             <div className="search-overlay">
               <div className="search-wrapper">
