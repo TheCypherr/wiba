@@ -285,9 +285,9 @@ button.btn2:hover {
     margin: 0 auto;
   }
 
-  .search-container {
+  /* .search-container {
     position: relative;
-  }
+  } */
 
   .search-div {
     display: block;
@@ -295,8 +295,8 @@ button.btn2:hover {
   }
 
   .search-is-open {
-    position: absolute;
-    top: -7px;
+    position: fixed;
+    top: 3%;
     right: 5%;
     cursor: pointer;
     z-index: 1000;
@@ -588,7 +588,7 @@ button.btn2:hover {
     font-style: italic;
     font-weight: 600;
     color: var(--text-color);
-    box-shadow: 0 5px 5px var(--text-color);
+    border-radius: 2px solid var(--text-color);
     background-color: var(--bg-color);
     border: none;
   }
