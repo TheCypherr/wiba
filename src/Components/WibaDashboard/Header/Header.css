@@ -291,7 +291,10 @@ button.btn2:hover {
 
   .search-div {
     display: block;
-    margin-left: auto;
+    /* margin-left: auto; */
+    position: relative;
+    top: 3%;
+    right: 5%;
   }
 
   .search-is-open {
