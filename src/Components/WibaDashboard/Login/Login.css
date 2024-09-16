@@ -36,6 +36,7 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-weight: 600;
 }
 
 .input-section1 {
@@ -50,6 +51,7 @@ form {
   background-color: var(--bg-color);
   color: var(--text-color);
   border-radius: 5px;
+  font-size: 1rem;
 }
 .input-section2 {
   padding: 10px;
@@ -63,6 +65,7 @@ form {
   background-color: var(--bg-color);
   color: var(--text-color);
   border-radius: 5px;
+  font-size: 1rem;
 }
 
 .input-wrapper {

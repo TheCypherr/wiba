@@ -21,59 +21,64 @@ const Getaway = () => {
       <h1>Your Gateway to Academic Excellence</h1>
       <div className="inner-getaway">
         <div className="getaway-one">
-          <div className="small-get">
-            <div className="get-icon">
-              <i className="fas fa-book-open icon-style"></i>
+          <div className="flex-1">
+            <div className="small-get">
+              <div className="get-icon">
+                <i className="fas fa-book-open icon-style"></i>
+              </div>
+              <div className="get-text">
+                <h2>Diverse Subjects</h2>
+                <p>
+                  Prepare for a wide array of subjects, from core academic
+                  disciplines to specialized fields.
+                </p>
+              </div>
             </div>
-            <div className="get-text">
-              <h2>Diverse Subjects</h2>
-              <p>
-                Prepare for a wide array of subjects, from core academic
-                disciplines to specialized fields.
-              </p>
+
+            <div className="small-get">
+              <div className="get-icon">
+                <i className="fas fa-calendar-alt icon-style"></i>
+              </div>
+              <div className="get-text">
+                <h2>Flexible Scheduling</h2>
+                <p>
+                  Study at your own pace, with self-paced courses and on-demand
+                  access to materials.
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="small-get">
-            <div className="get-icon">
-              <i className="fas fa-calendar-alt icon-style"></i>
+          <div className="flex-2">
+            <div className="small-get">
+              <div className="get-icon">
+                <i className="fas fa-file-alt icon-style"></i>
+              </div>
+              <div className="get-text">
+                <h2>Exam Types</h2>
+                <p>
+                  Ace a variety of exam formats, including standardized tests,
+                  UTME Exams, Seasoned Questions for Freshers and professional
+                  certifications.
+                </p>
+              </div>
             </div>
-            <div className="get-text">
-              <h2>Flexible Scheduling</h2>
-              <p>
-                Study at your own pace, with self-paced courses and on-demand
-                access to materials.
-              </p>
-            </div>
-          </div>
 
-          <div className="small-get">
-            <div className="get-icon">
-              <i className="fas fa-file-alt icon-style"></i>
-            </div>
-            <div className="get-text">
-              <h2>Exam Types</h2>
-              <p>
-                Ace a variety of exam formats, including standardized tests,
-                UTME Exams, Seasoned Questions for Freshers and professional
-                certifications.
-              </p>
-            </div>
-          </div>
-
-          <div className="small-get">
-            <div className="get-icon">
-              <i className="fas fa-trophy icon-style"></i>
-            </div>
-            <div className="get-text">
-              <h2>Proven Success</h2>
-              <p>
-                Join thousands of students who have achieved their academic
-                goals through our platform.
-              </p>
+            <div className="small-get">
+              <div className="get-icon">
+                <i className="fas fa-trophy icon-style"></i>
+              </div>
+              <div className="get-text">
+                <h2>Proven Success</h2>
+                <p>
+                  Join thousands of students who have achieved their academic
+                  goals through our platform.
+                </p>
+              </div>
             </div>
           </div>
         </div>
+
         <div className="getaway-two">
           <div className="getImage-container">
             <img src="/dimeji.jpg" alt="" />

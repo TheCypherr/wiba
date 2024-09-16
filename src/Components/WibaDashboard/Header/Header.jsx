@@ -113,6 +113,28 @@ const Header = () => {
     }
   }, [isOpen]);
 
+  // State for search is open
+  const [search, setSearch] = useState(false);
+
+  // click function to handle search open
+  const toggleSearch = () => {
+    setSearch(!search);
+  };
+
+  // click function to close search bar onClick of any search result
+  const closeSearch = () => {
+    setSearch(false);
+  };
+
+  // useEffect to prevent scrolling when search bar is open
+  useEffect(() => {
+    if (search) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [search]);
+
   const menuItems = [
     {
       name: "Categories",
@@ -177,19 +199,40 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className="search-div">
-          <FaSearch
-            size={20}
-            style={{
-              color: theme ? "var(--text-color)" : "var(--bg-color)",
-            }}
-            className="search-icon-new"
-          />
+        <div className="search-container">
+          <div
+            className={`search-div ${search ? "search-is-open" : ""}`}
+            onClick={toggleSearch}
+          >
+            {search ? (
+              <FaTimes
+                size={20}
+                style={{
+                  color: theme ? "var(--text-color)" : "var(--bg-color)",
+                }}
+              />
+            ) : (
+              <FaSearch
+                size={20}
+                style={{
+                  color: theme ? "var(--text-color)" : "var(--bg-color)",
+                }}
+              />
+            )}
+          </div>
+
+          {search && (
+            <div className="search-overlay">
+              <div className="search-wrapper">
+                <input type="text" placeholder="Search for anything..." />
+              </div>
+            </div>
+          )}
         </div>
 
         {isOpen && <div className="back-drop"></div>}
         {isOpen && (
-          <div className="inner-h-new">
+          <div className="inner-h-new slideIn">
             <div className="login-signup">
               <button className="btn1">
                 <Link

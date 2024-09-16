@@ -89,6 +89,9 @@ body {
   .slick-next::before {
     display: none;
   }
+  .load-slide {
+    height: 6px;
+  }
 }
 
 /* Landscape and iPad View */

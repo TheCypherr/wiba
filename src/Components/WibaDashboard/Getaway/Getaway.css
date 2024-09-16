@@ -218,16 +218,24 @@ body {
   }
   .inner-getaway {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     margin-bottom: 30px;
   }
-  .getaway-two {
-    display: block;
-    margin-left: 20px;
-    align-self: flex-start;
+
+  .getaway-one {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
-  .getImage-container {
+
+  .getaway-two {
+    display: none;
+    /* margin-left: 20px;
+    align-self: flex-start; */
+  }
+  /* .getImage-container {
     width: 18rem;
     height: 100%;
   }
@@ -235,11 +243,12 @@ body {
   .getImage-container img {
     width: 100%;
     height: 100%;
-  }
+  } */
 
   .small-get {
     padding: 5px;
-    width: 21rem;
+    width: 20rem;
+    height: 10rem;
   }
   .get-icon {
     width: 30%;
