@@ -288,35 +288,35 @@ button.btn2:hover {
   /* .search-container {
     position: relative;
   } */
-
-  .search-div {
-    display: block;
-    margin-left: auto;
-    cursor: pointer;
-    z-index: 1000;
-  }
-
-  .search-is-open {
+  /* .search-is-open {
     position: absolute;
     top: 27%;
     right: 3%;
     cursor: pointer;
     z-index: 1000;
+  } */
+
+  .search-div {
+    display: block;
+    position: relative;
+    right: 0;
+    z-index: 1000;
   }
 
   .search-overlay {
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 100%;
     left: 0;
     width: 100%;
-    height: 100vh;
-    background-color: var(--bg-color);
+    padding: 10px;
     z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .search-wrapper input {
     width: 100%;
-    height: 20px;
     padding: 20px;
     font-size: 1rem;
     font-style: italic;
@@ -551,46 +551,31 @@ button.btn2:hover {
 
   .search-div {
     display: block;
-    margin-left: auto;
-    z-index: 1100;
-  }
-
-  .search-container {
     position: relative;
-  }
-
-  .search-div {
-    display: block;
-    margin-left: auto;
-  }
-
-  .search-is-open {
-    position: absolute;
-    top: -7px;
-    right: 5%;
-    cursor: pointer;
+    right: 0;
     z-index: 1000;
   }
 
   .search-overlay {
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 100%;
     left: 0;
     width: 100%;
-    height: 100vh;
-    background-color: var(--bg-color);
+    padding: 10px;
     z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .search-wrapper input {
     width: 100%;
-    height: 20px;
     padding: 20px;
     font-size: 1rem;
     font-style: italic;
     font-weight: 600;
     color: var(--text-color);
-    border-radius: 2px solid var(--text-color);
+    box-shadow: 0 5px 5px var(--text-color);
     background-color: var(--bg-color);
     border: none;
   }
