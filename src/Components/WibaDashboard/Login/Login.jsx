@@ -29,10 +29,10 @@ const Login = () => {
 
     // Check if any field is empty
     if (!username) {
-      setUsernameError("Fill in your username.");
+      setUsernameError("Enter your email");
     }
     if (!password) {
-      setPasswordError("Fill in your password");
+      setPasswordError("Enter your password");
     }
 
     // if username and password is empty
@@ -59,8 +59,8 @@ const Login = () => {
         }, 1500);
       } else {
         setLoading(false);
-        setUsernameError("Invalid username or password");
-        setPasswordError("Invalid username or password");
+        setUsernameError("Incorrect email or password");
+        setPasswordError("Incorrect email or password");
       }
     }, 2000);
 
@@ -83,7 +83,7 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
             <div className="input-section1">
               <div className="input-label">
-                <label>Username</label>
+                <label>Email</label>
                 {usernameError && (
                   <p style={{ color: "red" }} className="error-message">
                     {usernameError}
