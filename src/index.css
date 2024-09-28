@@ -81,13 +81,36 @@ body {
 }
 
 @media (max-width: 600px) {
+  /* Style the previous arrow (left) */
+  .slick-prev {
+    position: absolute;
+    left: -2.5%;
+    top: 45%;
+    z-index: 1000;
+  }
+
+  /* Style the next arrow (right) */
+  .slick-next {
+    position: absolute;
+    right: 2.5%;
+    top: 45%;
+    z-index: 1000;
+  }
+
+  /* Adjust vertical alignment */
   .slick-prev,
   .slick-next {
-    display: none;
+    /* top: 50%; Center vertically */
+    transform: translateY(-50%);
   }
+
+  /* Adjust size and appearance of arrows */
   .slick-prev::before,
   .slick-next::before {
-    display: none;
+    font-size: 40px;
+    color: var(--bg-color);
+    border-radius: 50%;
+    background-color: var(--text-color);
   }
   .load-slide {
     height: 6px;
