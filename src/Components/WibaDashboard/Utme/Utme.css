@@ -24,6 +24,12 @@ body {
   font-weight: 500;
 }
 
+.slider-divs {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .utme-slide {
   margin-top: 30px;
   margin-bottom: 30px;
