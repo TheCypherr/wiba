@@ -2,72 +2,71 @@ import React, { useState } from "react";
 import "./Login.css";
 import { useNavigate, Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useFirebaseUser } from "../../../config/FirebaseContext";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../../../config/Firebase";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { setUser } = useFirebaseUser();
 
   // State for username/password and error message
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
-  const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  // Mock validation function for username/password
-  const validateCredentials = () => {
-    return username === "cypher" && password === "password123";
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); // prevent form from refreshing page
 
     // Clear previous error message
-    setUsernameError("");
+    setEmailError("");
     setPasswordError("");
 
     // Check if any field is empty
-    if (!username) {
-      setUsernameError("Enter your email");
+    if (!email) {
+      setEmailError("Enter your email");
+      return;
     }
     if (!password) {
       setPasswordError("Enter your password");
-    }
-
-    // if username and password is empty
-    if (!username || !password) {
       return;
     }
 
-    // Check if username/password is invalid
-    // if (!validateCredentials()) {
-    //   setUsernameError("Invalid username or password");
-    //   setPasswordError("Invalid username or password");
-    //   return;
-    // }
+    try {
+      setLoading(true); //show loading slider
 
-    // Simulate login process
-    setLoading(true); //show loading icon/slider
+      // Sign in user
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
 
-    setTimeout(() => {
-      if (username === "cypher" && password === "password123") {
-        setLoading(false);
-        setSuccess(true);
-        setTimeout(() => {
-          navigate("/mainDashboard"); // if login is successful, redirect to main dashboard
-        }, 1500);
-      } else {
-        setLoading(false);
-        setUsernameError("Incorrect email or password");
-        setPasswordError("Incorrect email or password");
+      // Set user info and handle missing displayName
+      setUser({
+        displayName: user.displayName || "User", // Default user as "User" if no username is set
+        email: user.email,
+      });
+      setLoading(false);
+      setSuccess(true);
+
+      // Redirect after 2 seconds
+      setTimeout(() => {
+        navigate("/main");
+      }, 2000);
+    } catch (error) {
+      setLoading(false); // Stop loading on error
+      console.error("Error during login:", error);
+
+      if (error.code) {
+        setEmailError("Incorrect details");
       }
-    }, 2000);
-
-    // If valid credentials, clear error and proceed with login
-    // console.log("Login successful");
-    // Add login logic (page-redirect or API call)
-    // navigate("/mainDashboard");
+    }
   };
 
   // Toggle password visibility
@@ -75,25 +74,54 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
+  // Google sign-in
+  const googleSignIn = async () => {
+    try {
+      setLoading(true);
+      const googleUser = await signInWithPopup(auth, googleProvider);
+      console.log("Google User:", googleUser);
+
+      const user = googleUser.user;
+      // then I store user info in context so I can use globally by doing this first
+      setUser({
+        displayName: user.displayName,
+        email: user.email,
+      });
+      setLoading(false);
+      setSuccess(true);
+      setTimeout(() => {
+        navigate("/main");
+      }, 2000);
+    } catch (error) {
+      setLoading(false);
+      console.error("Error signing up user", error);
+    }
+  };
+
   return (
     <section className="login-wrapper">
-      <h1>Login</h1>
       <div className="inner-login">
+        <div className="loginSide-one">
+          <div className="illustrator">
+            <img src="illustrator2.png" alt="" />
+          </div>
+        </div>
         <div className="loginSide-two">
+          <h1>Login</h1>
           <form onSubmit={handleSubmit}>
             <div className="input-section1">
               <div className="input-label">
                 <label>Email</label>
-                {usernameError && (
+                {emailError && (
                   <p style={{ color: "red" }} className="error-message">
-                    {usernameError}
+                    {emailError}
                   </p>
                 )}
               </div>
               <input
                 type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
               />
             </div>
@@ -138,6 +166,18 @@ const Login = () => {
               </Link>
             </div>
           </form>
+
+          <div className="login-or">
+            <p>--------------- OR ---------------</p>
+          </div>
+
+          <div className="google-signin">
+            <button className="google" onClick={googleSignIn}>
+              <img src="/google.png" alt="google" />
+              <p> Continue with Google</p>
+            </button>
+          </div>
+
           <div className="dont-have">
             <p>
               Don't have an account?
@@ -154,7 +194,7 @@ const Login = () => {
           <div className="load-bar"></div>
         </div>
       )}
-      {success && <div className="success-popup">Login Successful!</div>}
+      {success && <div className="success-popup slideIn">Login Successful</div>}
     </section>
   );
 };

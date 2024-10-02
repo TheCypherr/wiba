@@ -12,7 +12,7 @@ body {
 }
 
 .getaway-wrapper h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   padding-bottom: 20px;
   padding-top: 20px;
 }
@@ -76,7 +76,7 @@ body {
 }
 
 .first-step h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-left: 15px;
   padding-top: 40px;
 }
@@ -134,7 +134,7 @@ body {
 /* Portrait View Responsiveness */
 @media (max-width: 600px) {
   .getaway-wrapper h1 {
-    font-size: 1.9rem;
+    font-size: 1.5rem;
   }
   .inner-getaway {
     margin: auto;
@@ -167,11 +167,16 @@ body {
   }
   .get-text h2 {
     line-height: 5px;
+    font-size: 1.2rem;
+  }
+  .get-text p {
+    font-size: 0.9rem;
   }
   .first-step h1 {
     margin: auto;
-    font-size: 2.1rem;
-    text-align: center;
+    margin-top: -15px;
+    font-size: 1.5rem;
+    text-align: left;
   }
   .steps-flex {
     padding: 2px;
@@ -183,22 +188,22 @@ body {
   }
 
   .step-one {
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 15px;
     cursor: pointer;
     width: 20rem;
     height: auto;
     background-color: #8e8e8f94;
-    padding: 15px;
+    padding: 10px;
     padding-top: 1px;
     border-radius: 10px;
   }
   .step-one h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     line-height: 30px;
   }
   .step-one p {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   .note {
     width: 50%;

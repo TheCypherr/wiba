@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Header.css";
+import "./MainHeader.css";
 import { Link, useNavigate } from "react-router-dom";
 import {
   FaSearch,
@@ -8,10 +8,13 @@ import {
   FaTimes,
   FaBars,
   FaChevronRight,
+  FaUser,
   FaSignOutAlt,
 } from "react-icons/fa";
+import { auth } from "../../../config/Firebase";
+import { signOut } from "firebase/auth";
 
-const Header = () => {
+const MainHeader = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [theme, setTheme] = useState({
     background: true,
@@ -23,7 +26,21 @@ const Header = () => {
 
   const handlePageReload = () => {
     window.scrollTo(0, 0);
-    window.location.href = "/";
+    window.location.href = "/main";
+  };
+
+  // Firebase logout with loadingstate and timer
+  const handleLogout = async () => {
+    try {
+      setLoading(true);
+      await signOut(auth);
+      setTimeout(() => {
+        setLoading(false);
+        navigate("/login");
+      }, 2000);
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   // State for loading
@@ -175,9 +192,9 @@ const Header = () => {
   ];
 
   return (
-    <section className="header-wrapper">
-      <div className={`inner-h ${isOpen ? "menu-open" : ""}`}>
-        <div className="logo">
+    <section className="main-header-wrapper">
+      <div className={`main-inner-h ${isOpen ? "main-menu-open" : ""}`}>
+        <div className="main-logo">
           <Link onClick={handlePageReload}>
             <img src="/logo.png" alt="" />
           </Link>
@@ -188,24 +205,24 @@ const Header = () => {
             toggleMenu();
             closeSearchBar();
           }}
-          className={`icon-menu ${isOpen ? "menu-open-icon" : ""}`}
+          className={`main-icon-menu ${isOpen ? "main-menu-open-icon" : ""}`}
         >
           {isOpen ? (
-            <FaTimes size={25} className="fa-times" />
+            <FaTimes size={25} className="main-fa-times" />
           ) : (
             <FaBars size={25} />
           )}
         </div>
 
-        <div className="logo-new">
+        <div className="main-logo-new">
           <Link onClick={handlePageReload}>
             <img src="/logo.png" alt="" />
           </Link>
         </div>
 
-        <div className="search-container">
+        <div className="main-search-container">
           <div
-            className={`search-div ${search ? "search-is-open" : ""}`}
+            className={`main-search-div ${search ? "main-search-is-open" : ""}`}
             onClick={toggleSearch}
           >
             {search ? (
@@ -225,60 +242,41 @@ const Header = () => {
             )}
           </div>
 
-          {search && <div className="search-back-drop"></div>}
+          {search && <div className="main-search-back-drop"></div>}
           {search && (
-            <div className="search-overlay">
-              <div className="search-wrapper">
+            <div className="main-search-overlay">
+              <div className="main-search-wrapper">
                 <input type="text" placeholder="Search for anything..." />
               </div>
             </div>
           )}
         </div>
 
-        {isOpen && <div className="back-drop"></div>}
+        {isOpen && <div className="main-back-drop"></div>}
         {isOpen && (
-          <div className="inner-h-new slideIn">
-            <div className="login-signup">
-              <button className="btn1">
-                <Link
-                  to="#"
-                  onClick={() => {
-                    handlePageLoading("/login");
-                    closeSideBar();
-                  }}
-                  className="link"
-                >
-                  Log in
-                </Link>
-              </button>
-
-              <button className="btn2">
-                <Link
-                  to="#"
-                  onClick={() => {
-                    handlePageLoading("/signup");
-                    closeSideBar();
-                  }}
-                  className="link2"
-                >
-                  Sign up
-                </Link>
-              </button>
+          <div className="main-inner-h-new slideIn">
+            <div className="profile-container">
+              <Link className="profile" to="/profile">
+                <FaUser />
+                <p>Profile</p>
+              </Link>
+              <FaChevronRight />
             </div>
+            <div className="underline"></div>
 
-            <div className="inner-one-new">
+            <div className="main-inner-one-new">
               <nav>
-                <ul className="menu-new">
+                <ul className="main-menu-new">
                   {menuItems.map((item, index) => (
                     <li
                       key={index}
-                      className="menu-items-wrapper-new"
+                      className="main-menu-items-wrapper-new"
                       onMouseEnter={() => handleHeaderMenuToggle(item.name)}
                       onMouseLeave={handleMouseLeave}
                     >
-                      <div className="arrow-new">
+                      <div className="main-arrow-new">
                         <Link
-                          className="custom-links-new"
+                          className="main-custom-links-new"
                           to="#"
                           onClick={() => {
                             handlePageLoading(item.link);
@@ -290,16 +288,19 @@ const Header = () => {
                         <FaChevronRight />
                       </div>
                       {activeMenu === item.name && item.subItems && (
-                        <ul className="sub-menu-new slideIn">
+                        <ul className="main-sub-menu-new slideIn">
                           {item.subItems.map((subItem, subIndex) => (
-                            <li key={subIndex} className="sub-menu-items-new">
+                            <li
+                              key={subIndex}
+                              className="main-sub-menu-items-new"
+                            >
                               <Link
                                 to="#"
                                 onClick={() => {
                                   handlePageLoading(subItem.link);
                                   closeSideBar();
                                 }}
-                                className="custom-links-new"
+                                className="main-custom-links-new"
                               >
                                 {subItem.label}
                               </Link>
@@ -313,85 +314,96 @@ const Header = () => {
               </nav>
             </div>
 
-            {/* <div onClick={handleTheme} className="icon-div-new">
+            {/* <div onClick={handleTheme} className="main-icon-div-new">
               <p>Switch Theme</p>
               {theme.background ? (
-                <FaMoon size={15} className="theme-icon-new" />
+                <FaMoon size={15} className="main-theme-icon-new" />
               ) : (
-                <FaSun size={16} className="theme-icon-new" />
+                <FaSun size={16} className="main-theme-icon-new" />
               )}
             </div> */}
+
+            <div
+              className="logout-btn"
+              onClick={() => {
+                handleLogout();
+                closeSideBar();
+              }}
+            >
+              <p>Logout</p>
+              <FaSignOutAlt color="red" size={17} />
+            </div>
           </div>
         )}
 
-        <div className="inner-h-old">
-          <div className="inner-one">
-            <nav>
-              <ul className="menu">
-                {menuItems.map((item, index) => (
-                  <li
-                    key={index}
-                    className="menu-items-wrapper"
-                    onMouseEnter={() => handleHeaderMenuToggle(item.name)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <Link
-                      className="custom-links"
-                      to="#"
-                      onClick={() => handlePageLoading(item.link)}
+        <div className="main-inner-h-old">
+          <div className="last-side1">
+            <div className="main-inner-one">
+              <nav>
+                <ul className="main-menu">
+                  {menuItems.map((item, index) => (
+                    <li
+                      key={index}
+                      className="main-menu-items-wrapper"
+                      onMouseEnter={() => handleHeaderMenuToggle(item.name)}
+                      onMouseLeave={handleMouseLeave}
                     >
-                      {item.name}
-                    </Link>
-                    {activeMenu === item.name && item.subItems && (
-                      <ul className="sub-menu slideIn">
-                        {item.subItems.map((subItem, subIndex) => (
-                          <li key={subIndex} className="sub-menu-items">
-                            <Link
-                              to="#"
-                              onClick={() => handlePageLoading(subItem.link)}
-                              className="custom-links"
-                            >
-                              {subItem.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </nav>
+                      <Link
+                        className="main-custom-links"
+                        to="#"
+                        onClick={() => handlePageLoading(item.link)}
+                      >
+                        {item.name}
+                      </Link>
+                      {activeMenu === item.name && item.subItems && (
+                        <ul className="main-sub-menu slideIn">
+                          {item.subItems.map((subItem, subIndex) => (
+                            <li key={subIndex} className="main-sub-menu-items">
+                              <Link
+                                to="#"
+                                onClick={() => handlePageLoading(subItem.link)}
+                                className="main-custom-links"
+                              >
+                                {subItem.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+            <div className="main-inner-two">
+              <FaSearch
+                size={15}
+                style={{
+                  color: theme ? "var(--text-color)" : "var(--bg-color)",
+                }}
+                className="main-search-icon"
+              />
+              <input type="text" placeholder="Search for anything" />
+            </div>
           </div>
-          <div className="inner-two">
-            <FaSearch
-              size={15}
-              style={{
-                color: theme ? "var(--text-color)" : "var(--bg-color)",
-              }}
-              className="search-icon"
-            />
-            <input type="text" placeholder="Search for anything" />
-          </div>
-          <div className="login-signup">
-            <button className="btn1">
-              <Link
-                to="#"
-                onClick={() => handlePageLoading("/login")}
-                className="link"
-              >
-                Log in
-              </Link>
-            </button>
 
-            <button className="btn2">
-              <Link
-                to="#"
-                onClick={() => handlePageLoading("/signup")}
-                className="link2"
-              >
-                Sign up
+          <div className="last-side2">
+            <div>
+              <Link className="profile">
+                <FaUser to="/profile" />
+                <p>Profile</p>
               </Link>
-            </button>
+            </div>
+
+            <Link
+              className="logout"
+              onClick={() => {
+                handleLogout();
+                closeSideBar();
+              }}
+            >
+              <FaSignOutAlt color="red" size={19} />
+            </Link>
           </div>
         </div>
       </div>
@@ -405,4 +417,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default MainHeader;

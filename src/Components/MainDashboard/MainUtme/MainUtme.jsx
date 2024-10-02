@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "./Utme.css";
+import "./MainUtme.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 
-const Utme = () => {
+const MainUtme = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlide = 6;
 
@@ -71,133 +71,138 @@ const Utme = () => {
     ],
   };
   return (
-    <section className="utme-wrapper">
-      <div className="inner-utme">
-        <div className="below">
-          <h1>Conquer all your Exam Challenges.</h1>
+    <section className="main-utme-wrapper">
+      <div className="main-inner-utme">
+        <div className="main-utme-below">
+          <h1>Are you preparing for JAMB? (Take our quiz).</h1>
           <h3>
-            With up to-date CBT Questions for Jamb Students along side 100L
-            Courses Practice Questions for FRESHERS.
+            Up to-date CBT Questions for Jamb Students along side 100L Practice
+            Questions for FRESHERS.
           </h3>
         </div>
-        <div className="slider-divs">
+        <div className="utme-slider-divs">
           <Slider {...settings}>
-            <div className="utme-slide">
-              <div className="img-container">
+            <div className="main-utme-slide">
+              <div className="utme-img-container">
                 <img src="/math.webp" alt="" />
               </div>
-              <div className="text-container">
+              <div className="utme-text-container">
                 <h3>
                   Math CBT: JAMB Math Questions to test your Readiness & Prepare
                   you.
                 </h3>
                 <h5>Ace your Exams with WIBA</h5>
-                <Link to="/login">
-                  <button className="test-btn">Take TEST</button>
+                <Link to="/mathquiz">
+                  <button className="utme-test-btn">Take Quiz</button>
                 </Link>
               </div>
             </div>
 
-            <div className="utme-slide">
-              <div className="img-container">
+            <div className="main-utme-slide">
+              <div className="utme-img-container">
                 <img src="/english.jpg" alt="" />
               </div>
-              <div className="text-container">
+              <div className="utme-text-container">
                 <h3>
                   Sharpen your English Skills for JAMB Success (Grammar &
                   Vocabulary)
                 </h3>
                 <h5>Authentic English JAMB Past Questions</h5>
-                <Link to="/login">
-                  <button className="test-btn">Take TEST</button>
+                <Link to="/engquiz">
+                  <button className="utme-test-btn">Take Quiz</button>
                 </Link>
               </div>
             </div>
 
-            <div className="utme-slide">
-              <div className="img-container">
+            <div className="main-utme-slide">
+              <div className="utme-img-container">
                 <img src="/account.jpg" alt="" />
               </div>
-              <div className="text-container">
+              <div className="utme-text-container">
                 <h3>
                   Practice JAMB Accounting Questions to get you prepared for
                   your Exams
                 </h3>
                 <h5>Accounting Practice Questions on WIBA.</h5>
-                <Link to="/login">
-                  <button className="test-btn">Take TEST</button>
+                <Link to="/accquiz">
+                  <button className="utme-test-btn">Take Quiz</button>
                 </Link>
               </div>
             </div>
 
-            <div className="utme-slide">
-              <div className="img-container">
+            <div className="main-utme-slide">
+              <div className="utme-img-container">
                 <img src="/biology.jpg" alt="" />
               </div>
-              <div className="text-container">
+              <div className="utme-text-container">
                 <h3>
                   Updated Biology JAMB Practice Questions to help you Ace your
                   Exam.
                 </h3>
                 <h5>Up to-date Biology Past Questions on WIBA </h5>
-                <Link to="/login">
-                  <button className="test-btn">Take TEST</button>
+                <Link to="/bioquiz">
+                  <button className="utme-test-btn">Take Quiz</button>
                 </Link>
               </div>
             </div>
 
-            <div className="utme-slide">
-              <div className="img-container">
+            <div className="main-utme-slide">
+              <div className="utme-img-container">
                 <img src="/physics.jpg" alt="" />
               </div>
-              <div className="text-container">
+              <div className="utme-text-container">
                 <h3>
-                  Physics CBT: Get prepared for JAMB Physics on WIBA with
-                  questions to help you Pass.
+                  Physics CBT: Get prepared for JAMB Physics on WIBA with our
+                  quiz questions.
                 </h3>
                 <h5>Practice on WIBA with Timer</h5>
-                <Link to="/login">
-                  <button className="test-btn">Take TEST</button>
+                <Link to="/phyquiz">
+                  <button className="utme-test-btn">Take Quiz</button>
                 </Link>
               </div>
             </div>
 
-            <div className="utme-slide">
-              <div className="img-container">
+            <div className="main-utme-slide">
+              <div className="utme-img-container">
                 <img src="/chemistry.png" alt="" />
               </div>
-              <div className="text-container">
+              <div className="utme-text-container">
                 <h3>
                   Chemistry CBT: JAMB Chemistry Questions to Test your
                   Understanding.
                 </h3>
                 <h5>Get Confident with Practice Questions</h5>
-                <Link to="/login">
-                  <button className="test-btn">Take TEST</button>
+                <Link to="/chmquiz">
+                  <button className="utme-test-btn">Take Quiz</button>
                 </Link>
               </div>
             </div>
 
-            <div className="utme-slide">
-              <div className="img-container">
+            <div className="main-utme-slide">
+              <div className="utme-img-container">
                 <img src="/Commerce.jpg" alt="" />
               </div>
-              <div className="text-container">
+              <div className="utme-text-container">
                 <h3>
                   Commerce CBT: Succeed in JAMB Commerce and have better
                   Understanding
                 </h3>
                 <h5>Improve your skills with WIBA Test</h5>
-                <Link to="/login">
-                  <button className="test-btn">Take TEST</button>
+                <Link to="/commquiz">
+                  <button className="utme-test-btn">Take Quiz</button>
                 </Link>
               </div>
             </div>
           </Slider>
+        </div>
+        <div className="see-allquiz">
+          <Link to="allquiz">
+            <button className="utme-test-btn2">See all Quiz</button>
+          </Link>
         </div>
       </div>
     </section>
   );
 };
 
-export default Utme;
+export default MainUtme;

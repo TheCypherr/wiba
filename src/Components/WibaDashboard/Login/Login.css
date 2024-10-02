@@ -16,17 +16,28 @@ body {
   text-align: center;
   font-size: 2rem;
   line-height: 15px;
+  margin-top: 2px;
 }
 
 .inner-login {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
 }
 
+.illustrator {
+  width: 30rem;
+  overflow: hidden;
+}
+.illustrator img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .loginSide-two {
-  box-shadow: 0 5px 5px var(--text-color);
+  box-shadow: 0 2px 2px var(--text-color);
   width: 20rem;
   padding: 20px;
   border-radius: 5px;
@@ -53,6 +64,9 @@ form {
   border-radius: 5px;
   font-size: 1rem;
 }
+.input-section1 input::placeholder {
+  font-size: 0.9rem;
+}
 .input-section2 {
   padding: 10px;
 }
@@ -66,6 +80,9 @@ form {
   color: var(--text-color);
   border-radius: 5px;
   font-size: 1rem;
+}
+.input-section2 input::placeholder {
+  font-size: 0.9rem;
 }
 
 .input-wrapper {
@@ -87,8 +104,8 @@ span.show-password {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 10px;
-  font-size: 1.2rem;
+  padding-bottom: 5px;
+  font-size: 1.1rem;
 }
 p.error-message {
   font-size: 0.8rem;
@@ -128,6 +145,30 @@ button.login:hover {
   transform: scaleY(1.1);
 }
 
+.login-or {
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+button.google {
+  padding: 1px;
+  width: 100%;
+  height: 35px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+  justify-content: center;
+}
+
+button.google img {
+  width: 20px;
+  margin-right: 10px;
+}
+
 .dont-have p {
   font-size: 0.9rem;
 }
@@ -159,9 +200,9 @@ button.login:hover {
   top: 20%;
   left: 20%;
   transform: translateX(-50%);
-  background-color: #27d75c;
+  background-color: var(--logo-color);
   color: #fff;
-  padding: 20px;
+  padding: 15px;
   border-radius: 8px;
   font-size: 18px;
   box-shadow: 0 2px 10pc rgba(0, 0, 0, 0.2);
@@ -170,6 +211,12 @@ button.login:hover {
 
 /* Portrait View Responsiveness */
 @media (max-width: 600px) {
+  .success-popup {
+    top: 10%;
+    left: 25%;
+    padding: 7px;
+    border-radius: 5px;
+  }
   .login-wrapper {
     padding: 30px 20px 50px 20px;
     height: 100%;
@@ -178,5 +225,16 @@ button.login:hover {
     text-align: center;
     font-size: 2rem;
     line-height: 15px;
+  }
+  .inner-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .illustrator {
+    width: 10rem;
+    overflow: hidden;
   }
 }
