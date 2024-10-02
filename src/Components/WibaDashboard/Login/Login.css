@@ -234,6 +234,7 @@ button.google img {
     text-align: center;
   }
   .illustrator {
+    margin: auto;
     width: 10rem;
     overflow: hidden;
   }
