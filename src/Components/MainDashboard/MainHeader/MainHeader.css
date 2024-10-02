@@ -541,7 +541,7 @@ button.main-btn2:hover {
   .logout-btn {
     position: absolute;
     left: 5%;
-    bottom: 10%;
+    bottom: 15%;
     display: flex;
     align-items: center;
   }
