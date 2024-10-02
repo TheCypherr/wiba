@@ -12,7 +12,7 @@ body {
   position: relative;
   padding: 10px 30px 10px 30px;
   height: 100%;
-  box-shadow: 0 5px 5px var(--text-color);
+  box-shadow: 0 3px 3px var(--text-color);
 }
 
 .inner-h {
@@ -225,7 +225,7 @@ button.btn2:hover {
     position: relative;
     padding: 10px 10px 10px 10px;
     height: 100%;
-    box-shadow: 0 5px 5px var(--text-color);
+    box-shadow: 0 3px 3px var(--text-color);
   }
   .inner-h {
     display: flex;
