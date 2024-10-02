@@ -109,11 +109,10 @@ const Login = () => {
         <div className="loginSide-two">
           <h1>Login</h1>
           <form onSubmit={handleSubmit}>
-            <div className="input-section1">
-              <div className="input-label">
-                <label>Email</label>
+            <div className="signup-input1">
+              <div className="error-text">
                 {emailError && (
-                  <p style={{ color: "red" }} className="error-message">
+                  <p style={{ color: "red" }} className="error-message1">
                     {emailError}
                   </p>
                 )}
@@ -122,28 +121,27 @@ const Login = () => {
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
+                placeholder="Email"
               />
             </div>
 
-            <div className="input-section2">
-              <div className="input-label">
-                <label>Password</label>
+            <div className="signup-input2">
+              <div className="error-text">
                 {passwordError && (
-                  <p style={{ color: "red" }} className="error-message">
+                  <p style={{ color: "red" }} className="error-message1">
                     {passwordError}
                   </p>
                 )}
               </div>
-              <div className="input-wrapper">
+              <div className="input-wrapper1">
                 <input
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
+                  placeholder="Password"
                 />
                 <span
-                  className="show-password"
+                  className="show-password1"
                   onClick={togglePasswordVisibility}
                 >
                   {showPassword ? (
