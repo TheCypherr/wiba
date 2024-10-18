@@ -34,41 +34,12 @@ const Gst111Quiz = () => {
   const shuffleQuestions = (questionsArray, numQuestions) => {
     const shuffled = [...questionsArray].sort(() => 0.5 - Math.random()); // shuffle quest array
     return shuffled.slice(0, numQuestions);
-
-    let selectedQuestions = []; // array to hold the selected questions
-    let count = 0; // counter to track all question
-
-    for (let question of shuffled) {
-      // Loop through the shuffled questions array
-
-      // Check if the current question is a compQuestion. if YES, count no of sub-questions. if NO, count as 1
-      const questionCount = question.questions ? question.questions.length : 1;
-
-      // Ensure that the total question count doesn't exceed the required number (numQuestions)
-      if (count + questionCount <= numQuestions) {
-        selectedQuestions.push(question); // Add the question to the array if it fits within the limit
-        count += questionCount; // Increase counter by the number of sub-questions or by 1
-      }
-
-      // If the total number of questions reaches or exceeds the required limit, stop selecting questions
-      if (count >= numQuestions) break;
-    }
-
-    // Return the final list of selected questions
-    return selectedQuestions;
   };
 
   useEffect(() => {
     // Shuffle and set random questions when the component mounts
     const selectedQuestions = shuffleQuestions(allQuestions, 50);
     setShuffledQuestions(selectedQuestions);
-
-    // // Calculate total question and update the state
-    // setTotalQuestions(
-    //   shuffledQuestions.reduce((acc, question) => {
-    //     return acc + (question.questions ? question.questions.length : 1);
-    //   }, 0)
-    // );
   }, []);
 
   // Function to retake quiz
@@ -163,7 +134,7 @@ const Gst111Quiz = () => {
   };
 
   useEffect(() => {
-    if (isTimerRunning) {
+    if (isTimerRunning && !shuffledQuestions[currentQuestion]?.comprehension) {
       // Start the timer
       timerIntervalRef.current = setInterval(() => {
         setTimer((prevTimer) => {
@@ -255,18 +226,6 @@ const Gst111Quiz = () => {
     }, 1500); // 1.5-second delay
   };
 
-  //   const calculateTotalQuestions = (questionsArray) => {
-  //     return questionsArray.reduce((total, question) => {
-  //       if (question.comprehension) {
-  //         // Add the length of comprehension sub-questions
-  //         return total + question.questions.length;
-  //       } else {
-  //         // Add 1 for regular questions
-  //         return total + 1;
-  //       }
-  //     }, 0);
-  //   };
-
   return (
     <section className="Gst113-wrapper">
       <div className="main-logo quiz-logo">
@@ -334,6 +293,7 @@ const Gst111Quiz = () => {
                 <div className={`timer ${timer <= 5 ? "low" : ""}`}>
                   {timer}
                 </div>
+
                 {/* Check if it's a comprehension question */}
                 {shuffledQuestions[currentQuestion]?.comprehension ? (
                   <div className="comprehension-section">
