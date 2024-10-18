@@ -81,15 +81,15 @@ body {
   font-weight: bold;
   text-align: center;
   color: #ffffff;
-  background-color: #ff5722;
+  background-color: #ff2622ef;
   padding: 10px;
   width: 5%;
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 0px auto;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/*  animation when timer is 5 secs or less */
+/*  animation when timer is 5 secs or less ff5722*/
 .timer.low {
   animation: pulse 1s infinite;
 }
@@ -97,7 +97,7 @@ body {
 @keyframes pulse {
   0% {
     transform: scale(1);
-    background-color: #ff5722;
+    background-color: #ff2622ef;
   }
   50% {
     transform: scale(1.1);
@@ -105,7 +105,7 @@ body {
   }
   100% {
     transform: scale(1);
-    background-color: #ff5722;
+    background-color: #ff2622ef;
   }
 }
 
@@ -220,6 +220,7 @@ button.back {
   font-size: 0.9rem;
   background-color: #faf6f6;
   border: 1px solid var(--logo-color);
+  color: #000000;
   cursor: pointer;
 }
 
