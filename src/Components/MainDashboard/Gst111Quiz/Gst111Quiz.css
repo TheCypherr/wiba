@@ -1,0 +1,46 @@
+/* Comprehension layout */
+.comprehension-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.comprehension-passage {
+  margin: auto;
+  margin-top: 20px;
+  background-color: #e8f0fe;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #333;
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+p.instruction {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.comprehension-question {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.comprehension-question p {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Portrait View Responsiveness */
+@media (max-width: 600px) {
+  .question {
+    margin: auto;
+    max-width: 100%;
+    padding: 10px;
+  }
+}

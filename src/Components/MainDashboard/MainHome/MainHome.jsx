@@ -8,7 +8,7 @@ const MainHome = () => {
     <section className="main-home-wrapper">
       <div className="inner-main-home-new">
         <div className="inner-home1">
-          <p>{user ? `Welcome ${user.displayName}!` : ""}</p>
+          <p>{user ? `Welcome ${user.displayName}!` : "User"}</p>
         </div>
         <div className="inner-home2">
           <div className="inner-home-img-container">

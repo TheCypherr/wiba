@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./100LQuiz.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const FresherQuiz = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const totalSlide = 6;
+
+  const handlePathNavigation = (path) => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      navigate(path);
+    }, 2000);
+  };
 
   // Custom previous Slide
   const PrevArrow = (props) => {
@@ -113,7 +124,7 @@ const FresherQuiz = () => {
               </div>
               <div className="fresher-text-container">
                 <h3>ACC 101</h3>
-                <h5>Introduction to Accounting Practice Questions</h5>
+                <h5>Introduction to Accounting</h5>
                 <Link to="/accquiz">
                   <button className="utme-test-btn">Take Quiz</button>
                 </Link>
@@ -174,11 +185,17 @@ const FresherQuiz = () => {
           </Slider>
         </div>
         <div className="see-allquiz">
-          <Link to="allquiz">
+          <Link onClick={() => handlePathNavigation("/allquiz")}>
             <button className="utme-test-btn2">See all Quiz</button>
           </Link>
         </div>
       </div>
+
+      {loading && (
+        <div className="load-slide">
+          <div className="load-bar"></div>
+        </div>
+      )}
     </section>
   );
 };

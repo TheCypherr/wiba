@@ -17,6 +17,9 @@ import FresherQuiz from "./Components/MainDashboard/100LQuiz/100LQuiz";
 import MainGetaway from "./Components/MainDashboard/MainGetaway/MainGetaway";
 import Theme from "./utils/Theme";
 import { FirebaseProvider } from "./config/FirebaseContext";
+import AllQuiz from "./Components/MainDashboard/AllQuiz/AllQuiz";
+import Gst113Quiz from "./Components/MainDashboard/Gst113Quiz/Gst113Quiz";
+import Gst111Quiz from "./Components/MainDashboard/Gst111Quiz/Gst111Quiz";
 
 function App() {
   return (
@@ -74,9 +77,22 @@ function App() {
                   <MainUtme />
                   <MainGetaway />
                   <FresherQuiz />
+                  <Footer />
                 </>
               }
             />
+            <Route
+              path="/allquiz"
+              element={
+                <>
+                  <MainHeader />
+                  <AllQuiz />
+                  <Footer />
+                </>
+              }
+            />
+            <Route path="/gst113" element={<Gst113Quiz />} />
+            <Route path="/gst111" element={<Gst111Quiz />} />
           </Routes>
         </div>
       </FirebaseProvider>
