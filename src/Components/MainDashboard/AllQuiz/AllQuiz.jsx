@@ -60,7 +60,7 @@ const AllQuiz = () => {
 
         <div className="select-faculty">
           <p>Select Faculty: </p>
-          <select onChange={handleQuizChange}>
+          <select onChange={handleQuizChange} className="option">
             {selectFaculty.map((item) => (
               <option key={item.id} value={item.id}>
                 {item.label}
