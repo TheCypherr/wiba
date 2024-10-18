@@ -187,9 +187,13 @@ button.take-quiz {
   .select-faculty select {
     width: 50%;
     border: 2px solid #000;
+    color: #000;
+    background-color: transparent;
+    border-radius: none;
   }
   .option {
     font-weight: 600;
+    color: #000;
   }
   .select-faculty p {
     display: none;
