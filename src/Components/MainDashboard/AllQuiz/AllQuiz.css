@@ -188,10 +188,11 @@ button.take-quiz {
     width: 50%;
     border: 2px solid #000;
     color: #000;
-    background-color: transparent;
+    background-color: white;
     border-radius: none;
   }
   .option {
+    /* background-color: white; */
     font-weight: 600;
     color: #000;
   }
