@@ -80,19 +80,26 @@ p.started {
 
 .select-faculty select {
   width: 200px;
-  padding: 5px;
+  padding: 5px 10px;
   /* border: none; */
   position: relative;
+  border-radius: 20px;
   background-color: transparent;
   border: 2px solid var(--text-color);
   color: var(--text-color);
   cursor: pointer;
   appearance: none;
+  font-size: 0.9rem;
+}
+
+.option {
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .select-icon {
   position: absolute;
-  left: 91%;
+  left: 90.7%;
   cursor: pointer;
   z-index: 1000;
   color: var(--text-color);
@@ -217,16 +224,16 @@ button.take-quiz {
 
   .select-icon {
     position: absolute;
-    left: 89%;
+    left: 88.5%;
     cursor: pointer;
     z-index: 1000;
     color: var(--text-color);
   }
 
   .option {
-    /* background-color: white; */
+    background-color: var(--bg-color);
     font-weight: 600;
-    color: #000;
+    color: var(--text-color);
   }
   .select-faculty p {
     display: none;

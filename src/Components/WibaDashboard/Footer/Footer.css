@@ -13,7 +13,8 @@ body {
   height: 100%;
   font-family: "Raleway", sans-serif;
   color: var(--text-color);
-  background-color: #8e8e8f94;
+  background-color: #00000087;
+  border-top: 2px solid var(--text-color);
 }
 
 .inner-footer {
@@ -72,6 +73,7 @@ body {
 @media (max-width: 600px) {
   .footer-wrapper {
     padding: 5px 15px 10px 15px;
+    margin-top: 20px;
   }
   .top-foot h1 {
     font-size: 1.1rem;

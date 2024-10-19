@@ -225,7 +225,7 @@ const MathQuiz = () => {
       )}
 
       <div className="quiz-type">
-        <h2>GST 113 Quiz</h2>
+        <h2>JAMB Mathematics</h2>
       </div>
 
       <div className="Gst113-inner">

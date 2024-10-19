@@ -80,6 +80,7 @@ button.utme-test-btn {
   width: 100px;
   padding: 7px;
   font-size: 0.9rem;
+  border-radius: 50px;
   border: none;
   background-color: var(--logo-color);
   color: var(--bg-color);
@@ -100,6 +101,8 @@ button.utme-test-btn2 {
   width: 120px;
   padding: 10px;
   font-size: 1rem;
+  border-radius: 50px;
+  margin-bottom: 10px;
   border: none;
   background-color: var(--logo-color);
   color: var(--bg-color);

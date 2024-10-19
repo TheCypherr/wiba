@@ -72,7 +72,7 @@ const AllQuiz = () => {
           <p>Select Faculty: </p>
           <select onChange={handleQuizChange}>
             {selectFaculty.map((item) => (
-              <option key={item.id} value={item.id}>
+              <option key={item.id} value={item.id} className="option">
                 {item.label}
               </option>
             ))}
