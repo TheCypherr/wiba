@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Gst111Quiz.css";
 import { Link, useNavigate } from "react-router-dom";
-import { gst111Questions as allQuestions } from "../../../utils/Questions/Science/Gst111";
+import { gst111Questions as allQuestions } from "../../../utils/Questions/Gst111";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
 
@@ -291,7 +291,7 @@ const Gst111Quiz = () => {
                   </p>
                 </div>
                 <div className={`timer ${timer <= 5 ? "low" : ""}`}>
-                  {timer}
+                  <FaClock />: {timer}
                 </div>
 
                 {/* Check if it's a comprehension question */}

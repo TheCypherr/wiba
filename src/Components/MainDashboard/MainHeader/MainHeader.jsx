@@ -157,13 +157,8 @@ const MainHeader = () => {
     {
       name: "Categories",
       subItems: [
-        { label: "UTME Quiz", link: "/categories/utme" },
-        { label: "GST/GNS Quiz", link: "/categories/gst" },
-        { label: "BIO 101 Quiz", link: "/categories/biology" },
-        { label: "CHM 101 Quiz", link: "/categories/chemistry" },
-        { label: "MAT 101 Quiz", link: "/categories/mat101" },
-        { label: "MAT 103 Quiz", link: "/categories/mat103" },
-        { label: "PHY 101 Quiz", link: "/categories/phy101" },
+        { label: "UTME Quiz", link: "/JambCBT" },
+        { label: "100L Quiz", link: "/allquiz" },
       ],
     },
     {
@@ -173,20 +168,20 @@ const MainHeader = () => {
     {
       name: "PDF Materials",
       subItems: [
-        { label: "MAT 101", link: "/categories/mat101pdf" },
-        { label: "MAT 103", link: "/categories/mat103pdf" },
-        { label: "BIO 101", link: "/categories/bio101pdf" },
-        { label: "CHM 101", link: "/categories/chm101pdf" },
-        { label: "PHY 101", link: "/categories/phy101pdf" },
+        { label: "MAT 101", link: "/materials/mat101pdf" },
+        { label: "MAT 103", link: "/materials/mat103pdf" },
+        { label: "BIO 101", link: "/materials/bio101pdf" },
+        { label: "CHM 101", link: "/materials/chm101pdf" },
+        { label: "PHY 101", link: "/materials/phy101pdf" },
       ],
     },
     {
       name: "UTME Past Questions",
       subItems: [
-        { label: "English", link: "/categories/englishUTME" },
-        { label: "Math", link: "/categories/mathUTME" },
-        { label: "Physics", link: "/categories/physicsUTME" },
-        { label: "Chemistry", link: "/categories/chemistryUTME" },
+        { label: "English", link: "/past-question/english" },
+        { label: "Math", link: "/past-question/math" },
+        { label: "Physics", link: "/past-question/physics" },
+        { label: "Chemistry", link: "/past-question/chemistry" },
       ],
     },
   ];

@@ -23,7 +23,7 @@ const MainHome = () => {
 
       <div className="inner-main-home">
         <div className="inner-home1">
-          <p>{user ? `Welcome ${user.displayName}!` : ""}</p>
+          <p>{user ? `Welcome ${user.displayName}!` : "user"}</p>
           <h1>Start your Comprehensive Learning Journey.</h1>
         </div>
         <div className="inner-home2">

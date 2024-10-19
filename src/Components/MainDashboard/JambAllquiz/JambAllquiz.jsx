@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "./AllQuiz.css";
+import "./JambAllquiz.css";
 import { Link, useNavigate } from "react-router-dom";
-import { selectFaculty } from "../../../utils/SelectFaculty";
+import { selectDepartment } from "../../../utils/JambData";
 import { FaChevronDown } from "react-icons/fa";
 
-const AllQuiz = () => {
-  const [facultyDropdown, setFacultyDropdown] = useState(selectFaculty[0]);
+const JambAllquiz = () => {
+  const [facultyDropdown, setFacultyDropdown] = useState(selectDepartment[0]);
   const [loading, setLoading] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [quizInstructionPopup, setQuizInstructionPopup] = useState(false);
@@ -23,7 +23,7 @@ const AllQuiz = () => {
 
   const handleQuizChange = (event) => {
     const selectedId = parseInt(event.target.value, 10);
-    const selectedFaculty = selectFaculty.find(
+    const selectedFaculty = selectDepartment.find(
       (item) => item.id === selectedId
     );
     setFacultyDropdown(selectedFaculty);
@@ -61,23 +61,23 @@ const AllQuiz = () => {
   return (
     <section className="allquiz-wrapper">
       <div className="allquiz-inner">
-        <h1>100L Quiz Section</h1>
+        <h1>JAMB Practice Test</h1>
 
         <p className="started">
           Get Started with well structured and grounded quiz questions to
           prepare you for your first <span>University Exams.</span>
         </p>
 
-        <div className="select-faculty">
-          <p>Select Faculty: </p>
+        <div className="select-faculty department">
+          <p>Select Department: </p>
           <select onChange={handleQuizChange}>
-            {selectFaculty.map((item) => (
+            {selectDepartment.map((item) => (
               <option key={item.id} value={item.id}>
                 {item.label}
               </option>
             ))}
           </select>
-          <FaChevronDown className="select-icon" />
+          <FaChevronDown className="select-icon department-icon" />
         </div>
 
         {quizInstructionPopup && <div className="popup-backdrop"></div>}
@@ -91,7 +91,7 @@ const AllQuiz = () => {
                 </div>
                 <div className="popup-btns">
                   <button onClick={() => handleContinueToQuiz(linkItem.link)}>
-                    Start Quiz
+                    Start Test
                   </button>
                   <button onClick={handleDontContinue}>Go Back</button>
                 </div>
@@ -110,7 +110,7 @@ const AllQuiz = () => {
                   onClick={() => handleQuizInstruction(linkItem.link)}
                   className="take-quiz"
                 >
-                  Take Quiz
+                  Take Test
                 </button>
               </div>
             ))}
@@ -138,4 +138,4 @@ const AllQuiz = () => {
   );
 };
 
-export default AllQuiz;
+export default JambAllquiz;

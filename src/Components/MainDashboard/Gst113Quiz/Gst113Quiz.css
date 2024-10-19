@@ -13,7 +13,7 @@ body {
 }
 
 .popup-container {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -77,16 +77,20 @@ body {
 }
 
 .timer {
-  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
-  color: #ffffff;
-  background-color: #ff2622ef;
+  color: #ff2622ef;
+  background-color: transparent;
   padding: 10px;
-  width: 5%;
   border-radius: 5px;
   margin: 0px auto;
   margin-top: -30px;
+  width: 10%;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -98,15 +102,16 @@ body {
 @keyframes pulse {
   0% {
     transform: scale(1);
-    background-color: #ff2622ef;
+    color: #ff2622ef;
   }
   50% {
     transform: scale(1.1);
-    background-color: #d32f2f;
+    /* background-color: #d32f2f; */
+    color: #d32f2f;
   }
   100% {
     transform: scale(1);
-    background-color: #ff2622ef;
+    color: #ff2622ef;
   }
 }
 
@@ -177,8 +182,9 @@ button.back {
   align-items: center;
   border: none;
   font-size: 0.9rem;
-  padding: 5px;
-  padding-right: 10px;
+  padding: 8px;
+  border-radius: 50px;
+  padding-right: 15px;
   cursor: pointer;
   background-color: var(--logo-color);
   color: var(--bg-color);
@@ -248,16 +254,12 @@ button.back {
 
   .timer {
     font-size: 1rem;
-    font-weight: bold;
-    text-align: center;
-    color: #ffffff;
-    background-color: #ff2622ef;
-    padding: 10px;
-    width: 5%;
-    border-radius: 10px;
-    margin: 0px auto;
+    display: flex;
+    align-items: center;
+    width: 20%;
+    margin-top: -10px;
     margin-bottom: -20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 5px;
   }
 
   .Gst113-inner {

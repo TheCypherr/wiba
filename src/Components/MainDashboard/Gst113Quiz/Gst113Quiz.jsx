@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Gst113Quiz.css";
 import { Link, useNavigate } from "react-router-dom";
-import { gst113Questions as allQuestions } from "../../../utils/Questions/Science/Gst113";
-import { FaChevronLeft } from "react-icons/fa";
+import { gst113Questions as allQuestions } from "../../../utils/Questions/Gst113";
+import { FaChevronLeft, FaClock } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
 
 const Gst113Quiz = () => {
@@ -22,10 +22,19 @@ const Gst113Quiz = () => {
   const navigate = useNavigate();
 
   // Function to handle page reload
-  const handlePageReload = () => {
-    window.scrollTo(0, 0);
-    window.location.href = "/gst113";
-  };
+  // const handlePageReload = () => {
+  //   window.scrollTo(0, 0);
+  //   window.location.href = "/allquiz";
+  // };
+
+  // useEffect to prevent scrolling when menubar is open
+  useEffect(() => {
+    if (showPopup) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [showPopup]);
 
   // Function to shuffle and pick 10 random questions
   const shuffleQuestions = (questionsArray, numQuestions) => {
@@ -78,6 +87,7 @@ const Gst113Quiz = () => {
   const handleExitPopup = () => {
     setShowPopup(true); //show popup when user clicks
     pauseTimer();
+    window.scrollTo(0, 0);
   };
 
   const handleConfirmExit = () => {
@@ -191,7 +201,7 @@ const Gst113Quiz = () => {
   return (
     <section className="Gst113-wrapper">
       <div className="main-logo quiz-logo">
-        <Link onClick={handlePageReload}>
+        <Link onClick={handleExitPopup}>
           <img src="/logo.png" alt="" />
         </Link>
 
@@ -238,6 +248,11 @@ const Gst113Quiz = () => {
                 <p>Retake Quiz</p> <FaRepeat />
               </button>
             </div>
+            <div className="retake">
+              <button>
+                <p>Save Score</p>
+              </button>
+            </div>
           </div>
         ) : (
           <div className="question-section">
@@ -253,7 +268,7 @@ const Gst113Quiz = () => {
                   </p>
                 </div>
                 <div className={`timer ${timer <= 5 ? "low" : ""}`}>
-                  {timer}
+                  <FaClock />: {timer}
                 </div>
                 <div className="question">
                   <p>{shuffledQuestions[currentQuestion].question}</p>

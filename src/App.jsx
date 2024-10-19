@@ -20,6 +20,7 @@ import { FirebaseProvider } from "./config/FirebaseContext";
 import AllQuiz from "./Components/MainDashboard/AllQuiz/AllQuiz";
 import Gst113Quiz from "./Components/MainDashboard/Gst113Quiz/Gst113Quiz";
 import Gst111Quiz from "./Components/MainDashboard/Gst111Quiz/Gst111Quiz";
+import JambAllquiz from "./Components/MainDashboard/JambAllquiz/JambAllquiz";
 
 function App() {
   return (
@@ -91,8 +92,18 @@ function App() {
                 </>
               }
             />
-            <Route path="/gst113" element={<Gst113Quiz />} />
-            <Route path="/gst111" element={<Gst111Quiz />} />
+            <Route
+              path="/JambCBT"
+              element={
+                <>
+                  <MainHeader />
+                  <JambAllquiz />
+                  <Footer />
+                </>
+              }
+            />
+            <Route path="/categories/gst113" element={<Gst113Quiz />} />
+            <Route path="/categories/gst111" element={<Gst111Quiz />} />
           </Routes>
         </div>
       </FirebaseProvider>

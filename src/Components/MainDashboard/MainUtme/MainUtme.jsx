@@ -3,11 +3,22 @@ import "./MainUtme.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const MainUtme = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const totalSlide = 6;
+
+  const handlePathNavigation = (path) => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      navigate(path);
+    }, 2000);
+  };
 
   // Custom previous Slide
   const PrevArrow = (props) => {
@@ -100,22 +111,6 @@ const MainUtme = () => {
 
             <div className="main-utme-slide">
               <div className="utme-img-container">
-                <img src="/english.jpg" alt="" />
-              </div>
-              <div className="utme-text-container">
-                <h3>
-                  Sharpen your English Skills for JAMB Success (Grammar &
-                  Vocabulary)
-                </h3>
-                <h5>Authentic English JAMB Past Questions</h5>
-                <Link to="/engquiz">
-                  <button className="utme-test-btn">Take Quiz</button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="main-utme-slide">
-              <div className="utme-img-container">
                 <img src="/account.jpg" alt="" />
               </div>
               <div className="utme-text-container">
@@ -148,38 +143,6 @@ const MainUtme = () => {
 
             <div className="main-utme-slide">
               <div className="utme-img-container">
-                <img src="/physics.jpg" alt="" />
-              </div>
-              <div className="utme-text-container">
-                <h3>
-                  Physics CBT: Get prepared for JAMB Physics on WIBA with our
-                  quiz questions.
-                </h3>
-                <h5>Practice on WIBA with Timer</h5>
-                <Link to="/phyquiz">
-                  <button className="utme-test-btn">Take Quiz</button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="main-utme-slide">
-              <div className="utme-img-container">
-                <img src="/chemistry.png" alt="" />
-              </div>
-              <div className="utme-text-container">
-                <h3>
-                  Chemistry CBT: JAMB Chemistry Questions to Test your
-                  Understanding.
-                </h3>
-                <h5>Get Confident with Practice Questions</h5>
-                <Link to="/chmquiz">
-                  <button className="utme-test-btn">Take Quiz</button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="main-utme-slide">
-              <div className="utme-img-container">
                 <img src="/Commerce.jpg" alt="" />
               </div>
               <div className="utme-text-container">
@@ -196,11 +159,17 @@ const MainUtme = () => {
           </Slider>
         </div>
         <div className="see-allquiz">
-          <Link to="allquiz">
+          <Link onClick={() => handlePathNavigation("/JambCBT")}>
             <button className="utme-test-btn2">See all Quiz</button>
           </Link>
         </div>
       </div>
+
+      {loading && (
+        <div className="load-slide">
+          <div className="load-bar"></div>
+        </div>
+      )}
     </section>
   );
 };

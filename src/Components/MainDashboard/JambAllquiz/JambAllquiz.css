@@ -1,0 +1,41 @@
+.department {
+  width: 360px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  font-weight: 600;
+}
+
+.department-icon {
+  position: absolute;
+  left: 91%;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Portrait/Mobile View */
+@media (max-width: 600px) {
+  .department {
+    justify-content: right;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    color: #000;
+  }
+  .department select {
+    width: 35%;
+    border: 2px solid #000;
+    color: #000;
+    background-color: transparent;
+    border-radius: none;
+    appearance: none;
+  }
+
+  .department-icon {
+    position: absolute;
+    left: 89%;
+    cursor: pointer;
+    z-index: 1000;
+  }
+}

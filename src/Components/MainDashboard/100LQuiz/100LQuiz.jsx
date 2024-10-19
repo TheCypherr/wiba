@@ -133,45 +133,6 @@ const FresherQuiz = () => {
 
             <div className="fresher-slide">
               <div className="fresher-img-container">
-                <img src="/biology.jpg" alt="" />
-              </div>
-              <div className="fresher-text-container">
-                <h3>BIO 101</h3>
-                <h5>Up to-date BIO 101 Quiz Questions on WIBA </h5>
-                <Link to="/bioquiz">
-                  <button className="utme-test-btn">Take Quiz</button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="fresher-slide">
-              <div className="fresher-img-container">
-                <img src="/physics.jpg" alt="" />
-              </div>
-              <div className="fresher-text-container">
-                <h3>PHY 101</h3>
-                <h5>Practice on WIBA with Timer</h5>
-                <Link to="/phyquiz">
-                  <button className="utme-test-btn">Take Quiz</button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="fresher-slide">
-              <div className="fresher-img-container">
-                <img src="/chemistry.png" alt="" />
-              </div>
-              <div className="fresher-text-container">
-                <h3>CHM 101</h3>
-                <h5>Get Confident with CHM Practice Questions</h5>
-                <Link to="/chmquiz">
-                  <button className="utme-test-btn">Take Quiz</button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="fresher-slide">
-              <div className="fresher-img-container">
                 <img src="/Commerce.jpg" alt="" />
               </div>
               <div className="fresher-text-container">
