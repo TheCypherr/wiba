@@ -11,7 +11,7 @@ export const selectFaculty = [
       {
         id: 2,
         course: "GST 111 (Communication in English)",
-        link: "/categories/gst113",
+        link: "/categories/gst111",
       },
       {
         id: 3,

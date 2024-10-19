@@ -163,6 +163,25 @@ body {
   padding: 0px;
   margin: 0;
 }
+.save button {
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 15px;
+  width: 150px;
+  padding: 10px;
+  background-color: var(--logo-color);
+  color: var(--bg-color);
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.save button > p {
+  padding: 0px;
+  margin: 0;
+}
 
 .quiz-type {
   margin: auto;

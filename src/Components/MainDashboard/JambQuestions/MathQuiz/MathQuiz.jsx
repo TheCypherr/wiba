@@ -240,7 +240,7 @@ const MathQuiz = () => {
               {score >= 50 ? (
                 <img src="/upup.png" alt="up" />
               ) : (
-                <img src="down.png" alt="down" />
+                <img src="/down.png" alt="down" />
               )}
             </div>
             <div className="retake">
@@ -248,7 +248,7 @@ const MathQuiz = () => {
                 <p>Retake Quiz</p> <FaRepeat />
               </button>
             </div>
-            <div className="retake">
+            <div className="save">
               <button>
                 <p>Save Score</p>
               </button>

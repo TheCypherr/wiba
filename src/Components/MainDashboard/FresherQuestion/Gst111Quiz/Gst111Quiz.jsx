@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Gst111Quiz.css";
 import { Link, useNavigate } from "react-router-dom";
 import { gst111Questions as allQuestions } from "../../../../utils/Questions/Gst111";
-import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronLeft, FaClock } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
 
 const Gst111Quiz = () => {
@@ -267,12 +267,17 @@ const Gst111Quiz = () => {
               {score >= 25 ? (
                 <img src="/upup.png" alt="up" />
               ) : (
-                <img src="up.png" alt="upp" />
+                <img src="/down.png" alt="down" />
               )}
             </div>
             <div className="retake">
               <button onClick={handleRetakeQuiz}>
                 <p>Retake Quiz</p> <FaRepeat />
+              </button>
+            </div>
+            <div className="save">
+              <button>
+                <p>Save Score</p>
               </button>
             </div>
           </div>

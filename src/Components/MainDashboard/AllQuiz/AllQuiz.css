@@ -123,7 +123,8 @@ p.started {
 button.take-quiz {
   width: 100px;
   padding: 7px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  border-radius: 50px;
   border: none;
   background-color: var(--logo-color);
   color: var(--bg-color);
