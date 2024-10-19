@@ -84,6 +84,8 @@ p.started {
   /* border: none; */
   position: relative;
   background-color: transparent;
+  border: 2px solid var(--text-color);
+  color: var(--text-color);
   cursor: pointer;
   appearance: none;
 }
@@ -93,6 +95,7 @@ p.started {
   left: 91%;
   cursor: pointer;
   z-index: 1000;
+  color: var(--text-color);
 }
 
 .quiz-container {
@@ -197,13 +200,14 @@ button.take-quiz {
   .select-faculty {
     justify-content: right;
     width: 100%;
-    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-bottom: 15px;
     color: #000;
   }
   .select-faculty select {
     width: 50%;
-    border: 2px solid #000;
-    color: #000;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
     background-color: transparent;
     border-radius: none;
     appearance: none;
@@ -214,6 +218,7 @@ button.take-quiz {
     left: 89%;
     cursor: pointer;
     z-index: 1000;
+    color: var(--text-color);
   }
 
   .option {

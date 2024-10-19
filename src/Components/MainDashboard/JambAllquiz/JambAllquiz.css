@@ -7,10 +7,16 @@
   font-weight: 600;
 }
 
+.department select {
+  border: 2px solid var(--text-color);
+  color: var(--text-color);
+}
+
 .department-icon {
   position: absolute;
   left: 91%;
   cursor: pointer;
+  color: var(--text-color);
   z-index: 1000;
 }
 
@@ -25,8 +31,8 @@
   }
   .department select {
     width: 35%;
-    border: 2px solid #000;
-    color: #000;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
     background-color: transparent;
     border-radius: none;
     appearance: none;
@@ -36,6 +42,7 @@
     position: absolute;
     left: 89%;
     cursor: pointer;
+    color: var(--text-color);
     z-index: 1000;
   }
 }
