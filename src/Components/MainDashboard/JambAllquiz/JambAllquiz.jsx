@@ -7,7 +7,7 @@ import { FaChevronDown } from "react-icons/fa";
 const JambAllquiz = () => {
   const [facultyDropdown, setFacultyDropdown] = useState(selectDepartment[0]);
   const [loading, setLoading] = useState(false);
-  const [showDisclaimer, setShowDisclaimer] = useState(false);
+  // const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [quizInstructionPopup, setQuizInstructionPopup] = useState(false);
   const [selectedQuizLink, setSelectedQuizLink] = useState("");
   const navigate = useNavigate();
@@ -48,15 +48,15 @@ const JambAllquiz = () => {
     setQuizInstructionPopup(false);
   };
 
-  useEffect(() => {
-    setShowDisclaimer(true);
+  // useEffect(() => {
+  //   setShowDisclaimer(true);
 
-    const timer = setTimeout(() => {
-      setShowDisclaimer(false);
-    }, 5000);
+  //   const timer = setTimeout(() => {
+  //     setShowDisclaimer(false);
+  //   }, 5000);
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <section className="allquiz-wrapper">
@@ -124,7 +124,7 @@ const JambAllquiz = () => {
         </div>
       )}
 
-      {showDisclaimer && (
+      {/* {showDisclaimer && (
         <div
           className={`disclaimer ${showDisclaimer ? "slide-in" : "slide-out"}`}
         >
@@ -133,7 +133,7 @@ const JambAllquiz = () => {
             University" Curriculum!
           </p>
         </div>
-      )}
+      )} */}
     </section>
   );
 };

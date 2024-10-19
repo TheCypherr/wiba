@@ -18,9 +18,10 @@ import MainGetaway from "./Components/MainDashboard/MainGetaway/MainGetaway";
 import Theme from "./utils/Theme";
 import { FirebaseProvider } from "./config/FirebaseContext";
 import AllQuiz from "./Components/MainDashboard/AllQuiz/AllQuiz";
-import Gst113Quiz from "./Components/MainDashboard/Gst113Quiz/Gst113Quiz";
-import Gst111Quiz from "./Components/MainDashboard/Gst111Quiz/Gst111Quiz";
+import Gst113Quiz from "./Components/MainDashboard/FresherQuestion/Gst113Quiz/Gst113Quiz";
+import Gst111Quiz from "./Components/MainDashboard/FresherQuestion/Gst111Quiz/Gst111Quiz";
 import JambAllquiz from "./Components/MainDashboard/JambAllquiz/JambAllquiz";
+import MathQuiz from "./Components/MainDashboard/JambQuestions/MathQuiz/MathQuiz";
 
 function App() {
   return (
@@ -92,6 +93,8 @@ function App() {
                 </>
               }
             />
+            <Route path="/categories/gst113" element={<Gst113Quiz />} />
+            <Route path="/categories/gst111" element={<Gst111Quiz />} />
             <Route
               path="/JambCBT"
               element={
@@ -102,8 +105,7 @@ function App() {
                 </>
               }
             />
-            <Route path="/categories/gst113" element={<Gst113Quiz />} />
-            <Route path="/categories/gst111" element={<Gst111Quiz />} />
+            <Route path="/jamb/maths" element={<MathQuiz />} />
           </Routes>
         </div>
       </FirebaseProvider>

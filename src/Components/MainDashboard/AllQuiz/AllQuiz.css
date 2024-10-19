@@ -206,6 +206,7 @@ button.take-quiz {
   }
   .select-faculty select {
     width: 50%;
+    font-size: 0.9rem;
     border: 2px solid var(--text-color);
     color: var(--text-color);
     background-color: transparent;

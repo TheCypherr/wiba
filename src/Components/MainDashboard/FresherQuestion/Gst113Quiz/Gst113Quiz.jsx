@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Gst113Quiz.css";
 import { Link, useNavigate } from "react-router-dom";
-import { gst113Questions as allQuestions } from "../../../utils/Questions/Gst113";
+import { gst113Questions as allQuestions } from "../../../../utils/Questions/Gst113";
 import { FaChevronLeft, FaClock } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
 

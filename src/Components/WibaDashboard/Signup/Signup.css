@@ -52,7 +52,7 @@ form {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1rem;
   border-radius: 5px;
 }
 .signup-input1 input::placeholder {
@@ -71,7 +71,7 @@ form {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1rem;
   border-radius: 5px;
 }
 .signup-input2 input::placeholder {
