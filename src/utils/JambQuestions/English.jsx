@@ -324,4 +324,118 @@ export const jambEnglish = [
     answer:
       "She was sad because her husband was drunk and always as helpless as a dead man.",
   },
+  {
+    instruction:
+      "In each of question, choose the option opposite in meaning to the word or phrase.",
+    question:
+      "I am optimistic about the interview though it was a mind bending exercise.",
+    option: ["An enervating", "A debilitating", "A difficult", "An easy"],
+    answer: "An easy",
+  },
+  {
+    instruction:
+      "In each of question, choose the option opposite in meaning to the word or phrase.",
+    question: "The trader was amused by the cut-throat rush for the goods.",
+    option: ["Worrisome", "Strange", "Lacklustre", "Mad"],
+    answer: "Lacklustre",
+  },
+  {
+    instruction:
+      "In each of question, choose the option opposite in meaning to the word or phrase.",
+    question:
+      "The teacher said that Ali’s essay was full of many redundant details.",
+    option: ["Unexplained", "Strange", "Necessary", "Useful"],
+    answer: "Necessary",
+  },
+  {
+    instruction:
+      "In each of question, choose the option opposite in meaning to the word or phrase.",
+    question: "His father surmounted the myriad of obstacles on his way.",
+    option: ["Most", "Few", "All", "Many"],
+    answer: "Few",
+  },
+  {
+    instruction:
+      "In each of question, choose the option opposite in meaning to the word or phrase.",
+    question: "Her ingenuous smile drew our attention.",
+    option: ["Witty", "Naïve", "Clever", "Arrogant"],
+    answer: "Arrogant",
+  },
+  {
+    instruction:
+      "In each of question, choose the option opposite in meaning to the word or phrase.",
+    question: "Ndeni gave a flawless speech at the party.",
+    option: ["A wonderful", "A careless", "An interesting", "An imperfect"],
+    answer: "An imperfect",
+  },
+  {
+    instruction:
+      "In each of question, choose the option opposite in meaning to the word or phrase.",
+    question: "Beneath Ado’s guff exterior, he’s really very kind-hearted.",
+    option: ["Nice", "Harsh", "Rough", "Gentle"],
+    answer: "Harsh",
+  },
+  {
+    instruction:
+      "In each of question, choose the option opposite in meaning to the word or phrase.",
+    question:
+      "The captain says sports is being debased by commercial sponsorship.",
+    option: ["Localized", "Perverted", "Elevated", "Overvalued"],
+    answer: "Elevated",
+  },
+  {
+    instruction:
+      "In each of question, choose the option opposite in meaning to the word or phrase.",
+    question:
+      "Governing a country is not always as straightforward as people sometimes imagine.",
+    option: ["Complicated", "Troublesome", "Untoward", "Irksome"],
+    answer: "Complicated",
+  },
+  {
+    instruction:
+      "In each of question, choose the option opposite in meaning to the word or phrase.",
+    question: "The crowd was very receptive to the speaker’s suggestion.",
+    option: ["Disobedient", "Repellent", "Alert", "Hostile"],
+    answer: "Hostile",
+  },
+  {
+    instruction:
+      "In each of question, choose the option opposite in meaning to the word or phrase.",
+    question: "There was a general acquiescence on the new drug law.",
+    option: ["Resistance", "Discrepancy", "Compromise", "Agreement"],
+    answer: "Resistance",
+  },
+  {
+    instruction:
+      "In each of question, choose the option opposite in meaning to the word or phrase.",
+    question: "Aisha seems to feel ambivalent about her future.",
+    option: ["Decisive", "Anxious", "Ambitious", "Inconsiderate"],
+    answer: "Decisive",
+  },
+  {
+    instruction:
+      "In each of question, choose the option opposite in meaning to the word or phrase.",
+    question: "The report of the committee contained a plethora of details.",
+    option: ["Shortage", "Simplicity", "Multitude", "Spectrum"],
+    answer: "Shortage",
+  },
+  {
+    instruction:
+      "In each of question, choose the option opposite in meaning to the word or phrase.",
+    question: "The weather was still very heavy and sultry.",
+    option: [
+      "Wintry and shadowy",
+      "Cold and friendly",
+      "Cloudy and thundery",
+      "Hot and uncomfortable",
+    ],
+    answer: "Cold and friendly",
+  },
+  {
+    instruction:
+      "In each of question, choose the option opposite in meaning to the word or phrase.",
+    question: "Ada gave her husband a look that made words superfluous.",
+    option: ["Redundant", "Spurious", "Unnecessary", "Scanty"],
+    answer: "Scanty",
+  },
 ];
