@@ -86,8 +86,26 @@ const AllQuiz = () => {
             {facultyDropdown.content.map((linkItem) => (
               <div key={linkItem.id} className="inner-popup">
                 <div className="popup-texts">
-                  <h3>Ready to Start?</h3>
-                  <p>Each Question takes 15 seconds. Ready to get started?</p>
+                  <h3>Quiz Instructions</h3>
+                  <ul>
+                    <li>
+                      Once you start the quiz, you cannot go back to previous
+                      questions. Make sure you are confident in your answer
+                      before proceeding.
+                    </li>
+                    <li>
+                      You will have a limited amount of time to complete the
+                      quiz, so please manage your time wisely. Each Question has
+                      a timer.
+                    </li>
+                    <li>
+                      The amount of time varies depending on course chosen.
+                    </li>
+                    <li>
+                      Click the 'Start Quiz' button when you are ready. Good
+                      luck!
+                    </li>
+                  </ul>
                 </div>
                 <div className="popup-btns">
                   <button onClick={() => handleContinueToQuiz(linkItem.link)}>

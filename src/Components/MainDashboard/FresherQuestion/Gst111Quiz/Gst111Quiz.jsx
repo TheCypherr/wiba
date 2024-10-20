@@ -260,8 +260,8 @@ const Gst111Quiz = () => {
           <div className="score-section">
             <h1>
               {score >= 25
-                ? `Yayyy! You scored ${score} / 50`
-                : `Oops! You scored ${score} / 50`}
+                ? `You scored ${score} / 50`
+                : `You scored ${score} / 50`}
             </h1>
             <div className="emoji">
               {score >= 25 ? (

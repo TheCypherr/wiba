@@ -36,15 +36,15 @@ const MathQuiz = () => {
     }
   }, [showPopup]);
 
-  // Function to shuffle and pick 10 random questions
+  // Function to shuffle and pick 30 random questions
   const shuffleQuestions = (questionsArray, numQuestions) => {
     const shuffled = [...questionsArray].sort(() => 0.5 - Math.random()); // Shuffle the array
     return shuffled.slice(0, numQuestions); // Pick the first 'numQuestions' from the shuffled array
   };
 
   useEffect(() => {
-    // Shuffle and set 10 random questions when the component mounts
-    const selectedQuestions = shuffleQuestions(allQuestions, 10);
+    // Shuffle and set 30 random questions when the component mounts
+    const selectedQuestions = shuffleQuestions(allQuestions, 30);
     setShuffledQuestions(selectedQuestions);
   }, []);
 
@@ -61,8 +61,8 @@ const MathQuiz = () => {
       setAnswers([]);
       setAnswered(false);
       setShowCorrectAnswer(false);
-      // then the state to shoffle another 10 questions
-      const selectedQuestions = shuffleQuestions(allQuestions, 10);
+      // then the state to shoffle another 30 questions
+      const selectedQuestions = shuffleQuestions(allQuestions, 30);
       setShuffledQuestions(selectedQuestions);
       setTimer(60);
     }, 2000);
@@ -146,10 +146,10 @@ const MathQuiz = () => {
     // Clear the timer to prevent moving to the next question twice
     clearInterval(timerIntervalRef.current);
 
-    // Move to the next question after 1.5 seconds
+    // Move to the next question after 2 seconds
     setTimeout(() => {
       moveToNextQuestion();
-    }, 1500);
+    }, 2000);
   };
 
   useEffect(() => {
@@ -233,8 +233,8 @@ const MathQuiz = () => {
           <div className="score-section">
             <h1>
               {score >= 50
-                ? `Yayyy! You scored ${score} / 100`
-                : `Oops! You scored ${score} / 100`}
+                ? `You scored ${score} / 100`
+                : `You scored ${score} / 100`}
             </h1>
             <div className="emoji">
               {score >= 50 ? (

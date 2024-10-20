@@ -163,6 +163,16 @@ button.take-quiz {
   font-weight: bold;
 }
 
+.popup-texts ul {
+  text-align: left;
+}
+
+.popup-texts li {
+  padding-bottom: 15px;
+  font-size: 0.9rem;
+  margin-left: -10px;
+}
+
 .popup-btns {
   display: flex;
   justify-content: space-around;
