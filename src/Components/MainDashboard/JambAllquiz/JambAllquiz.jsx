@@ -95,7 +95,7 @@ const JambAllquiz = () => {
                     </li>
                     <li>
                       You will have a limited amount of time to complete the
-                      quiz, so please manage your time wisely. Each Question has
+                      test, so please manage your time wisely. Each Question has
                       a timer.
                     </li>
                     <li>
