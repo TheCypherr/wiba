@@ -22,6 +22,7 @@ import Gst113Quiz from "./Components/MainDashboard/FresherQuestion/Gst113Quiz/Gs
 import Gst111Quiz from "./Components/MainDashboard/FresherQuestion/Gst111Quiz/Gst111Quiz";
 import JambAllquiz from "./Components/MainDashboard/JambAllquiz/JambAllquiz";
 import MathQuiz from "./Components/MainDashboard/JambQuestions/MathQuiz/MathQuiz";
+import EnglishQuiz from "./Components/MainDashboard/JambQuestions/EnglishQuiz/EnglishQuiz";
 
 function App() {
   return (
@@ -106,6 +107,7 @@ function App() {
               }
             />
             <Route path="/jamb/maths" element={<MathQuiz />} />
+            <Route path="/jamb/english" element={<EnglishQuiz />} />
           </Routes>
         </div>
       </FirebaseProvider>

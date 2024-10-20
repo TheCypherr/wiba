@@ -36,11 +36,46 @@ p.instruction {
   font-size: 1.1rem;
 }
 
+.comprehension-passage2 {
+  margin: auto;
+  margin-top: 25px;
+  background-color: #e8f0fe;
+  padding: 0px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #333;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+p.instruction2 {
+  padding: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: -20px;
+}
+
 /* Portrait View Responsiveness */
 @media (max-width: 600px) {
   .question {
     margin: auto;
     max-width: 100%;
     padding: 10px;
+  }
+  .comprehension-passage {
+    margin-top: 40px;
+  }
+  .comprehension-passage2 {
+    margin: auto;
+    margin-bottom: 20px;
+  }
+  p.instruction2 {
+    padding: 5px;
+    font-weight: bold;
+    line-height: 15px;
+    font-size: 0.8rem;
+    margin-top: 30px;
+    margin-bottom: -50px;
   }
 }
