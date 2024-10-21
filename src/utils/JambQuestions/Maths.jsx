@@ -873,7 +873,7 @@ export const JambMaths = [
   {
     question:
       "A ladder resting on a vertical wall makes an angle whose tangent is 2.4 with the ground. If the distance between the foot of the ladder and the wall is 50cm, what is the length of the ladder?",
-    options: ["1.3m", "1.1m", "1.2m", "1.3m"],
+    options: ["1.3m", "1.1m", "1.2m", "1.8m"],
     answer: "1.3m",
   },
   {

@@ -39,7 +39,7 @@ const EnglishQuiz = () => {
 
   useEffect(() => {
     // Shuffle and set random questions when the component mounts
-    const selectedQuestions = shuffleQuestions(allQuestions, 50);
+    const selectedQuestions = shuffleQuestions(allQuestions, 30);
     setShuffledQuestions(selectedQuestions);
   }, []);
 
@@ -58,8 +58,8 @@ const EnglishQuiz = () => {
       setAnswered(false);
       setShowCorrectAnswer(false);
       setTotalAnsweredQuestions(0);
-      // then the state to shoffle another 50 questions
-      const selectedQuestions = shuffleQuestions(allQuestions, 50);
+      // then the state to shoffle another 30 questions
+      const selectedQuestions = shuffleQuestions(allQuestions, 30);
       setShuffledQuestions(selectedQuestions);
       setTimer(15);
     }, 2000);
@@ -212,7 +212,7 @@ const EnglishQuiz = () => {
         setTotalAnsweredQuestions(totalAnsweredQuestions + 1); // Increase by 1 for each sub-question
 
         // Check if there are more main questions
-        if (totalAnsweredQuestions + 1 < 50) {
+        if (totalAnsweredQuestions + 1 < 30) {
           setCurrentQuestion(nextQuestion); // Move to the next main question
           setCurrentCompQuestion(0);
         } else {

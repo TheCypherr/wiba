@@ -201,7 +201,7 @@ export const jambEnglish = [
   // Normal Questions
   {
     instruction:
-      "In each of the questions, select the option that best explains the information conveyed in the sentence.",
+      "In each of the questions, select the options that best explains the information conveyed in the sentence.",
     question:
       "Though Mr. Iro is a new chairman, he views other members with jaundiced eye.",
     options: [
@@ -214,7 +214,7 @@ export const jambEnglish = [
   },
   {
     instruction:
-      "In each of the questions, select the option that best explains the information conveyed in the sentence.",
+      "In each of the questions, select the options that best explains the information conveyed in the sentence.",
     question: "People are not interested in who rules.",
     options: [
       "People are not ruled by the leaders they want.",
@@ -226,7 +226,7 @@ export const jambEnglish = [
   },
   {
     instruction:
-      "In each of the questions, select the option that best explains the information conveyed in the sentence.",
+      "In each of the questions, select the options that best explains the information conveyed in the sentence.",
     question: "It was good to steer a middle course in whatever one does.",
     options: [
       "It is always good to get midway in anything one does.",
@@ -238,7 +238,7 @@ export const jambEnglish = [
   },
   {
     instruction:
-      "In each of the questions, select the option that best explains the information conveyed in the sentence.",
+      "In each of the questions, select the options that best explains the information conveyed in the sentence.",
     question: "The witness said he had no axe to grind with his brothers.",
     options: [
       "He had no hatred for the brothers.",
@@ -250,7 +250,7 @@ export const jambEnglish = [
   },
   {
     instruction:
-      "In each of the questions, select the option that best explains the information conveyed in the sentence.",
+      "In each of the questions, select the options that best explains the information conveyed in the sentence.",
     question: "The footballers moved with their tails between their legs.",
     options: [
       "They moved happily because they won the match.",
@@ -262,7 +262,7 @@ export const jambEnglish = [
   },
   {
     instruction:
-      "In each of the questions, select the option that best explains the information conveyed in the sentence.",
+      "In each of the questions, select the options that best explains the information conveyed in the sentence.",
     question:
       "The headmaster managed to talk his way out of having to give a speech.",
     options: [
@@ -275,7 +275,7 @@ export const jambEnglish = [
   },
   {
     instruction:
-      "In each of the questions, select the option that best explains the information conveyed in the sentence.",
+      "In each of the questions, select the options that best explains the information conveyed in the sentence.",
     question: "As regards the matter, we have crossed the rubicon.",
     options: [
       "We are completely at a loss.",
@@ -287,7 +287,7 @@ export const jambEnglish = [
   },
   {
     instruction:
-      "In each of the questions, select the option that best explains the information conveyed in the sentence.",
+      "In each of the questions, select the options that best explains the information conveyed in the sentence.",
     question: "Uche is full of himself.",
     options: [
       "He is conceited.",
@@ -299,7 +299,7 @@ export const jambEnglish = [
   },
   {
     instruction:
-      "In each of the questions, select the option that best explains the information conveyed in the sentence.",
+      "In each of the questions, select the options that best explains the information conveyed in the sentence.",
     question:
       "As debutants in that tournament, the Super Eagles were up against their first opponents by three goals to nill.",
     options: [
@@ -313,7 +313,7 @@ export const jambEnglish = [
   },
   {
     instruction:
-      "In each of the questions, select the option that best explains the information conveyed in the sentence.",
+      "In each of the questions, select the options that best explains the information conveyed in the sentence.",
     question: "The woman was mournful as her husband was found dead drunk.",
     options: [
       "She was sad because her husband was absolutely drunk.",
@@ -326,104 +326,104 @@ export const jambEnglish = [
   },
   {
     instruction:
-      "In each of question, choose the option opposite in meaning to the word or phrase.",
+      "In each of question, choose the options opposite in meaning to the word or phrase.",
     question:
       "I am optimistic about the interview though it was a mind bending exercise.",
-    option: ["An enervating", "A debilitating", "A difficult", "An easy"],
+    options: ["An enervating", "A debilitating", "A difficult", "An easy"],
     answer: "An easy",
   },
   {
     instruction:
-      "In each of question, choose the option opposite in meaning to the word or phrase.",
+      "In each of question, choose the options opposite in meaning to the word or phrase.",
     question: "The trader was amused by the cut-throat rush for the goods.",
-    option: ["Worrisome", "Strange", "Lacklustre", "Mad"],
+    options: ["Worrisome", "Strange", "Lacklustre", "Mad"],
     answer: "Lacklustre",
   },
   {
     instruction:
-      "In each of question, choose the option opposite in meaning to the word or phrase.",
+      "In each of question, choose the options opposite in meaning to the word or phrase.",
     question:
       "The teacher said that Ali’s essay was full of many redundant details.",
-    option: ["Unexplained", "Strange", "Necessary", "Useful"],
+    options: ["Unexplained", "Strange", "Necessary", "Useful"],
     answer: "Necessary",
   },
   {
     instruction:
-      "In each of question, choose the option opposite in meaning to the word or phrase.",
+      "In each of question, choose the options opposite in meaning to the word or phrase.",
     question: "His father surmounted the myriad of obstacles on his way.",
-    option: ["Most", "Few", "All", "Many"],
+    options: ["Most", "Few", "All", "Many"],
     answer: "Few",
   },
   {
     instruction:
-      "In each of question, choose the option opposite in meaning to the word or phrase.",
+      "In each of question, choose the options opposite in meaning to the word or phrase.",
     question: "Her ingenuous smile drew our attention.",
-    option: ["Witty", "Naïve", "Clever", "Arrogant"],
+    options: ["Witty", "Naïve", "Clever", "Arrogant"],
     answer: "Arrogant",
   },
   {
     instruction:
-      "In each of question, choose the option opposite in meaning to the word or phrase.",
+      "In each of question, choose the options opposite in meaning to the word or phrase.",
     question: "Ndeni gave a flawless speech at the party.",
-    option: ["A wonderful", "A careless", "An interesting", "An imperfect"],
+    options: ["A wonderful", "A careless", "An interesting", "An imperfect"],
     answer: "An imperfect",
   },
   {
     instruction:
-      "In each of question, choose the option opposite in meaning to the word or phrase.",
+      "In each of question, choose the options opposite in meaning to the word or phrase.",
     question: "Beneath Ado’s guff exterior, he’s really very kind-hearted.",
-    option: ["Nice", "Harsh", "Rough", "Gentle"],
+    options: ["Nice", "Harsh", "Rough", "Gentle"],
     answer: "Harsh",
   },
   {
     instruction:
-      "In each of question, choose the option opposite in meaning to the word or phrase.",
+      "In each of question, choose the options opposite in meaning to the word or phrase.",
     question:
       "The captain says sports is being debased by commercial sponsorship.",
-    option: ["Localized", "Perverted", "Elevated", "Overvalued"],
+    options: ["Localized", "Perverted", "Elevated", "Overvalued"],
     answer: "Elevated",
   },
   {
     instruction:
-      "In each of question, choose the option opposite in meaning to the word or phrase.",
+      "In each of question, choose the options opposite in meaning to the word or phrase.",
     question:
       "Governing a country is not always as straightforward as people sometimes imagine.",
-    option: ["Complicated", "Troublesome", "Untoward", "Irksome"],
+    options: ["Complicated", "Troublesome", "Untoward", "Irksome"],
     answer: "Complicated",
   },
   {
     instruction:
-      "In each of question, choose the option opposite in meaning to the word or phrase.",
+      "In each of question, choose the options opposite in meaning to the word or phrase.",
     question: "The crowd was very receptive to the speaker’s suggestion.",
-    option: ["Disobedient", "Repellent", "Alert", "Hostile"],
+    options: ["Disobedient", "Repellent", "Alert", "Hostile"],
     answer: "Hostile",
   },
   {
     instruction:
-      "In each of question, choose the option opposite in meaning to the word or phrase.",
+      "In each of question, choose the options opposite in meaning to the word or phrase.",
     question: "There was a general acquiescence on the new drug law.",
-    option: ["Resistance", "Discrepancy", "Compromise", "Agreement"],
+    options: ["Resistance", "Discrepancy", "Compromise", "Agreement"],
     answer: "Resistance",
   },
   {
     instruction:
-      "In each of question, choose the option opposite in meaning to the word or phrase.",
+      "In each of question, choose the options opposite in meaning to the word or phrase.",
     question: "Aisha seems to feel ambivalent about her future.",
-    option: ["Decisive", "Anxious", "Ambitious", "Inconsiderate"],
+    options: ["Decisive", "Anxious", "Ambitious", "Inconsiderate"],
     answer: "Decisive",
   },
   {
     instruction:
-      "In each of question, choose the option opposite in meaning to the word or phrase.",
+      "In each of question, choose the options opposite in meaning to the word or phrase.",
     question: "The report of the committee contained a plethora of details.",
-    option: ["Shortage", "Simplicity", "Multitude", "Spectrum"],
+    options: ["Shortage", "Simplicity", "Multitude", "Spectrum"],
     answer: "Shortage",
   },
   {
     instruction:
-      "In each of question, choose the option opposite in meaning to the word or phrase.",
+      "In each of question, choose the options opposite in meaning to the word or phrase.",
     question: "The weather was still very heavy and sultry.",
-    option: [
+    options: [
       "Wintry and shadowy",
       "Cold and friendly",
       "Cloudy and thundery",
@@ -433,9 +433,339 @@ export const jambEnglish = [
   },
   {
     instruction:
-      "In each of question, choose the option opposite in meaning to the word or phrase.",
+      "In each of question, choose the options opposite in meaning to the word or phrase.",
     question: "Ada gave her husband a look that made words superfluous.",
-    option: ["Redundant", "Spurious", "Unnecessary", "Scanty"],
+    options: ["Redundant", "Spurious", "Unnecessary", "Scanty"],
     answer: "Scanty",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option nearest in meaning to the word or phrase in italics.",
+    question:
+      "A political Impasse does not offer the best opportunity for merrymaking.",
+    options: ["manifesto", "party", "gridlock", "rally"],
+    answer: "gridlock",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option nearest in meaning to the word or phrase in italics.",
+    question:
+      "We were all enthusiastic as we awaited the result of the election.",
+    options: ["bemused", "agitated", "elated", "nervous"],
+    answer: "agitated",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option nearest in meaning to the word or phrase in italics.",
+    question: "The uniform makes the guards look absurd.",
+    options: ["dirty", "smart", "sensible", "ridiculous"],
+    answer: "ridiculous",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option nearest in meaning to the word or phrase in italics.",
+    question: "The law is often tardy in reacting to changing attitude.",
+    options: ["quick", "slow", "exclusive", "generous"],
+    answer: "slow",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option nearest in meaning to the word or phrase in italics.",
+    question: "Isa and llu ate sumptuous meal on their brother’s wedding day.",
+    options: ["expensive", "foreign", "insipid", "cheap"],
+    answer: "expensive",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option nearest in meaning to the word or phrase in italics.",
+    question: "Kaltume crouched over the paper on her desk.",
+    options: ["wrote on", "stood on", "walked over", "bent over"],
+    answer: "bent over",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option nearest in meaning to the word or phrase in italics.",
+    question:
+      "The panacea for a country’s economic mess lies in systematic planning and hard work.",
+    options: ["cure", "hope", "foresight", "trouble"],
+    answer: "cure",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option nearest in meaning to the word or phrase in italics.",
+    question:
+      "Thousands of workers have been victims of retrenchment since the military came back to power.",
+    options: [
+      "Unemployment",
+      "Trench mentality",
+      "Suffering",
+      "Increase in penury",
+    ],
+    answer: "Unemployment",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option nearest in meaning to the word or phrase in italics.",
+    question: "The principal gave his speech offhand at the sports meeting.",
+    options: ["calmly", "beautifully", "unconcerned", "unprepared"],
+    answer: "unprepared",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option nearest in meaning to the word or phrase in italics.",
+    question: "Jankoli was dressed in an old assortment of clothes.",
+    options: ["Avalanche", "Homogeneity", "Sameness", "Melange"],
+    answer: "Melange",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option nearest in meaning to the word or phrase in italics.",
+    question:
+      "The girl’s father was astounded to see her appear from the shrine.",
+    options: ["collected", "Overwhelmed", "embarrassed", "Astonished"],
+    answer: "Astonished",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option nearest in meaning to the word or phrase in italics.",
+    question:
+      "The director’s remark was extremely apposite to the issue being discussed.",
+    options: ["Appropriate", "Inconsequential", "Emphatic", "Adequate"],
+    answer: "Appropriate",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option nearest in meaning to the word or phrase in italics.",
+    question: "Her reputation is without a blemish.",
+    options: ["Struggle", "Problem", "Fault", "Blessing"],
+    answer: "Fault",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option nearest in meaning to the word or phrase in italics.",
+    question: "Ugo is eligible for the post of secretary.",
+    options: ["Nominated", "Invited", "Qualified", "Intelligent"],
+    answer: "Qualified",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option nearest in meaning to the word or phrase in italics.",
+    question: "This is an abridged version of No Longer at Ease.",
+    options: ["An outdated", "An enlarged", "An illustrated", "A shortened"],
+    answer: "A shortened",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question: "Lemoti……… as a painter, but also as a sculptor.",
+    options: [
+      "is a gifted only not",
+      "is only not gifted",
+      "is gifted not only",
+      "is only gifted",
+    ],
+    answer: "is gifted not only",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question:
+      "He can recall the important dates in the nation’s history, it is interesting to listen as he rattles ………",
+    options: ["off", "over", "up", "out"],
+    answer: "off",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question: "The boy told his mother ……..",
+    options: [
+      "that was the girl he told her about",
+      "that was the girl I told you about her",
+      "that was the girl I told her about",
+      "that is the girl he told her about",
+    ],
+    answer: "that was the girl he told her about",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question: "Last Monday his father asked me ……..",
+    options: [
+      "if I had come some days before",
+      "if I had come the day before",
+      "did you come yesterday",
+      "had I come yesterday",
+    ],
+    answer: "if I had come the day before",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question:
+      "His wife was badly injured in the fracas, but I think she will pull …….",
+    options: ["up", "over", "through", "back"],
+    answer: "through",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question:
+      "A wide range of options …….. made available to students in the final year last year.",
+    options: ["is", "were", "are", "was"],
+    answer: "was",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question:
+      "One of the women who …….. in the premises ……. been ordered to quit.",
+    options: ["sells/have", "sell/has", "sell/have", "sells/has"],
+    answer: "sells/has",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question: "The new trade agreement should facilitate………",
+    options: [
+      "more economic rapid growth",
+      "economic more rapid growth",
+      "rapid economic more growth",
+      "more rapid economic growth",
+    ],
+    answer: "more rapid economic growth",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question: "The principal said that he was pleased……… my effort.",
+    options: ["on", "of", "with", "about"],
+    answer: "with",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question: "Paper is made……. Wood pulp.",
+    options: ["on", "of", "from", "with"],
+    answer: "from",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question: "Long after everyone…….. the hall, Obi still sat inside.",
+    options: ["left", "is leaving", "has left", "had left"],
+    answer: "had left",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question: "They are the…….. dresses.",
+    options: ["babys’", "baby", "babies", "babies’"],
+    answer: "babies’",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question: "The politician was sent……. Exile.",
+    options: ["onto", "into", "on", "to"],
+    answer: "into",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question: "When we looked up, we…….. the plane some miles away.",
+    options: ["site", "cited", "sited", "sighted"],
+    answer: "sighted",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question:
+      "Vital….. is still spread….. word of mouth in most villages in Africa.",
+    options: [
+      "information/from",
+      "information/with",
+      "information/by",
+      "information/through",
+    ],
+    answer: "information/by",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question: "Western education is one of the….. of colonial rule.",
+    options: ["legacies", "evidence", "remnants", "inheritance"],
+    answer: "legacies",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question: "The federal government has…… child trafficking.",
+    options: ["postulated", "projected", "prescribed", "proscribed"],
+    answer: "proscribed",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question:
+      "The man was happy that his son confessed his guilt and so the others were……",
+    options: ["Implicated", "accused", "punished", "exonerated"],
+    answer: "exonerated",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question:
+      "Based on the facts before me, I have no alternative…… to hold you responsible.",
+    options: ["only", "as", "than", "but"],
+    answer: "but",
+  },
+  {
+    instruction:
+      "In each of the questions, choose the option that best completes the gap(s).",
+    question: "Many people would always find reasons to……the law.",
+    options: ["arrogate", "debase", "circumvent", "circumspect"],
+    answer: "circumvent",
+  },
+  {
+    instruction:
+      "Choose the option that has the same vowel sound as the one represented by the letters underlined.",
+    question: "Coup",
+    options: ["whup", "hoot", "couple", "scout"],
+    answer: "hoot",
+  },
+  {
+    instruction:
+      "Choose the option that has the same vowel sound as the one represented by the letters underlined.",
+    question: "Indict",
+    options: ["bright", "fish", "pick", "brick"],
+    answer: "bright",
+  },
+  {
+    instruction:
+      "Choose the option that has the same vowel sound as the one represented by the letters underlined.",
+    question: "Roared",
+    options: ["towered", "coast", "brought", "rod"],
+    answer: "towered",
+  },
+  {
+    instruction:
+      "Choose the option that has the same consonant sound as the one represented by the letter(s) underlined.",
+    question: "Sheath",
+    options: ["bathe", "length", "months", "paths"],
+    answer: "length",
+  },
+  {
+    instruction:
+      "Choose the option that has the same consonant sound as the one represented by the letter(s) underlined.",
+    question: "High",
+    options: ["what", "honest", "who", "vehicle"],
+    answer: "who",
+  },
+  {
+    instruction:
+      "Choose the option that has the same consonant sound as the one represented by the letter(s) underlined.",
+    question: "Of course",
+    options: ["plough", "dough", "over", "orphan"],
+    answer: "over",
   },
 ];
