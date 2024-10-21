@@ -92,7 +92,7 @@ const EnglishQuiz = () => {
 
     setTimeout(() => {
       setLoading(false);
-      navigate("/allquiz");
+      navigate("/JambCBT");
     }, 2000);
   };
 
