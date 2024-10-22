@@ -1835,14 +1835,8 @@ export const JambPhysics = [
   },
   {
     question:
-      "Which of the following are produced after a nuclear fusion process?",
-    options: [
-      "I. One heavy nucleus II. Neutrons III. Protons IV. Energy",
-      "I and II",
-      "II and III",
-      "I and IV",
-      "II and IV",
-    ],
+      "Which of the following are produced after a nuclear fusion process? I. One heavy nucleus II. Neutrons III. Protons IV. Energy",
+    options: ["I and II", "II and III", "I and IV", "II and IV"],
     answer: "I and IV",
   },
   {
@@ -2104,11 +2098,12 @@ export const JambPhysics = [
   },
   {
     question:
-      "Which of the following correctly explain(s) why a green leaf appears green in bright daylight?",
+      "Which of the following correctly explain(s) why a green leaf appears green in bright daylight?       I. It absorbs only the green component of sunlight, II. It absorbs all colours in sunlight except green, III. It reflects only the green component of sunlight, IV. It reflects no light at all",
     options: [
-      "I. It absorbs only the green component of sunlight",
-      "II. It absorbs all colours in sunlight except green",
-      "III. It reflects only the green component of sunlight",
+      "I and II only",
+      "II and III only",
+      "III and I only ",
+      "IV and III",
     ],
     answer: "II and III only",
   },
