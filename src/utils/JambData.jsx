@@ -15,13 +15,13 @@ export const selectDepartment = [
       },
       {
         id: 3,
-        course: "Biology",
-        link: "/jamb/biology",
+        course: "Physics",
+        link: "/jamb/physics",
       },
       {
         id: 4,
-        course: "Physics",
-        link: "/jamb/physics",
+        course: "Biology",
+        link: "/jamb/biology",
       },
       {
         id: 5,

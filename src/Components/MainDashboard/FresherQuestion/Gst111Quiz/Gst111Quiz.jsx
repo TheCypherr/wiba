@@ -18,7 +18,7 @@ const Gst111Quiz = () => {
   const [loading, setLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [totalAnsweredQuestions, setTotalAnsweredQuestions] = useState(0);
-  const [timer, setTimer] = useState(15);
+  const [timer, setTimer] = useState(30);
   const timerIntervalRef = useRef(null);
   const [isTimerRunning, setIsTimerRunning] = useState(true); // Timer running status
   //   const [totalQuestions, setTotalQuestions] = useState(0);
@@ -27,7 +27,7 @@ const Gst111Quiz = () => {
   // Function to handle page reload
   const handlePageReload = () => {
     window.scrollTo(0, 0);
-    window.location.href = "/gst113";
+    window.location.href = "/gst111";
   };
 
   // Function to shuffle and pick a random number of questions (including sub-questions)
@@ -38,7 +38,7 @@ const Gst111Quiz = () => {
 
   useEffect(() => {
     // Shuffle and set random questions when the component mounts
-    const selectedQuestions = shuffleQuestions(allQuestions, 50);
+    const selectedQuestions = shuffleQuestions(allQuestions, 30);
     setShuffledQuestions(selectedQuestions);
   }, []);
 
@@ -57,10 +57,10 @@ const Gst111Quiz = () => {
       setAnswered(false);
       setShowCorrectAnswer(false);
       setTotalAnsweredQuestions(0);
-      // then the state to shoffle another 50 questions
-      const selectedQuestions = shuffleQuestions(allQuestions, 50);
+      // then the state to shoffle another 30 questions
+      const selectedQuestions = shuffleQuestions(allQuestions, 30);
       setShuffledQuestions(selectedQuestions);
-      setTimer(15);
+      setTimer(30);
     }, 2000);
   };
 
@@ -75,7 +75,7 @@ const Gst111Quiz = () => {
   const resumeTimer = () => {
     setIsTimerRunning(true);
     timerIntervalRef.current = setInterval(() => {
-      setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 15));
+      setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 30));
     }, 1000); // restart the timer interval
     console.log("Timer Resumed");
   };
@@ -155,7 +155,7 @@ const Gst111Quiz = () => {
               ]);
             }
             moveToNextQuestion(); // Move to the next question
-            return 15; // Reset the timer for the next question
+            return 30; // Reset the timer for the next question
           }
         });
       }, 1000);
@@ -173,7 +173,7 @@ const Gst111Quiz = () => {
       setSelectedAnswer(""); // Clear selected answer
       setAnswered(false); // Reset answered state
       setShowCorrectAnswer(false); // Hide correct answer
-      setTimer(15); // Reset timer for the next question
+      setTimer(30); // Reset timer for the next question
     } else {
       setShowScore(true); // Show score when the quiz ends
     }
@@ -211,7 +211,7 @@ const Gst111Quiz = () => {
         setTotalAnsweredQuestions(totalAnsweredQuestions + 1); // Increase by 1 for each sub-question
 
         // Check if there are more main questions
-        if (totalAnsweredQuestions + 1 < 50) {
+        if (totalAnsweredQuestions + 1 < 30) {
           setCurrentQuestion(nextQuestion); // Move to the next main question
           setCurrentCompQuestion(0);
         } else {
@@ -259,12 +259,12 @@ const Gst111Quiz = () => {
         {showScore ? (
           <div className="score-section">
             <h1>
-              {score >= 25
-                ? `You scored ${score} / 50`
-                : `You scored ${score} / 50`}
+              {score >= 15
+                ? `You scored ${score} / 30`
+                : `You scored ${score} / 30`}
             </h1>
             <div className="emoji">
-              {score >= 25 ? (
+              {score >= 15 ? (
                 <img src="/upup.png" alt="up" />
               ) : (
                 <img src="/down.png" alt="down" />
