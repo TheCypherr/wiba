@@ -20,6 +20,7 @@ const Gst113Quiz = () => {
   const timerIntervalRef = useRef(null); // Create a ref to store the interval ID
   const [isTimerRunning, setIsTimerRunning] = useState(true); // Timer running status
   const navigate = useNavigate();
+  let askedQuestions = [];
 
   // Function to handle page reload
   // const handlePageReload = () => {
