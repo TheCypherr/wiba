@@ -16,7 +16,7 @@ const ChemistryQuiz = () => {
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [timer, setTimer] = useState(60); // State to track time left
+  const [timer, setTimer] = useState(30); // State to track time left
   const timerIntervalRef = useRef(null); // Create a ref to store the interval ID
   const [isTimerRunning, setIsTimerRunning] = useState(true); // Timer running status
   const navigate = useNavigate();
@@ -64,7 +64,7 @@ const ChemistryQuiz = () => {
       // then the state to shoffle another 30 questions
       const selectedQuestions = shuffleQuestions(allQuestions, 30);
       setShuffledQuestions(selectedQuestions);
-      setTimer(60);
+      setTimer(30);
     }, 2000);
   };
 
@@ -138,7 +138,7 @@ const ChemistryQuiz = () => {
     // Move to the next question after 2 seconds
     setTimeout(() => {
       moveToNextQuestion();
-    }, 2000);
+    }, 1500);
   };
 
   useEffect(() => {
@@ -163,7 +163,7 @@ const ChemistryQuiz = () => {
               ]);
             }
             moveToNextQuestion(); // Move to the next question
-            return 60; // Reset the timer for the next question
+            return 30; // Reset the timer for the next question
           }
         });
       }, 1000);
@@ -181,7 +181,7 @@ const ChemistryQuiz = () => {
       setSelectedAnswer(""); // Clear selected answer
       setAnswered(false); // Reset answered state
       setShowCorrectAnswer(false); // Hide correct answer
-      setTimer(60); // Reset timer for the next question
+      setTimer(30); // Reset timer for the next question
     } else {
       setShowScore(true); // Show score when the quiz ends
     }

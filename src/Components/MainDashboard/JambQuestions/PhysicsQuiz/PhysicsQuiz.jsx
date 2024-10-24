@@ -138,7 +138,7 @@ const PhysicsQuiz = () => {
     // Move to the next question after 2 seconds
     setTimeout(() => {
       moveToNextQuestion();
-    }, 2000);
+    }, 1500);
   };
 
   useEffect(() => {

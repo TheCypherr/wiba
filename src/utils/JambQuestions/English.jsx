@@ -1252,7 +1252,7 @@ export const jambEnglish = [
       "In each question choose the option that best completes the gap.",
     question:
       "The policemen became suspicious as the hoodlums…… in their office.",
-    options: ["ferreted", "ferreted", "ferreted about", "ferreted about"],
+    options: ["ferreted", "ferret", "ferreted for", "ferreted about"],
     answer: "ferreted about",
   },
   {

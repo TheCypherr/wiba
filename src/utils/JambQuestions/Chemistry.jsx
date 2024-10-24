@@ -1414,7 +1414,7 @@ export const JambChemistry = [
       "Electronegativity",
       "Electron affinity",
     ],
-    answer: "Ionization energy, Electronegativity, Electron affinity",
+    answer: "Electron affinity",
   },
   {
     question:
@@ -2021,7 +2021,7 @@ export const JambChemistry = [
       "2X(s) + CuSO4(aq) → Cu(s) + X2SO4(aq)",
       "2X(s) + 3CuSO4(aq) → 3Cu(s) + X2(SO4)3(aq)",
     ],
-    answer: " X(s) + CuSO4(aq) → Cu(s) + XSO4(aq)",
+    answer: "X(s) + CuSO4(aq) → Cu(s) + XSO4(aq)",
   },
   {
     question:
@@ -2032,7 +2032,7 @@ export const JambChemistry = [
       "F < E < A < B < C < D",
       "C < B < E < F < A < D",
     ],
-    answer: " D < C < A < E < B < F",
+    answer: "D < C < A < E < B < F",
   },
   {
     question:

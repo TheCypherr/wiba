@@ -132,7 +132,7 @@ const MathQuiz = () => {
     const isCorrect = option === shuffledQuestions[currentQuestion].answer;
 
     if (isCorrect) {
-      setScore(score + 10); // Increment score by 10 for each correct answer
+      setScore(score + 1); // Increment score by 1 for each correct answer
     } else if (!isCorrect) {
       setShowCorrectAnswer(true);
     }
@@ -149,7 +149,7 @@ const MathQuiz = () => {
     // Move to the next question after 2 seconds
     setTimeout(() => {
       moveToNextQuestion();
-    }, 2000);
+    }, 1500);
   };
 
   useEffect(() => {
@@ -232,12 +232,12 @@ const MathQuiz = () => {
         {showScore ? (
           <div className="score-section">
             <h1>
-              {score >= 50
-                ? `You scored ${score} / 100`
-                : `You scored ${score} / 100`}
+              {score >= 15
+                ? `You scored ${score} / 30`
+                : `You scored ${score} / 30`}
             </h1>
             <div className="emoji">
-              {score >= 50 ? (
+              {score >= 15 ? (
                 <img src="/upup.png" alt="up" />
               ) : (
                 <img src="/down.png" alt="down" />
