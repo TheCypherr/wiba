@@ -95,11 +95,11 @@ const AllQuiz = () => {
                     </li>
                     <li>
                       You will have a limited amount of time to complete the
-                      quiz, so please manage your time wisely. Each Question has
-                      a timer.
+                      quiz, so manage your time wisely.
                     </li>
                     <li>
-                      The amount of time varies depending on course chosen.
+                      Each Question has a timer & the amount of time varies
+                      depending on course chosen.
                     </li>
                     <li>
                       Click the 'Start Quiz' button when you are ready. Good

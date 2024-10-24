@@ -95,11 +95,11 @@ const JambAllquiz = () => {
                     </li>
                     <li>
                       You will have a limited amount of time to complete the
-                      test, so please manage your time wisely. Each Question has
-                      a timer.
+                      test, so manage your time wisely.
                     </li>
                     <li>
-                      The amount of time varies depending on subject chosen.
+                      Each Question has a timer & the amount of time varies
+                      depending on subject chosen.
                     </li>
                     <li>
                       Click the 'Start Test' button when you are ready. Good
