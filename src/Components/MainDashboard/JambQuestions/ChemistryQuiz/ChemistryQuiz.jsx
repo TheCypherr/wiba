@@ -20,6 +20,7 @@ const ChemistryQuiz = () => {
   const timerIntervalRef = useRef(null); // Create a ref to store the interval ID
   const [isTimerRunning, setIsTimerRunning] = useState(true); // Timer running status
   const navigate = useNavigate();
+  let askedQuestions = []; // Array to track already asked questions
 
   // Function to handle page reload
   // const handlePageReload = () => {
@@ -36,10 +37,47 @@ const ChemistryQuiz = () => {
     }
   }, [showPopup]);
 
-  // Function to shuffle and pick 30 random questions
+  // Function to shuffle and pick 30 random questions without repeats
   const shuffleQuestions = (questionsArray, numQuestions) => {
-    const shuffled = [...questionsArray].sort(() => 0.5 - Math.random()); // Shuffle the array
-    return shuffled.slice(0, numQuestions); // Pick the first 'numQuestions' from the shuffled array
+    // Filter out already asked questions
+    const remainingQuestions = questionsArray.filter(
+      (question) => !askedQuestions.includes(question)
+    );
+
+    // If there are fewer remaining questions than needed, reset the askedQuestions array
+    if (remainingQuestions.length < numQuestions) {
+      // Add all remaining questions to the selected set
+      const selectedQuestions = [...remainingQuestions];
+
+      // Reset the askedQuestions array
+      askedQuestions = [];
+
+      // Reshuffle the full question array and pick additional questions
+      const reshuffledQuestions = [...questionsArray].sort(
+        () => 0.5 - Math.random()
+      );
+      const moreQuestions = reshuffledQuestions.slice(
+        0,
+        numQuestions - selectedQuestions.length
+      );
+
+      // Combine the remaining questions and newly selected ones
+      selectedQuestions.push(...moreQuestions);
+
+      // Update the askedQuestions array with the newly selected questions
+      askedQuestions = [...selectedQuestions];
+
+      return selectedQuestions; // Return exactly 30 questions
+    }
+
+    // Otherwise, shuffle and pick 'numQuestions' directly from remaining pool
+    const shuffled = [...remainingQuestions].sort(() => 0.5 - Math.random());
+    const selectedQuestions = shuffled.slice(0, numQuestions);
+
+    // Add the selected questions to the askedQuestions array
+    askedQuestions = [...askedQuestions, ...selectedQuestions];
+
+    return selectedQuestions;
   };
 
   useEffect(() => {
@@ -221,12 +259,12 @@ const ChemistryQuiz = () => {
         {showScore ? (
           <div className="score-section">
             <h1>
-              {score >= 50
-                ? `You scored ${score} / 100`
-                : `You scored ${score} / 100`}
+              {score >= 15
+                ? `You scored ${score} / 30`
+                : `You scored ${score} / 30`}
             </h1>
             <div className="emoji">
-              {score >= 50 ? (
+              {score >= 15 ? (
                 <img src="/upup.png" alt="up" />
               ) : (
                 <img src="/down.png" alt="down" />

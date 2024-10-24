@@ -22,6 +22,8 @@ const EnglishQuiz = () => {
   const [timer, setTimer] = useState(30);
   const timerIntervalRef = useRef(null);
   const [isTimerRunning, setIsTimerRunning] = useState(true); // Timer running status
+  let askedQuestions = []; // Array to track already asked questions
+
   //   const [totalQuestions, setTotalQuestions] = useState(0);
   const navigate = useNavigate();
 
@@ -31,10 +33,47 @@ const EnglishQuiz = () => {
     window.location.href = "/gst113";
   };
 
-  // Function to shuffle and pick a random number of questions (including sub-questions)
+  // Function to shuffle and pick a random number of questions (including sub-questions) without repeats
   const shuffleQuestions = (questionsArray, numQuestions) => {
-    const shuffled = [...questionsArray].sort(() => 0.5 - Math.random()); // shuffle quest array
-    return shuffled.slice(0, numQuestions);
+    // Filter out already asked questions
+    const remainingQuestions = questionsArray.filter(
+      (question) => !askedQuestions.includes(question)
+    );
+
+    // If there are fewer remaining questions than needed, reset the askedQuestions array
+    if (remainingQuestions.length < numQuestions) {
+      // Add all remaining questions to the selected set
+      const selectedQuestions = [...remainingQuestions];
+
+      // Reset the askedQuestions array
+      askedQuestions = [];
+
+      // Reshuffle the full question array and pick additional questions
+      const reshuffledQuestions = [...questionsArray].sort(
+        () => 0.5 - Math.random()
+      );
+      const moreQuestions = reshuffledQuestions.slice(
+        0,
+        numQuestions - selectedQuestions.length
+      );
+
+      // Combine the remaining questions and newly selected ones
+      selectedQuestions.push(...moreQuestions);
+
+      // Update the askedQuestions array with the newly selected questions
+      askedQuestions = [...selectedQuestions];
+
+      return selectedQuestions; // Return exactly 30 questions
+    }
+
+    // Otherwise, shuffle and pick 'numQuestions' directly from remaining pool
+    const shuffled = [...remainingQuestions].sort(() => 0.5 - Math.random());
+    const selectedQuestions = shuffled.slice(0, numQuestions);
+
+    // Add the selected questions to the askedQuestions array
+    askedQuestions = [...askedQuestions, ...selectedQuestions];
+
+    return selectedQuestions;
   };
 
   useEffect(() => {
