@@ -1869,14 +1869,13 @@ export const JambChemistry = [
       "kerosene flame",
       "Oxy-acetylene flame",
     ],
-    answer:
-      "The flame used by welders in cutting metals is the Oxy-acetylene flame.",
+    answer: "Oxy-acetylene flame",
   },
   {
     question:
       "Tetraoxosulphate (vi) acid is prepared using the chemical reaction SO3(g) + H2O(s) → H2SO4(l). Given the heats of formation for SO3(g), H2O(l) and H2SO4(l) as -395KJmol-1, -286KJmol-1 and –811KJmol-1 respectively, the enthalpy change accompanying this reaction is",
     options: ["-1032KJ", "-130KJ", "+130KJ", "+1032KJ"],
-    answer: "The enthalpy change accompanying this reaction is -130KJ.",
+    answer: "-130KJ",
   },
   {
     question:
@@ -1887,7 +1886,7 @@ export const JambChemistry = [
       "constant composition",
       "reciprocal proportion",
     ],
-    answer: "The data above represents the law of multiple proportion.",
+    answer: "multiple proportion",
   },
   {
     question:
@@ -1898,7 +1897,7 @@ export const JambChemistry = [
       "YZx + 10n → yz+1x",
       "YZx + 10n → y+1z-1x",
     ],
-    answer: "The relevant nuclear equation is YZx + 10n → y+1zx.",
+    answer: "YZx + 10n → y+1zx",
   },
   {
     question: "The vapour density of a gas may be defined as",
@@ -1909,13 +1908,13 @@ export const JambChemistry = [
       "the mass of a unit volume of the gas minus the vapour pressure of water.",
     ],
     answer:
-      "The vapour density of a gas may be defined as the mass of a unit volume of the gas compared to an equal volume of hydrogen.",
+      "the mass of a unit volume of the gas compared to an equal volume of hydrogen",
   },
   {
     question:
       "30cm3 of oxygen at 10 atmosphere pressure is placed in a 20dm3 container. Calculate the new pressure if temperature is kept constant.",
     options: ["6.7 atm", "15.0 atm", "60.0 atm", "66.0 atm"],
-    answer: "The new pressure is 15.0 atm.",
+    answer: "15.0 atm",
   },
   {
     question: "A liquid begins to boil when",
@@ -1923,28 +1922,27 @@ export const JambChemistry = [
       "its vapour pressure is equal to the vapour pressure of its solid at the given temperature",
       "molecules start escaping its surface",
       "its vapour pressure equals the atmospheric pressure",
-      "its volume is slightly increased.",
+      "its volume is slightly increased",
     ],
-    answer:
-      "A liquid begins to boil when its vapour pressure equals the atmospheric pressure.",
+    answer: "its vapour pressure equals the atmospheric pressure",
   },
   {
     question:
       "Four elements W, X, Y and Z have atomic numbers 2, 6, 16 and 20 respectively. Which of these elements is a metal?",
     options: ["X", "W", "Z", "Y"],
-    answer: "The element that is a metal is Z.",
+    answer: "Z",
   },
   {
     question:
       "When cathode rays are deflected unto the electrode of an electrometer, the instrument becomes",
     options: ["negatively charged", "positively charged", "neutral", "bipolar"],
-    answer: "The instrument becomes negatively charged.",
+    answer: "negatively charged",
   },
   {
     question:
       "When large hydrocarbon molecules are heated at high temperature in the presence of a catalyst to give smaller molecules, the process is known as",
     options: ["disintegration", "Polymerization", "cracking", "degradation"],
-    answer: "The process is known as cracking.",
+    answer: "cracking",
   },
   {
     question:
@@ -1953,10 +1951,9 @@ export const JambChemistry = [
       "a drying agent",
       "an oxidizing agent",
       "a dehydrating agent",
-      "a reducing agent.",
+      "a reducing agent",
     ],
-    answer:
-      "In this reaction, concentrated sulphuric acid is acting as a dehydrating agent.",
+    answer: "a dehydrating agent",
   },
   {
     question: "Smoke consists of",
@@ -1966,39 +1963,37 @@ export const JambChemistry = [
       "gas or liquid particles dispersed in liquid.",
       "Liquid particles dispersed in liquid.",
     ],
-    answer: "Smoke consists of solid or liquid particles dispersed in gas.",
+    answer: "solid or liquid particles dispersed in gas",
   },
   {
     question:
       "The mass of silver deposited when a current of 10A passed through a solution of silver salt for 4830s is",
     options: ["108.0g", "54.0g", "27.0g", "13.5g"],
-    answer: "The mass of silver deposited is 54.0g.",
+    answer: "54.0g",
   },
   {
     question:
       "CO(g) + H2O(g) → CO2(g) + H2(g) from the reaction above, calculate the standard heat change if the standard enthalpies of formation of CO2(g), H2O(g) and CO(g) in KJmol-1 are -394, -242 and -110 respectively.",
     options: ["-282KJmol-1", "-42KJmol-1", "+42KJmol-1", "+262KJmol-1"],
-    answer: "The standard heat change is -42KJmol-1.",
+    answer: "-42KJmol-1",
   },
   {
     question:
       "If the electron configuration of an element is 1S2 2S2 2p5, how many unpaired electrons are there?",
     options: ["2", "5", "1", "4"],
-    answer: "There is 1 unpaired electron.",
+    answer: "1",
   },
   {
     question:
       "Which of the following gases can best be used for demonstrating the fountain experiment?",
     options: ["(ii) Ammonia", "(i) and (iii)", "(ii) and (iv)", "(ii) only"],
-    answer:
-      "The best gases for demonstrating the fountain experiment are (ii) Ammonia.",
+    answer: "(ii) Ammonia",
   },
   {
     question:
       "The coloured nature of transition metal ions are associated with their partially filled",
     options: ["f-orbital", "S-orbital", "P-orbital", "d-orbital"],
-    answer:
-      "The coloured nature of transition metal ions are associated with their partially filled d-orbital.",
+    answer: "d-orbital",
   },
   {
     question:
@@ -2009,14 +2004,13 @@ export const JambChemistry = [
       "fractional distillation with a dehydrant",
       "column chromatography",
     ],
-    answer:
-      "The separation process most likely to yield high quality ethanol is fractional distillation with a dehydrant.",
+    answer: "fractional distillation with a dehydrant",
   },
   {
     question:
       "The electronic configuration of an element is 1s2 2s2 2p6 3S2 3p3. How many unpaired electrons are there in the element?",
     options: ["5", "4", "3", "2"],
-    answer: "There are 3 unpaired electrons.",
+    answer: "3",
   },
   {
     question:
@@ -2027,8 +2021,7 @@ export const JambChemistry = [
       "2X(s) + CuSO4(aq) → Cu(s) + X2SO4(aq)",
       "2X(s) + 3CuSO4(aq) → 3Cu(s) + X2(SO4)3(aq)",
     ],
-    answer:
-      "The correct equation for the reaction is X(s) + CuSO4(aq) → Cu(s) + XSO4(aq).",
+    answer: " X(s) + CuSO4(aq) → Cu(s) + XSO4(aq)",
   },
   {
     question:
@@ -2039,14 +2032,13 @@ export const JambChemistry = [
       "F < E < A < B < C < D",
       "C < B < E < F < A < D",
     ],
-    answer: "The order of increasing reactivity is D < C < A < E < B < F.",
+    answer: " D < C < A < E < B < F",
   },
   {
     question:
       "The number of moles of a solute in a solution is equal to the product of its concentration and volume. Which of the following units represents the concentration of a solution?",
     options: ["mol dm-3", "dm-3", "mole", "molarity"],
-    answer:
-      "The unit that represents the concentration of a solution is mol dm-3.",
+    answer: "mol dm-3",
   },
   {
     question:
@@ -2057,7 +2049,7 @@ export const JambChemistry = [
       "sensible heat",
       "specific heat",
     ],
-    answer: "The heat produced is called latent heat of vaporization.",
+    answer: "latent heat of vaporization",
   },
   {
     question:
@@ -2068,7 +2060,7 @@ export const JambChemistry = [
       "pH equal to 7 indicates an acidic solution",
       "pH below 7 indicates an acidic solution",
     ],
-    answer: "pH below 7 indicates an acidic solution.",
+    answer: "pH below 7 indicates an acidic solution",
   },
   {
     question: "Which of the following is a property of metals?",
@@ -2078,23 +2070,23 @@ export const JambChemistry = [
       "they are brittle",
       "they are ductile",
     ],
-    answer: "A property of metals is that they are good conductors of heat.",
+    answer: "they are good conductors of heat",
   },
   {
     question:
       "Which of the following gases is produced when an acid reacts with a carbonate?",
     options: ["hydrogen", "oxygen", "carbon dioxide", "nitrogen"],
-    answer: "The gas produced is carbon dioxide.",
+    answer: "carbon dioxide",
   },
   {
     question: "What is the pH of a neutral solution at 25°C?",
     options: ["0", "7", "14", "6.5"],
-    answer: "The pH of a neutral solution at 25°C is 7.",
+    answer: "7",
   },
   {
     question: "The process of converting a gas to a liquid is known as",
     options: ["evaporation", "condensation", "sublimation", "deposition"],
-    answer: "The process is known as condensation.",
+    answer: "condensation",
   },
   {
     question:
@@ -2105,6 +2097,6 @@ export const JambChemistry = [
       "a strong base",
       "a neutral solution",
     ],
-    answer: "The solution is called a buffer solution.",
+    answer: "a buffer solution",
   },
 ];
