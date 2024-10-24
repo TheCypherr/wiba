@@ -12,7 +12,7 @@ body {
   padding: 20px 50px 10px 50px;
   height: 100%;
   font-family: "Raleway", sans-serif;
-  box-shadow: 0 3px 3px var(--text-color);
+  border-bottom: 2px solid var(--text-color);
 }
 
 .inner-main-home {
@@ -57,7 +57,7 @@ body {
 @media (max-width: 600px) {
   .main-home-wrapper {
     padding: 5px 0px 5px 0px;
-    box-shadow: none;
+    border-bottom: none;
   }
   .inner-main-home {
     display: none;

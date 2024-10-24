@@ -41,7 +41,7 @@ body {
   justify-content: space-between;
   background-color: var(--bg-color);
   color: var(--text-color);
-  box-shadow: 0 3px 3px var(--text-color);
+  box-shadow: 0 2px 2px var(--text-color);
   padding: 15px;
   cursor: pointer;
   margin-bottom: 30px;

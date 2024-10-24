@@ -146,7 +146,7 @@ const FresherQuiz = () => {
           </Slider>
         </div>
         <div className="see-allquiz">
-          <Link onClick={() => handlePathNavigation("/allquiz")}>
+          <Link onClick={() => handlePathNavigation("/categories/allquiz")}>
             <button className="utme-test-btn2">See all Quiz</button>
           </Link>
         </div>

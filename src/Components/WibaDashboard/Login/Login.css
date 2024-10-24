@@ -37,10 +37,13 @@ body {
 }
 
 .loginSide-two {
-  box-shadow: 0 2px 2px var(--text-color);
+  border: 1px solid var(--text-color);
+  border-top: 0px;
   width: 20rem;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
 form {

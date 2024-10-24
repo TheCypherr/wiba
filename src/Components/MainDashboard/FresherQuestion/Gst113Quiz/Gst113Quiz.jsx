@@ -96,7 +96,7 @@ const Gst113Quiz = () => {
 
     setTimeout(() => {
       setLoading(false);
-      navigate("/allquiz");
+      navigate("/categories/allquiz");
     }, 2000);
   };
 

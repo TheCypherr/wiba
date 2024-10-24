@@ -63,7 +63,7 @@ body {
   padding: 15px;
   padding-top: 0px;
   border-radius: 10px;
-  box-shadow: 0 5px 5px var(--text-color);
+  border-bottom: 2px solid var(--text-color);
 }
 
 .text-container h3 {
@@ -81,6 +81,7 @@ button.test-btn {
   padding: 7px;
   font-size: 0.9rem;
   border: none;
+  border-radius: 50px;
   background-color: var(--logo-color);
   color: var(--bg-color);
   font-weight: 600;

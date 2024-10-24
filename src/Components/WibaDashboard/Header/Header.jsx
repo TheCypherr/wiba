@@ -9,6 +9,8 @@ import {
   FaBars,
   FaChevronRight,
   FaSignOutAlt,
+  FaChevronUp,
+  FaChevronDown,
 } from "react-icons/fa";
 
 const Header = () => {
@@ -140,37 +142,23 @@ const Header = () => {
     {
       name: "Categories",
       subItems: [
-        { label: "UTME Quiz", link: "/categories/utme" },
-        { label: "GST/GNS Quiz", link: "/categories/gst" },
-        { label: "BIO 101 Quiz", link: "/categories/biology" },
-        { label: "CHM 101 Quiz", link: "/categories/chemistry" },
-        { label: "MAT 101 Quiz", link: "/categories/mat101" },
-        { label: "MAT 103 Quiz", link: "/categories/mat103" },
-        { label: "PHY 101 Quiz", link: "/categories/phy101" },
+        { label: "UTME Quiz", link: "/login" },
+        { label: "A Level Test", link: "/login" },
+        { label: "100L Quiz", link: "/login" },
       ],
+      link: "/login",
     },
     {
       name: "Study Guide",
-      link: "/categories/studyGuide",
+      link: "/login",
     },
     {
       name: "PDF Materials",
-      subItems: [
-        { label: "MAT 101", link: "/categories/mat101pdf" },
-        { label: "MAT 103", link: "/categories/mat103pdf" },
-        { label: "BIO 101", link: "/categories/bio101pdf" },
-        { label: "CHM 101", link: "/categories/chm101pdf" },
-        { label: "PHY 101", link: "/categories/phy101pdf" },
-      ],
+      link: "/login",
     },
     {
       name: "UTME Past Questions",
-      subItems: [
-        { label: "English", link: "/categories/englishUTME" },
-        { label: "Math", link: "/categories/mathUTME" },
-        { label: "Physics", link: "/categories/physicsUTME" },
-        { label: "Chemistry", link: "/categories/chemistryUTME" },
-      ],
+      link: "/login",
     },
   ];
 
@@ -270,12 +258,7 @@ const Header = () => {
               <nav>
                 <ul className="menu-new">
                   {menuItems.map((item, index) => (
-                    <li
-                      key={index}
-                      className="menu-items-wrapper-new"
-                      onMouseEnter={() => handleHeaderMenuToggle(item.name)}
-                      onMouseLeave={handleMouseLeave}
-                    >
+                    <li key={index} className="menu-items-wrapper-new">
                       <div className="arrow-new">
                         <Link
                           className="custom-links-new"
@@ -287,7 +270,20 @@ const Header = () => {
                         >
                           {item.name}
                         </Link>
-                        <FaChevronRight />
+                        {item.name !== "Study Guide" &&
+                          item.name !== "PDF Materials" &&
+                          item.name !== "UTME Past Questions" &&
+                          (activeMenu === item.name ? (
+                            <FaChevronUp
+                              className="chevron-icon"
+                              onClick={() => handleHeaderMenuToggle(item.name)}
+                            />
+                          ) : (
+                            <FaChevronDown
+                              className="chevron-icon"
+                              onClick={() => handleHeaderMenuToggle(item.name)}
+                            />
+                          ))}
                       </div>
                       {activeMenu === item.name && item.subItems && (
                         <ul className="sub-menu-new slideIn">

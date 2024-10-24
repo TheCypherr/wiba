@@ -87,7 +87,7 @@ function App() {
               }
             />
             <Route
-              path="/allquiz"
+              path="/categories/allquiz"
               element={
                 <>
                   <MainHeader />
@@ -99,7 +99,7 @@ function App() {
             <Route path="/categories/gst113" element={<Gst113Quiz />} />
             <Route path="/categories/gst111" element={<Gst111Quiz />} />
             <Route
-              path="/JambCBT"
+              path="/categories/JambCBT"
               element={
                 <>
                   <MainHeader />

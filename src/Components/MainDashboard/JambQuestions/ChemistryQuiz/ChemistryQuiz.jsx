@@ -96,7 +96,7 @@ const ChemistryQuiz = () => {
 
     setTimeout(() => {
       setLoading(false);
-      navigate("/JambCBT");
+      navigate("/categories/JambCBT");
     }, 2000);
   };
 

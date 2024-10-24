@@ -10,6 +10,8 @@ import {
   FaChevronRight,
   FaUser,
   FaSignOutAlt,
+  FaChevronDown,
+  FaChevronUp,
 } from "react-icons/fa";
 import { auth } from "../../../config/Firebase";
 import { signOut } from "firebase/auth";
@@ -157,9 +159,11 @@ const MainHeader = () => {
     {
       name: "Categories",
       subItems: [
-        { label: "UTME Quiz", link: "/JambCBT" },
-        { label: "100L Quiz", link: "/allquiz" },
+        { label: "UTME Quiz", link: "/categories/JambCBT" },
+        { label: "A Level Test", link: "/aLevel" },
+        { label: "100L Quiz", link: "/categories/allquiz" },
       ],
+      link: "/categories/JambCBT",
     },
     {
       name: "Study Guide",
@@ -167,13 +171,6 @@ const MainHeader = () => {
     },
     {
       name: "PDF Materials",
-      subItems: [
-        { label: "MAT 101", link: "/materials/mat101pdf" },
-        { label: "MAT 103", link: "/materials/mat103pdf" },
-        { label: "BIO 101", link: "/materials/bio101pdf" },
-        { label: "CHM 101", link: "/materials/chm101pdf" },
-        { label: "PHY 101", link: "/materials/phy101pdf" },
-      ],
     },
     {
       name: "UTME Past Questions",
@@ -263,12 +260,7 @@ const MainHeader = () => {
               <nav>
                 <ul className="main-menu-new">
                   {menuItems.map((item, index) => (
-                    <li
-                      key={index}
-                      className="main-menu-items-wrapper-new"
-                      onMouseEnter={() => handleHeaderMenuToggle(item.name)}
-                      onMouseLeave={handleMouseLeave}
-                    >
+                    <li key={index} className="main-menu-items-wrapper-new">
                       <div className="main-arrow-new">
                         <Link
                           className="main-custom-links-new"
@@ -280,7 +272,20 @@ const MainHeader = () => {
                         >
                           {item.name}
                         </Link>
-                        <FaChevronRight />
+                        {item.name !== "Study Guide" &&
+                          item.name !== "PDF Materials" &&
+                          item.name !== "UTME Past Questions" &&
+                          (activeMenu === item.name ? (
+                            <FaChevronUp
+                              className="chevron-icon"
+                              onClick={() => handleHeaderMenuToggle(item.name)}
+                            />
+                          ) : (
+                            <FaChevronDown
+                              className="chevron-icon"
+                              onClick={() => handleHeaderMenuToggle(item.name)}
+                            />
+                          ))}
                       </div>
                       {activeMenu === item.name && item.subItems && (
                         <ul className="main-sub-menu-new slideIn">
@@ -343,13 +348,29 @@ const MainHeader = () => {
                       onMouseEnter={() => handleHeaderMenuToggle(item.name)}
                       onMouseLeave={handleMouseLeave}
                     >
-                      <Link
-                        className="main-custom-links"
-                        to="#"
-                        onClick={() => handlePageLoading(item.link)}
-                      >
-                        {item.name}
-                      </Link>
+                      <div className="flex-ul">
+                        <Link
+                          className="main-custom-links"
+                          to="#"
+                          onClick={() => handlePageLoading(item.link)}
+                        >
+                          {item.name}
+                        </Link>
+                        {item.name !== "Study Guide" &&
+                          item.name !== "PDF Materials" &&
+                          item.name !== "UTME Past Questions" &&
+                          (activeMenu === item.name ? (
+                            <FaChevronUp
+                              className="chevron-icon"
+                              onClick={() => handleHeaderMenuToggle(item.name)}
+                            />
+                          ) : (
+                            <FaChevronDown
+                              className="chevron-icon"
+                              onClick={() => handleHeaderMenuToggle(item.name)}
+                            />
+                          ))}
+                      </div>
                       {activeMenu === item.name && item.subItems && (
                         <ul className="main-sub-menu slideIn">
                           {item.subItems.map((subItem, subIndex) => (

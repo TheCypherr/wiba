@@ -159,7 +159,7 @@ const MainUtme = () => {
           </Slider>
         </div>
         <div className="see-allquiz">
-          <Link onClick={() => handlePathNavigation("/JambCBT")}>
+          <Link onClick={() => handlePathNavigation("/categories/JambCBT")}>
             <button className="utme-test-btn2">See all Quiz</button>
           </Link>
         </div>

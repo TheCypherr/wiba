@@ -3,11 +3,23 @@ import "./Utme.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Utme = () => {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlide = 6;
+
+  // function to handlePageLoading
+  const handlePageLoading = (targetPage) => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      navigate(targetPage);
+    }, 2000);
+  };
 
   // Custom previous Slide
   const PrevArrow = (props) => {
@@ -92,8 +104,13 @@ const Utme = () => {
                   you.
                 </h3>
                 <h5>Ace your Exams with WIBA</h5>
-                <Link to="/login">
-                  <button className="test-btn">Take TEST</button>
+                <Link to="#">
+                  <button
+                    className="test-btn"
+                    onClick={() => handlePageLoading("/login")}
+                  >
+                    Take TEST
+                  </button>
                 </Link>
               </div>
             </div>
@@ -108,8 +125,13 @@ const Utme = () => {
                   Vocabulary)
                 </h3>
                 <h5>Authentic English JAMB Past Questions</h5>
-                <Link to="/login">
-                  <button className="test-btn">Take TEST</button>
+                <Link to="#">
+                  <button
+                    className="test-btn"
+                    onClick={() => handlePageLoading("/login")}
+                  >
+                    Take TEST
+                  </button>
                 </Link>
               </div>
             </div>
@@ -124,8 +146,13 @@ const Utme = () => {
                   your Exams
                 </h3>
                 <h5>Accounting Practice Questions on WIBA.</h5>
-                <Link to="/login">
-                  <button className="test-btn">Take TEST</button>
+                <Link to="#">
+                  <button
+                    className="test-btn"
+                    onClick={() => handlePageLoading("/login")}
+                  >
+                    Take TEST
+                  </button>
                 </Link>
               </div>
             </div>
@@ -140,8 +167,13 @@ const Utme = () => {
                   Exam.
                 </h3>
                 <h5>Up to-date Biology Past Questions on WIBA </h5>
-                <Link to="/login">
-                  <button className="test-btn">Take TEST</button>
+                <Link to="#">
+                  <button
+                    className="test-btn"
+                    onClick={() => handlePageLoading("/login")}
+                  >
+                    Take TEST
+                  </button>
                 </Link>
               </div>
             </div>
@@ -156,8 +188,13 @@ const Utme = () => {
                   questions to help you Pass.
                 </h3>
                 <h5>Practice on WIBA with Timer</h5>
-                <Link to="/login">
-                  <button className="test-btn">Take TEST</button>
+                <Link to="#">
+                  <button
+                    className="test-btn"
+                    onClick={() => handlePageLoading("/login")}
+                  >
+                    Take TEST
+                  </button>
                 </Link>
               </div>
             </div>
@@ -172,8 +209,13 @@ const Utme = () => {
                   Understanding.
                 </h3>
                 <h5>Get Confident with Practice Questions</h5>
-                <Link to="/login">
-                  <button className="test-btn">Take TEST</button>
+                <Link to="#">
+                  <button
+                    className="test-btn"
+                    onClick={() => handlePageLoading("/login")}
+                  >
+                    Take TEST
+                  </button>
                 </Link>
               </div>
             </div>
@@ -188,14 +230,25 @@ const Utme = () => {
                   Understanding
                 </h3>
                 <h5>Improve your skills with WIBA Test</h5>
-                <Link to="/login">
-                  <button className="test-btn">Take TEST</button>
+                <Link to="#">
+                  <button
+                    className="test-btn"
+                    onClick={() => handlePageLoading("/login")}
+                  >
+                    Take TEST
+                  </button>
                 </Link>
               </div>
             </div>
           </Slider>
         </div>
       </div>
+
+      {loading && (
+        <div className="load-slide">
+          <div className="load-bar"></div>
+        </div>
+      )}
     </section>
   );
 };
