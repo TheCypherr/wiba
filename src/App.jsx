@@ -25,6 +25,8 @@ import MathQuiz from "./Components/MainDashboard/JambQuestions/MathQuiz/MathQuiz
 import EnglishQuiz from "./Components/MainDashboard/JambQuestions/EnglishQuiz/EnglishQuiz";
 import PhysicsQuiz from "./Components/MainDashboard/JambQuestions/PhysicsQuiz/PhysicsQuiz";
 import ChemistryQuiz from "./Components/MainDashboard/JambQuestions/ChemistryQuiz/ChemistryQuiz";
+import BiologyQuiz from "./Components/MainDashboard/JambQuestions/BiologyQuiz/BiologyQuiz";
+import CrsQuiz from "./Components/MainDashboard/JambQuestions/CrsQuiz/CrsQuiz";
 
 function App() {
   return (
@@ -112,6 +114,8 @@ function App() {
             <Route path="/jamb/english" element={<EnglishQuiz />} />
             <Route path="/jamb/physics" element={<PhysicsQuiz />} />
             <Route path="/jamb/chemistry" element={<ChemistryQuiz />} />
+            <Route path="/jamb/biology" element={<BiologyQuiz />} />
+            <Route path="/jamb/crs" element={<CrsQuiz />} />
           </Routes>
         </div>
       </FirebaseProvider>
