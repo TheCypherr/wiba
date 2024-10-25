@@ -252,7 +252,7 @@ const CrsQuiz = () => {
       )}
 
       <div className="quiz-type">
-        <h2>JAMB Biology</h2>
+        <h2>JAMB C.R.S</h2>
       </div>
 
       <div className="Gst113-inner">
