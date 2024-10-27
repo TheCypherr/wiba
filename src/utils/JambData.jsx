@@ -52,7 +52,7 @@ export const selectDepartment = [
       {
         id: 4,
         course: "Government",
-        link: "/jamb/governemnt",
+        link: "/jamb/government",
       },
       {
         id: 5,
@@ -84,6 +84,11 @@ export const selectDepartment = [
         id: 4,
         course: "Accounting",
         link: "/jamb/account",
+      },
+      {
+        id: 5,
+        course: "Economics",
+        link: "/jamb/economics",
       },
     ],
   },

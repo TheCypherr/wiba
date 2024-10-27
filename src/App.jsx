@@ -27,6 +27,11 @@ import PhysicsQuiz from "./Components/MainDashboard/JambQuestions/PhysicsQuiz/Ph
 import ChemistryQuiz from "./Components/MainDashboard/JambQuestions/ChemistryQuiz/ChemistryQuiz";
 import BiologyQuiz from "./Components/MainDashboard/JambQuestions/BiologyQuiz/BiologyQuiz";
 import CrsQuiz from "./Components/MainDashboard/JambQuestions/CrsQuiz/CrsQuiz";
+import GovernmentQuiz from "./Components/MainDashboard/JambQuestions/GovernmentQuiz/GovernmentQuiz";
+import LiteratureQuiz from "./Components/MainDashboard/JambQuestions/LiteratureQuiz/LiteratureQuiz";
+import CommerceQuiz from "./Components/MainDashboard/JambQuestions/CommerceQuiz/CommerceQuiz";
+import EconomicsQuiz from "./Components/MainDashboard/JambQuestions/EconomicsQuiz/EconomicsQuiz";
+import AccountQuiz from "./Components/MainDashboard/JambQuestions/AccountQuiz/AccountQuiz";
 
 function App() {
   return (
@@ -116,6 +121,11 @@ function App() {
             <Route path="/jamb/chemistry" element={<ChemistryQuiz />} />
             <Route path="/jamb/biology" element={<BiologyQuiz />} />
             <Route path="/jamb/crs" element={<CrsQuiz />} />
+            <Route path="/jamb/government" element={<GovernmentQuiz />} />
+            <Route path="/jamb/literature" element={<LiteratureQuiz />} />
+            <Route path="/jamb/commerce" element={<CommerceQuiz />} />
+            <Route path="/jamb/economics" element={<EconomicsQuiz />} />
+            <Route path="/jamb/account" element={<AccountQuiz />} />
           </Routes>
         </div>
       </FirebaseProvider>
