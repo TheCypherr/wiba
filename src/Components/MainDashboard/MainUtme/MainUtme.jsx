@@ -103,7 +103,9 @@ const MainUtme = () => {
                   you.
                 </h3>
                 <h5>Ace your Exams with WIBA</h5>
-                <Link to="/mathquiz">
+                <Link
+                  onClick={() => handlePathNavigation("/categories/JambCBT")}
+                >
                   <button className="utme-test-btn">Take Quiz</button>
                 </Link>
               </div>
@@ -119,7 +121,9 @@ const MainUtme = () => {
                   your Exams
                 </h3>
                 <h5>Accounting Practice Questions on WIBA.</h5>
-                <Link to="/accquiz">
+                <Link
+                  onClick={() => handlePathNavigation("/categories/JambCBT")}
+                >
                   <button className="utme-test-btn">Take Quiz</button>
                 </Link>
               </div>
@@ -135,7 +139,9 @@ const MainUtme = () => {
                   Exam.
                 </h3>
                 <h5>Up to-date Biology Past Questions on WIBA </h5>
-                <Link to="/bioquiz">
+                <Link
+                  onClick={() => handlePathNavigation("/categories/JambCBT")}
+                >
                   <button className="utme-test-btn">Take Quiz</button>
                 </Link>
               </div>
@@ -151,7 +157,9 @@ const MainUtme = () => {
                   Understanding
                 </h3>
                 <h5>Improve your skills with WIBA Test</h5>
-                <Link to="/commquiz">
+                <Link
+                  onClick={() => handlePathNavigation("/categories/JambCBT")}
+                >
                   <button className="utme-test-btn">Take Quiz</button>
                 </Link>
               </div>

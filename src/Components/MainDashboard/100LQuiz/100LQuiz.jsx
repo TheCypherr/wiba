@@ -99,7 +99,9 @@ const FresherQuiz = () => {
               <div className="fresher-text-container">
                 <h3>MAT 101</h3>
                 <h5>Ace your Exams with WIBA</h5>
-                <Link to="/mathquiz">
+                <Link
+                  onClick={() => handlePathNavigation("/categories/allquiz")}
+                >
                   <button className="utme-test-btn">Take Quiz</button>
                 </Link>
               </div>
@@ -112,7 +114,9 @@ const FresherQuiz = () => {
               <div className="fresher-text-container">
                 <h3>GST 111</h3>
                 <h5>Up to-date GST 111 Past Questions</h5>
-                <Link to="/engquiz">
+                <Link
+                  onClick={() => handlePathNavigation("/categories/allquiz")}
+                >
                   <button className="utme-test-btn">Take Quiz</button>
                 </Link>
               </div>
@@ -125,7 +129,9 @@ const FresherQuiz = () => {
               <div className="fresher-text-container">
                 <h3>ACC 101</h3>
                 <h5>Introduction to Accounting</h5>
-                <Link to="/accquiz">
+                <Link
+                  onClick={() => handlePathNavigation("/categories/allquiz")}
+                >
                   <button className="utme-test-btn">Take Quiz</button>
                 </Link>
               </div>
@@ -138,7 +144,9 @@ const FresherQuiz = () => {
               <div className="fresher-text-container">
                 <h3>ECO 101</h3>
                 <h5>Improve your skills with WIBA Test</h5>
-                <Link to="/commquiz">
+                <Link
+                  onClick={() => handlePathNavigation("/categories/allquiz")}
+                >
                   <button className="utme-test-btn">Take Quiz</button>
                 </Link>
               </div>

@@ -12,7 +12,7 @@ const JambAllquiz = () => {
   const [selectedQuizLink, setSelectedQuizLink] = useState("");
   const navigate = useNavigate();
 
-  // useEffect to prevent scrolling when menubar is open
+  // useEffect to prevent scrolling when popup is shown
   useEffect(() => {
     if (quizInstructionPopup) {
       document.body.style.overflow = "hidden";
