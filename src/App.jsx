@@ -7,7 +7,7 @@ import Getaway from "./Components/WibaDashboard/Getaway/Getaway";
 import Reviews from "./Components/WibaDashboard/Reviews/Reviews";
 import Footer from "./Components/WibaDashboard/Footer/Footer";
 import ScrollToTop from "./Components/ScrollToTop";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Login from "./Components/WibaDashboard/Login/Login";
 import Signup from "./Components/WibaDashboard/Signup/Signup";
 import MainHeader from "./Components/MainDashboard/MainHeader/MainHeader";
@@ -16,7 +16,7 @@ import MainUtme from "./Components/MainDashboard/MainUtme/MainUtme";
 import FresherQuiz from "./Components/MainDashboard/100LQuiz/100LQuiz";
 import MainGetaway from "./Components/MainDashboard/MainGetaway/MainGetaway";
 import Theme from "./utils/Theme";
-import { FirebaseProvider } from "./config/FirebaseContext";
+import { FirebaseProvider } from "./utils/FirebaseContext";
 import AllQuiz from "./Components/MainDashboard/AllQuiz/AllQuiz";
 import Gst113Quiz from "./Components/MainDashboard/FresherQuestion/Gst113Quiz/Gst113Quiz";
 import Gst111Quiz from "./Components/MainDashboard/FresherQuestion/Gst111Quiz/Gst111Quiz";
@@ -32,6 +32,7 @@ import LiteratureQuiz from "./Components/MainDashboard/JambQuestions/LiteratureQ
 import CommerceQuiz from "./Components/MainDashboard/JambQuestions/CommerceQuiz/CommerceQuiz";
 import EconomicsQuiz from "./Components/MainDashboard/JambQuestions/EconomicsQuiz/EconomicsQuiz";
 import AccountQuiz from "./Components/MainDashboard/JambQuestions/AccountQuiz/AccountQuiz";
+import UserProfile from "./Components/MainDashboard/UserProfile/UserProfile";
 
 function App() {
   return (
@@ -126,6 +127,7 @@ function App() {
             <Route path="/jamb/commerce" element={<CommerceQuiz />} />
             <Route path="/jamb/economics" element={<EconomicsQuiz />} />
             <Route path="/jamb/account" element={<AccountQuiz />} />
+            <Route path="/profile" element={<UserProfile />} />
           </Routes>
         </div>
       </FirebaseProvider>

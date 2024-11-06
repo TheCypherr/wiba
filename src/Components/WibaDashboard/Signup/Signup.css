@@ -51,12 +51,13 @@ form {
   border: 1px solid var(--text-color);
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1rem;
   border-radius: 5px;
 }
 .signup-input1 input::placeholder {
   color: var(--text-color);
+  font-size: 0.9rem;
 }
 
 .signup-input2 {
@@ -70,12 +71,13 @@ form {
   border: 1px solid var(--text-color);
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1rem;
   border-radius: 5px;
 }
 .signup-input2 input::placeholder {
   color: var(--text-color);
+  font-size: 0.9rem;
 }
 
 .input-wrapper1 {

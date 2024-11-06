@@ -96,7 +96,8 @@ ul.main-sub-menu {
   border-radius: 5px;
   z-index: 100;
   display: none;
-  box-shadow: 0 5px 3px var(--text-color);
+  border-bottom: 1px solid var(--text-color);
+  border-left: 1px solid var(--text-color);
   white-space: nowrap;
   opacity: 0;
   transition: opacity 0.3s ease;

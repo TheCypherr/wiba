@@ -1,0 +1,23 @@
+/* Center the logo */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full screen height for loading */
+}
+
+/* Bouncy animation styling */
+.bouncy-logo {
+  width: 100px; /* Adjust as needed */
+  animation: bounce 1s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Signup.css";
 import { useNavigate, Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useFirebaseUser } from "../../../config/FirebaseContext";
+import { useFirebaseUser } from "../../../utils/FirebaseContext";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../../config/Firebase";
 

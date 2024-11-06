@@ -248,7 +248,11 @@ const MainHeader = () => {
         {isOpen && (
           <div className="main-inner-h-new slideIn">
             <div className="profile-container">
-              <Link className="profile" to="/profile">
+              <Link
+                className="profile"
+                to="#"
+                onClick={() => handlePageLoading("/profile")}
+              >
                 <FaUser />
                 <p>Profile</p>
               </Link>
@@ -405,8 +409,11 @@ const MainHeader = () => {
 
           <div className="last-side2">
             <div>
-              <Link className="profile">
-                <FaUser to="/profile" />
+              <Link
+                className="profile"
+                onClick={() => handlePageLoading("/profile")}
+              >
+                <FaUser to="#" />
                 <p>Profile</p>
               </Link>
             </div>

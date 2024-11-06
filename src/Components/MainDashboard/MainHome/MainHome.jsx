@@ -1,6 +1,6 @@
 import React from "react";
 import "./MainHome.css";
-import { useFirebaseUser } from "../../../config/FirebaseContext";
+import { useFirebaseUser } from "../../../utils/FirebaseContext";
 
 const MainHome = () => {
   const { user } = useFirebaseUser();
@@ -23,7 +23,7 @@ const MainHome = () => {
 
       <div className="inner-main-home">
         <div className="inner-home1">
-          <p>{user ? `Welcome ${user.displayName}!` : "user"}</p>
+          <p>{user ? `Welcome ${user.displayName}!` : ""}</p>
           <h1>Start your Comprehensive Learning Journey.</h1>
         </div>
         <div className="inner-home2">

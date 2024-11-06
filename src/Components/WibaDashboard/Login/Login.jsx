@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import { useNavigate, Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useFirebaseUser } from "../../../config/FirebaseContext";
+import { useFirebaseUser } from "../../../utils/FirebaseContext";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../../../config/Firebase";
 
@@ -49,7 +49,7 @@ const Login = () => {
 
       // Set user info and handle missing displayName
       setUser({
-        displayName: user.displayName || "User", // Default user as "User" if no username is set
+        displayName: user.displayName || "", // Default user as "User" if no username is set
         email: user.email,
       });
       setLoading(false);
