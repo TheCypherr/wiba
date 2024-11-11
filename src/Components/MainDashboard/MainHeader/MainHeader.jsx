@@ -12,11 +12,16 @@ import {
   FaSignOutAlt,
   FaChevronDown,
   FaChevronUp,
+  FaHome,
+  FaGraduationCap,
+  FaBook,
 } from "react-icons/fa";
 import { auth } from "../../../config/Firebase";
 import { signOut } from "firebase/auth";
+import { useFirebaseUser } from "../../../utils/FirebaseContext";
 
 const MainHeader = () => {
+  const { user } = useFirebaseUser();
   const [activeMenu, setActiveMenu] = useState(null);
   const [theme, setTheme] = useState({
     background: true,
@@ -65,43 +70,6 @@ const MainHeader = () => {
   // Handles closing the submenu when mouse leaves the wrapper
   const handleMouseLeave = () => {
     setActiveMenu(null);
-  };
-
-  // CSS Variable value for theme
-  const updateCSSVariable = (variable, value) => {
-    document.documentElement.style.setProperty(variable, value);
-  };
-
-  const setBackground = (value) => {
-    setTheme((prevTheme) => ({
-      ...prevTheme,
-      background: value,
-    }));
-    updateCSSVariable("--bg-color", value ? "#fff" : "#000000");
-  };
-
-  const setLogoBg = (value) => {
-    setTheme((prevTheme) => ({
-      ...prevTheme,
-      logoBg: value,
-    }));
-    updateCSSVariable("--logo-color", value ? "#2b33ff" : "#fff");
-  };
-
-  const setTextColor = (value) => {
-    setTheme((prevTheme) => ({
-      ...prevTheme,
-      textColor: value,
-    }));
-    updateCSSVariable("--text-color", value ? "#fff" : "#000000");
-  };
-
-  const setLogoTextColor = (value) => {
-    setTheme((prevTheme) => ({
-      ...prevTheme,
-      logoTextColor: value,
-    }));
-    updateCSSVariable("--logo-text-color", value ? "#fff" : "#2b33ff");
   };
 
   const handleTheme = () => {
@@ -155,12 +123,65 @@ const MainHeader = () => {
     }
   }, [search]);
 
+  const mobileMenuItems = [
+    // {
+    //   name: "Categories",
+    //   link: "/categories/JambCBT",
+    //   subItems: [
+    //     { label: "UTME Quiz", link: "/categories/JambCBT" },
+    //     { label: "A Level Test", link: "/aLevel" },
+    //     { label: "100L Quiz", link: "/categories/allquiz" },
+    //   ],
+    // },
+    {
+      name: "Dashboard",
+      link: "/main",
+      icon: <FaHome size={25} />,
+    },
+    {
+      name: "JAMB CBT",
+      link: "/categories/JambCBT",
+      icon: <FaGraduationCap size={27} />,
+    },
+    {
+      name: "A Level Test",
+      link: "/categories/A-Level",
+      icon: <FaGraduationCap size={27} />,
+    },
+    {
+      name: "100L Quiz",
+      link: "/categories/allquiz",
+      icon: <FaGraduationCap size={27} />,
+    },
+    {
+      name: "Study Guide",
+      link: "/categories/studyGuide",
+      icon: <FaBook size={23} />,
+    },
+    {
+      name: "PDF Materials",
+      link: "/categories/pdf-materials",
+      icon: <FaBook size={23} />,
+    },
+    {
+      name: "UTME Past Questions",
+      icon: <FaBook size={23} />,
+      link: "/categories/past-questions",
+      // subItems: [
+      //   { label: "English", link: "/past-question/english" },
+      //   { label: "Math", link: "/past-question/math" },
+      //   { label: "Physics", link: "/past-question/physics" },
+      //   { label: "Chemistry", link: "/past-question/chemistry" },
+      // ],
+    },
+  ];
+
   const menuItems = [
     {
       name: "Categories",
       subItems: [
-        { label: "UTME Quiz", link: "/categories/JambCBT" },
-        { label: "A Level Test", link: "/aLevel" },
+        { label: "JAMB CBT", link: "/categories/JambCBT" },
+        { label: "A Level Test", link: "/categories/A-Level" },
         { label: "100L Quiz", link: "/categories/allquiz" },
       ],
       link: "/categories/JambCBT",
@@ -171,15 +192,11 @@ const MainHeader = () => {
     },
     {
       name: "PDF Materials",
+      link: "/categories/pdf-materials",
     },
     {
       name: "UTME Past Questions",
-      subItems: [
-        { label: "English", link: "/past-question/english" },
-        { label: "Math", link: "/past-question/math" },
-        { label: "Physics", link: "/past-question/physics" },
-        { label: "Chemistry", link: "/past-question/chemistry" },
-      ],
+      link: "/categories/past-questions",
     },
   ];
 
@@ -192,53 +209,65 @@ const MainHeader = () => {
           </Link>
         </div>
 
-        <div
-          onClick={() => {
-            toggleMenu();
-            closeSearchBar();
-          }}
-          className={`main-icon-menu ${isOpen ? "main-menu-open-icon" : ""}`}
-        >
-          {isOpen ? (
-            <FaTimes size={25} className="main-fa-times" />
-          ) : (
-            <FaBars size={25} />
-          )}
-        </div>
+        {!search && (
+          <>
+            <div
+              onClick={() => {
+                toggleMenu();
+                closeSearchBar();
+              }}
+              className={`main-icon-menu ${
+                isOpen ? "main-menu-open-icon" : ""
+              }`}
+            >
+              {isOpen ? (
+                <FaTimes size={25} className="main-fa-times" />
+              ) : (
+                <FaBars size={25} />
+              )}
+            </div>
 
-        <div className="main-logo-new">
-          <Link onClick={handlePageReload}>
-            <img src="/logo.png" alt="" />
-          </Link>
-        </div>
+            <div className="main-logo-new">
+              <Link onClick={handlePageReload}>
+                <img src="/logo.png" alt="" />
+              </Link>
+            </div>
+          </>
+        )}
 
         <div className="main-search-container">
-          <div
-            className={`main-search-div ${search ? "main-search-is-open" : ""}`}
-            onClick={toggleSearch}
-          >
-            {search ? (
-              <FaTimes
-                size={20}
-                style={{
-                  color: theme ? "var(--text-color)" : "var(--bg-color)",
-                }}
-              />
-            ) : (
-              <FaSearch
-                size={20}
-                style={{
-                  color: theme ? "var(--text-color)" : "var(--bg-color)",
-                }}
-              />
-            )}
-          </div>
-
-          {search && <div className="main-search-back-drop"></div>}
-          {search && (
+          {!search ? (
+            <div
+              className={`main-search-div ${
+                search ? "main-search-is-open" : ""
+              }`}
+              onClick={toggleSearch}
+            >
+              {search ? (
+                <FaTimes
+                  size={20}
+                  style={{
+                    color: theme ? "var(--text-color)" : "var(--bg-color)",
+                  }}
+                />
+              ) : (
+                <FaSearch
+                  size={20}
+                  style={{
+                    color: theme ? "var(--text-color)" : "var(--bg-color)",
+                  }}
+                />
+              )}
+            </div>
+          ) : (
             <div className="main-search-overlay">
               <div className="main-search-wrapper">
                 <input type="text" placeholder="Search for anything..." />
+                <FaTimes
+                  size={20}
+                  className="close-search-icon"
+                  onClick={toggleSearch}
+                />
               </div>
             </div>
           )}
@@ -247,23 +276,31 @@ const MainHeader = () => {
         {isOpen && <div className="main-back-drop"></div>}
         {isOpen && (
           <div className="main-inner-h-new slideIn">
-            <div className="profile-container">
+            <div className="active-user-profile">
               <Link
-                className="profile"
+                className="active-user-link"
                 to="#"
-                onClick={() => handlePageLoading("/profile")}
+                onClick={() => {
+                  handlePageLoading("/profile");
+                  closeSideBar();
+                }}
               >
-                <FaUser />
-                <p>Profile</p>
+                <div className="user-profile-picture">
+                  <img src="/cypher1.jpg" alt="" />
+                  <div className="active-status" />
+                </div>
+                <div className="user-profile-text">
+                  <span className="span11">{user ? user.displayName : ""}</span>
+                  <span className="span22">Student</span>
+                </div>
               </Link>
-              <FaChevronRight />
             </div>
             <div className="underline"></div>
 
             <div className="main-inner-one-new">
               <nav>
                 <ul className="main-menu-new">
-                  {menuItems.map((item, index) => (
+                  {mobileMenuItems.map((item, index) => (
                     <li key={index} className="main-menu-items-wrapper-new">
                       <div className="main-arrow-new">
                         <Link
@@ -274,22 +311,9 @@ const MainHeader = () => {
                             closeSideBar();
                           }}
                         >
-                          {item.name}
+                          <p>{item.icon}</p>
+                          <p>{item.name}</p>
                         </Link>
-                        {item.name !== "Study Guide" &&
-                          item.name !== "PDF Materials" &&
-                          item.name !== "UTME Past Questions" &&
-                          (activeMenu === item.name ? (
-                            <FaChevronUp
-                              className="chevron-icon"
-                              onClick={() => handleHeaderMenuToggle(item.name)}
-                            />
-                          ) : (
-                            <FaChevronDown
-                              className="chevron-icon"
-                              onClick={() => handleHeaderMenuToggle(item.name)}
-                            />
-                          ))}
                       </div>
                       {activeMenu === item.name && item.subItems && (
                         <ul className="main-sub-menu-new slideIn">
@@ -318,15 +342,6 @@ const MainHeader = () => {
               </nav>
             </div>
 
-            {/* <div onClick={handleTheme} className="main-icon-div-new">
-              <p>Switch Theme</p>
-              {theme.background ? (
-                <FaMoon size={15} className="main-theme-icon-new" />
-              ) : (
-                <FaSun size={16} className="main-theme-icon-new" />
-              )}
-            </div> */}
-
             <div
               className="logout-btn"
               onClick={() => {
@@ -334,8 +349,8 @@ const MainHeader = () => {
                 closeSideBar();
               }}
             >
+              <FaSignOutAlt color="red" size={22} />
               <p>Logout</p>
-              <FaSignOutAlt color="red" size={17} />
             </div>
           </div>
         )}

@@ -40,6 +40,7 @@ function App() {
       <FirebaseProvider>
         <div className="wiba-dashboard">
           <ScrollToTop />
+          <Theme />
           <Routes>
             <Route
               path="/"
@@ -127,7 +128,15 @@ function App() {
             <Route path="/jamb/commerce" element={<CommerceQuiz />} />
             <Route path="/jamb/economics" element={<EconomicsQuiz />} />
             <Route path="/jamb/account" element={<AccountQuiz />} />
-            <Route path="/profile" element={<UserProfile />} />
+            <Route
+              path="/profile"
+              element={
+                <>
+                  <UserProfile />
+                  <Footer />
+                </>
+              }
+            />
           </Routes>
         </div>
       </FirebaseProvider>

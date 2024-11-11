@@ -11,6 +11,8 @@ import {
   FaSignOutAlt,
   FaChevronUp,
   FaChevronDown,
+  FaGraduationCap,
+  FaBook,
 } from "react-icons/fa";
 
 const Header = () => {
@@ -138,6 +140,39 @@ const Header = () => {
     }
   }, [search]);
 
+  const mobileMenuItems = [
+    {
+      name: "JAMB CBT",
+      link: "/login",
+      icon: <FaGraduationCap size={27} />,
+    },
+    {
+      name: "A Level Test",
+      link: "/login",
+      icon: <FaGraduationCap size={27} />,
+    },
+    {
+      name: "100L Quiz",
+      link: "/login",
+      icon: <FaGraduationCap size={27} />,
+    },
+    {
+      name: "Study Guide",
+      link: "/login",
+      icon: <FaBook size={23} />,
+    },
+    {
+      name: "PDF Materials",
+      link: "/login",
+      icon: <FaBook size={23} />,
+    },
+    {
+      name: "UTME Past Questions",
+      icon: <FaBook size={23} />,
+      link: "/login",
+    },
+  ];
+
   const menuItems = [
     {
       name: "Categories",
@@ -171,53 +206,61 @@ const Header = () => {
           </Link>
         </div>
 
-        <div
-          onClick={() => {
-            toggleMenu();
-            closeSearchBar();
-          }}
-          className={`icon-menu ${isOpen ? "menu-open-icon" : ""}`}
-        >
-          {isOpen ? (
-            <FaTimes size={25} className="fa-times" />
-          ) : (
-            <FaBars size={25} />
-          )}
-        </div>
+        {!search && (
+          <>
+            <div
+              onClick={() => {
+                toggleMenu();
+                closeSearchBar();
+              }}
+              className={`icon-menu ${isOpen ? "menu-open-icon" : ""}`}
+            >
+              {isOpen ? (
+                <FaTimes size={25} className="fa-times" />
+              ) : (
+                <FaBars size={25} />
+              )}
+            </div>
 
-        <div className="logo-new">
-          <Link onClick={handlePageReload}>
-            <img src="/logo.png" alt="" />
-          </Link>
-        </div>
+            <div className="logo-new">
+              <Link onClick={handlePageReload}>
+                <img src="/logo.png" alt="" />
+              </Link>
+            </div>
+          </>
+        )}
 
         <div className="search-container">
-          <div
-            className={`search-div ${search ? "search-is-open" : ""}`}
-            onClick={toggleSearch}
-          >
-            {search ? (
-              <FaTimes
-                size={20}
-                style={{
-                  color: theme ? "var(--text-color)" : "var(--bg-color)",
-                }}
-              />
-            ) : (
-              <FaSearch
-                size={20}
-                style={{
-                  color: theme ? "var(--text-color)" : "var(--bg-color)",
-                }}
-              />
-            )}
-          </div>
-
-          {search && <div className="search-back-drop"></div>}
-          {search && (
+          {!search ? (
+            <div
+              className={`search-div ${search ? "search-is-open" : ""}`}
+              onClick={toggleSearch}
+            >
+              {search ? (
+                <FaTimes
+                  size={20}
+                  style={{
+                    color: theme ? "var(--text-color)" : "var(--bg-color)",
+                  }}
+                />
+              ) : (
+                <FaSearch
+                  size={20}
+                  style={{
+                    color: theme ? "var(--text-color)" : "var(--bg-color)",
+                  }}
+                />
+              )}
+            </div>
+          ) : (
             <div className="search-overlay">
               <div className="search-wrapper">
                 <input type="text" placeholder="Search for anything..." />
+                <FaTimes
+                  size={20}
+                  className="close-search-icon"
+                  onClick={toggleSearch}
+                />
               </div>
             </div>
           )}
@@ -254,48 +297,38 @@ const Header = () => {
               </button>
             </div>
 
-            <div className="inner-one-new">
+            <div className="main-inner-one-new">
               <nav>
-                <ul className="menu-new">
-                  {menuItems.map((item, index) => (
-                    <li key={index} className="menu-items-wrapper-new">
-                      <div className="arrow-new">
+                <ul className="main-menu-new">
+                  {mobileMenuItems.map((item, index) => (
+                    <li key={index} className="main-menu-items-wrapper-new">
+                      <div className="main-arrow-new">
                         <Link
-                          className="custom-links-new"
+                          className="main-custom-links-new"
                           to="#"
                           onClick={() => {
                             handlePageLoading(item.link);
                             closeSideBar();
                           }}
                         >
-                          {item.name}
+                          <p>{item.icon}</p>
+                          <p>{item.name}</p>
                         </Link>
-                        {item.name !== "Study Guide" &&
-                          item.name !== "PDF Materials" &&
-                          item.name !== "UTME Past Questions" &&
-                          (activeMenu === item.name ? (
-                            <FaChevronUp
-                              className="chevron-icon"
-                              onClick={() => handleHeaderMenuToggle(item.name)}
-                            />
-                          ) : (
-                            <FaChevronDown
-                              className="chevron-icon"
-                              onClick={() => handleHeaderMenuToggle(item.name)}
-                            />
-                          ))}
                       </div>
                       {activeMenu === item.name && item.subItems && (
-                        <ul className="sub-menu-new slideIn">
+                        <ul className="main-sub-menu-new slideIn">
                           {item.subItems.map((subItem, subIndex) => (
-                            <li key={subIndex} className="sub-menu-items-new">
+                            <li
+                              key={subIndex}
+                              className="main-sub-menu-items-new"
+                            >
                               <Link
                                 to="#"
                                 onClick={() => {
                                   handlePageLoading(subItem.link);
                                   closeSideBar();
                                 }}
-                                className="custom-links-new"
+                                className="main-custom-links-new"
                               >
                                 {subItem.label}
                               </Link>
@@ -308,15 +341,6 @@ const Header = () => {
                 </ul>
               </nav>
             </div>
-
-            {/* <div onClick={handleTheme} className="icon-div-new">
-              <p>Switch Theme</p>
-              {theme.background ? (
-                <FaMoon size={15} className="theme-icon-new" />
-              ) : (
-                <FaSun size={16} className="theme-icon-new" />
-              )}
-            </div> */}
           </div>
         )}
 
@@ -331,13 +355,29 @@ const Header = () => {
                     onMouseEnter={() => handleHeaderMenuToggle(item.name)}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <Link
-                      className="custom-links"
-                      to="#"
-                      onClick={() => handlePageLoading(item.link)}
-                    >
-                      {item.name}
-                    </Link>
+                    <div className="flex-ul">
+                      <Link
+                        className="main-custom-links"
+                        to="#"
+                        onClick={() => handlePageLoading(item.link)}
+                      >
+                        {item.name}
+                      </Link>
+                      {item.name !== "Study Guide" &&
+                        item.name !== "PDF Materials" &&
+                        item.name !== "UTME Past Questions" &&
+                        (activeMenu === item.name ? (
+                          <FaChevronUp
+                            className="chevron-icon"
+                            onClick={() => handleHeaderMenuToggle(item.name)}
+                          />
+                        ) : (
+                          <FaChevronDown
+                            className="chevron-icon"
+                            onClick={() => handleHeaderMenuToggle(item.name)}
+                          />
+                        ))}
+                    </div>
                     {activeMenu === item.name && item.subItems && (
                       <ul className="sub-menu slideIn">
                         {item.subItems.map((subItem, subIndex) => (
