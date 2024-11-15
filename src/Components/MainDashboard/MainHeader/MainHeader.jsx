@@ -428,8 +428,12 @@ const MainHeader = () => {
                 className="profile"
                 onClick={() => handlePageLoading("/profile")}
               >
-                <FaUser to="#" />
-                <p>Profile</p>
+                {/* <FaUser to="#" /> */}
+                <div className="user-profile-picture0">
+                  <img src="/cypher1.jpg" alt="" />
+                  <div className="active-status" />
+                </div>
+                {/* <p>Profile</p> */}
               </Link>
             </div>
 
@@ -440,7 +444,8 @@ const MainHeader = () => {
                 closeSideBar();
               }}
             >
-              <FaSignOutAlt color="red" size={19} />
+              Logout
+              <FaSignOutAlt size={14} />
             </Link>
           </div>
         </div>

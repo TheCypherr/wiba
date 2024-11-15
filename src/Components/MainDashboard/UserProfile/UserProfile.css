@@ -61,8 +61,8 @@ li.each-menu:hover {
   align-items: center;
   gap: 20px;
 }
-.profile-custom-links:hover {
-}
+/* .profile-custom-links:hover {
+} */
 
 .profile-logout {
   display: flex;
@@ -84,10 +84,15 @@ li.each-menu:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 4px var(--text-color);
+  border-top: 0px;
+  border-right: 2px solid var(--text-color);
+  border-left: 2px solid var(--text-color);
+  border-bottom: 2px solid var(--text-color);
+  border-radius: 8px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
   margin-bottom: 30px;
   padding: 10px 20px;
-  border-radius: 8px;
 }
 
 .top-profile p {
@@ -101,8 +106,13 @@ li.each-menu:hover {
   gap: 20px;
   background-color: var(--bg-color);
   color: var(--text-color);
+  border-top: 0px;
+  border-right: 2px solid var(--text-color);
+  border-left: 2px solid var(--text-color);
+  border-bottom: 2px solid var(--text-color);
   border-radius: 8px;
-  box-shadow: 0 2px 4px var(--text-color);
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
 .left-profile {

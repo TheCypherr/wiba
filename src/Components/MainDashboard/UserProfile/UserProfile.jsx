@@ -12,7 +12,13 @@ import {
   FaHome,
 } from "react-icons/fa";
 import { useFirebaseUser } from "../../../utils/FirebaseContext";
-import { doc, setDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  serverTimestamp,
+  setDoc,
+} from "firebase/firestore";
 import { db } from "../../../config/Firebase";
 import { auth } from "../../../config/Firebase";
 import { signOut } from "firebase/auth";
@@ -29,16 +35,40 @@ const UserProfile = () => {
     textColor: false,
     logoTextColor: true,
   });
+  const [data, setData] = useState({});
+
+  const handleInput = (e) => {
+    const id = e.target.id;
+    const value = e.target.value;
+
+    setData({ ...data, [id]: value });
+  };
+  console.log(data);
 
   const handleAdd = async (e) => {
     e.preventDefault();
 
-    // Add a new document in collection "User Profiles"
-    await setDoc(doc(db, "User Profiles", "LA"), {
-      name: "Los Angeles",
-      state: "CA",
-      country: "USA",
+    // Create a new object that combines existing data with label2 values
+    const dataWithLabels = { ...data };
+
+    userProfileData.forEach((input) => {
+      // Only add label2 value for fields where label2 exists
+      if (input.label2 !== undefined) {
+        dataWithLabels[input.id] = input.label2; // directly assign label2 value
+      } else {
+        dataWithLabels[input.id] = data[input.id] || ""; // Keep the original data for fields without label2
+      }
     });
+
+    try {
+      await setDoc(doc(db, "User Profiles", user.uid), {
+        ...dataWithLabels,
+        timeStamp: serverTimestamp(),
+      });
+      console.log("User profile saved successfully!");
+    } catch (err) {
+      console.log(err, "error fetching data");
+    }
   };
 
   const handlePageReload = () => {
@@ -168,6 +198,36 @@ const UserProfile = () => {
       //   { label: "Physics", link: "/past-question/physics" },
       //   { label: "Chemistry", link: "/past-question/chemistry" },
       // ],
+    },
+  ];
+
+  const userProfileData = [
+    {
+      id: "username",
+      label: "Username",
+      label2: user ? user.displayName : "",
+    },
+    {
+      id: "fullName",
+      label: "Name & Surname",
+      type: "text",
+      placeholder: "Oluwa Cypher",
+    },
+    {
+      id: "email",
+      label: "Email",
+      label2: user ? user.email : "",
+    },
+    {
+      id: "phone",
+      label: "Phone",
+      type: "text",
+      placeholder: "+234 701 2208 069",
+    },
+    {
+      id: "country",
+      label: "Country",
+      label2: "Nigeria",
     },
   ];
 
@@ -312,27 +372,22 @@ const UserProfile = () => {
                   //   style={{ display: "none" }}
                 />
               </div>
-              <div className="form-input">
-                <label style={{ fontSize: "1.1rem" }}>
-                  Username: {user ? user.displayName : ""}
-                </label>
-              </div>
-              <div className="form-input">
-                <label style={{ fontSize: "1.1rem" }}>Name & Surname:</label>
-                <input type="text" placeholder="Oluwa Cypher" />
-              </div>
-              <div className="form-input">
-                <label style={{ fontSize: "1.1rem" }}>
-                  Email: {user ? user.email : ""}
-                </label>
-              </div>
-              <div className="form-input">
-                <label style={{ fontSize: "1.1rem" }}>Phone:</label>
-                <input type="text" placeholder="+234 701 2208 069" />
-              </div>
-              <div className="form-input">
-                <label style={{ fontSize: "1.1rem" }}>Country: Nigeria</label>
-              </div>
+
+              {userProfileData.map((input) => (
+                <div className="form-input" key={input.id}>
+                  <label style={{ fontSize: "1.1rem" }}>
+                    {input.label}: {input.label2}
+                  </label>
+                  {input.type && (
+                    <input
+                      id={input.id}
+                      type={input.type}
+                      placeholder={input.placeholder}
+                      onChange={handleInput}
+                    />
+                  )}
+                </div>
+              ))}
 
               <button className="profile-btn" type="submit">
                 Save
@@ -486,3 +541,34 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
+
+// INITIAL WAY
+
+// Add a new document in collection "User Profiles" (use addDoc instead of setDoc as it is much better to let cloud Firestore autogenerate and ID for you)... so instead of this below,
+
+// const handleAdd = async (e) => {
+//   e.preventDefault();
+
+//   try {
+//     await setDoc(doc(db, "User Profiles", user.uid), {
+//       ...data,
+//       timeStamp: serverTimestamp(),
+//     });
+//     console.log("User profile saved successfully!");
+//   } catch (err) {
+//     console.log(err, "error fetching data");
+//   }
+
+// we use this below
+// Add a new document with a generated ID
+// try {
+//   await addDoc(collection(db, "User Profiles"), {
+//     name: "Los Angeles",
+//     state: "CA",
+//     country: "USA",
+//     timeStamp: serverTimestamp(),
+//   });
+// } catch (err) {
+//   console.log(err, "Unable to upload");
+// }
+// };
