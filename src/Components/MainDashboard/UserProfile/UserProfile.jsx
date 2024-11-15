@@ -362,7 +362,7 @@ const UserProfile = () => {
           <div className="right-profile">
             <form className="form-container" onSubmit={handleAdd}>
               <div className="form-input hide2">
-                <label htmlFor="file" style={{ fontSize: "1.1rem" }}>
+                <label htmlFor="file" style={{ fontSize: "1rem" }}>
                   Image: <FaCloudUploadAlt className="profile-icon" />
                 </label>
                 <input
@@ -375,7 +375,7 @@ const UserProfile = () => {
 
               {userProfileData.map((input) => (
                 <div className="form-input" key={input.id}>
-                  <label style={{ fontSize: "1.1rem" }}>
+                  <label style={{ fontSize: "1rem" }}>
                     {input.label}: {input.label2}
                   </label>
                   {input.type && (
