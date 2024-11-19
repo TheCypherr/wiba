@@ -286,7 +286,7 @@ const MainHeader = () => {
                 }}
               >
                 <div className="user-profile-picture">
-                  <img src="/cypher1.jpg" alt="" />
+                  <img src="/no-profile.jpg" alt="" />
                   <div className="active-status" />
                 </div>
                 <div className="user-profile-text">
@@ -430,7 +430,7 @@ const MainHeader = () => {
               >
                 {/* <FaUser to="#" /> */}
                 <div className="user-profile-picture0">
-                  <img src="/cypher1.jpg" alt="" />
+                  <img src="/no-profile.jpg" alt="" />
                   <div className="active-status" />
                 </div>
                 {/* <p>Profile</p> */}

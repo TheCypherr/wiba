@@ -33,6 +33,7 @@ import CommerceQuiz from "./Components/MainDashboard/JambQuestions/CommerceQuiz/
 import EconomicsQuiz from "./Components/MainDashboard/JambQuestions/EconomicsQuiz/EconomicsQuiz";
 import AccountQuiz from "./Components/MainDashboard/JambQuestions/AccountQuiz/AccountQuiz";
 import UserProfile from "./Components/MainDashboard/UserProfile/UserProfile";
+import Overview from "./Components/MainDashboard/Overview/Overview";
 
 function App() {
   return (
@@ -133,6 +134,15 @@ function App() {
               element={
                 <>
                   <UserProfile />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/overview"
+              element={
+                <>
+                  <Overview />
                   <Footer />
                 </>
               }

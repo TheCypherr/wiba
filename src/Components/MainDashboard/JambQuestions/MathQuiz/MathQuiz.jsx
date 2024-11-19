@@ -4,8 +4,21 @@ import { Link, useNavigate } from "react-router-dom";
 import { JambMaths as allQuestions } from "../../../../utils/JambQuestions/Maths";
 import { FaChevronLeft, FaClock } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  addDoc,
+  serverTimestamp,
+  collection,
+} from "firebase/firestore";
+import { db } from "../../../../config/Firebase";
+import { auth } from "../../../../config/Firebase";
+import { useFirebaseUser } from "../../../../utils/FirebaseContext";
 
 const MathQuiz = () => {
+  const { user } = useFirebaseUser();
+  // const getAuth = auth();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
@@ -21,6 +34,8 @@ const MathQuiz = () => {
   const [isTimerRunning, setIsTimerRunning] = useState(true); // Timer running status
   const navigate = useNavigate();
   let askedQuestions = [];
+
+  const testName = "JAMB Mathematics";
 
   // Function to handle page reload
   // const handlePageReload = () => {
@@ -85,6 +100,45 @@ const MathQuiz = () => {
     const selectedQuestions = shuffleQuestions(allQuestions, 30);
     setShuffledQuestions(selectedQuestions);
   }, []);
+
+
+  // Function to save score to Firestore
+  const saveScoreToFirestore = async () => {
+    try {
+      if (user) {
+        const userId = user.uid; // Logged-in user's ID
+        const userQuizzesRef = collection(db, "userScores", userId, "quizzes"); // Reference to the user's quizzes subcollection
+
+        // const userScoreRef = doc(db, "userScores", userId);
+        // Path to Firestore document
+
+        // Data to save
+        const data = {
+          testName,
+          score,
+          timeStamp: serverTimestamp(),
+        };
+
+        // Save data to Firestore
+        await addDoc(userQuizzesRef, data); // Add a new quiz document to the subcollection
+
+        // await setDoc(userScoreRef, data, { merge: true });
+        // Use merge to avoid overwriting other fields
+
+        console.log("Score saved successfully!");
+      } else {
+        console.error("No user is logged in!");
+      }
+    } catch (error) {
+      console.error("Error saving score to Firestore:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (showScore) {
+      saveScoreToFirestore(); // Automatically save score when `showScore` is true
+    }
+  }, [showScore]);
 
   // Function to retake quiz
   const handleRetakeQuiz = () => {

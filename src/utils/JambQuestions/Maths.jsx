@@ -522,7 +522,7 @@ export const JambMaths = [
   {
     question:
       "Calculate the time taken for ₦3000 to earn ₦600 if invested at 8% simple interest",
-    options: ["3 years", "1 year", "2 years", "3 years"],
+    options: ["3 years", "1 year", "2 years", "8 years"],
     answer: "2 years",
   },
   {

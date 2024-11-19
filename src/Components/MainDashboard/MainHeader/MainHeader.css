@@ -296,7 +296,7 @@ button.main-btn2:hover {
   align-items: center;
   gap: 5px;
   text-decoration: none;
-  color: var(--bg-color);
+  color: #fff;
   font-weight: 600;
   font-size: 13px;
   width: 65px;

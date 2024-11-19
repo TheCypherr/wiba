@@ -4,8 +4,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { gst113Questions as allQuestions } from "../../../../utils/Questions/Gst113";
 import { FaChevronLeft, FaClock } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  addDoc,
+  serverTimestamp,
+  collection,
+} from "firebase/firestore";
+import { db } from "../../../../config/Firebase";
+import { auth } from "../../../../config/Firebase";
+import { useFirebaseUser } from "../../../../utils/FirebaseContext";
 
 const Gst113Quiz = () => {
+  const { user } = useFirebaseUser();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
@@ -21,6 +33,8 @@ const Gst113Quiz = () => {
   const [isTimerRunning, setIsTimerRunning] = useState(true); // Timer running status
   const navigate = useNavigate();
   let askedQuestions = [];
+
+  const testName = "GST 113 Quiz";
 
   // Function to handle page reload
   // const handlePageReload = () => {
@@ -80,23 +94,43 @@ const Gst113Quiz = () => {
     return selectedQuestions;
   };
 
-  // // Old Function to shuffle and pick 10 random questions
-  // const shuffleQuestions = (questionsArray, numQuestions) => {
-  //   const shuffled = [...questionsArray].sort(() => 0.5 - Math.random()); // Shuffle the array
-  //   return shuffled.slice(0, numQuestions); // Pick the first 'numQuestions' from the shuffled array
-  // };
-
-  // useEffect(() => {
-  //   // Shuffle and set 10 random questions when the component mounts
-  //   const selectedQuestions = shuffleQuestions(allQuestions, 10);
-  //   setShuffledQuestions(selectedQuestions);
-  // }, []);
-
   useEffect(() => {
     // Shuffle and set 30 random questions when the component mounts
     const selectedQuestions = shuffleQuestions(allQuestions, 10);
     setShuffledQuestions(selectedQuestions);
   }, []);
+
+  // Function to save score to Firestore
+  const saveScoreToFirestore = async () => {
+    try {
+      if (user) {
+        const userId = user.uid; // Logged-in user's ID
+        const userQuizzesRef = collection(db, "userScores", userId, "quizzes"); // Reference to the user's quizzes subcollection
+
+        // Data to save
+        const data = {
+          testName,
+          score,
+          timeStamp: serverTimestamp(),
+        };
+
+        // Save data to Firestore
+        await addDoc(userQuizzesRef, data); // Add a new quiz document to the subcollection
+
+        console.log("Score saved successfully!");
+      } else {
+        console.error("No user is logged in!");
+      }
+    } catch (error) {
+      console.error("Error saving score to Firestore:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (showScore) {
+      saveScoreToFirestore(); // Automatically save score when `showScore` is true
+    }
+  }, [showScore]);
 
   // Function to retake quiz
   const handleRetakeQuiz = () => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./UserProfile.css";
+import "./Overview.css";
 import { Link, useNavigate } from "react-router-dom";
 import {
   FaSignOutAlt,
@@ -10,6 +10,8 @@ import {
   FaSearch,
   FaGraduationCap,
   FaHome,
+  FaEllipsisV,
+  FaChevronDown,
 } from "react-icons/fa";
 import { useFirebaseUser } from "../../../utils/FirebaseContext";
 import {
@@ -17,59 +19,28 @@ import {
   collection,
   doc,
   serverTimestamp,
-  setDoc,
+  getDocs,
+  onSnapshot,
 } from "firebase/firestore";
-import { db } from "../../../config/Firebase";
-import { auth } from "../../../config/Firebase";
 import { signOut } from "firebase/auth";
+import { auth } from "../../../config/Firebase";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import { DataGrid } from "@mui/x-data-grid";
+import { userRows, userColumns } from "../../../utils/scores";
+import { db } from "../../../config/Firebase";
 
-const UserProfile = () => {
+const Overview = () => {
   const { user } = useFirebaseUser();
   const [activeMenu, setActiveMenu] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const [file, setFile] = useState("");
   const [theme, setTheme] = useState({
     background: true,
     logoBg: true,
     textColor: false,
     logoTextColor: true,
   });
-  const [data, setData] = useState({});
-
-  const handleInput = (e) => {
-    const id = e.target.id;
-    const value = e.target.value;
-
-    setData({ ...data, [id]: value });
-  };
-  console.log(data);
-
-  const handleAdd = async (e) => {
-    e.preventDefault();
-
-    // Create a new object that combines existing data with label2 values
-    const dataWithLabels = { ...data };
-
-    userProfileData.forEach((input) => {
-      // Only add label2 value for fields where label2 exists
-      if (input.label2 !== undefined) {
-        dataWithLabels[input.id] = input.label2; // directly assign label2 value
-      } else {
-        dataWithLabels[input.id] = data[input.id] || ""; // Keep the original data for fields without label2
-      }
-    });
-
-    try {
-      await setDoc(doc(db, "User Profiles", user.uid), {
-        ...dataWithLabels,
-        timeStamp: serverTimestamp(),
-      });
-      console.log("User profile saved successfully!");
-    } catch (err) {
-      console.log(err, "error fetching data");
-    }
-  };
 
   const handlePageReload = () => {
     window.scrollTo(0, 0);
@@ -86,6 +57,55 @@ const UserProfile = () => {
     }, 2000); // come back to adjust timer oooo
   };
 
+  const paginationModel = { page: 0, pageSize: 5 };
+  const actionColumn = [
+    {
+      field: "action",
+      headerName: "Action",
+      width: 100,
+      renderCell: () => {
+        return (
+          <div className="delete-score">
+            <button className="deleteButton">Delete</button>
+          </div>
+        );
+      },
+    },
+  ];
+
+  // user column for different screens
+  const [columns, setColumns] = useState([
+    { field: "id", headerName: "ID", width: 40 },
+    { field: "test", headerName: "Test Taken", width: 250 },
+    { field: "score", headerName: "Score", width: 100 },
+  ]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        // Adjust columns width for mobile view
+        setColumns([
+          { field: "id", headerName: "ID", width: 20 },
+          { field: "test", headerName: "Test Taken", width: 150 },
+          { field: "score", headerName: "Score", width: 80 },
+        ]);
+      } else {
+        // Default column widths for larger screens
+        setColumns([
+          { field: "id", headerName: "ID", width: 40 },
+          { field: "test", headerName: "Test Taken", width: 250 },
+          { field: "score", headerName: "Score", width: 100 },
+        ]);
+      }
+    };
+
+    // Call handleResize initially and on window resize
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Firebase logout with loadingstate and timer
   const handleLogout = async () => {
     try {
@@ -98,10 +118,6 @@ const UserProfile = () => {
     } catch (error) {
       setLoading(false);
     }
-  };
-
-  const handleHeaderMenuToggle = (menuName) => {
-    setActiveMenu((prev) => (prev === menuName ? null : menuName));
   };
 
   // useState for dropdown menu
@@ -147,6 +163,48 @@ const UserProfile = () => {
       document.body.style.overflow = "auto";
     }
   }, [search]);
+
+  //
+  const [quizScores, setQuizScores] = useState([]);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (user) {
+      const userId = user.uid; // Logged-in user's ID
+      const userQuizzesRef = collection(db, "userScores", userId, "quizzes");
+
+      // Real-time listener for quiz scores
+      const unsubscribe = onSnapshot(userQuizzesRef, (snapshot) => {
+        const data = snapshot.docs.map((doc, index) => ({
+          id: index + 1, // Sequential ID for display
+          firestoreId: doc.id, // Firestore document ID
+          test: doc.data().testName,
+          score: doc.data().score,
+        }));
+
+        setQuizScores(data); // Update quiz scores
+        const progressPercentage = calculateProgress(data); // Recalculate progress
+        setProgress(progressPercentage); // Update progress
+      });
+
+      // Cleanup listener on component unmount
+      return () => unsubscribe();
+    } else {
+      console.error("No user is logged in!");
+    }
+  }, [user, db]); // Run effect when user or db changes
+
+  // Progress calculation
+  const calculateProgress = (quizScores) => {
+    const totalScores = quizScores.reduce(
+      (acc, quiz) => acc + parseInt(quiz.score, 10),
+      0
+    );
+    const maxPossibleScore = quizScores.length * 100; // Assuming max score per quiz is 100
+    return quizScores.length > 0
+      ? (totalScores / maxPossibleScore) * 100 // Ensure percentage is calculated correctly
+      : 0;
+  };
 
   const menuItems = [
     // {
@@ -198,36 +256,6 @@ const UserProfile = () => {
       //   { label: "Physics", link: "/past-question/physics" },
       //   { label: "Chemistry", link: "/past-question/chemistry" },
       // ],
-    },
-  ];
-
-  const userProfileData = [
-    {
-      id: "username",
-      label: "Username",
-      label2: user ? user.displayName : "",
-    },
-    {
-      id: "fullName",
-      label: "Name & Surname",
-      type: "text",
-      placeholder: "Oluwa Cypher",
-    },
-    {
-      id: "email",
-      label: "Email",
-      label2: user ? user.email : "",
-    },
-    {
-      id: "phone",
-      label: "Phone",
-      type: "text",
-      placeholder: "+234 701 2208 069",
-    },
-    {
-      id: "country",
-      label: "Country",
-      label2: "Nigeria",
     },
   ];
 
@@ -335,71 +363,145 @@ const UserProfile = () => {
 
       <div className="inner-profile2">
         <div className="top-profile">
-          <p>User Profile</p>
+          <p>Student Overview</p>
           <button
             className="profile-btn"
             onClick={() => {
-              handlePageLoading("/overview");
+              handlePageLoading("/profile");
             }}
           >
-            Overview
+            Profile
           </button>
         </div>
-        <div className="bottom-profile">
-          <div className="left-profile">
-            <div className="profile-pic">
-              <img
-                src={file ? URL.createObjectURL(file) : "/no-profile.jpg"}
-                alt="profile"
-              />
-            </div>
 
-            <div className="hide1">
-              <label htmlFor="file" style={{ fontSize: "1rem" }}>
-                Image: <FaCloudUploadAlt className="profile-icon" />
-              </label>
-              <input
-                id="file"
-                type="file"
-                onChange={(e) => setFile(e.target.files[0])}
-                style={{ display: "none" }}
-              />
+        <div className="bottom-profile bottom-overview">
+          <div className="progress-bar">
+            <div className="progress-top">
+              <h1>Current % Progress</h1>
+              <FaEllipsisV fontSize="small" />
             </div>
-          </div>
-          <div className="right-profile">
-            <form className="form-container" onSubmit={handleAdd}>
-              <div className="form-input hide2">
-                <label htmlFor="file" style={{ fontSize: "1rem" }}>
-                  Image: <FaCloudUploadAlt className="profile-icon" />
-                </label>
-                <input
-                  id="file"
-                  type="file"
-                  onChange={(e) => setFile(e.target.files[0])}
-                  //   style={{ display: "none" }}
+            <div className="progress-bottom">
+              <div className="featured-chart">
+                <CircularProgressbar
+                  value={progress}
+                  text={progress ? `${progress}%` : "...%"}
+                  styles={buildStyles({
+                    pathColor: progress > 50 ? "green" : "red",
+                    trailColor: "#eee",
+                    textColor: theme ? "var(--text-color)" : "var(--bg-color)",
+                  })}
+                  strokeWidth={7}
                 />
               </div>
+              <p className="title">Cummulative Learning Grade Point</p>
+            </div>
+          </div>
 
-              {userProfileData.map((input) => (
-                <div className="form-input" key={input.id}>
-                  <label style={{ fontSize: "1rem" }}>
-                    {input.label}: {input.label2}
-                  </label>
-                  {input.type && (
-                    <input
-                      id={input.id}
-                      type={input.type}
-                      placeholder={input.placeholder}
-                      onChange={handleInput}
-                    />
-                  )}
-                </div>
-              ))}
+          <div className="score-table">
+            <div className="progress-top">
+              <h1>Quiz Scores</h1>
+              <FaEllipsisV fontSize="small" />
+            </div>
+            <div
+              className="score-data"
+              style={{
+                color: theme ? "var(--text-color)" : "var(--bg-color)",
+                backgroundColor: theme
+                  ? "var(--bg-color)"
+                  : "var(--text-color)",
+              }}
+            >
+              <DataGrid
+                rows={quizScores}
+                columns={columns.concat(actionColumn)}
+                initialState={{ pagination: { paginationModel } }}
+                pageSizeOptions={[4, 10]}
+                checkboxSelection
+                sx={{
+                  border: 0,
+                  width: "100%",
+                  maxWidth: {
+                    xs: "300px", // For extra-small screens (mobile)
+                    sm: "500px", // For small screens (tablet)
+                    md: "700px", // For medium screens and above (desktop)
+                  },
 
-              <button className="profile-btn" type="submit">
-                Save
-              </button>
-            </form>
+                  // General Styles for Entire Grid
+                  "& .MuiDataGrid-root": {
+                    backgroundColor: theme
+                      ? "var(--bg-color)"
+                      : "var(--text-color)",
+                    color: theme ? "var(--text-color)" : "var(--bg-color)",
+                  },
+
+                  // Header Styling
+                  "& .MuiDataGrid-columnHeader": {
+                    backgroundColor: theme
+                      ? "var(--bg-color)"
+                      : "var(--text-color)",
+                    color: theme ? "var(--text-color)" : "var(--bg-color)",
+                  },
+
+                  // Cell Styling
+                  "& .MuiDataGrid-cell": {
+                    backgroundColor: theme
+                      ? "var(--bg-color)"
+                      : "var(--text-color)",
+                    color: theme ? "var(--text-color)" : "var(--bg-color)",
+                  },
+                  "& .MuiDataGrid-filler": {
+                    backgroundColor: theme
+                      ? "var(--bg-color)"
+                      : "var(--text-color)",
+                    color: theme ? "var(--text-color)" : "var(--bg-color)",
+                  },
+
+                  // Pagination Styling (applies globally for this instance)
+                  "& .MuiTablePagination-root, & .MuiTablePagination-selectLabel, & .MuiTablePagination-displayedRows":
+                    {
+                      color: theme ? "var(--text-color)" : "var(--bg-color)",
+                    },
+
+                  "& .MuiTablePagination-select": {
+                    backgroundColor: theme
+                      ? "var(--bg-color)"
+                      : "var(--text-color)",
+                    color: theme ? "var(--text-color)" : "var(--bg-color)",
+                  },
+
+                  "& .MuiTablePagination-root": {
+                    backgroundColor: theme
+                      ? "var(--bg-color)"
+                      : "var(--text-color)",
+                    color: theme ? "var(--text-color)" : "var(--bg-color)",
+                  },
+
+                  // Optional: Checkbox Styling
+                  "& .MuiDataGrid-checkboxInput": {
+                    color: theme ? "var(--text-color)" : "var(--bg-color)",
+                  },
+
+                  "& .MuiTablePagination-actions button": {
+                    backgroundColor: theme
+                      ? "var(--bg-color)"
+                      : "var(--text-color)",
+                    color: theme ? "var(--text-color)" : "var(--bg-color)",
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      backgroundColor: theme
+                        ? "var(--bg-color)"
+                        : "var(--text-color)",
+                    },
+                    "&:disabled": {
+                      backgroundColor: theme
+                        ? "var(--bg-color)"
+                        : "var(--text-color)",
+                      color: theme ? "var(--text-color)" : "var(--bg-color)",
+                    },
+                  },
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -547,35 +649,4 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile;
-
-// INITIAL WAY
-
-// Add a new document in collection "User Profiles" (use addDoc instead of setDoc as it is much better to let cloud Firestore autogenerate and ID for you)... so instead of this below,
-
-// const handleAdd = async (e) => {
-//   e.preventDefault();
-
-//   try {
-//     await setDoc(doc(db, "User Profiles", user.uid), {
-//       ...data,
-//       timeStamp: serverTimestamp(),
-//     });
-//     console.log("User profile saved successfully!");
-//   } catch (err) {
-//     console.log(err, "error fetching data");
-//   }
-
-// we use this below
-// Add a new document with a generated ID
-// try {
-//   await addDoc(collection(db, "User Profiles"), {
-//     name: "Los Angeles",
-//     state: "CA",
-//     country: "USA",
-//     timeStamp: serverTimestamp(),
-//   });
-// } catch (err) {
-//   console.log(err, "Unable to upload");
-// }
-// };
+export default Overview;
