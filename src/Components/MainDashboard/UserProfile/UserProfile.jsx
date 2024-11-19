@@ -22,6 +22,7 @@ import {
 import { db } from "../../../config/Firebase";
 import { auth } from "../../../config/Firebase";
 import { signOut } from "firebase/auth";
+import EmailAvatar from "../../../emailAvatar";
 
 const UserProfile = () => {
   const { user } = useFirebaseUser();
@@ -347,10 +348,11 @@ const UserProfile = () => {
         </div>
         <div className="bottom-profile">
           <div className="left-profile">
-            <div className="profile-pic">
-              <img
-                src={file ? URL.createObjectURL(file) : "/no-profile.jpg"}
-                alt="profile"
+            <div>
+              <EmailAvatar
+                email={user?.email || "guest@example.com"}
+                size={120}
+                fontSize={40}
               />
             </div>
 

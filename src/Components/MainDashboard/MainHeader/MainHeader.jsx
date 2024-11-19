@@ -19,6 +19,7 @@ import {
 import { auth } from "../../../config/Firebase";
 import { signOut } from "firebase/auth";
 import { useFirebaseUser } from "../../../utils/FirebaseContext";
+import EmailAvatar from "../../../emailAvatar";
 
 const MainHeader = () => {
   const { user } = useFirebaseUser();
@@ -286,7 +287,11 @@ const MainHeader = () => {
                 }}
               >
                 <div className="user-profile-picture">
-                  <img src="/no-profile.jpg" alt="" />
+                  <EmailAvatar
+                    email={user?.email || "guest@example.com"}
+                    size={50}
+                    fontSize={20}
+                  />
                   <div className="active-status" />
                 </div>
                 <div className="user-profile-text">
@@ -430,7 +435,11 @@ const MainHeader = () => {
               >
                 {/* <FaUser to="#" /> */}
                 <div className="user-profile-picture0">
-                  <img src="/no-profile.jpg" alt="" />
+                  <EmailAvatar
+                    email={user?.email || "guest@example.com"}
+                    size={35}
+                    fontSize={15}
+                  />
                   <div className="active-status" />
                 </div>
                 {/* <p>Profile</p> */}

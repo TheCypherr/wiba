@@ -224,7 +224,7 @@ li.main-sub-menu-items:hover {
 }
 
 .profile:hover {
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 .profile p {
   font-size: 1.1rem;
