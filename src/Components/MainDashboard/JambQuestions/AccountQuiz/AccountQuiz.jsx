@@ -28,7 +28,7 @@ const AccountQuiz = () => {
   //   window.location.href = "/allquiz";
   // };
 
-  // useEffect to prevent scrolling when menubar is open
+  // useEffect to prevent scrolling when popup is shown
   useEffect(() => {
     if (showPopup) {
       document.body.style.overflow = "hidden";

@@ -35,7 +35,7 @@ function EmailAvatar({ email, size = 120, fontSize = 40 }) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        fontSize: `${fontSize}px`,
+        fontSize: `${fontSize}px`, // Dynamic font size
         fontWeight: "bold",
       }}
     >

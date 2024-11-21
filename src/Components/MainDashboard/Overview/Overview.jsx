@@ -21,6 +21,7 @@ import {
   serverTimestamp,
   getDocs,
   onSnapshot,
+  deleteDoc,
 } from "firebase/firestore";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../config/Firebase";
@@ -35,6 +36,8 @@ const Overview = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedFirestoreId, setSelectedFirestoreId] = useState(null);
   const [theme, setTheme] = useState({
     background: true,
     logoBg: true,
@@ -63,10 +66,16 @@ const Overview = () => {
       field: "action",
       headerName: "Action",
       width: 100,
-      renderCell: () => {
+      renderCell: (params) => {
+        const { firestoreId } = params.row; // Access firestoreId from the row data
         return (
           <div className="delete-score">
-            <button className="deleteButton">Delete</button>
+            <button
+              className="deleteButton"
+              onClick={() => handleQuizDeletePopup(firestoreId)}
+            >
+              Delete
+            </button>
           </div>
         );
       },
@@ -164,7 +173,7 @@ const Overview = () => {
     }
   }, [search]);
 
-  //
+  // Show quiz score in the overview section
   const [quizScores, setQuizScores] = useState([]);
   const [progress, setProgress] = useState(0);
 
@@ -179,7 +188,7 @@ const Overview = () => {
           id: index + 1, // Sequential ID for display
           firestoreId: doc.id, // Firestore document ID
           test: doc.data().testName,
-          score: doc.data().score,
+          score: doc.data().result,
         }));
 
         setQuizScores(data); // Update quiz scores
@@ -196,14 +205,61 @@ const Overview = () => {
 
   // Progress calculation
   const calculateProgress = (quizScores) => {
-    const totalScores = quizScores.reduce(
-      (acc, quiz) => acc + parseInt(quiz.score, 10),
-      0
-    );
-    const maxPossibleScore = quizScores.length * 100; // Assuming max score per quiz is 100
-    return quizScores.length > 0
-      ? (totalScores / maxPossibleScore) * 100 // Ensure percentage is calculated correctly
-      : 0;
+    if (quizScores.length === 0) return 0; // Avoid division by zero
+
+    // Sum up all individual quiz scores and total possible scores
+    let totalScore = 0;
+    let maxScore = 0;
+
+    quizScores.forEach((quiz) => {
+      const [score, total] = quiz.score.split("/").map(Number); // Parse "30 / 50"
+      totalScore += score || 0; // Add individual quiz score
+      maxScore += total || 0; // Add individual quiz's max score
+    });
+
+    // Calculate cumulative progress as a percentage
+    return Math.floor((totalScore / maxScore) * 100); // Round down to nearest integer
+  };
+
+  // useEffect to prevent scrolling when popup is shown
+  useEffect(() => {
+    if (showPopup) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [showPopup]);
+
+  // Function to show the popup for Delete quiz score from overview section
+  const handleQuizDeletePopup = (firestoreId) => {
+    setSelectedFirestoreId(firestoreId); // Save the ID of the quiz to delete
+    setShowPopup(true);
+    window.scrollTo(0, 0);
+  };
+
+  // Function to confirm deletion of the quiz score
+  const confirmDelete = async () => {
+    setShowPopup(false); // Hide popup
+
+    try {
+      // Reference to the specific quiz score document
+      const docRef = doc(
+        db,
+        "userScores",
+        user.uid,
+        "quizzes",
+        selectedFirestoreId
+      );
+      await deleteDoc(docRef); // Delete the document from Firestore
+    } catch (error) {
+      console.error("Error deleting score:", error);
+      alert("Failed to delete score. Please try again.");
+    }
+  };
+
+  // Function to cancel deletion
+  const cancelDelete = () => {
+    setShowPopup(false); // Close the popup
   };
 
   const menuItems = [
@@ -499,6 +555,13 @@ const Overview = () => {
                       color: theme ? "var(--text-color)" : "var(--bg-color)",
                     },
                   },
+                  "& .MuiDataGrid-sortIcon": {
+                    display: "none",
+                  },
+                  "& button.MuiButtonBase-root.MuiIconButton-root.MuiDataGrid-menuIconButton":
+                    {
+                      display: "none",
+                    },
                 }}
               />
             </div>
@@ -639,6 +702,20 @@ const Overview = () => {
           </div>
         )}
       </div>
+
+      {showPopup && <div className="popup-backdrop"></div>}
+      {showPopup && (
+        <div className="popup-container">
+          <div className="popup-texts">
+            <h3>Are you sure you want to delete this quiz score?</h3>
+            <p>This action cannot be undone!</p>
+          </div>
+          <div className="popup-btns">
+            <button onClick={confirmDelete}>Yes</button>
+            <button onClick={cancelDelete}>No</button>
+          </div>
+        </div>
+      )}
 
       {loading && (
         <div className="load-slide">

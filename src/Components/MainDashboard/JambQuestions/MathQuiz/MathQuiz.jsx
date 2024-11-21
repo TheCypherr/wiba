@@ -101,7 +101,6 @@ const MathQuiz = () => {
     setShuffledQuestions(selectedQuestions);
   }, []);
 
-
   // Function to save score to Firestore
   const saveScoreToFirestore = async () => {
     try {
@@ -116,6 +115,8 @@ const MathQuiz = () => {
         const data = {
           testName,
           score,
+          totalQuizQuestion: shuffledQuestions.length,
+          result: `${score} / ${shuffledQuestions.length}`,
           timeStamp: serverTimestamp(),
         };
 
@@ -325,8 +326,8 @@ const MathQuiz = () => {
           <div className="score-section">
             <h1>
               {score >= 15
-                ? `You scored ${score} / 30`
-                : `You scored ${score} / 30`}
+                ? `You scored ${score} / ${shuffledQuestions.length}`
+                : `You scored ${score} / ${shuffledQuestions.length}`}
             </h1>
             <div className="emoji">
               {score >= 15 ? (

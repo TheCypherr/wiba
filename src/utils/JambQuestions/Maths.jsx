@@ -1013,7 +1013,7 @@ export const JambMaths = [
     options: [
       "y = x² + 7x + 9",
       "y = x² + 7x - 18",
-      "y = x² + 7x + 9",
+      "y = x² + 10x + 9",
       "y = x² + 14x + 11",
     ],
     answer: "y = x² + 7x - 18",
@@ -1165,7 +1165,7 @@ export const JambMaths = [
       "(a - 2b)(c + a - 2b)",
       "(a - 2b)(-a - 2b)",
       "(a - 2b)(c + a - 2b)",
-      "(a - 2b)(c - a + 2b)",
+      "(a - 2b)(a + 2b)",
     ],
     answer: "(a - 2b)(c + a - 2b)",
   },

@@ -111,6 +111,8 @@ const Gst113Quiz = () => {
         const data = {
           testName,
           score,
+          totalQuizQuestion: shuffledQuestions.length,
+          result: `${score} / ${shuffledQuestions.length}`,
           timeStamp: serverTimestamp(),
         };
 
@@ -216,7 +218,7 @@ const Gst113Quiz = () => {
     const isCorrect = option === shuffledQuestions[currentQuestion].answer;
 
     if (isCorrect) {
-      setScore(score + 10); // Increment score by 10 for each correct answer
+      setScore(score + 1); // Increment score by 1 for each correct answer
     } else if (!isCorrect) {
       setShowCorrectAnswer(true);
     }
@@ -317,8 +319,8 @@ const Gst113Quiz = () => {
           <div className="score-section">
             <h1>
               {score >= 50
-                ? `You scored ${score} / 100`
-                : `You scored ${score} / 100`}
+                ? `You scored ${score} / ${shuffledQuestions.length}`
+                : `You scored ${score} / ${shuffledQuestions.length}`}
             </h1>
             <div className="emoji">
               {score >= 50 ? (
