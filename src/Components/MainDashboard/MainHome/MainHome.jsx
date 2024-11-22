@@ -8,7 +8,10 @@ const MainHome = () => {
     <section className="main-home-wrapper">
       <div className="inner-main-home-new">
         <div className="inner-home1">
-          <p>{user ? `Welcome ${user.displayName}!` : ""}</p>
+          <p>{user ? `Welcome ${user.displayName.split(" ")[0]}!` : ""}</p>
+          {/* <p>
+            {user ? `Welcome ${user.displayName.split(" ").slice(-1)[0]}!` : ""}
+          </p> */}
         </div>
         <div className="inner-home2">
           <div className="inner-home-img-container">
@@ -23,7 +26,10 @@ const MainHome = () => {
 
       <div className="inner-main-home">
         <div className="inner-home1">
-          <p>{user ? `Welcome ${user.displayName}!` : ""}</p>
+          <p>{user ? `Welcome ${user.displayName.split(" ")[0]}!` : ""}</p>
+          {/* <p>
+            {user ? `Welcome ${user.displayName.split(" ").slice(-1)[0]}!` : ""}
+          </p> */}
           <h1>Start your Comprehensive Learning Journey.</h1>
         </div>
         <div className="inner-home2">

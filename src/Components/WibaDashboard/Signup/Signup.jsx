@@ -68,6 +68,7 @@ const Signup = () => {
       setUser({
         displayName: username, // Set the display name (updated user info)
         email: user.email,
+        userId: user.uid,
       });
       console.log("profile updated with username", username);
 

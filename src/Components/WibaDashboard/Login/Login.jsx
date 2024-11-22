@@ -47,10 +47,13 @@ const Login = () => {
       );
       const user = userCredential.user;
 
+      console.log(user, "Logged in user");
+
       // Set user info and handle missing displayName
       setUser({
         displayName: user.displayName || "", // Default user as "User" if no username is set
         email: user.email,
+        userId: user.uid,
       });
       setLoading(false);
       setSuccess(true);
@@ -86,6 +89,7 @@ const Login = () => {
       setUser({
         displayName: user.displayName,
         email: user.email,
+        userId: user.uid,
       });
       setLoading(false);
       setSuccess(true);

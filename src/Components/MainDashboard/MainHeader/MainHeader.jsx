@@ -295,7 +295,12 @@ const MainHeader = () => {
                   <div className="active-status" />
                 </div>
                 <div className="user-profile-text">
-                  <span className="span11">{user ? user.displayName : ""}</span>
+                  <span className="span11">
+                    {user ? `${user.displayName.split(" ")[0]}` : ""}
+                  </span>
+                  {/* <span className="span11">
+                    {user ? `${user.displayName.split(" ").slice(-1)[0]}` : ""}
+                  </span> */}
                   <span className="span22">Student</span>
                 </div>
               </Link>

@@ -28,7 +28,6 @@ import { auth } from "../../../config/Firebase";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { DataGrid } from "@mui/x-data-grid";
-import { userRows, userColumns } from "../../../utils/scores";
 import { db } from "../../../config/Firebase";
 
 const Overview = () => {
@@ -178,18 +177,39 @@ const Overview = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    if (!user) {
+      console.error("No user is logged in!");
+      return;
+    }
+
+    if (!db) {
+      console.error("Firestore database is not initialized!");
+      return;
+    }
+
+    console.log(user, "No user");
+    console.log(user.uid, "No user");
+
     if (user) {
-      const userId = user.uid; // Logged-in user's ID
+      const userId = user.userId; // Logged-in user's ID
       const userQuizzesRef = collection(db, "userScores", userId, "quizzes");
 
       // Real-time listener for quiz scores
       const unsubscribe = onSnapshot(userQuizzesRef, (snapshot) => {
-        const data = snapshot.docs.map((doc, index) => ({
-          id: index + 1, // Sequential ID for display
-          firestoreId: doc.id, // Firestore document ID
-          test: doc.data().testName,
-          score: doc.data().result,
-        }));
+        const data = snapshot.docs.map((doc, index) => {
+          const docData = doc.data() || {}; // {} incase of undefined data
+          return {
+            id: index + 1, // Sequential ID for display
+            firestoreId: doc.id, // Firestore document ID
+            test: docData?.testName || "No Record",
+            score: docData?.result || "0 / 0",
+          };
+        });
+
+        console.log(
+          "Snapshot Docs:",
+          snapshot.docs.map((doc) => doc.data())
+        );
 
         setQuizScores(data); // Update quiz scores
         const progressPercentage = calculateProgress(data); // Recalculate progress
@@ -212,10 +232,15 @@ const Overview = () => {
     let maxScore = 0;
 
     quizScores.forEach((quiz) => {
-      const [score, total] = quiz.score.split("/").map(Number); // Parse "30 / 50"
-      totalScore += score || 0; // Add individual quiz score
-      maxScore += total || 0; // Add individual quiz's max score
+      if (typeof quiz.score === "string" && quiz.score.includes("/")) {
+        const [score, total] = quiz.score.split("/").map(Number); // Parse "30 / 50"
+        totalScore += score || 0; // Add individual quiz score
+        maxScore += total || 0; // Add individual quiz's max score
+      }
     });
+
+    // Avoid division by zero if maxScore is 0
+    if (maxScore === 0) return 0;
 
     // Calculate cumulative progress as a percentage
     return Math.floor((totalScore / maxScore) * 100); // Round down to nearest integer
