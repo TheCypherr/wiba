@@ -139,6 +139,7 @@ li.each-menu:hover {
 
 .form-input {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   margin: 1px 0;
@@ -199,8 +200,8 @@ li.each-menu:hover {
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 1rem;
-  background-color: #007bff;
-  color: white;
+  background-color: var(--logo-color);
+  color: var(--text-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -208,26 +209,6 @@ li.each-menu:hover {
 
 .save-all-button:hover {
   background-color: #0056b3;
-}
-
-label {
-  font-weight: 600;
-  color: var(--text-color);
-  padding-bottom: 5px;
-}
-
-.form-input input[type="text"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.form-input input[type="text"]:focus,
-.form-input input[type="password"]:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
 }
 
 /* Profile Icon */
@@ -245,16 +226,6 @@ label {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 25px;
-}
-
-.form-input {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-input label {
-  font-size: 14px;
-  color: var(--text-color);
 }
 
 button.profile-btn {
@@ -344,10 +315,6 @@ button.profile-btn {
     flex-wrap: wrap;
     grid-template-columns: 2fr;
     gap: 25px;
-  }
-
-  label {
-    padding-bottom: 5px;
   }
 
   .form-input {

@@ -203,7 +203,7 @@ li.main-sub-menu-items:hover {
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  border: 1px solid var(--text-color);
+  /* border: 1px solid var(--text-color); */
 }
 .user-profile-picture0 img {
   width: 100%;
@@ -648,7 +648,7 @@ button.main-btn2:hover {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 1px solid var(--text-color);
+    /* border: 1px solid var(--text-color); */
   }
   .user-profile-picture img {
     width: 100%;

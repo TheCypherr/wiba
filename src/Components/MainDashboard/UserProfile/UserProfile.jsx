@@ -17,6 +17,7 @@ import {
   addDoc,
   collection,
   doc,
+  getDoc,
   serverTimestamp,
   setDoc,
 } from "firebase/firestore";
@@ -66,16 +67,42 @@ const UserProfile = () => {
         timeStamp: serverTimestamp(),
       });
       console.log("User profile saved successfully!");
+      fetchUserProfile(); // Fetch updated data after saving
     } catch (err) {
       console.log(err, "error fetching data");
     }
   };
 
+  const fetchUserProfile = async () => {
+    if (!user) return;
+    try {
+      const docRef = doc(db, "User Profiles", user.userId);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const userData = docSnap.data();
+        setData(userData);
+      } else {
+        console.log("No user profile found");
+      }
+    } catch (error) {
+      console.error("Error fetching user profile:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (user && user.userId) {
+      fetchUserProfile(); // Fetch data on initial render
+    }
+  }, [user]);
+
   const toggleEdit = (id) => {
-    setIsEditing((prev) => ({
-      ...prev,
-      [id]: !prev[id], // Toggle the editing state
-    }));
+    if (!userProfileData.find((input) => input.id === id).readOnly) {
+      setIsEditing((prev) => ({
+        ...prev,
+        [id]: !prev[id], // Toggle the editing state
+      }));
+    }
   };
 
   const handlePageReload = () => {
@@ -369,7 +396,9 @@ const UserProfile = () => {
             <form className="form-container" onSubmit={handleAdd}>
               {userProfileData.map((input) => (
                 <div className="form-input" key={input.id}>
-                  <label style={{ fontSize: "1rem" }}>{input.label}:</label>
+                  <label style={{ fontSize: "1rem", color: "black" }}>
+                    {input.label}:
+                  </label>
                   {isEditing[input.id] ? (
                     <input
                       id={input.id}
