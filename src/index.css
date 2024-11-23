@@ -85,7 +85,7 @@ body {
 
 .load-bar {
   height: 100%;
-  background-color: #2b33ff;
+  background-color: var(--logo-color);
   width: 0%;
   animation: load-bar 2s ease-out forwards;
 }
