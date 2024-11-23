@@ -11,6 +11,7 @@ import {
   FaGraduationCap,
   FaHome,
   FaEdit,
+  FaCheck,
 } from "react-icons/fa";
 import { useFirebaseUser } from "../../../utils/FirebaseContext";
 import {
@@ -417,7 +418,9 @@ const UserProfile = () => {
                     </span>
                   )}
                   {isEditing[input.id] && (
-                    <button onClick={() => toggleEdit(input.id)}>Save</button>
+                    <button onClick={() => toggleEdit(input.id)}>
+                      <FaCheck size={10} />
+                    </button>
                   )}
                 </div>
               ))}
