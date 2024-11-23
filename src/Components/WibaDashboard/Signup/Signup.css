@@ -134,12 +134,11 @@ button.signup {
   top: 20%;
   left: 20%;
   transform: translateX(-50%);
-  background-color: var(--logo-color);
-  color: #fff;
+  background-color: var(--text-color);
+  color: var(--bg-color);
   padding: 15px;
   border-radius: 8px;
   font-size: 18px;
-  box-shadow: 0 2px 10pc rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }
 
