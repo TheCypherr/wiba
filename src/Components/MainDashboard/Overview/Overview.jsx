@@ -486,7 +486,7 @@ const Overview = () => {
               <div className="featured-chart">
                 <CircularProgressbar
                   value={progress}
-                  text={progress ? `${progress}%` : "...%"}
+                  text={progress ? `${progress}%` : "0%"}
                   styles={buildStyles({
                     pathColor: progress > 50 ? "green" : "red",
                     trailColor: "#eee",
