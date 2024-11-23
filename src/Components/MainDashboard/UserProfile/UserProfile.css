@@ -137,19 +137,78 @@ li.each-menu:hover {
   align-items: center;
 }
 
-/* .form-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
 .form-input {
   display: flex;
-  flex-direction: column;
-  color: var(--text-color);
-  gap: 8px;
-} */
+  align-items: center;
+  justify-content: space-between;
+  margin: 1px 0;
+  width: 80%;
+  padding: 10px 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Label styling */
+.form-input label {
+  font-weight: bold;
+  font-size: 1rem;
+  flex: 1;
+}
+
+/* Static text and editable input styling */
+.form-input span {
+  flex: 2;
+  font-size: 1rem;
+  color: #333;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-input input {
+  flex: 2;
+  padding: 5px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 90%;
+  margin-bottom: 7px;
+}
+
+/* Save button for individual fields */
+.form-input button {
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.form-input button:hover {
+  background-color: #45a049;
+}
+
+/* Save All button */
+.save-all-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-all-button:hover {
+  background-color: #0056b3;
+}
 
 label {
   font-weight: 600;
@@ -220,10 +279,6 @@ button.profile-btn {
     padding: 10px 10px 10px 10px;
   }
 
-  li.main-menu-items-wrapper-new:hover {
-    background-color: #2b32ff6f;
-  }
-
   .inner-profile1 {
     display: none;
   }
@@ -250,7 +305,7 @@ button.profile-btn {
   .bottom-profile {
     display: flex;
     flex-direction: column;
-    padding: 20px 20px;
+    padding: 5px 20px 20px 20px;
   }
 
   .hide1 {
@@ -293,5 +348,32 @@ button.profile-btn {
 
   label {
     padding-bottom: 5px;
+  }
+
+  .form-input {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 5px 10px;
+    max-width: 100%;
+    width: 90%;
+  }
+
+  .form-input input {
+    margin: 1px 0;
+    margin-bottom: 7px;
+  }
+
+  .form-input span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 80%;
+  }
+
+  .form-input button {
+    align-self: flex-end;
   }
 }

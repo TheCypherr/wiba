@@ -51,7 +51,7 @@ const Login = () => {
 
       // Set user info and handle missing displayName
       setUser({
-        displayName: user.displayName || "", // Default user as "User" if no username is set
+        displayName: user.displayName || "", // Default user as "" if no username is set
         email: user.email,
         userId: user.uid,
       });

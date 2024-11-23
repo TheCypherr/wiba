@@ -73,7 +73,7 @@ export const selectFaculty = [
   },
   {
     id: 3,
-    label: "Faculty of Social Science",
+    label: "Faculty of Social-Sci",
     content: [
       {
         id: 1,
@@ -99,7 +99,7 @@ export const selectFaculty = [
   },
   {
     id: 4,
-    label: "Faculty of Engineering",
+    label: "Faculty of Engr.",
     content: [
       {
         id: 1,
@@ -125,7 +125,7 @@ export const selectFaculty = [
   },
   {
     id: 5,
-    label: "Faculty of Agriculture",
+    label: "Faculty of Agric.",
     content: [
       {
         id: 1,

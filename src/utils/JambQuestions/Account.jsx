@@ -7,7 +7,7 @@ export const jambAccount = [
       "is a product of its own environment",
       "is an ideal subject for financial development",
     ],
-    answer: "is a product of its own environment.",
+    answer: "is a product of its own environment",
   },
   {
     question: "In a trial balance, income and liabilities are _____",
@@ -17,7 +17,7 @@ export const jambAccount = [
       "Credited and debited respectively",
       "Debited",
     ],
-    answer: "Credited.",
+    answer: "Credited",
   },
   {
     question: "The principle of double entry ensures _____",
@@ -27,7 +27,7 @@ export const jambAccount = [
       "increases in the assets and liabilities",
       "balance of cash account",
     ],
-    answer: "mathematical accuracy in trial balance.",
+    answer: "mathematical accuracy in trial balance",
   },
   {
     question:
@@ -38,13 +38,13 @@ export const jambAccount = [
       "II, III and I",
       "I, II and III",
     ],
-    answer: "I, II and III.",
+    answer: "I, II and III",
   },
   {
     question:
-      "Given: ₦ Light expenses 400 Purchases 3000 Sales 1200 Debtors 50 Calculate the total of the trial balance.",
+      "Given: ₦ Light expenses 400 Purchases 3000 Sales 1200 Debtors 50 Calculate the total of the trial balance",
     options: ["₦4,250", "₦3,500", "₦4,300", "₦3,450"],
-    answer: "₦3,450.",
+    answer: "₦3,450",
   },
   {
     question: "The major feature of a journal is that it has _____",
@@ -54,7 +54,7 @@ export const jambAccount = [
       "three columns, date, particulars, folio and amount",
       "four columns, date, particulars, folio and amount",
     ],
-    answer: "five columns, date, particulars, folio, debit and credit.",
+    answer: "five columns, date, particulars, folio, debit and credit",
   },
   {
     question:
@@ -65,7 +65,7 @@ export const jambAccount = [
       "suspense account",
       "ledger account",
     ],
-    answer: "suspense account.",
+    answer: "suspense account",
   },
   {
     question:
@@ -76,13 +76,13 @@ export const jambAccount = [
       "cash book, bank statement and other incidental records",
       "cash book only",
     ],
-    answer: "cash book and bank statement.",
+    answer: "cash book and bank statement",
   },
   {
     question:
       "The process of reconciling cheques between banks is termed cheque _____",
     options: ["clearing", "truncation", "holding", "confirmation"],
-    answer: "clearing.",
+    answer: "clearing",
   },
   {
     question:
@@ -93,7 +93,7 @@ export const jambAccount = [
       "aggregate balance as per cashbook",
       "bank balance as per cashbook",
     ],
-    answer: "bank balance as per cashbook.",
+    answer: "bank balance as per cashbook",
   },
   {
     question:
@@ -102,25 +102,25 @@ export const jambAccount = [
       "repairs on building",
       "interest paid on loan",
       "discount allowed",
-      "tax expense.",
+      "tax expense",
     ],
-    answer: "repairs on building.",
+    answer: "repairs on building",
   },
   {
     question:
       "In a period of declining price, which of the following methods would result in higher profit?",
-    options: ["FIFO.", "Simple average.", "LIFO.", "Weighted average."],
-    answer: "FIFO.",
+    options: ["FIFO", "Simple average", "LIFO", "Weighted average"],
+    answer: "FIFO",
   },
   {
     question: "The item on the credit side of the trading account is the _____",
     options: ["returns outwards", "carriage on sales", "sales", "purchases"],
-    answer: "sales.",
+    answer: "sales",
   },
   {
     question: "A typical example of a real account is _____",
-    options: ["prepayment", "expenses", "plant", "income."],
-    answer: "plant.",
+    options: ["prepayment", "expenses", "plant", "income"],
+    answer: "plant",
   },
   {
     question: "The control account can be used in _____",
@@ -130,7 +130,7 @@ export const jambAccount = [
       "monitoring the books of original entry",
       "monitoring the efficiency of bookkeeping by accountants",
     ],
-    answer: "monitoring the efficiency of bookkeeping by accountants.",
+    answer: "monitoring the efficiency of bookkeeping by accountants",
   },
   {
     question:
@@ -139,15 +139,15 @@ export const jambAccount = [
       "partly manufactured goods",
       "overhead cost",
       "total factory expenses",
-      "prime cost.",
+      "prime cost",
     ],
-    answer: "prime cost.",
+    answer: "prime cost",
   },
   {
     question:
       "The production cost that does not form part of the product but is incidental to production and facilitates the production activities is the _____",
-    options: ["prime cost", "indirect cost", "total cost", "direct cost."],
-    answer: "indirect cost.",
+    options: ["prime cost", "indirect cost", "total cost", "direct cost"],
+    answer: "indirect cost",
   },
   {
     question: "Work-in-progress is the _____",
@@ -155,9 +155,9 @@ export const jambAccount = [
       "value of partly finished goods",
       "value of finished goods on hand",
       "sales less cost of goods sold",
-      "value of goods produced.",
+      "value of goods produced",
     ],
-    answer: "value of partly finished goods.",
+    answer: "value of partly finished goods",
   },
   {
     question:
@@ -168,13 +168,13 @@ export const jambAccount = [
       "to engage in trading activities to sponsor its activities",
       "in order to compute the receipts and payments account",
     ],
-    answer: "mainly to improve the welfare of her members.",
+    answer: "mainly to improve the welfare of her members",
   },
   {
     question:
       "The subscription paid in advance is treated in the balance sheet of a club as _____?",
     options: ["a surplus", "a liability", "a deficit", "an asset"],
-    answer: "a liability.",
+    answer: "a liability",
   },
   {
     question:
@@ -185,7 +185,7 @@ export const jambAccount = [
       "accumulated fund",
       "capital employed",
     ],
-    answer: "accumulated fund.",
+    answer: "accumulated fund",
   },
   {
     question:
@@ -196,7 +196,7 @@ export const jambAccount = [
       "insurance premium payable on employees",
       "number of employees in each department",
     ],
-    answer: "contribution of each department to profit.",
+    answer: "contribution of each department to profit",
   },
   {
     question:
@@ -207,7 +207,7 @@ export const jambAccount = [
       "capital account",
       "realization account",
     ],
-    answer: "realization account.",
+    answer: "realization account",
   },
   {
     question: "The cost method of charging goods to branch is used where _____",
@@ -217,7 +217,7 @@ export const jambAccount = [
       "goods are sent without invoice or any documents",
       "goods are of a perishable nature on which a pre-determined price is inapplicable",
     ],
-    answer: "goods are sent without invoice or any documents.",
+    answer: "goods are sent without invoice or any documents",
   },
   {
     question:
@@ -228,7 +228,7 @@ export const jambAccount = [
       "branch stock account and credit purchases account",
       "goods sent to branch account and credit branch stock account",
     ],
-    answer: "goods sent to branch account and credit branch stock account.",
+    answer: "goods sent to branch account and credit branch stock account",
   },
   {
     question:
@@ -239,7 +239,7 @@ export const jambAccount = [
       "goods sent to branch account and branch receipt account",
       "goods sent to branch account and branch supplies",
     ],
-    answer: "branch stock account and goods sent to branch accounts.",
+    answer: "branch stock account and goods sent to branch accounts",
   },
   {
     question:
@@ -250,19 +250,19 @@ export const jambAccount = [
       "cash flow statement",
       "all of the above",
     ],
-    answer: "all of the above.",
+    answer: "all of the above",
   },
   {
     question:
       "The accounting records of a business are generally prepared in accordance with _____",
     options: ["fiscal year", "calendar year", "financial year", "trading year"],
-    answer: "financial year.",
+    answer: "financial year",
   },
   {
     question:
       "The value of total income minus the total expenses will give you _____",
     options: ["net income", "gross profit", "net profit", "capital"],
-    answer: "net income.",
+    answer: "net income",
   },
   {
     question:
@@ -273,7 +273,7 @@ export const jambAccount = [
       "personal account",
       "transitory account",
     ],
-    answer: "nominal account.",
+    answer: "nominal account",
   },
   {
     question:
@@ -284,7 +284,7 @@ export const jambAccount = [
       "periodicity concept",
       "materiality concept",
     ],
-    answer: "historical concept.",
+    answer: "historical concept",
   },
   {
     question:
@@ -295,7 +295,7 @@ export const jambAccount = [
       "the casting of financial figures",
       "effective preparation of balance sheet",
     ],
-    answer: "the application of professional competency.",
+    answer: "the application of professional competency",
   },
   {
     question:
@@ -306,7 +306,7 @@ export const jambAccount = [
       "assets and credit capital",
       "capital and credit assets",
     ],
-    answer: "assets and credit capital.",
+    answer: "assets and credit capital",
   },
   {
     question: "The capital of a sole trader can be increased by _____",
@@ -316,7 +316,7 @@ export const jambAccount = [
       "debiting the cash account",
       "crediting the cash account",
     ],
-    answer: "crediting the capital account.",
+    answer: "crediting the capital account",
   },
   {
     question:
@@ -327,7 +327,7 @@ export const jambAccount = [
       "motor van and credit cash",
       "cash and credit motor van",
     ],
-    answer: "motor van and credit cash.",
+    answer: "motor van and credit cash",
   },
   {
     question:
@@ -338,12 +338,12 @@ export const jambAccount = [
       "cash column (debit)",
       "cash column (credit)",
     ],
-    answer: "bank column (credit).",
+    answer: "bank column (credit)",
   },
   {
     question: "Cash can be drawn from the bank using _____",
     options: ["a bank teller", "a credit card", "a recharge card", "ATM card"],
-    answer: "ATM card.",
+    answer: "ATM card",
   },
   {
     question:
@@ -354,24 +354,24 @@ export const jambAccount = [
       "does not reside in the bank's country",
       "does not possess the domestic currency",
     ],
-    answer: "has no sufficient cash with the bank.",
+    answer: "has no sufficient cash with the bank",
   },
   {
     question:
-      "‘At the end of a financial period, the trading profit and loss account of a sole trader shows a profit of ₦180,000. It is, however discovered that revenue of ₦15,000 is recorded as expenses while expenses of ₦4,000 is recorded as revenue.’ Determine the adjusted net profit.",
+      "‘At the end of a financial period, the trading profit and loss account of a sole trader shows a profit of ₦180,000. It is, however discovered that revenue of ₦15,000 is recorded as expenses while expenses of ₦4,000 is recorded as revenue.’ Determine the adjusted net profit",
     options: ["₦210,000", "₦202,000", "₦195,000", "₦184,000"],
-    answer: "₦195,000.",
+    answer: "₦195,000",
   },
   {
     question:
       "‘At the end of a financial period, the trading profit and loss account of a sole trader shows a profit of ₦180,000. It is, however discovered that revenue of ₦15,000 is recorded as expenses while expenses of ₦4,000 is recorded as revenue.’ The revenue to be added as an adjustment is _____",
     options: ["₦34,000", "₦30,000", "₦15,000", "₦4,000"],
-    answer: "₦15,000.",
+    answer: "₦15,000",
   },
   {
     question: "Which of the following is an item of special assets?",
     options: ["Fixed assets", "Current assets", "Trademark", "Gratuity"],
-    answer: "Trademark.",
+    answer: "Trademark",
   },
   {
     question:
@@ -382,7 +382,7 @@ export const jambAccount = [
       "average rates",
       "flat rates",
     ],
-    answer: "current prices.",
+    answer: "current prices",
   },
   {
     question:
@@ -393,7 +393,7 @@ export const jambAccount = [
       "debited and cash credited",
       "credited and bank credited",
     ],
-    answer: "debited and debtors credited.",
+    answer: "debited and debtors credited",
   },
   {
     question:
@@ -404,7 +404,7 @@ export const jambAccount = [
       "creditors ledger",
       "debtors ledger",
     ],
-    answer: "creditors ledger.",
+    answer: "creditors ledger",
   },
   {
     question:
@@ -415,7 +415,7 @@ export const jambAccount = [
       "Discount allowed",
       "Bills receivable",
     ],
-    answer: "Dishonoured cheques.",
+    answer: "Dishonoured cheques",
   },
   {
     question:
@@ -426,7 +426,7 @@ export const jambAccount = [
       "profit and loss account",
       "balance sheet",
     ],
-    answer: "profit and loss account.",
+    answer: "profit and loss account",
   },
   {
     question: "The excess revenue over expenditure is charged to _____",
@@ -436,7 +436,7 @@ export const jambAccount = [
       "accumulated fund",
       "income and expenditure account",
     ],
-    answer: "income and expenditure account.",
+    answer: "income and expenditure account",
   },
   {
     question:
@@ -447,7 +447,7 @@ export const jambAccount = [
       "credited to the head office current account",
       "credited to the branch current account",
     ],
-    answer: "debited to the branch current account.",
+    answer: "debited to the branch current account",
   },
   {
     question:
@@ -458,19 +458,19 @@ export const jambAccount = [
       "selling price",
       "invoice price",
     ],
-    answer: "selling price.",
+    answer: "selling price",
   },
   {
     question:
-      "‘The partners capital are: Modibbo ₦60,000 and Jakata ₦90,000. The partners share profit and losses in the ratio of their capital contributions. The net profit for the year is ₦12,000.’ Find Modibbo's share of the profit.",
+      "‘The partners capital are: Modibbo ₦60,000 and Jakata ₦90,000. The partners share profit and losses in the ratio of their capital contributions. The net profit for the year is ₦12,000.’ Find Modibbo's share of the profit",
     options: ["₦62,000", "₦48,000", "₦44,000", "₦43,000"],
-    answer: "₦48,000.",
+    answer: "₦48,000",
   },
   {
     question:
       "‘The partners capital are: Modibbo ₦60,000 and Jakata ₦90,000. The partners share profit and losses in the ratio of their capital contributions. The net profit for the year is ₦12,000.’ What is Jakata's profit sharing profit?",
     options: ["3:5", "1:2", "2:5", "1:5"],
-    answer: "2:5.",
+    answer: "2:5",
   },
   {
     question:
@@ -481,11 +481,11 @@ export const jambAccount = [
       "By sharing it unequally among the partners where no agreement exists",
       "By sharing it among the active partners only",
     ],
-    answer: "Using the partners' profit and loss sharing ratio.",
+    answer: "Using the partners' profit and loss sharing ratio",
   },
   {
     question:
-      "Ngozi and Musa with a capital of ₦30,000 each decide to admit Mary into the partnership business with a capital of ₦20,000 and goodwill ₦15,000. If the profits and losses are to be shared equally, the journal entries to record goodwill are _____.",
+      "Ngozi and Musa with a capital of ₦30,000 each decide to admit Mary into the partnership business with a capital of ₦20,000 and goodwill ₦15,000. If the profits and losses are to be shared equally, the journal entries to record goodwill are _____",
     options: [
       "debit goodwill ₦15,000, cash ₦20,000 and credit Mary's capital ₦35,000",
       "credit goodwill ₦15,000, cash ₦20,000 and debit Mary's ₦35,000",
@@ -493,7 +493,7 @@ export const jambAccount = [
       "debit old partners’ capital ₦15,000, credit cash ₦20,000 and Mary's capital ₦35,000",
     ],
     answer:
-      "debit goodwill ₦15,000, cash ₦20,000 and credit Mary's capital ₦35,000.",
+      "debit goodwill ₦15,000, cash ₦20,000 and credit Mary's capital ₦35,000",
   },
   {
     question:
@@ -504,7 +504,7 @@ export const jambAccount = [
       "partners’ current account and ordinary shares account",
       "profit and loss account and income statement",
     ],
-    answer: "partners’ current account and ordinary shares account.",
+    answer: "partners’ current account and ordinary shares account",
   },
   {
     question: "The primary responsibility of an accountant is to _____",
@@ -514,7 +514,7 @@ export const jambAccount = [
       "manage financial risks",
       "analyze economic trends",
     ],
-    answer: "record business transactions accurately.",
+    answer: "record business transactions accurately",
   },
   {
     question: "In accounting, the matching principle requires that _____",
@@ -524,7 +524,7 @@ export const jambAccount = [
       "assets be recorded at market value",
       "liabilities be reported at face value",
     ],
-    answer: "expenses be matched with revenues.",
+    answer: "expenses be matched with revenues",
   },
   {
     question:
@@ -535,7 +535,7 @@ export const jambAccount = [
       "Accrual basis",
       "Historical cost concept",
     ],
-    answer: "Entity concept.",
+    answer: "Entity concept",
   },
   {
     question: "What is the main purpose of an audit?",
@@ -545,7 +545,7 @@ export const jambAccount = [
       "To verify the accuracy of financial records",
       "To assess the efficiency of management",
     ],
-    answer: "To verify the accuracy of financial records.",
+    answer: "To verify the accuracy of financial records",
   },
   {
     question: "Accounting information seeks to provide _____",
@@ -675,19 +675,19 @@ export const jambAccount = [
   },
   {
     question:
-      "‘Sales - ₦232,000 Opening stock - ₦28,000 Purchases - ₦128,000 Carriage inwards - ₦4,000 Carriage outwards - ₦6,000 Closing stock - ₦10,000 Discount received - ₦18,000 Expenses - ₦20,000’ Calculate the gross profit.",
+      "‘Sales - ₦232,000 Opening stock - ₦28,000 Purchases - ₦128,000 Carriage inwards - ₦4,000 Carriage outwards - ₦6,000 Closing stock - ₦10,000 Discount received - ₦18,000 Expenses - ₦20,000’ Calculate the gross profit",
     options: ["₦100,000", "₦86,000", "₦82,000", "₦76,000"],
     answer: "₦86,000",
   },
   {
     question:
-      "‘Sales - ₦232,000 Opening stock - ₦28,000 Purchases - ₦128,000 Carriage inwards - ₦4,000 Carriage outwards - ₦6,000 Closing stock - ₦10,000 Discount received - ₦18,000 Expenses - ₦20,000’ Calculate the expenses debited to the profit and loss account.",
+      "‘Sales - ₦232,000 Opening stock - ₦28,000 Purchases - ₦128,000 Carriage inwards - ₦4,000 Carriage outwards - ₦6,000 Closing stock - ₦10,000 Discount received - ₦18,000 Expenses - ₦20,000’ Calculate the expenses debited to the profit and loss account",
     options: ["₦17,000", "₦23,000", "₦26,000", "₦30,000"],
     answer: "₦30,000",
   },
   {
     question:
-      "Given: Opening capital - ₦1,500 Capital introduced - ₦500 Profit for the year - ₦800 Cash drawings - ₦250. Calculate the closing capital.",
+      "Given: Opening capital - ₦1,500 Capital introduced - ₦500 Profit for the year - ₦800 Cash drawings - ₦250. Calculate the closing capital",
     options: ["₦2,550", "₦2,500", "₦2,350", "₦2,250"],
     answer: "₦2,500",
   },
@@ -710,7 +710,7 @@ export const jambAccount = [
   },
   {
     question:
-      "Given: Opening capital ₦50,000 Closing capital ₦64,000 Drawings ₦16,000 Determine the net profit.",
+      "Given: Opening capital ₦50,000 Closing capital ₦64,000 Drawings ₦16,000 Determine the net profit",
     options: ["₦2,000", "₦14,000", "₦20,000", "₦30,000"],
     answer: "₦30,000",
   },
@@ -1282,7 +1282,7 @@ export const jambAccount = [
   },
   {
     question:
-      "'On January 1, 2005, a machine was bought for ₦56,000 to last for 5 years with a residual value of ₦1,000.' Calculate the yearly depreciation expenses using the straight-line method.",
+      "'On January 1, 2005, a machine was bought for ₦56,000 to last for 5 years with a residual value of ₦1,000.' Calculate the yearly depreciation expenses using the straight-line method",
     options: ["₦11,200", "₦11,000", "₦11,300", "₦11,400"],
     answer: "₦11,000",
   },
@@ -1307,12 +1307,12 @@ export const jambAccount = [
     question:
       "Goods worth ₦50,000 were sent at different times from head office to the branch during the year. By the end of the period, only ₦40,000 worth of goods had arrived at the branch. Which of the following is correct about the treatment of this transaction?",
     options: [
-      "Branch should debit goods received from head office with ₦50,000.",
-      "Head office should debit goods sent to branch account with ₦10,000.",
-      "Head office should debit goods sent to branch account with ₦50,000.",
-      "Branch should debit goods received from head office with ₦10,000.",
+      "Branch should debit goods received from head office with ₦50,000",
+      "Head office should debit goods sent to branch account with ₦10,000",
+      "Head office should debit goods sent to branch account with ₦50,000",
+      "Branch should debit goods received from head office with ₦10,000",
     ],
-    answer: "Branch should debit goods received from head office with ₦40,000.",
+    answer: "Branch should debit goods received from head office with ₦40,000",
   },
   {
     question:
@@ -1382,12 +1382,12 @@ export const jambAccount = [
     question:
       "What is the accounting treatment for expenses incurred before the period begins but recorded in that period?",
     options: [
-      "They are not recognized until the following year.",
-      "They are recognized in that year.",
-      "They are treated as prepayments.",
-      "They are treated as accruals.",
+      "They are not recognized until the following year",
+      "They are recognized in that year",
+      "They are treated as prepayments",
+      "They are treated as accruals",
     ],
-    answer: "They are treated as accruals.",
+    answer: "They are treated as accruals",
   },
   {
     question:

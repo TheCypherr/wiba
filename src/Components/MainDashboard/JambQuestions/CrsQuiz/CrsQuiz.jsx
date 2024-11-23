@@ -4,8 +4,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { JambCrs as allQuestions } from "../../../../utils/JambQuestions/CRS";
 import { FaChevronLeft, FaClock } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  addDoc,
+  serverTimestamp,
+  collection,
+} from "firebase/firestore";
+import { db } from "../../../../config/Firebase";
+import { auth } from "../../../../config/Firebase";
+import { useFirebaseUser } from "../../../../utils/FirebaseContext";
 
 const CrsQuiz = () => {
+  const { user } = useFirebaseUser();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
@@ -22,11 +34,17 @@ const CrsQuiz = () => {
   const navigate = useNavigate();
   let askedQuestions = []; // Array to track already asked questions
 
-  // Function to handle page reload
-  // const handlePageReload = () => {
-  //   window.scrollTo(0, 0);
-  //   window.location.href = "/allquiz";
-  // };
+  const testName = "JAMB C.R.S";
+
+  const handlePageLoading = (targetPage) => {
+    setLoading(true); // start the loading
+
+    // simulate the loading time
+    setTimeout(() => {
+      setLoading(false); // stop loading after timeout
+      navigate(targetPage); // navigate to target page
+    }, 2000); // come back to adjust timer oooo
+  };
 
   // useEffect to prevent scrolling when menubar is open
   useEffect(() => {
@@ -85,6 +103,46 @@ const CrsQuiz = () => {
     const selectedQuestions = shuffleQuestions(allQuestions, 30);
     setShuffledQuestions(selectedQuestions);
   }, []);
+
+  // Function to save score to Firestore database
+  const saveScoreToFirestore = async () => {
+    try {
+      if (user) {
+        const userId = user.userId; // Logged-in user's ID
+        const userQuizzesRef = collection(db, "userScores", userId, "quizzes"); // Reference to the user's quizzes subcollection
+
+        // const userScoreRef = doc(db, "userScores", userId);
+        // Path to Firestore document
+
+        // Data to save
+        const data = {
+          testName,
+          score,
+          totalQuizQuestion: shuffledQuestions.length,
+          result: `${score} / ${shuffledQuestions.length}`,
+          timeStamp: serverTimestamp(),
+        };
+
+        // Save data to Firestore
+        await addDoc(userQuizzesRef, data); // Add a new quiz document to the subcollection
+
+        // await setDoc(userScoreRef, data, { merge: true });
+        // Use merge to avoid overwriting other fields
+
+        console.log("Score saved successfully!");
+      } else {
+        console.error("No user is logged in!");
+      }
+    } catch (error) {
+      console.error("Error saving score to Firestore:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (showScore) {
+      saveScoreToFirestore(); // Automatically save score when `showScore` is true
+    }
+  }, [showScore]);
 
   // Function to retake quiz
   const handleRetakeQuiz = () => {
@@ -260,8 +318,8 @@ const CrsQuiz = () => {
           <div className="score-section">
             <h1>
               {score >= 15
-                ? `You scored ${score} / 30`
-                : `You scored ${score} / 30`}
+                ? `You scored ${score} / ${shuffledQuestions.length}`
+                : `You scored ${score} / ${shuffledQuestions.length}`}
             </h1>
             <div className="emoji">
               {score >= 15 ? (
@@ -278,6 +336,11 @@ const CrsQuiz = () => {
             <div className="save">
               <button>
                 <p>Save Score</p>
+              </button>
+            </div>
+            <div className="save">
+              <button onClick={() => handlePageLoading("/overview")}>
+                <p>Test Overview</p>
               </button>
             </div>
           </div>

@@ -72,7 +72,7 @@ const JambAllquiz = () => {
           <p>Select Department: </p>
           <select onChange={handleQuizChange}>
             {selectDepartment.map((item) => (
-              <option key={item.id} value={item.id}>
+              <option key={item.id} value={item.id} className="option">
                 {item.label}
               </option>
             ))}

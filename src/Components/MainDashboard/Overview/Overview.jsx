@@ -22,8 +22,9 @@ import {
   getDocs,
   onSnapshot,
   deleteDoc,
+  getFirestore,
 } from "firebase/firestore";
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../../config/Firebase";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -31,7 +32,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { db } from "../../../config/Firebase";
 
 const Overview = () => {
-  const { user } = useFirebaseUser();
+  const { user, setUser } = useFirebaseUser();
   const [activeMenu, setActiveMenu] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -176,9 +177,20 @@ const Overview = () => {
   const [quizScores, setQuizScores] = useState([]);
   const [progress, setProgress] = useState(0);
 
+  // useEffect(() => {
+  //   const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       setUser(user); // Ensure user data is available after refresh
+  //     } else {
+  //       setUser(null); // Clear user state if no user is logged in
+  //     }
+  //   });
+  //   return () => unsubscribeAuth();
+  // }, []);
+
   useEffect(() => {
-    if (!user) {
-      console.error("No user is logged in!");
+    if (!user || !user.userId) {
+      console.error("No logged in userId Available");
       return;
     }
 
@@ -187,11 +199,16 @@ const Overview = () => {
       return;
     }
 
-    console.log(user, "No user");
-    console.log(user.uid, "No user");
+    console.log(user, "Logged in user");
+    console.log(user.userId, "Current user ID");
+    console.log(
+      db,
+      user.userId,
+      "Both db and userId are currently initialized"
+    );
 
     if (user) {
-      const userId = user.userId; // Logged-in user's ID
+      const userId = user.userId || ""; // Logged-in user's ID from firebaseContext
       const userQuizzesRef = collection(db, "userScores", userId, "quizzes");
 
       // Real-time listener for quiz scores
@@ -246,6 +263,10 @@ const Overview = () => {
     return Math.floor((totalScore / maxScore) * 100); // Round down to nearest integer
   };
 
+  // if (!user) {
+  //   return <div>Loading...</div>; // Or any fallback loading UI
+  // }
+
   // useEffect to prevent scrolling when popup is shown
   useEffect(() => {
     if (showPopup) {
@@ -271,7 +292,7 @@ const Overview = () => {
       const docRef = doc(
         db,
         "userScores",
-        user.uid,
+        user.userId,
         "quizzes",
         selectedFirestoreId
       );

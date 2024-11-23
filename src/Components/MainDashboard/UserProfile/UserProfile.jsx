@@ -10,6 +10,7 @@ import {
   FaSearch,
   FaGraduationCap,
   FaHome,
+  FaEdit,
 } from "react-icons/fa";
 import { useFirebaseUser } from "../../../utils/FirebaseContext";
 import {
@@ -36,6 +37,7 @@ const UserProfile = () => {
     textColor: false,
     logoTextColor: true,
   });
+  const [isEditing, setIsEditing] = useState({});
   const [data, setData] = useState({});
 
   const handleInput = (e) => {
@@ -44,25 +46,22 @@ const UserProfile = () => {
 
     setData({ ...data, [id]: value });
   };
-  console.log(data);
 
   const handleAdd = async (e) => {
     e.preventDefault();
 
-    // Create a new object that combines existing data with label2 values
     const dataWithLabels = { ...data };
 
     userProfileData.forEach((input) => {
-      // Only add label2 value for fields where label2 exists
       if (input.label2 !== undefined) {
-        dataWithLabels[input.id] = input.label2; // directly assign label2 value
+        dataWithLabels[input.id] = input.label2;
       } else {
-        dataWithLabels[input.id] = data[input.id] || ""; // Keep the original data for fields without label2
+        dataWithLabels[input.id] = data[input.id] || "";
       }
     });
 
     try {
-      await setDoc(doc(db, "User Profiles", user.uid), {
+      await setDoc(doc(db, "User Profiles", user.userId), {
         ...dataWithLabels,
         timeStamp: serverTimestamp(),
       });
@@ -70,6 +69,13 @@ const UserProfile = () => {
     } catch (err) {
       console.log(err, "error fetching data");
     }
+  };
+
+  const toggleEdit = (id) => {
+    setIsEditing((prev) => ({
+      ...prev,
+      [id]: !prev[id], // Toggle the editing state
+    }));
   };
 
   const handlePageReload = () => {
@@ -206,7 +212,8 @@ const UserProfile = () => {
     {
       id: "username",
       label: "Username",
-      label2: user ? user.displayName : "",
+      label2: user ? `${user.displayName.split(" ")[0]}` : "",
+      readOnly: true,
     },
     {
       id: "fullName",
@@ -218,6 +225,7 @@ const UserProfile = () => {
       id: "email",
       label: "Email",
       label2: user ? user.email : "",
+      readOnly: true,
     },
     {
       id: "phone",
@@ -229,6 +237,7 @@ const UserProfile = () => {
       id: "country",
       label: "Country",
       label2: "Nigeria",
+      readOnly: true,
     },
   ];
 
@@ -355,45 +364,31 @@ const UserProfile = () => {
                 fontSize={40}
               />
             </div>
-
-            <div className="hide1">
-              <label htmlFor="file" style={{ fontSize: "1rem" }}>
-                Image: <FaCloudUploadAlt className="profile-icon" />
-              </label>
-              <input
-                id="file"
-                type="file"
-                onChange={(e) => setFile(e.target.files[0])}
-                style={{ display: "none" }}
-              />
-            </div>
           </div>
           <div className="right-profile">
             <form className="form-container" onSubmit={handleAdd}>
-              <div className="form-input hide2">
-                <label htmlFor="file" style={{ fontSize: "1rem" }}>
-                  Image: <FaCloudUploadAlt className="profile-icon" />
-                </label>
-                <input
-                  id="file"
-                  type="file"
-                  onChange={(e) => setFile(e.target.files[0])}
-                  //   style={{ display: "none" }}
-                />
-              </div>
-
               {userProfileData.map((input) => (
                 <div className="form-input" key={input.id}>
-                  <label style={{ fontSize: "1rem" }}>
-                    {input.label}: {input.label2}
-                  </label>
-                  {input.type && (
+                  <label style={{ fontSize: "1rem" }}>{input.label}:</label>
+                  {isEditing[input.id] ? (
                     <input
                       id={input.id}
-                      type={input.type}
-                      placeholder={input.placeholder}
-                      onChange={handleInput}
+                      type={input.type || "text"}
+                      placeholder={input.placeholder || ""}
+                      value={data[input.id] || input.label2 || ""}
+                      onChange={handleInput} // Uses your existing handleInput
                     />
+                  ) : (
+                    <span
+                      style={{ cursor: "pointer" }}
+                      onClick={() => !input.readOnly && toggleEdit(input.id)} // Enter edit mode on click
+                    >
+                      {data[input.id] || input.label2 || "Not provided"}{" "}
+                      {!input.readOnly && <FaEdit />}
+                    </span>
+                  )}
+                  {isEditing[input.id] && (
+                    <button onClick={() => toggleEdit(input.id)}>Save</button>
                   )}
                 </div>
               ))}

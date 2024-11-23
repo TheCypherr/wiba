@@ -37,11 +37,15 @@ const MathQuiz = () => {
 
   const testName = "JAMB Mathematics";
 
-  // Function to handle page reload
-  // const handlePageReload = () => {
-  //   window.scrollTo(0, 0);
-  //   window.location.href = "/allquiz";
-  // };
+  const handlePageLoading = (targetPage) => {
+    setLoading(true); // start the loading
+
+    // simulate the loading time
+    setTimeout(() => {
+      setLoading(false); // stop loading after timeout
+      navigate(targetPage); // navigate to target page
+    }, 2000); // come back to adjust timer oooo
+  };
 
   // useEffect to prevent scrolling when menubar is open
   useEffect(() => {
@@ -101,11 +105,11 @@ const MathQuiz = () => {
     setShuffledQuestions(selectedQuestions);
   }, []);
 
-  // Function to save score to Firestore
+  // Function to save score to Firestore database
   const saveScoreToFirestore = async () => {
     try {
       if (user) {
-        const userId = user.uid; // Logged-in user's ID
+        const userId = user.userId; // Logged-in user's ID
         const userQuizzesRef = collection(db, "userScores", userId, "quizzes"); // Reference to the user's quizzes subcollection
 
         // const userScoreRef = doc(db, "userScores", userId);
@@ -125,6 +129,8 @@ const MathQuiz = () => {
 
         // await setDoc(userScoreRef, data, { merge: true });
         // Use merge to avoid overwriting other fields
+
+        console.log(userId, "Current user Id");
 
         console.log("Score saved successfully!");
       } else {
@@ -342,8 +348,8 @@ const MathQuiz = () => {
               </button>
             </div>
             <div className="save">
-              <button>
-                <p>Save Score</p>
+              <button onClick={() => handlePageLoading("/overview")}>
+                <p>Test Overview</p>
               </button>
             </div>
           </div>
