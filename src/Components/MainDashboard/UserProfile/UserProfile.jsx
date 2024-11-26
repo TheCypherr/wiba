@@ -220,6 +220,9 @@ const UserProfile = () => {
     }
 
     const reference = "WibA" + Math.floor(Math.random() * 1000000000 + 1);
+    const apiKey = import.meta.env.VITE_MONNIFY_API_KEY;
+    const contractCode = import.meta.env.VITE_MONNIFY_CONTRACT_CODE;
+    const isTestMode = process.env.NODE_ENV !== "production"; // Use true for non-production
 
     window.MonnifySDK.initialize({
       amount: 1550,
@@ -228,10 +231,11 @@ const UserProfile = () => {
       customerFullName: userPaymentData.customerFullName,
       customerEmail: userPaymentData.customerEmail,
       customerPhone: userPaymentData.customerPhone,
-      apiKey: import.meta.env.VITE_MONNIFY_API_KEY,
-      contractCode: import.meta.env.VITE_MONNIFY_CONTRACT_CODE,
+      apiKey,
+      contractCode,
       paymentDescription: "Test Monnify",
-      isTestMode: true,
+      // isTestMode: true,
+      isTestMode,
       metadata: {
         name: userPaymentData.customerFullName.split(" ")[0],
         email: userPaymentData.customerEmail,
