@@ -286,7 +286,6 @@ const Gst111Quiz = () => {
         <div className="popup-container">
           <div className="popup-texts">
             <h3>Are you sure you want to Exit?</h3>
-            <p>Your record would be lost!</p>
           </div>
           <div className="popup-btns">
             <button onClick={handleConfirmExit}>Yes</button>

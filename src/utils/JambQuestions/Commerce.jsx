@@ -1342,16 +1342,6 @@ export const jambCommerce = [
     answer: "issued by a shipping company giving details of charges",
   },
   {
-    question: "Which of the following are the components of commerce?",
-    options: [
-      "trading and advertising",
-      "warehousing and transportation",
-      "packing and branding",
-      "Insurance and banking",
-    ],
-    answer: "I, II and IV",
-  },
-  {
     question: "Extractive industries may also be denominated as _____",
     options: [
       "direct industries",

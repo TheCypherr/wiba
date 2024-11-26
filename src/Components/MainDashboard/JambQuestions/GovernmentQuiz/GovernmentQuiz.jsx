@@ -5,9 +5,9 @@ import { jambGovernment as allQuestions } from "../../../../utils/JambQuestions/
 import { FaChevronLeft, FaClock } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
 import {
-  getFirestore,
   doc,
-  setDoc,
+  getDoc,
+  getDocs,
   addDoc,
   serverTimestamp,
   collection,
@@ -31,11 +31,14 @@ const GovernmentQuiz = () => {
   const [timer, setTimer] = useState(30); // State to track time left
   const timerIntervalRef = useRef(null); // Create a ref to store the interval ID
   const [isTimerRunning, setIsTimerRunning] = useState(true); // Timer running status
+  const [paymentPopup, setPaymentPopup] = useState(false);
+  const [incomplete, setIncomplete] = useState(false);
   const navigate = useNavigate();
   let askedQuestions = [];
 
   const testName = "JAMB Government";
 
+  // Function to handle Page Loading
   const handlePageLoading = (targetPage) => {
     setLoading(true); // start the loading
 
@@ -46,14 +49,62 @@ const GovernmentQuiz = () => {
     }, 2000); // come back to adjust timer oooo
   };
 
-  // useEffect to prevent scrolling when menubar is open
+  // useEffect to prevent scrolling when popup is shown
   useEffect(() => {
-    if (showPopup) {
+    if (showPopup || paymentPopup) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
-  }, [showPopup]);
+  }, [showPopup, paymentPopup]);
+
+  // Check quiz access
+  const checkQuizAccess = async () => {
+    if (!user) return;
+    setLoading(true);
+
+    try {
+      const userQuizzesRef = collection(
+        db,
+        "userScores",
+        user.userId,
+        "quizzes"
+      );
+      const userQuizzesSnapshot = await getDocs(userQuizzesRef); // Fetch all quizzes taken by the user
+
+      const quizzesTaken = userQuizzesSnapshot.size; // Count of quizzes taken
+      const docRef = doc(db, "User Profiles", user.userId);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        if (data.paymentStatus === "Paid") {
+          // Full access granted
+          handleRetakeQuiz();
+          setLoading(false);
+        } else if (quizzesTaken >= 2) {
+          // Restrict access and show payment popup
+          setPaymentPopup(true);
+          setLoading(false);
+        } else {
+          // Allow access to retake quiz
+          handleRetakeQuiz();
+          setLoading(false);
+        }
+      } else {
+        console.error("User profile not found");
+        setIncomplete(true);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error("Error checking quiz access:", error);
+    }
+  };
+
+  // Function to close payment popup
+  const handleDontContinue = () => {
+    setPaymentPopup(false);
+  };
 
   // Function to shuffle and pick 30 random questions without repeats
   const shuffleQuestions = (questionsArray, numQuestions) => {
@@ -201,17 +252,6 @@ const GovernmentQuiz = () => {
     resumeTimer();
   };
 
-  // Timer effect
-  // useEffect(() => {
-  //   if (isTimerRunning) {
-  //     timerIntervalRef.current = setInterval(() => {
-  //       setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 15));
-  //     }, 1000);
-
-  //     return () => clearInterval(timerIntervalRef.current);
-  //   }
-  // }, [isTimerRunning]);
-
   useEffect(() => {
     if (showPopup) {
       document.body.style.overflow = "hidden";
@@ -311,7 +351,6 @@ const GovernmentQuiz = () => {
         <div className="popup-container">
           <div className="popup-texts">
             <h3>Are you sure you want to Exit?</h3>
-            <p>Your record would be lost!</p>
           </div>
           <div className="popup-btns">
             <button onClick={handleConfirmExit}>Yes</button>
@@ -340,7 +379,7 @@ const GovernmentQuiz = () => {
               )}
             </div>
             <div className="retake">
-              <button onClick={handleRetakeQuiz}>
+              <button onClick={checkQuizAccess}>
                 <p>Retake Quiz</p> <FaRepeat />
               </button>
             </div>
@@ -397,12 +436,46 @@ const GovernmentQuiz = () => {
         )}
       </div>
 
+      {paymentPopup && <div className="popup-backdrop"></div>}
+      {paymentPopup && (
+        <div className="popup-container">
+          <div className="inner-popup">
+            <div className="error-container">
+              <img src="/error.png" alt="error" />
+            </div>
+            <div className="required-text">
+              <h2>Payment Required!</h2>
+              <p>
+                To gain full access to all
+                <span className="span11"> JAMB Practice Test,</span> a one-time
+                payment of <span className="span11">#1,550</span> is required.
+              </p>
+            </div>
+            <div>
+              <button
+                className="proceed-payment"
+                onClick={() => handlePageLoading("/profile")}
+              >
+                Proceed to payment
+              </button>
+            </div>
+            <span className="cancel-pay" onClick={handleDontContinue}>
+              Cancel
+            </span>
+          </div>
+        </div>
+      )}
+
       {loading && (
         <div className="load-overlay">
           <div className="load-slide">
             <div className="load-bar"></div>
           </div>
         </div>
+      )}
+
+      {incomplete && (
+        <div className="profile-incomplete slideIn">Incomplete Profile</div>
       )}
     </section>
   );

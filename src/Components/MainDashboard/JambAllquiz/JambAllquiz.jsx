@@ -14,6 +14,7 @@ const JambAllquiz = () => {
   // const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [quizInstructionPopup, setQuizInstructionPopup] = useState(false);
   const [paymentPopup, setPaymentPopup] = useState(false);
+  const [incomplete, setIncomplete] = useState(false);
   const [selectedQuizLink, setSelectedQuizLink] = useState("");
   const navigate = useNavigate();
 
@@ -78,7 +79,7 @@ const JambAllquiz = () => {
         }
       } else {
         console.error("User profile not found");
-        handleQuizInstruction(quizLink);
+        setIncomplete(true);
         setLoading(false);
       }
     } catch (error) {
@@ -224,16 +225,9 @@ const JambAllquiz = () => {
         </div>
       )}
 
-      {/* {showDisclaimer && (
-        <div
-          className={`disclaimer ${showDisclaimer ? "slide-in" : "slide-out"}`}
-        >
-          <p>
-            Quiz in this section are strictly according to "Ekiti State
-            University" Curriculum!
-          </p>
-        </div>
-      )} */}
+      {incomplete && (
+        <div className="profile-incomplete slideIn">Incomplete Profile</div>
+      )}
     </section>
   );
 };

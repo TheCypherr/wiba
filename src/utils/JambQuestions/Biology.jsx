@@ -2314,12 +2314,6 @@ export const JambBiology = [
   },
   {
     question:
-      "What physiological term can be used to describe the regulation of the body temperature of the lizard?",
-    options: ["Homeostasis", "Homeothermy", "Poikilothermy", "Osmoregulation"],
-    answer: "Poikilothermy",
-  },
-  {
-    question:
       "The reason why hospitals use saline solutions as drip instead of water is",
     options: [
       "because salt is a preservative",
