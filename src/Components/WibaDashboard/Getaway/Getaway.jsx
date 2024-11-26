@@ -143,8 +143,10 @@ const Getaway = () => {
       </div>
 
       {loading && (
-        <div className="load-slide">
-          <div className="load-bar"></div>
+        <div className="load-overlay">
+          <div className="load-slide">
+            <div className="load-bar"></div>
+          </div>
         </div>
       )}
     </section>

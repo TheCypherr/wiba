@@ -32,15 +32,24 @@ const UserProfile = () => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const [file, setFile] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [tryAgain, setTryAgain] = useState(false);
   const [theme, setTheme] = useState({
     background: true,
     logoBg: true,
     textColor: false,
     logoTextColor: true,
   });
+  const [userPaymentData, setUserPaymentData] = useState({
+    customerFullName: "",
+    customerEmail: "",
+    customerPhone: "",
+  });
   const [isEditing, setIsEditing] = useState({});
   const [data, setData] = useState({});
+  const [incomplete, setIncomplete] = useState(false);
+  const [paymentCompleted, setPaymentCompleted] = useState(false);
+  // const [paymentFailed, setPaymentFailed] = useState(false);
 
   const handleInput = (e) => {
     const id = e.target.id;
@@ -51,8 +60,13 @@ const UserProfile = () => {
 
   const handleAdd = async (e) => {
     e.preventDefault();
-
     const dataWithLabels = { ...data };
+
+    // Check for incomplete fields
+    const isIncomplete = userProfileData.some(
+      (input) => !dataWithLabels[input.id] && !input.readOnly
+    );
+    setLoading(true);
 
     userProfileData.forEach((input) => {
       if (input.label2 !== undefined) {
@@ -62,13 +76,34 @@ const UserProfile = () => {
       }
     });
 
+    if (isIncomplete) {
+      setTimeout(() => {
+        setIncomplete(true);
+        setLoading(false);
+
+        setTimeout(() => {
+          setIncomplete(false);
+        }, 2000);
+      }, 2000);
+
+      return; // Prevent saving if fields are incomplete
+    }
+
     try {
+      setLoading(true);
       await setDoc(doc(db, "User Profiles", user.userId), {
         ...dataWithLabels,
         timeStamp: serverTimestamp(),
       });
-      console.log("User profile saved successfully!");
-      fetchUserProfile(); // Fetch updated data after saving
+      setLoading(false);
+      setSuccess(true);
+      setIsEditing({}); // Remove editing mode for all fields
+      fetchUserPaymentData(); // fetch user payment data immediately after profile is updated
+
+      setTimeout(() => {
+        setSuccess(false);
+        fetchUserProfile(); // Fetch updated data after saving
+      }, 2000);
     } catch (err) {
       console.log(err, "error fetching data");
     }
@@ -84,7 +119,7 @@ const UserProfile = () => {
         const userData = docSnap.data();
         setData(userData);
       } else {
-        console.log("No user profile found");
+        console.log("No updated user profile found");
       }
     } catch (error) {
       console.error("Error fetching user profile:", error);
@@ -98,13 +133,231 @@ const UserProfile = () => {
   }, [user]);
 
   const toggleEdit = (id) => {
-    if (!userProfileData.find((input) => input.id === id).readOnly) {
+    if (
+      !userProfileData.find((input) => input.id === id)?.readOnly &&
+      !success
+    ) {
       setIsEditing((prev) => ({
         ...prev,
         [id]: !prev[id], // Toggle the editing state
       }));
     }
   };
+
+  // Fetching completed user profile from firestore for monify
+  const fetchUserPaymentData = async () => {
+    if (!user) return;
+    try {
+      const docRef = doc(db, "User Profiles", user.userId);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const userData = docSnap.data();
+        console.log("Fetched user data:", userData); /// console to see fetched data details
+        setUserPaymentData({
+          customerFullName: userData.fullName || "Unknown Name",
+          customerEmail: userData.email || "",
+          customerPhone: userData.phone || "",
+        });
+      } else {
+        console.log("No user profile found");
+      }
+    } catch (error) {
+      console.error("Error fetching user profile:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (user) {
+      fetchUserPaymentData(); // Fetch user profile data when `user` is available or changes
+    }
+  }, [user]); // This dependency ensures the effect runs when the `user` changes
+
+  // Payment failed for monnify
+  const handlePayNow = () => {
+    // Check for incomplete fields (same logic from handleAdd)
+    const isIncomplete = userProfileData.some(
+      (input) => !data[input.id] && !input.readOnly
+    );
+    setLoading(true);
+
+    if (isIncomplete) {
+      setTimeout(() => {
+        setIncomplete(true);
+        setLoading(false);
+
+        setTimeout(() => {
+          setIncomplete(false);
+        }, 2000);
+      }, 2000);
+
+      return; // Prevent saving if fields are incomplete
+    }
+
+    // Proceed with payment flow
+    if (paymentCompleted) {
+      console.log("User already paid. No further action.");
+      setLoading(false);
+      return; // Disable further actions
+    }
+
+    if (!window.MonnifySDK) {
+      console.log("Monnify SDK is not loaded");
+      setIncomplete(true);
+    } else {
+      console.log("Monnify SDK is loaded");
+      payWithMonnify();
+    }
+  };
+
+  // Initialize Monnify SDK
+  const payWithMonnify = () => {
+    setLoading(true); // Show loading state
+
+    if (!window.MonnifySDK) {
+      setIncomplete(true);
+      return;
+    }
+
+    const reference = "WibA" + Math.floor(Math.random() * 1000000000 + 1);
+
+    window.MonnifySDK.initialize({
+      amount: 1550,
+      currency: "NGN",
+      reference,
+      customerFullName: userPaymentData.customerFullName,
+      customerEmail: userPaymentData.customerEmail,
+      customerPhone: userPaymentData.customerPhone,
+      apiKey: import.meta.env.VITE_MONNIFY_API_KEY,
+      contractCode: import.meta.env.VITE_MONNIFY_CONTRACT_CODE,
+      paymentDescription: "Test Monnify",
+      isTestMode: true,
+      metadata: {
+        name: userPaymentData.customerFullName.split(" ")[0],
+        email: userPaymentData.customerEmail,
+      },
+      onComplete: (response) => {
+        handlePaymentCompletion(response);
+      },
+      onClose: (data) => {
+        if (data.paymentStatus === "Failed") {
+          handleFailedPaymentClose(); // Handle failed payment
+        } else if (data.paymentStatus === "Completed") {
+          handleOnClose(data); // Handle successful payment
+        } else {
+          console.log("Payment status:", data);
+          handleCloseWithoutPay();
+        }
+      },
+      onError: (e) => {
+        // Custom error handling here
+        if (e && e.reason) {
+          console.log("Error:", e.reason);
+
+          // If customer email is invalid, show the custom failure UI
+          if (e.reason === "Customer email not provided or invalid") {
+            handleFailedPaymentClose(); // Trigger UI state for failed payment
+          }
+        }
+      },
+    });
+  };
+
+  // Separate async function for handling payment completion
+  const handlePaymentCompletion = async (response) => {
+    console.log("Payment Completed", response);
+
+    if (!handlePaymentCompletion) {
+      console.log("Payment Failed", response);
+
+      handleFailedPaymentClose();
+    }
+
+    try {
+      await setDoc(
+        doc(db, "User Profiles", user.userId),
+        {
+          ...userPaymentData, // Existing user data
+          paymentStatus: "Paid",
+          paymentDate: new Date().toISOString(),
+          reference: response.transactionReference,
+        },
+        { merge: true }
+      );
+
+      setPaymentCompleted(true); // Update local state
+      handlePageLoading("/payment-success"); // Navigate after updating
+    } catch (error) {
+      console.error("Error saving payment status:", error);
+      handleFailedPaymentClose();
+    }
+  };
+
+  // User closing on successful payment
+  const handleOnClose = async (data) => {
+    console.log("Payment Completed", data);
+
+    try {
+      await setDoc(
+        doc(db, "User Profiles", user.userId),
+        {
+          ...userPaymentData, // Existing user data
+          paymentStatus: "Paid",
+          paymentDate: new Date().toISOString(),
+          reference: data.transactionReference,
+        },
+        { merge: true }
+      );
+
+      setPaymentCompleted(true); // Update local state
+      handlePageLoading("/payment-success"); // Navigate after updating
+    } catch (error) {
+      console.error("Error saving payment status:", error);
+    }
+  };
+
+  // userClosing without proceeding with payment
+  const handleCloseWithoutPay = () => {
+    navigate("/profile"); // Navigate to profile page
+    setLoading(false);
+  };
+
+  // User closing on failed payment
+  const handleFailedPaymentClose = () => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      setTryAgain(true);
+      navigate("/profile"); // Navigate to profile page
+
+      setTimeout(() => {
+        setTryAgain(false);
+      }, 2000);
+    }, 1000);
+  };
+
+  useEffect(() => {
+    const checkPaymentStatus = async () => {
+      try {
+        const docRef = doc(db, "User Profiles", user.userId);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          if (data.paymentStatus === "Paid") {
+            setPaymentCompleted(true); // Sync state with Firestore
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching payment status:", error);
+      }
+    };
+
+    if (user) {
+      checkPaymentStatus();
+    }
+  }, [user]);
 
   const handlePageReload = () => {
     window.scrollTo(0, 0);
@@ -299,7 +552,7 @@ const UserProfile = () => {
                 }}
                 className="profile-custom-links"
               >
-                <FaGraduationCap size={25} /> UTME Quiz
+                <FaGraduationCap size={25} /> JAMB CBT
               </Link>
             </li>
             <li className="each-menu">
@@ -392,6 +645,17 @@ const UserProfile = () => {
                 fontSize={40}
               />
             </div>
+            <div
+              className="confirmed-container"
+              type="button"
+              onClick={handlePayNow}
+            >
+              {paymentCompleted ? (
+                <button className="confirmed">Paid</button>
+              ) : (
+                <button className="not-confirmed">Pay Now</button>
+              )}
+            </div>
           </div>
           <div className="right-profile">
             <form className="form-container" onSubmit={handleAdd}>
@@ -409,25 +673,37 @@ const UserProfile = () => {
                       onChange={handleInput} // Uses your existing handleInput
                     />
                   ) : (
-                    <span
-                      style={{ cursor: "pointer" }}
-                      onClick={() => !input.readOnly && toggleEdit(input.id)} // Enter edit mode on click
-                    >
-                      {data[input.id] || input.label2 || "Not provided"}{" "}
-                      {!input.readOnly && <FaEdit />}
+                    <span style={{ cursor: "pointer" }}>
+                      {data[input.id] || input.label2 || "Not provided"}
+                      {!input.readOnly && !success && !data[input.id] && (
+                        <FaEdit
+                          onClick={() =>
+                            !input.readOnly && !success && toggleEdit(input.id)
+                          } // Trigger edit mode only on click of the icon
+                          style={{ cursor: "pointer" }}
+                        />
+                      )}
                     </span>
                   )}
                   {isEditing[input.id] && (
-                    <button onClick={() => toggleEdit(input.id)}>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation(); // Stop event propagation to avoid unintended side effects
+                        toggleEdit(input.id); // Only toggle the edit mode
+                      }}
+                    >
                       <FaCheck size={10} />
                     </button>
                   )}
                 </div>
               ))}
 
-              <button className="profile-btn" type="submit">
-                Save
-              </button>
+              {/* Save button: only shown when editing is active and not already saved */}
+              {!success && (
+                <button className="profile-btn" type="submit">
+                  Save
+                </button>
+              )}
             </form>
           </div>
         </div>
@@ -568,9 +844,20 @@ const UserProfile = () => {
       </div>
 
       {loading && (
-        <div className="load-slide">
-          <div className="load-bar"></div>
+        <div className="load-overlay">
+          <div className="load-slide">
+            <div className="load-bar"></div>
+          </div>
         </div>
+      )}
+      {success && (
+        <div className="profile-updated slideIn">Profile Updated</div>
+      )}
+      {incomplete && (
+        <div className="profile-incomplete slideIn">Incomplete Profile</div>
+      )}
+      {tryAgain && (
+        <div className="profile-incomplete slideIn">Try Again Later</div>
       )}
     </section>
   );

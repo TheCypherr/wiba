@@ -3,23 +3,37 @@ import "./JambAllquiz.css";
 import { Link, useNavigate } from "react-router-dom";
 import { selectDepartment } from "../../../utils/JambData";
 import { FaChevronDown } from "react-icons/fa";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { db } from "../../../config/Firebase";
+import { useFirebaseUser } from "../../../utils/FirebaseContext";
 
 const JambAllquiz = () => {
+  const { user } = useFirebaseUser();
   const [facultyDropdown, setFacultyDropdown] = useState(selectDepartment[0]);
   const [loading, setLoading] = useState(false);
   // const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [quizInstructionPopup, setQuizInstructionPopup] = useState(false);
+  const [paymentPopup, setPaymentPopup] = useState(false);
   const [selectedQuizLink, setSelectedQuizLink] = useState("");
   const navigate = useNavigate();
 
+  const handlePageLoading = (targetPage) => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      navigate(targetPage);
+    }, 2000);
+  };
+
   // useEffect to prevent scrolling when popup is shown
   useEffect(() => {
-    if (quizInstructionPopup) {
+    if (quizInstructionPopup || paymentPopup) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
-  }, [quizInstructionPopup]);
+  }, [quizInstructionPopup, paymentPopup]);
 
   const handleQuizChange = (event) => {
     const selectedId = parseInt(event.target.value, 10);
@@ -29,6 +43,50 @@ const JambAllquiz = () => {
     setFacultyDropdown(selectedFaculty);
   };
 
+  // Check quiz access
+  const checkQuizAccess = async (quizLink) => {
+    if (!user) return;
+    setLoading(true);
+
+    try {
+      const userQuizzesRef = collection(
+        db,
+        "userScores",
+        user.userId,
+        "quizzes"
+      );
+      const userQuizzesSnapshot = await getDocs(userQuizzesRef); // Fetch all quizzes taken by the user
+
+      const quizzesTaken = userQuizzesSnapshot.size; // Count of quizzes taken
+      const docRef = doc(db, "User Profiles", user.userId);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        if (data.paymentStatus === "Paid") {
+          // Full access granted
+          handleQuizInstruction(quizLink);
+          setLoading(false);
+        } else if (quizzesTaken >= 2) {
+          // Restrict access and show payment popup
+          setPaymentPopup(true);
+          setLoading(false);
+        } else {
+          // Allow access to the quiz
+          handleQuizInstruction(quizLink);
+          setLoading(false);
+        }
+      } else {
+        console.error("User profile not found");
+        handleQuizInstruction(quizLink);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error("Error checking quiz access:", error);
+    }
+  };
+
+  // Popup instruction before navigating to quiz
   const handleQuizInstruction = (link) => {
     setQuizInstructionPopup(true);
     setSelectedQuizLink(link);
@@ -46,17 +104,8 @@ const JambAllquiz = () => {
 
   const handleDontContinue = () => {
     setQuizInstructionPopup(false);
+    setPaymentPopup(false);
   };
-
-  // useEffect(() => {
-  //   setShowDisclaimer(true);
-
-  //   const timer = setTimeout(() => {
-  //     setShowDisclaimer(false);
-  //   }, 5000);
-
-  //   return () => clearTimeout(timer);
-  // }, []);
 
   return (
     <section className="allquiz-wrapper">
@@ -79,6 +128,37 @@ const JambAllquiz = () => {
           </select>
           <FaChevronDown className="select-icon department-icon" />
         </div>
+
+        {paymentPopup && <div className="popup-backdrop"></div>}
+        {paymentPopup && (
+          <div className="popup-container">
+            <div className="inner-popup">
+              <div className="error-container">
+                <img src="/error.png" alt="error" />
+              </div>
+              <div className="required-text">
+                <h2>Payment Required!</h2>
+                <p>
+                  To gain full access to all
+                  <span className="span11"> JAMB Practice Test,</span> a
+                  one-time payment of <span className="span11">#1,550</span> is
+                  required.
+                </p>
+              </div>
+              <div>
+                <button
+                  className="proceed-payment"
+                  onClick={() => handlePageLoading("/profile")}
+                >
+                  Proceed to payment
+                </button>
+              </div>
+              <span className="cancel-pay" onClick={handleDontContinue}>
+                Cancel
+              </span>
+            </div>
+          </div>
+        )}
 
         {quizInstructionPopup && <div className="popup-backdrop"></div>}
         {quizInstructionPopup && (
@@ -125,7 +205,7 @@ const JambAllquiz = () => {
               <div key={linkItem.id} className="quiz-content">
                 <p>{linkItem.course}</p>
                 <button
-                  onClick={() => handleQuizInstruction(linkItem.link)}
+                  onClick={() => checkQuizAccess(linkItem.link)}
                   className="take-quiz"
                 >
                   Take Test
@@ -137,8 +217,10 @@ const JambAllquiz = () => {
       </div>
 
       {loading && (
-        <div className="load-slide">
-          <div className="load-bar"></div>
+        <div className="load-overlay">
+          <div className="load-slide">
+            <div className="load-bar"></div>
+          </div>
         </div>
       )}
 

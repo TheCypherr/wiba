@@ -57,8 +57,8 @@ const MainGetaway = () => {
               <div className="main-get-text">
                 <h2>Exam Types</h2>
                 <p>
-                  On WIBA, you get standardized tests, UTME Quiz and Seasoned
-                  Questions for Freshers.
+                  On WIBA, you get standardized JAMB CBT, A-Level Test and
+                  Seasoned Questions for Freshers.
                 </p>
               </div>
             </div>
@@ -80,8 +80,10 @@ const MainGetaway = () => {
       </div>
 
       {loading && (
-        <div className="load-slide">
-          <div className="load-bar"></div>
+        <div className="load-overlay">
+          <div className="load-slide">
+            <div className="load-bar"></div>
+          </div>
         </div>
       )}
     </section>

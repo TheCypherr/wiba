@@ -34,6 +34,7 @@ import EconomicsQuiz from "./Components/MainDashboard/JambQuestions/EconomicsQui
 import AccountQuiz from "./Components/MainDashboard/JambQuestions/AccountQuiz/AccountQuiz";
 import UserProfile from "./Components/MainDashboard/UserProfile/UserProfile";
 import Overview from "./Components/MainDashboard/Overview/Overview";
+import PaymentSuccessful from "./Components/PaymentSuccessful/PaymentSuccessful";
 
 function App() {
   return (
@@ -143,6 +144,15 @@ function App() {
               element={
                 <>
                   <Overview />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/payment-success"
+              element={
+                <>
+                  <PaymentSuccessful />
                   <Footer />
                 </>
               }

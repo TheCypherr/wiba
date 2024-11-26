@@ -177,7 +177,7 @@ const Header = () => {
     {
       name: "Categories",
       subItems: [
-        { label: "UTME Quiz", link: "/login" },
+        { label: "JAMB CBT", link: "/login" },
         { label: "A Level Test", link: "/login" },
         { label: "100L Quiz", link: "/login" },
       ],
@@ -433,8 +433,10 @@ const Header = () => {
       </div>
 
       {loading && (
-        <div className="load-slide">
-          <div className="load-bar"></div>
+        <div className="load-overlay">
+          <div className="load-slide">
+            <div className="load-bar"></div>
+          </div>
         </div>
       )}
     </section>

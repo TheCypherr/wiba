@@ -20,6 +20,45 @@
   z-index: 1000;
 }
 
+.error-container {
+  margin: auto;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.error-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.required-text h2 {
+  margin-bottom: 1px;
+}
+
+button.proceed-payment {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 50px;
+  background-color: var(--logo-color);
+  color: var(--bg-color);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+span.cancel-pay {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: rgba(252, 10, 10, 0.856);
+  cursor: pointer;
+}
+
 /* Portrait/Mobile View */
 @media (max-width: 600px) {
   .department {

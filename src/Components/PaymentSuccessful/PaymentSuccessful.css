@@ -1,0 +1,55 @@
+.payment-success {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.payment-check {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+}
+.payment-check img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.payment-text h2 {
+  margin-bottom: 5px;
+}
+
+.payment-text p {
+  font-size: 1rem;
+}
+
+.span11 {
+  font-weight: bold;
+  font-size: 1rem;
+}
+.span22 {
+  font-weight: bold;
+  color: #2b33ff;
+  font-size: 1rem;
+}
+
+/* Portrait View Responsiveness */
+@media (max-width: 600px) {
+  .payment-text p {
+    font-size: 0.9rem;
+  }
+
+  .span11 {
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  .span22 {
+    font-weight: bold;
+    color: #2b33ff;
+    font-size: 0.9rem;
+  }
+}

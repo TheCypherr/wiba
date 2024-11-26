@@ -391,7 +391,7 @@ const Overview = () => {
                 }}
                 className="profile-custom-links"
               >
-                <FaGraduationCap size={25} /> UTME Quiz
+                <FaGraduationCap size={25} /> JAMB CBT
               </Link>
             </li>
             <li className="each-menu">
@@ -764,8 +764,10 @@ const Overview = () => {
       )}
 
       {loading && (
-        <div className="load-slide">
-          <div className="load-bar"></div>
+        <div className="load-overlay">
+          <div className="load-slide">
+            <div className="load-bar"></div>
+          </div>
         </div>
       )}
     </section>
