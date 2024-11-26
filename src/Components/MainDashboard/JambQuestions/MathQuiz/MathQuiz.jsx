@@ -96,6 +96,10 @@ const MathQuiz = () => {
         console.error("User profile not found");
         setIncomplete(true);
         setLoading(false);
+
+        setTimeout(() => {
+          setIncomplete(false);
+        }, 2000);
       }
     } catch (error) {
       console.error("Error checking quiz access:", error);
