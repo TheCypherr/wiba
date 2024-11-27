@@ -14,7 +14,7 @@ export const jambPDF = [
         id: 2,
         course: "English",
         link: "/categories/past-questions",
-        doc: "/6-Line Operator (eff 12_2016).pdf",
+        doc: "/6-Line Jerico (eff 12_2016).pdf",
         download: true,
       },
       {
