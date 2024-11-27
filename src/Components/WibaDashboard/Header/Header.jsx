@@ -39,7 +39,7 @@ const Header = () => {
     // Clear the search query and suggestions
     setQuery("");
     setSuggestions([]);
-    toggleSearch();
+    // toggleSearch();
 
     // simulate the loading time
     setTimeout(() => {
@@ -293,7 +293,10 @@ const Header = () => {
                     {suggestions.map((suggestion) => (
                       <li
                         key={suggestion.id}
-                        onClick={() => handlePageLoading(suggestion.link)}
+                        onClick={() => {
+                          handlePageLoading(suggestion.link);
+                          toggleSearch();
+                        }}
                         className="suggestion-item"
                       >
                         {suggestion.title}
