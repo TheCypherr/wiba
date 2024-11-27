@@ -35,6 +35,8 @@ import AccountQuiz from "./Components/MainDashboard/JambQuestions/AccountQuiz/Ac
 import UserProfile from "./Components/MainDashboard/UserProfile/UserProfile";
 import Overview from "./Components/MainDashboard/Overview/Overview";
 import PaymentSuccessful from "./Components/PaymentSuccessful/PaymentSuccessful";
+import JambPastQuestion from "./Components/MainDashboard/JambPastQuestion/JambPastQuestion";
+import ComingSoon from "./Components/comingSoon/comingSoon";
 
 function App() {
   return (
@@ -98,6 +100,16 @@ function App() {
               }
             />
             <Route
+              path="/categories/past-questions"
+              element={
+                <>
+                  <MainHeader />
+                  <JambPastQuestion />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
               path="/categories/allquiz"
               element={
                 <>
@@ -154,6 +166,14 @@ function App() {
                 <>
                   <PaymentSuccessful />
                   <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/coming-soon"
+              element={
+                <>
+                  <ComingSoon />
                 </>
               }
             />

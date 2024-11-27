@@ -20,6 +20,7 @@ import { auth } from "../../../config/Firebase";
 import { signOut } from "firebase/auth";
 import { useFirebaseUser } from "../../../utils/FirebaseContext";
 import EmailAvatar from "../../../emailAvatar";
+import searchData from "../../../utils/searchData1";
 
 const MainHeader = () => {
   const { user } = useFirebaseUser();
@@ -56,6 +57,10 @@ const MainHeader = () => {
 
   const handlePageLoading = (targetPage) => {
     setLoading(true); // start the loading
+    // Clear the search query and suggestions
+    setQuery("");
+    setSuggestions([]);
+    toggleSearch();
 
     // simulate the loading time
     setTimeout(() => {
@@ -102,8 +107,24 @@ const MainHeader = () => {
     }
   }, [isOpen]);
 
-  // State for search is open
+  // State for search is open and search text suggestion
   const [search, setSearch] = useState(false);
+  const [query, setQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+
+  // Function to handle search popups
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setQuery(value);
+    if (value) {
+      const filteredSuggestions = searchData.filter((item) =>
+        item.title.toLowerCase().includes(value.toLowerCase())
+      );
+      setSuggestions(filteredSuggestions);
+    } else {
+      setSuggestions([]);
+    }
+  };
 
   // click function to handle search open
   const toggleSearch = () => {
@@ -146,7 +167,7 @@ const MainHeader = () => {
     },
     {
       name: "A Level Test",
-      link: "/categories/A-Level",
+      link: "/coming-soon",
       icon: <FaGraduationCap size={27} />,
     },
     {
@@ -165,7 +186,7 @@ const MainHeader = () => {
       icon: <FaBook size={23} />,
     },
     {
-      name: "UTME Past Questions",
+      name: "JAMB Past Questions",
       icon: <FaBook size={23} />,
       link: "/categories/past-questions",
       // subItems: [
@@ -182,7 +203,7 @@ const MainHeader = () => {
       name: "Categories",
       subItems: [
         { label: "JAMB CBT", link: "/categories/JambCBT" },
-        { label: "A Level Test", link: "/categories/A-Level" },
+        { label: "A Level Test", link: "/coming-soon" },
         { label: "100L Quiz", link: "/categories/allquiz" },
       ],
       link: "/categories/JambCBT",
@@ -196,7 +217,7 @@ const MainHeader = () => {
       link: "/categories/pdf-materials",
     },
     {
-      name: "UTME Past Questions",
+      name: "JAMB Past Questions",
       link: "/categories/past-questions",
     },
   ];
@@ -263,12 +284,31 @@ const MainHeader = () => {
           ) : (
             <div className="main-search-overlay">
               <div className="main-search-wrapper">
-                <input type="text" placeholder="Search for anything..." />
+                <input
+                  type="text"
+                  value={query}
+                  onChange={handleSearch}
+                  placeholder="Search for anything..."
+                />
                 <FaTimes
                   size={20}
                   className="close-search-icon"
                   onClick={toggleSearch}
                 />
+
+                {suggestions.length > 0 && (
+                  <ul className="suggestions-list">
+                    {suggestions.map((suggestion) => (
+                      <li
+                        key={suggestion.id}
+                        onClick={() => handlePageLoading(suggestion.link)}
+                        className="suggestion-item"
+                      >
+                        {suggestion.title}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           )}
@@ -387,7 +427,7 @@ const MainHeader = () => {
                         </Link>
                         {item.name !== "Study Guide" &&
                           item.name !== "PDF Materials" &&
-                          item.name !== "UTME Past Questions" &&
+                          item.name !== "JAMB Past Questions" &&
                           (activeMenu === item.name ? (
                             <FaChevronUp
                               className="chevron-icon"
@@ -428,7 +468,26 @@ const MainHeader = () => {
                 }}
                 className="main-search-icon"
               />
-              <input type="text" placeholder="Search for anything" />
+              <input
+                type="text"
+                placeholder="Search for anything"
+                value={query}
+                onChange={handleSearch}
+              />
+
+              {suggestions.length > 0 && (
+                <ul className="suggestions-list">
+                  {suggestions.map((suggestion) => (
+                    <li
+                      key={suggestion.id}
+                      onClick={() => handlePageLoading(suggestion.link)}
+                      className="suggestion-item"
+                    >
+                      {suggestion.title}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
 

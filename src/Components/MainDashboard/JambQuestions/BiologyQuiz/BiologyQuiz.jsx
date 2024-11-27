@@ -453,7 +453,7 @@ const BiologyQuiz = () => {
               <p>
                 To gain full access to all
                 <span className="span11"> JAMB Practice Test,</span> a one-time
-                payment of <span className="span11">#1,550</span> is required.
+                payment of <span className="span11">#2,000</span> is required.
               </p>
             </div>
             <div>

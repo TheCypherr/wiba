@@ -1,0 +1,52 @@
+.flex-pdf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -20px;
+  margin-bottom: 50px;
+}
+
+button.take-jamb {
+  width: 150px;
+  padding: 7px;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 50px;
+  border: none;
+  background-color: var(--logo-color);
+  color: var(--bg-color);
+  cursor: pointer;
+  text-decoration: none;
+}
+a.take-quiz {
+  width: 120px;
+  padding: 7px;
+  text-align: center;
+  font-size: 0.95rem;
+  border-radius: 50px;
+  border: none;
+  background-color: var(--logo-color);
+  color: var(--bg-color);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Portrait/Mobile View */
+@media (max-width: 600px) {
+  .flex-pdf {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: -20px;
+  }
+
+  button.take-jamb {
+    width: 120px;
+    font-size: 0.85rem;
+  }
+  a.take-quiz {
+    width: 100px;
+    font-size: 0.85rem;
+  }
+}

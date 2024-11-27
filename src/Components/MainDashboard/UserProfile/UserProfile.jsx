@@ -26,6 +26,7 @@ import { db } from "../../../config/Firebase";
 import { auth } from "../../../config/Firebase";
 import { signOut } from "firebase/auth";
 import EmailAvatar from "../../../emailAvatar";
+import searchData from "../../../utils/searchData1";
 
 const UserProfile = () => {
   const { user } = useFirebaseUser();
@@ -203,7 +204,7 @@ const UserProfile = () => {
 
     if (!window.MonnifySDK) {
       console.log("Monnify SDK is not loaded");
-      setIncomplete(true);
+      handleCloseWithoutPay();
     } else {
       console.log("Monnify SDK is loaded");
       payWithMonnify();
@@ -225,7 +226,7 @@ const UserProfile = () => {
     // const isTestMode = process.env.NODE_ENV !== "production"; // Use true for non-production
 
     window.MonnifySDK.initialize({
-      amount: 1550,
+      amount: 2000,
       currency: "NGN",
       reference,
       customerFullName: userPaymentData.customerFullName,
@@ -369,6 +370,10 @@ const UserProfile = () => {
 
   const handlePageLoading = (targetPage) => {
     setLoading(true); // start the loading
+    // Clear the search query and suggestions
+    setQuery("");
+    setSuggestions([]);
+    toggleSearch();
 
     // simulate the loading time
     setTimeout(() => {
@@ -417,8 +422,24 @@ const UserProfile = () => {
     }
   }, [isOpen]);
 
-  // State for search is open
+  // State for search is open and search text suggestion
   const [search, setSearch] = useState(false);
+  const [query, setQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+
+  // Function to handle search popups
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setQuery(value);
+    if (value) {
+      const filteredSuggestions = searchData.filter((item) =>
+        item.title.toLowerCase().includes(value.toLowerCase())
+      );
+      setSuggestions(filteredSuggestions);
+    } else {
+      setSuggestions([]);
+    }
+  };
 
   // click function to handle search open
   const toggleSearch = () => {
@@ -562,7 +583,7 @@ const UserProfile = () => {
               <Link
                 to="#"
                 onClick={() => {
-                  handlePageLoading("/categories/A-Level");
+                  handlePageLoading("/coming-soon");
                 }}
                 className="profile-custom-links"
               >
@@ -766,12 +787,31 @@ const UserProfile = () => {
           ) : (
             <div className="main-search-overlay">
               <div className="main-search-wrapper">
-                <input type="text" placeholder="Search for anything..." />
+                <input
+                  type="text"
+                  placeholder="Search for anything..."
+                  value={query}
+                  onChange={handleSearch}
+                />
                 <FaTimes
                   size={20}
                   className="close-search-icon"
                   onClick={toggleSearch}
                 />
+
+                {suggestions.length > 0 && (
+                  <ul className="suggestions-list">
+                    {suggestions.map((suggestion) => (
+                      <li
+                        key={suggestion.id}
+                        onClick={() => handlePageLoading(suggestion.link)}
+                        className="suggestion-item"
+                      >
+                        {suggestion.title}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           )}

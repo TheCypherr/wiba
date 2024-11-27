@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./PaymentSuccessful.css";
+import "./ComingSoon.css";
 import { useNavigate, Link } from "react-router-dom";
-import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronLeft, FaHome } from "react-icons/fa";
 
-const PaymentSuccessful = () => {
+const ComingSoon = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -24,25 +24,15 @@ const PaymentSuccessful = () => {
           <img src="/logo.png" alt="" />
         </Link>
 
-        <button className="back" onClick={() => handlePageLoading("/profile")}>
-          <FaChevronLeft /> Back
+        <button className="back" onClick={() => handlePageLoading("/main")}>
+          <FaHome /> Home
         </button>
       </div>
 
-      <div className="payment-success">
-        <div className="payment-check">
-          <img src="/success.png" alt="success" />
-        </div>
-        <div className="payment-text">
-          <h2>Payment Successful!</h2>
-          <p>
-            You can now access the complete
-            <span className="span11"> Jamb CBT Test</span> and other related
-            Materials.
-          </p>
-          <p>
-            Thank you for choosing <span className="span22">WibA!</span>
-          </p>
+      <div className="coming-soon">
+        <div className="soon-text">
+          <h2>Coming Soon!</h2>
+          <p>We're working on something amazing. Stay tuned!</p>
         </div>
       </div>
 
@@ -57,4 +47,4 @@ const PaymentSuccessful = () => {
   );
 };
 
-export default PaymentSuccessful;
+export default ComingSoon;

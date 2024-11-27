@@ -398,7 +398,7 @@ const Overview = () => {
               <Link
                 to="#"
                 onClick={() => {
-                  handlePageLoading("/categories/A-Level");
+                  handlePageLoading("/coming-soon");
                 }}
                 className="profile-custom-links"
               >

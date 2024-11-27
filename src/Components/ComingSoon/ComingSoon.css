@@ -1,0 +1,22 @@
+.coming-soon {
+  position: relative;
+  margin-top: 200px;
+  height: 100%;
+  width: 100%;
+}
+
+.soon-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Portrait View Responsiveness */
+@media (max-width: 600px) {
+  .coming-soon {
+    position: relative;
+    margin-top: 250px;
+  }
+}

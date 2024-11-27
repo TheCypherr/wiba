@@ -1,0 +1,118 @@
+export const jambPDF = [
+  {
+    id: 1,
+    label: "Science",
+    content: [
+      {
+        id: 1,
+        course: "Mathematics",
+        link: "/categories/past-questions",
+        doc: "/6-Line Operator (eff 12_2016).pdf",
+        download: true,
+      },
+      {
+        id: 2,
+        course: "English",
+        link: "/categories/past-questions",
+        doc: "/6-Line Operator (eff 12_2016).pdf",
+        download: true,
+      },
+      {
+        id: 3,
+        course: "Physics",
+        link: "/categories/past-questions",
+        doc: "/6-Line Operator (eff 12_2016).pdf",
+        download: true,
+      },
+      {
+        id: 4,
+        course: "Biology",
+        link: "/categories/past-questions",
+        doc: "/6-Line Operator (eff 12_2016).pdf",
+        download: true,
+      },
+      {
+        id: 5,
+        course: "Chemistry",
+        link: "/categories/past-questions",
+        doc: "/6-Line Operator (eff 12_2016).pdf",
+        download: true,
+      },
+    ],
+  },
+  {
+    id: 2,
+    label: "Art",
+    content: [
+      {
+        id: 1,
+        course: "English",
+        link: "/categories/past-questions",
+        doc: "/6-Line Operator (eff 12_2016).pdf",
+        download: true,
+      },
+      {
+        id: 2,
+        course: "C.R.S",
+        link: "/categories/past-questions",
+        doc: "/6-Line Operator (eff 12_2016).pdf",
+        download: true,
+      },
+      {
+        id: 3,
+        course: "Government",
+        link: "/categories/past-questions",
+        doc: "/6-Line Operator (eff 12_2016).pdf",
+        download: true,
+      },
+      {
+        id: 4,
+        course: "Literature",
+        link: "/categories/past-questions",
+        doc: "/6-Line Operator (eff 12_2016).pdf",
+        download: true,
+      },
+    ],
+  },
+  {
+    id: 3,
+    label: "Commercial",
+    content: [
+      {
+        id: 1,
+        course: "Mathematics",
+        link: "/categories/past-questions",
+        doc: "/6-Line Operator (eff 12_2016).pdf",
+        download: true,
+      },
+      {
+        id: 2,
+        course: "English",
+        link: "/categories/past-questions",
+        doc: "/6-Line Operator (eff 12_2016).pdf",
+        download: true,
+      },
+      {
+        id: 3,
+        course: "Commerce",
+        link: "/categories/past-questions",
+        doc: "/6-Line Operator (eff 12_2016).pdf",
+        download: true,
+      },
+      {
+        id: 4,
+        course: "Accounting",
+        link: "/categories/past-questions",
+        doc: "/6-Line Operator (eff 12_2016).pdf",
+        download: true,
+      },
+      {
+        id: 5,
+        course: "Economics",
+        link: "/categories/past-questions",
+        doc: "/6-Line Operator (eff 12_2016).pdf",
+        download: true,
+      },
+    ],
+  },
+];

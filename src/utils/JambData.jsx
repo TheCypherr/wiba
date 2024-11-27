@@ -46,16 +46,11 @@ export const selectDepartment = [
       },
       {
         id: 3,
-        course: "I.R.S",
-        link: "/jamb/irs",
-      },
-      {
-        id: 4,
         course: "Government",
         link: "/jamb/government",
       },
       {
-        id: 5,
+        id: 4,
         course: "Literature",
         link: "/jamb/literature",
       },

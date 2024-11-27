@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Header.css";
 import { Link, useNavigate } from "react-router-dom";
+import searchData2 from "../../../utils/searchData2";
 import {
   FaSearch,
   FaSun,
@@ -35,6 +36,10 @@ const Header = () => {
 
   const handlePageLoading = (targetPage) => {
     setLoading(true); // start the loading
+    // Clear the search query and suggestions
+    setQuery("");
+    setSuggestions([]);
+    toggleSearch();
 
     // simulate the loading time
     setTimeout(() => {
@@ -118,8 +123,24 @@ const Header = () => {
     }
   }, [isOpen]);
 
-  // State for search is open
+  // State for search is open and search text suggestion
   const [search, setSearch] = useState(false);
+  const [query, setQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+
+  // Function to handle search popups
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setQuery(value);
+    if (value) {
+      const filteredSuggestions = searchData2.filter((item) =>
+        item.title.toLowerCase().includes(value.toLowerCase())
+      );
+      setSuggestions(filteredSuggestions);
+    } else {
+      setSuggestions([]);
+    }
+  };
 
   // click function to handle search open
   const toggleSearch = () => {
@@ -255,12 +276,31 @@ const Header = () => {
           ) : (
             <div className="search-overlay">
               <div className="search-wrapper">
-                <input type="text" placeholder="Search for anything..." />
+                <input
+                  type="text"
+                  placeholder="Search for anything..."
+                  value={query}
+                  onChange={handleSearch}
+                />
                 <FaTimes
                   size={20}
                   className="close-search-icon"
                   onClick={toggleSearch}
                 />
+
+                {suggestions.length > 0 && (
+                  <ul className="suggestions-list">
+                    {suggestions.map((suggestion) => (
+                      <li
+                        key={suggestion.id}
+                        onClick={() => handlePageLoading(suggestion.link)}
+                        className="suggestion-item"
+                      >
+                        {suggestion.title}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           )}
@@ -406,7 +446,26 @@ const Header = () => {
               }}
               className="search-icon"
             />
-            <input type="text" placeholder="Search for anything" />
+            <input
+              type="text"
+              placeholder="Search for anything"
+              value={query}
+              onChange={handleSearch}
+            />
+
+            {suggestions.length > 0 && (
+              <ul className="suggestions-list">
+                {suggestions.map((suggestion) => (
+                  <li
+                    key={suggestion.id}
+                    onClick={() => handlePageLoading(suggestion.link)}
+                    className="suggestion-item"
+                  >
+                    {suggestion.title}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
           <div className="login-signup">
             <button className="btn1">
