@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./ComingSoon.css";
+import "./ComingSoonNew.css";
 import { useNavigate, Link } from "react-router-dom";
-import { FaChevronLeft, FaHome } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 
-const ComingSoon = () => {
+const ComingSoonNew = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -47,4 +47,4 @@ const ComingSoon = () => {
   );
 };
 
-export default ComingSoon;
+export default ComingSoonNew;

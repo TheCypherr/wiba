@@ -36,7 +36,7 @@ import UserProfile from "./Components/MainDashboard/UserProfile/UserProfile";
 import Overview from "./Components/MainDashboard/Overview/Overview";
 import PaymentSuccessful from "./Components/PaymentSuccessful/PaymentSuccessful";
 import JambPastQuestion from "./Components/MainDashboard/JambPastQuestion/JambPastQuestion";
-import ComingSoon from "./Components/comingSoon/comingSoon";
+import ComingSoonNew from "./Components/MainDashboard/ComingSoonNew/ComingSoonNew";
 
 function App() {
   return (
@@ -173,7 +173,7 @@ function App() {
               path="/coming-soon"
               element={
                 <>
-                  <ComingSoon />
+                  <ComingSoonNew />
                 </>
               }
             />
