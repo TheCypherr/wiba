@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
 
@@ -8,6 +8,12 @@ const Footer = () => {
     window.location.href = "/";
     // window.scrollTo(0, 0);
   };
+  const [theme, setTheme] = useState({
+    background: true,
+    logoBg: true,
+    textColor: false,
+    logoTextColor: true,
+  });
 
   return (
     <section className="footer-wrapper">
@@ -39,10 +45,10 @@ const Footer = () => {
         <div className="four-side">
           <div className="four">
             <Link onClick={handlePageReload}>
-              <img src="/logo.png" alt="" />
+              <img src={theme.logoImage} alt="" />
             </Link>
-            <p>© 2024 Wiba Inc.</p>
           </div>
+          <p>© 2024 Wiba Inc.</p>
         </div>
       </div>
     </section>

@@ -223,7 +223,7 @@ const Header = () => {
       <div className={`inner-h ${isOpen ? "menu-open" : ""}`}>
         <div className="logo">
           <Link onClick={handlePageReload}>
-            <img src="/logo.png" alt="" />
+            <img src={theme.logoImage} alt="" />
           </Link>
         </div>
 
@@ -245,7 +245,7 @@ const Header = () => {
 
             <div className="logo-new">
               <Link onClick={handlePageReload}>
-                <img src="/logo.png" alt="" />
+                <img src={theme.logoImage} alt="" />
               </Link>
             </div>
           </>

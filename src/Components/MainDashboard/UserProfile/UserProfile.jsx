@@ -549,10 +549,12 @@ const UserProfile = () => {
   return (
     <section className="user-profile">
       <div className="inner-profile1">
-        <div className="profile-logo">
-          <Link onClick={handlePageReload}>
-            <img src="/logo.png" alt="" />
-          </Link>
+        <div className="profile-logo-container">
+          <div className="profile-logo">
+            <Link onClick={handlePageReload}>
+              <img src={theme.logoImage} alt="" />
+            </Link>
+          </div>
         </div>
 
         <nav>
@@ -752,9 +754,9 @@ const UserProfile = () => {
               )}
             </div>
 
-            <div className="main-logo-new">
+            <div className="logo-new">
               <Link onClick={handlePageReload}>
-                <img src="/logo.png" alt="" />
+                <img src={theme.logoImage} alt="" />
               </Link>
             </div>
           </>
@@ -823,10 +825,12 @@ const UserProfile = () => {
         {isOpen && <div className="main-back-drop"></div>}
         {isOpen && (
           <div className="main-inner-h-new slideIn">
-            <div className="profile-logo">
-              <Link onClick={handlePageReload}>
-                <img src="/logo.png" alt="" />
-              </Link>
+            <div className="profile-logo-container">
+              <div className="profile-logo">
+                <Link onClick={handlePageReload}>
+                  <img src={theme.logoImage} alt="" />
+                </Link>
+              </div>
             </div>
             <div className="underline"></div>
 

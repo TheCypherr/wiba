@@ -74,7 +74,7 @@ const Reviews = () => {
 
   return (
     <section className="review-wrapper">
-      <h1>Some Motivation to get you started on chasing your Goals!</h1>
+      <h1>Some Motivations to get you started on chasing your Goals!</h1>
       <div className="inner-review">
         <Slider {...settings}>
           <div className="review-one">

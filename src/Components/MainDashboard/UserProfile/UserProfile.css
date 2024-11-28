@@ -29,14 +29,13 @@ body {
   height: 100vh;
 }
 
-.profile-logo {
+.profile-logo-container {
   padding: 5px;
+  display: flex;
+  justify-content: center;
   text-align: center;
   align-items: center;
   border-bottom: 2px solid var(--text-color);
-}
-.profile-logo img {
-  width: 100px;
 }
 
 ul.profile-menu {
@@ -320,14 +319,11 @@ button.profile-btn {
     display: none;
   }
 
-  .profile-logo {
+  .profile-logo-container {
     padding: 0px;
     text-align: center;
     align-items: center;
     border-bottom: none;
-  }
-  .profile-logo img {
-    width: 90px;
   }
 
   .inner-profile2 {

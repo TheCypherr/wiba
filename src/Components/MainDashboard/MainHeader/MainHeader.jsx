@@ -225,9 +225,9 @@ const MainHeader = () => {
   return (
     <section className="main-header-wrapper">
       <div className={`main-inner-h ${isOpen ? "main-menu-open" : ""}`}>
-        <div className="main-logo">
+        <div className="logo">
           <Link onClick={handlePageReload}>
-            <img src="/logo.png" alt="" />
+            <img src={theme.logoImage} alt="" />
           </Link>
         </div>
 
@@ -249,9 +249,9 @@ const MainHeader = () => {
               )}
             </div>
 
-            <div className="main-logo-new">
+            <div className="logo-new">
               <Link onClick={handlePageReload}>
-                <img src="/logo.png" alt="" />
+                <img src={theme.logoImage} alt="" />
               </Link>
             </div>
           </>

@@ -587,7 +587,7 @@ button.btn2:hover {
   .logo {
     display: none;
   }
-  .logo-new {
+  /* .logo-new {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -597,7 +597,7 @@ button.btn2:hover {
     width: 90px;
     cursor: pointer;
     margin: 0 auto;
-  }
+  } */
 
   .search-div {
     display: block;

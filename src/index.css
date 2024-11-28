@@ -8,8 +8,37 @@
   --black-bg: #000000ee;
   --text-color: #000000;
   --shadow-color: rgb(241, 243, 252);
+  --logo-image: url("/logo.png");
   font-family: "Raleway", sans-serif;
   font-weight: 500;
+}
+
+.logo {
+  width: 100px;
+  height: 45px;
+  background-image: var(--logo-image);
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* four below is the logo for footer */
+.four {
+  width: 170px;
+  height: 65px;
+  background-image: var(--logo-image);
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.profile-logo {
+  width: 110px;
+  height: 50px;
+  background-image: var(--logo-image);
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 body {
@@ -112,6 +141,33 @@ body {
 }
 
 @media (max-width: 600px) {
+  .logo-new {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    width: 90px;
+    height: 43px;
+    background-image: var(--logo-image);
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  .four {
+    width: 130px;
+    height: 60px;
+    background-image: var(--logo-image);
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: -15px;
+  }
+
+  .profile-logo {
+    margin-bottom: 5px;
+  }
+
   /* Style the previous arrow (left) */
   .slick-prev {
     position: absolute;

@@ -59,11 +59,11 @@ body {
   text-decoration: underline;
 }
 
-.four img {
+/* .four img {
   width: 170px;
   cursor: pointer;
-}
-.four p {
+} */
+.four-side p {
   font-size: 0.8rem;
   padding-left: 45px;
   font-weight: 500;
@@ -107,7 +107,7 @@ body {
     font-weight: 500;
     text-decoration: underline;
   }
-  .four {
+  /* .four {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -119,15 +119,24 @@ body {
     margin-bottom: -20px;
     width: 150px;
     cursor: pointer;
-  }
+  } */
   .underline {
     border-bottom: 2px solid var(--text-color);
     margin-right: -12px;
     margin-left: -25px;
   }
-  .four p {
+
+  .four-side {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .four-side p {
     font-size: 0.7rem;
     font-weight: 500;
-    padding-left: 0px;
+    padding-left: 10px;
   }
 }
