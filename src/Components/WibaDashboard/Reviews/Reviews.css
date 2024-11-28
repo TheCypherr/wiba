@@ -56,8 +56,15 @@ body {
 }
 
 .little {
+  margin-top: -20px;
   display: flex;
   align-items: center;
+}
+
+.small-word {
+  width: 100%;
+  font-weight: bold;
+  text-align: right;
 }
 
 .img-contain {
@@ -72,10 +79,6 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.small-word h5 {
-  font-weight: 500;
 }
 
 /* Portrait View Responsiveness */

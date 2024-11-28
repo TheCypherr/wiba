@@ -37,6 +37,7 @@ import Overview from "./Components/MainDashboard/Overview/Overview";
 import PaymentSuccessful from "./Components/PaymentSuccessful/PaymentSuccessful";
 import JambPastQuestion from "./Components/MainDashboard/JambPastQuestion/JambPastQuestion";
 import ComingSoonNew from "./Components/MainDashboard/ComingSoonNew/ComingSoonNew";
+import PasswordReset from "./Components/WibaDashboard/PasswordReset/PasswordReset";
 
 function App() {
   return (
@@ -66,6 +67,14 @@ function App() {
                   <Header />
                   <Login />
                   <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/forgot-password"
+              element={
+                <>
+                  <PasswordReset />
                 </>
               }
             />

@@ -30,7 +30,7 @@ const MainHome = () => {
         </div>
         <div className="inner-home2">
           <div className="inner-home-img-container">
-            <img src="/wiba444.jpg" alt="" />
+            <img src="/wiba444.webp" alt="" />
           </div>
           <h1>Start your Comprehensive Learning Journey.</h1>
           <div className="home-btn">
@@ -53,7 +53,7 @@ const MainHome = () => {
         </div>
         <div className="inner-home2">
           <div className="inner-home-img-container">
-            <img src="/wiba444.jpg" alt="" />
+            <img src="/wiba444.webp" alt="" />
           </div>
         </div>
       </div>

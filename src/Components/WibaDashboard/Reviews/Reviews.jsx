@@ -74,24 +74,21 @@ const Reviews = () => {
 
   return (
     <section className="review-wrapper">
-      <h1>See how WIBA helped students ace their exams</h1>
+      <h1>Some Motivation to get you started on chasing your Goals!</h1>
       <div className="inner-review">
         <Slider {...settings}>
           <div className="review-one">
             <FaQuoteLeft />
             <h4>
-              Wiba really came through when I needed help with ACC 101. The
-              practice quizzes and materials helped me fill in the
-              <span> gaps in my understanding. </span>
+              "Success is the sum of small efforts, repeated day in and day
+              out." Consistency is your greatest ally on the path to academic
+              excellence.
             </h4>
             <div className="little">
-              <div className="img-contain">
-                <img src="/www2.jpg" alt="" />
-              </div>
               <div className="small-word">
                 <h5>
-                  Tunde <br />
-                  100L Accounting student
+                  WibA <br />
+                  Stay dedicated, aim for success.
                 </h5>
               </div>
             </div>
@@ -100,18 +97,15 @@ const Reviews = () => {
           <div className="review-one">
             <FaQuoteLeft />
             <h4>
-              Wiba really came through when I needed help with ACC 101. The
-              practice quizzes and materials helped me fill in the
-              <span> gaps in my understanding. </span>
+              "Tomorrow belongs to those who prepare for it today." Your
+              dedication now sets the foundation for a bright and successful
+              future.
             </h4>
             <div className="little">
-              <div className="img-contain">
-                <img src="/www2.jpg" alt="" />
-              </div>
               <div className="small-word">
                 <h5>
-                  Tunde <br />
-                  100L Accounting student
+                  WibA <br />
+                  Stay dedicated, aim for success.
                 </h5>
               </div>
             </div>
@@ -120,18 +114,15 @@ const Reviews = () => {
           <div className="review-one">
             <FaQuoteLeft />
             <h4>
-              Wiba really came through when I needed help with ACC 101. The
-              practice quizzes and materials helped me fill in the
-              <span> gaps in my understanding. </span>
+              "The expert in anything was once a beginner." Remember, every
+              master started as a learner. Take each step confidently, knowing
+              growth takes time.
             </h4>
             <div className="little">
-              <div className="img-contain">
-                <img src="/www2.jpg" alt="" />
-              </div>
               <div className="small-word">
                 <h5>
-                  Tunde <br />
-                  100L Accounting student
+                  WibA <br />
+                  Stay dedicated, aim for success.
                 </h5>
               </div>
             </div>
@@ -140,18 +131,15 @@ const Reviews = () => {
           <div className="review-one">
             <FaQuoteLeft />
             <h4>
-              Wiba really came through when I needed help with ACC 101. The
-              practice quizzes and materials helped me fill in the
-              <span> gaps in my understanding. </span>
+              "Your future is created by what you do today, not tomorrow." Make
+              every moment count, and let today's efforts push you closer to
+              your dreams.
             </h4>
             <div className="little">
-              <div className="img-contain">
-                <img src="/www2.jpg" alt="" />
-              </div>
               <div className="small-word">
                 <h5>
-                  Tunde <br />
-                  100L Accounting student
+                  WibA <br />
+                  Stay dedicated, aim for success.
                 </h5>
               </div>
             </div>
@@ -160,18 +148,15 @@ const Reviews = () => {
           <div className="review-one">
             <FaQuoteLeft />
             <h4>
-              Wiba really came through when I needed help with ACC 101. The
-              practice quizzes and materials helped me fill in the
-              <span> gaps in my understanding. </span>
+              "Believe you can, and you're halfway there." Confidence in your
+              abilities can propel you to achieve the extraordinary and you'll
+              be surprised by your ability.
             </h4>
             <div className="little">
-              <div className="img-contain">
-                <img src="/www2.jpg" alt="" />
-              </div>
               <div className="small-word">
                 <h5>
-                  Tunde <br />
-                  100L Accounting student
+                  WibA <br />
+                  Stay dedicated, aim for success.
                 </h5>
               </div>
             </div>
@@ -180,18 +165,15 @@ const Reviews = () => {
           <div className="review-one">
             <FaQuoteLeft />
             <h4>
-              Wiba really came through when I needed help with ACC 101. The
-              practice quizzes and materials helped me fill in the
-              <span> gaps in my understanding. </span>
+              "Dreams don't work unless you do." Your hard work and
+              determination will turn your aspirations into achievements. Don't
+              give up!
             </h4>
             <div className="little">
-              <div className="img-contain">
-                <img src="/www2.jpg" alt="" />
-              </div>
               <div className="small-word">
                 <h5>
-                  Tunde <br />
-                  100L Accounting student
+                  WibA <br />
+                  Stay dedicated, aim for success.
                 </h5>
               </div>
             </div>

@@ -21,7 +21,7 @@ const Hero = () => {
       <div className="hero-slider">
         <Slider {...settings}>
           <div className="slide-one">
-            <img src="/wiba33.jpg" alt="" />
+            <img src="/wiba33.webp" alt="" />
             <div className="overlay">
               <h1>Ace Your Exams with Accessible Study Materials.</h1>
               <h3>
@@ -33,7 +33,7 @@ const Hero = () => {
             </div>
           </div>
           <div className="slide-one">
-            <img src="/wiba11.jpg" alt="" />
+            <img src="/wiba11.webp" alt="" />
             <div className="overlay">
               <h1>Your One-Stop Study Hub with Extensive Study Materials.</h1>
               <h3>
@@ -44,7 +44,7 @@ const Hero = () => {
             </div>
           </div>
           <div className="slide-one">
-            <img src="/wiba2.jpg" alt="" />
+            <img src="/wiba2.webp" alt="" />
             <div className="overlay">
               <h1>Performance Tracking on Study and Quiz for Students</h1>
               <h3>
@@ -55,7 +55,7 @@ const Hero = () => {
             </div>
           </div>
           <div className="slide-one">
-            <img src="/wiba4.jpg" alt="" />
+            <img src="/wiba4.webp" alt="" />
             <div className="overlay">
               <h1>Personalized Practice Questions for 100L - 400L.</h1>
               <h3>
@@ -72,7 +72,7 @@ const Hero = () => {
         <Slider {...settings}>
           <div className="slide-one-new">
             <div className="slide-image">
-              <img src="/wiba33.jpg" alt="" />
+              <img src="/wiba33.webp" alt="" />
             </div>
             <div className="overlay-new">
               <h1>Ace Your Exams with Accessible Study Materials.</h1>
@@ -86,7 +86,7 @@ const Hero = () => {
           </div>
           <div className="slide-one-new">
             <div className="slide-image">
-              <img src="/wiba11.jpg" alt="" />
+              <img src="/wiba11.webp" alt="" />
             </div>
             <div className="overlay-new">
               <h1>Your One-Stop Study Hub with Extensive Study Materials.</h1>
@@ -99,7 +99,7 @@ const Hero = () => {
           </div>
           <div className="slide-one-new">
             <div className="slide-image">
-              <img src="/wiba2.jpg" alt="" />
+              <img src="/wiba2.webp" alt="" />
             </div>
             <div className="overlay-new">
               <h1>Performance Tracking on Study and Quiz for Students.</h1>
@@ -112,7 +112,7 @@ const Hero = () => {
           </div>
           <div className="slide-one-new">
             <div className="slide-image">
-              <img src="/wiba4.jpg" alt="" />
+              <img src="/wiba4.webp" alt="" />
             </div>
             <div className="overlay-new">
               <h1>Personalized Practice Questions for 100L - 400L.</h1>

@@ -19,6 +19,16 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  const handlePageLoading = (targetPage) => {
+    setLoading(true); // start the loading
+
+    // simulate the loading time
+    setTimeout(() => {
+      setLoading(false); // stop loading after timeout
+      navigate(targetPage); // navigate to target page
+    }, 2000); // come back to adjust timer oooo
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault(); // prevent form from refreshing page
 
@@ -163,7 +173,10 @@ const Login = () => {
               Login &rarr;
             </button>
             <div className="in">
-              <Link className="signup-link0">
+              <Link
+                className="signup-link0"
+                onClick={() => handlePageLoading("/forgot-password")}
+              >
                 <p>Forgot password?</p>
               </Link>
             </div>
