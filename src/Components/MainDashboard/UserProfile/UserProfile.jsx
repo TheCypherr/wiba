@@ -235,7 +235,7 @@ const UserProfile = () => {
       apiKey,
       contractCode,
       paymentDescription: "WibA one-time Payment",
-      isTestMode: false, // change back to true for test mode
+      // isTestMode: false, // change back to true for test mode
       metadata: {
         name: userPaymentData.customerFullName.split(" ")[0],
         email: userPaymentData.customerEmail,
