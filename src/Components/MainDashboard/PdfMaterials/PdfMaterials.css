@@ -1,0 +1,6 @@
+/* Portrait/Mobile View */
+@media (max-width: 600px) {
+  .pdf-materials {
+    margin-top: 30px;
+  }
+}

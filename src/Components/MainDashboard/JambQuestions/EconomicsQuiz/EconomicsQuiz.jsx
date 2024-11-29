@@ -341,9 +341,7 @@ const EconomicsQuiz = () => {
   return (
     <section className="Gst113-wrapper">
       <div className="main-logo quiz-logo">
-        <Link onClick={handleExitPopup}>
-          <img src="/logo.png" alt="" />
-        </Link>
+        <div className="logo4-quiz" onClick={handleExitPopup}></div>
 
         <button className="back" onClick={handleExitPopup}>
           <FaChevronLeft /> Back
@@ -377,9 +375,9 @@ const EconomicsQuiz = () => {
             </h1>
             <div className="emoji">
               {score >= 15 ? (
-                <img src="/upup.png" alt="up" />
+                <img src="/trophy.png" alt="up" />
               ) : (
-                <img src="/down.png" alt="down" />
+                <img src="/trophy.png" alt="down" />
               )}
             </div>
             <div className="retake">

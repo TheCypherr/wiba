@@ -330,7 +330,7 @@ const Overview = () => {
     },
     {
       name: "A Level Test",
-      link: "/aLevel",
+      link: "/coming-soon",
       icon: <FaGraduationCap size={27} />,
     },
     {
@@ -340,7 +340,7 @@ const Overview = () => {
     },
     {
       name: "Study Guide",
-      link: "/categories/studyGuide",
+      link: "/coming-soon",
       icon: <FaBook size={23} />,
     },
     {
@@ -418,7 +418,7 @@ const Overview = () => {
               <Link
                 to="#"
                 onClick={() => {
-                  handlePageLoading("/categories/allquiz");
+                  handlePageLoading("/coming-soon");
                 }}
                 className="profile-custom-links"
               >
@@ -429,7 +429,7 @@ const Overview = () => {
               <Link
                 to="#"
                 onClick={() => {
-                  handlePageLoading("/categories/allquiz");
+                  handlePageLoading("/categories/pdf-materials");
                 }}
                 className="profile-custom-links"
               >
@@ -440,7 +440,7 @@ const Overview = () => {
               <Link
                 to="#"
                 onClick={() => {
-                  handlePageLoading("/categories/allquiz");
+                  handlePageLoading("/categories/past-questions");
                 }}
                 className="profile-custom-links"
               >

@@ -48,9 +48,10 @@ const PasswordReset = () => {
   return (
     <section className="Gst113-wrapper">
       <div className="main-logo quiz-logo">
-        <Link onClick={() => handlePageLoading("/main")}>
-          <img src="/logo.png" alt="" />
-        </Link>
+        <div
+          className="logo4-quiz"
+          onClick={() => handlePageLoading("/")}
+        ></div>
 
         <button className="back" onClick={() => handlePageLoading("/login")}>
           <FaChevronLeft /> Back

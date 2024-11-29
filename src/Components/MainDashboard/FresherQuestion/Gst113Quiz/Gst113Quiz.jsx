@@ -100,12 +100,15 @@ const Gst113Quiz = () => {
     setShuffledQuestions(selectedQuestions);
   }, []);
 
-  // Function to save score to Firestore
+  // Function to save score to Firestore database
   const saveScoreToFirestore = async () => {
     try {
       if (user) {
-        const userId = user.uid; // Logged-in user's ID
+        const userId = user.userId; // Logged-in user's ID
         const userQuizzesRef = collection(db, "userScores", userId, "quizzes"); // Reference to the user's quizzes subcollection
+
+        // const userScoreRef = doc(db, "userScores", userId);
+        // Path to Firestore document
 
         // Data to save
         const data = {
@@ -118,6 +121,9 @@ const Gst113Quiz = () => {
 
         // Save data to Firestore
         await addDoc(userQuizzesRef, data); // Add a new quiz document to the subcollection
+
+        // await setDoc(userScoreRef, data, { merge: true });
+        // Use merge to avoid overwriting other fields
 
         console.log("Score saved successfully!");
       } else {
@@ -287,9 +293,7 @@ const Gst113Quiz = () => {
   return (
     <section className="Gst113-wrapper">
       <div className="main-logo quiz-logo">
-        <Link onClick={handleExitPopup}>
-          <img src="/logo.png" alt="" />
-        </Link>
+        <div className="logo4-quiz" onClick={handleExitPopup}></div>
 
         <button className="back" onClick={handleExitPopup}>
           <FaChevronLeft /> Back
@@ -301,7 +305,6 @@ const Gst113Quiz = () => {
         <div className="popup-container">
           <div className="popup-texts">
             <h3>Are you sure you want to Exit?</h3>
-            <p>Your record would be lost!</p>
           </div>
           <div className="popup-btns">
             <button onClick={handleConfirmExit}>Yes</button>
@@ -318,25 +321,20 @@ const Gst113Quiz = () => {
         {showScore ? (
           <div className="score-section">
             <h1>
-              {score >= 50
+              {score >= 5
                 ? `You scored ${score} / ${shuffledQuestions.length}`
                 : `You scored ${score} / ${shuffledQuestions.length}`}
             </h1>
             <div className="emoji">
-              {score >= 50 ? (
-                <img src="/upup.png" alt="up" />
+              {score >= 5 ? (
+                <img src="/trophy.png" alt="up" />
               ) : (
-                <img src="/down.png" alt="down" />
+                <img src="/trophy.png" alt="down" />
               )}
             </div>
             <div className="retake">
               <button onClick={handleRetakeQuiz}>
                 <p>Retake Quiz</p> <FaRepeat />
-              </button>
-            </div>
-            <div className="save">
-              <button>
-                <p>Save Score</p>
               </button>
             </div>
           </div>

@@ -177,7 +177,7 @@ const MainHeader = () => {
     },
     {
       name: "Study Guide",
-      link: "/categories/studyGuide",
+      link: "/coming-soon",
       icon: <FaBook size={23} />,
     },
     {
@@ -210,7 +210,7 @@ const MainHeader = () => {
     },
     {
       name: "Study Guide",
-      link: "/categories/studyGuide",
+      link: "/coming-soon",
     },
     {
       name: "PDF Materials",

@@ -20,9 +20,10 @@ const ComingSoonNew = () => {
   return (
     <section className="Gst113-wrapper">
       <div className="main-logo quiz-logo">
-        <Link onClick={() => handlePageLoading("/main")}>
-          <img src="/logo.png" alt="" />
-        </Link>
+        <div
+          className="logo4-quiz"
+          onClick={() => handlePageLoading("/main")}
+        ></div>
 
         <button className="back" onClick={() => handlePageLoading("/main")}>
           <FaHome /> Home

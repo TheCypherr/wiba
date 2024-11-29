@@ -127,14 +127,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-.quiz-logo img {
-  width: 100px;
+  width: 100%;
 }
 
 .emoji {
   margin: auto;
-  padding-top: 20px;
+  margin-top: -10px;
+  margin-bottom: -20px;
   width: 10rem;
   overflow: hidden;
 }
@@ -268,6 +267,17 @@ button.back {
 
 /* Portrait View Responsiveness */
 @media (max-width: 600px) {
+  .quiz-logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .emoji {
+    margin-top: -5px;
+    margin-bottom: -15px;
+  }
+
   .Gst113-wrapper {
     padding: 20px 20px 10px 20px;
   }

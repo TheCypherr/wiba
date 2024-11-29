@@ -234,8 +234,8 @@ const UserProfile = () => {
       customerPhone: userPaymentData.customerPhone,
       apiKey,
       contractCode,
-      paymentDescription: "Test Monnify",
-      isTestMode: true,
+      paymentDescription: "WibA one-time Payment",
+      isTestMode: false, // change back to true for test mode
       metadata: {
         name: userPaymentData.customerFullName.split(" ")[0],
         email: userPaymentData.customerEmail,
@@ -482,7 +482,7 @@ const UserProfile = () => {
     },
     {
       name: "A Level Test",
-      link: "/aLevel",
+      link: "/coming-soon",
       icon: <FaGraduationCap size={27} />,
     },
     {
@@ -492,7 +492,7 @@ const UserProfile = () => {
     },
     {
       name: "Study Guide",
-      link: "/categories/studyGuide",
+      link: "/coming-soon",
       icon: <FaBook size={23} />,
     },
     {
@@ -603,7 +603,7 @@ const UserProfile = () => {
               <Link
                 to="#"
                 onClick={() => {
-                  handlePageLoading("/categories/allquiz");
+                  handlePageLoading("/coming-soon");
                 }}
                 className="profile-custom-links"
               >
@@ -614,7 +614,7 @@ const UserProfile = () => {
               <Link
                 to="#"
                 onClick={() => {
-                  handlePageLoading("/categories/allquiz");
+                  handlePageLoading("/categories/pdf-materials");
                 }}
                 className="profile-custom-links"
               >
@@ -625,7 +625,7 @@ const UserProfile = () => {
               <Link
                 to="#"
                 onClick={() => {
-                  handlePageLoading("/categories/allquiz");
+                  handlePageLoading("/categories/past-questions");
                 }}
                 className="profile-custom-links"
               >

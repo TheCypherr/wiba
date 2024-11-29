@@ -38,6 +38,7 @@ import PaymentSuccessful from "./Components/PaymentSuccessful/PaymentSuccessful"
 import JambPastQuestion from "./Components/MainDashboard/JambPastQuestion/JambPastQuestion";
 import ComingSoonNew from "./Components/MainDashboard/ComingSoonNew/ComingSoonNew";
 import PasswordReset from "./Components/WibaDashboard/PasswordReset/PasswordReset";
+import PdfMaterials from "./Components/MainDashboard/PdfMaterials/PdfMaterials";
 
 function App() {
   return (
@@ -114,6 +115,16 @@ function App() {
                 <>
                   <MainHeader />
                   <JambPastQuestion />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/categories/pdf-materials"
+              element={
+                <>
+                  <MainHeader />
+                  <PdfMaterials />
                   <Footer />
                 </>
               }
