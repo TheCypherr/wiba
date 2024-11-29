@@ -221,11 +221,7 @@ const Header = () => {
   return (
     <section className="header-wrapper">
       <div className={`inner-h ${isOpen ? "menu-open" : ""}`}>
-        <div className="logo">
-          <Link onClick={handlePageReload}>
-            <img src={theme.logoImage} alt="" />
-          </Link>
-        </div>
+        <div className="logo" onClick={handlePageReload}></div>
 
         {!search && (
           <>
@@ -243,11 +239,7 @@ const Header = () => {
               )}
             </div>
 
-            <div className="logo-new">
-              <Link onClick={handlePageReload}>
-                <img src={theme.logoImage} alt="" />
-              </Link>
-            </div>
+            <div className="logo-new" onClick={handlePageReload}></div>
           </>
         )}
 

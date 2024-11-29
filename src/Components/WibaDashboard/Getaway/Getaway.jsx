@@ -81,7 +81,7 @@ const Getaway = () => {
 
         <div className="getaway-two">
           <div className="getImage-container">
-            <img src="/dimeji.jpg" alt="" />
+            <img src="/dimeji.webp" alt="" />
           </div>
         </div>
       </div>

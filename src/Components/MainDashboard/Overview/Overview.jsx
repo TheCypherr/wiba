@@ -365,11 +365,7 @@ const Overview = () => {
     <section className="user-profile">
       <div className="inner-profile1">
         <div className="profile-logo-container">
-          <div className="profile-logo">
-            <Link onClick={handlePageReload}>
-              <img src={theme.logoImage} alt="" />
-            </Link>
-          </div>
+          <div className="profile-logo" onClick={handlePageReload}></div>
         </div>
 
         <nav>
@@ -686,11 +682,7 @@ const Overview = () => {
         {isOpen && (
           <div className="main-inner-h-new slideIn">
             <div className="profile-logo-container">
-              <div className="profile-logo">
-                <Link onClick={handlePageReload}>
-                  <img src={theme.logoImage} alt="" />
-                </Link>
-              </div>
+              <div className="profile-logo" onClick={handlePageReload}></div>
             </div>
             <div className="underline"></div>
 

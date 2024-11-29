@@ -36,7 +36,7 @@ const Theme = () => {
   const setLogoImage = (value) => {
     updateCSSVariable(
       "--logo-image",
-      value ? "url('/logo2.png')" : "url('/logo.png')"
+      value ? "url('/logo.png')" : "url('/logo2.png')"
     );
   };
 
@@ -51,7 +51,7 @@ const Theme = () => {
       setLogoBg(savedTheme.logoBg);
       setTextColor(savedTheme.textColor);
       setLogoTextColor(savedTheme.logoTextColor);
-      setLogoImage(savedTheme.logoImage);
+      setLogoImage(savedTheme.background);
     }
   }, []);
 
@@ -61,7 +61,7 @@ const Theme = () => {
       logoBg: !theme.logoBg,
       textColor: !theme.textColor,
       logoTextColor: !theme.logoTextColor,
-      logoImage: !theme.logoImage,
+      logoImage: theme.background ? "/logo2.png" : "/logo.png",
     };
 
     setTheme(newTheme);
@@ -74,7 +74,7 @@ const Theme = () => {
     setLogoBg(newTheme.logoBg);
     setTextColor(newTheme.textColor);
     setLogoTextColor(newTheme.logoTextColor);
-    setLogoImage(newTheme.logoImage);
+    setLogoImage(newTheme.background);
   };
 
   return (

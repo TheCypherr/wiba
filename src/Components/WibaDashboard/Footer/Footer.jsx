@@ -43,11 +43,7 @@ const Footer = () => {
         </div>
 
         <div className="four-side">
-          <div className="four">
-            <Link onClick={handlePageReload}>
-              <img src={theme.logoImage} alt="" />
-            </Link>
-          </div>
+          <div className="four" onClick={handlePageReload}></div>
           <p>© 2024 Wiba Inc.</p>
         </div>
       </div>
