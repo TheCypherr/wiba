@@ -91,12 +91,18 @@ const Getaway = () => {
         <div className="steps-flex">
           <div className="side-one">
             <div className="step-one">
-              <h2>Get Started</h2>
-              <p>
-                Sign up today and unlock a world of academic opportunities.
-                Elevate your studies and achieve your goals with our
-                comprehensive platform.
-              </p>
+              <Link
+                to="#"
+                onClick={() => handlePageLoading("/login")}
+                className="step-link"
+              >
+                <h2>Get Started</h2>
+                <p>
+                  Sign up today and unlock a world of academic opportunities.
+                  Elevate your studies and achieve your goals with our
+                  comprehensive platform.
+                </p>
+              </Link>
             </div>
 
             <div className="step-one">

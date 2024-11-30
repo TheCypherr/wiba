@@ -136,4 +136,27 @@ button.test-btn:hover {
 
 /* Landscape and iPad View */
 @media (min-width: 600px) and (max-width: 900px) {
+  .inner-utme {
+    padding: 5px 20px 10px 20px;
+  }
+
+  .below h1 {
+    padding-left: 10px;
+    font-size: 1.7rem;
+    line-height: 27px;
+  }
+  .below h3 {
+    margin-top: -10px;
+    padding-left: 10px;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .text-container h5 {
+    display: none;
+  }
 }
+
+/* Landscape and iPad View */
+/* @media (min-width: 600px) and (max-width: 900px) {
+} */

@@ -161,3 +161,18 @@ body {
     line-height: 5px;
   }
 }
+
+@media (min-width: 901px) and (max-width: 1280px) {
+  .main-getaway-one {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+
+  .main-small-get {
+    padding: 5px;
+    width: 30rem;
+    height: 10rem;
+  }
+}

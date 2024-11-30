@@ -91,6 +91,11 @@ body {
   padding: 20px;
 }
 
+.step-link {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
 .step-one:hover {
   background-color: #8e8e8fc6;
 }
@@ -218,8 +223,12 @@ body {
 
 /* Landscape and iPad View */
 @media (min-width: 600px) and (max-width: 900px) {
+  .getaway-wrapper {
+    padding: 0px 30px 10px 30px;
+  }
+
   .getaway-wrapper h1 {
-    font-size: 2.1rem;
+    font-size: 1.8rem;
   }
   .inner-getaway {
     display: flex;
@@ -269,7 +278,7 @@ body {
   }
   .first-step h1 {
     margin: auto;
-    font-size: 2.1rem;
+    font-size: 1.8rem;
     text-align: center;
   }
   .steps-flex {
@@ -311,5 +320,28 @@ body {
   }
   .note p {
     font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1280px) {
+  .first-step {
+    max-width: 100%;
+  }
+
+  .step-one {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    width: 30rem;
+    height: 11rem;
+    background-color: #8e8e8f94;
+    padding: 15px;
+    padding-top: 1px;
+    border-radius: 10px;
+  }
+
+  .step-one h2 {
+    font-size: 1.7rem;
+    line-height: 35px;
   }
 }

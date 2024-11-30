@@ -10,7 +10,7 @@ body {
 
 .main-header-wrapper {
   position: relative;
-  padding: 10px 50px 10px 50px;
+  padding: 10px 40px 10px 40px;
   height: 100%;
   border-bottom: 2px solid var(--text-color);
 }
@@ -239,7 +239,7 @@ li.main-sub-menu-items:hover {
 .active-status {
   position: absolute;
   top: 66.5%;
-  right: 8.8%;
+  right: 8.5%;
   width: 10px;
   height: 10px;
   z-index: 1000;
@@ -514,7 +514,7 @@ button.main-btn2:hover {
     border-radius: 50%;
   }
 
-  .profile-container {
+  /* .profile-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -525,7 +525,7 @@ button.main-btn2:hover {
     margin-right: 0;
     margin-top: 4px;
     margin-bottom: 8px;
-  }
+  } */
 
   .main-login-signup {
     display: flex;
@@ -683,6 +683,7 @@ button.main-btn2:hover {
     padding-right: 10px;
   }
 
+  /* active user link profile */
   .active-user-link {
     width: 100%;
     padding: 5px;
@@ -711,7 +712,7 @@ button.main-btn2:hover {
   .active-status {
     position: absolute;
     top: 65%;
-    left: 17%;
+    left: 15.5%;
     width: 10px;
     height: 10px;
     z-index: 1000;
@@ -741,7 +742,7 @@ button.main-btn2:hover {
     position: relative;
     padding: 10px 10px 10px 10px;
     height: 100%;
-    box-shadow: 0 5px 5px var(--text-color);
+    /* box-shadow: 0 5px 5px var(--text-color); */
   }
   .main-inner-h {
     display: flex;
@@ -752,7 +753,7 @@ button.main-btn2:hover {
     /* transition: height 0.3s ease, margin-bottom 0.3s ease; */
   }
 
-  .profile-container {
+  /* .profile-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -763,7 +764,7 @@ button.main-btn2:hover {
     margin-right: 0;
     margin-top: 4px;
     margin-bottom: 8px;
-  }
+  } */
 
   .main-fa-times {
     width: 25px;
@@ -787,17 +788,83 @@ button.main-btn2:hover {
     transition: opacity 0.3s ease-in-out;
   }
 
-  .main-search-back-drop {
+  .main-search-div {
+    display: block;
+    position: relative;
+    right: 0;
+    z-index: 1000;
+  }
+
+  /* Fullscreen search overlay */
+  .main-search-overlay {
     position: fixed;
-    top: 20%;
+    top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 1;
-    visibility: visible;
-    z-index: 5;
-    transition: opacity 0.3s ease-in-out;
+    background-color: var(--bg-color);
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 20px;
+  }
+
+  /* Search input styling within the overlay */
+  .main-search-wrapper {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .main-search-wrapper input {
+    width: 90%;
+    padding: 15px;
+    font-size: 1rem;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    outline: none;
+    border: none;
+    border-bottom: 1.5px solid var(--text-color);
+    border-radius: 0px;
+  }
+
+  .close-search-icon {
+    color: var(--text-color);
+    cursor: pointer;
+  }
+
+  .suggestions-list {
+    position: absolute;
+    top: 17%;
+    left: 2%;
+    right: 0;
+    max-width: 90%;
+    max-height: 300px;
+    background: var(--bg-color);
+    border: 1.5px solid var(--text-color);
+    border-top: 0px;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 2100;
+  }
+
+  .suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .suggestion-item:hover {
+    background: none;
   }
 
   .main-icon-menu {
@@ -808,54 +875,12 @@ button.main-btn2:hover {
   .main-menu-open-icon {
     position: fixed;
     top: 10px;
-    left: 60%;
+    left: 50%;
     z-index: 100;
   }
 
   .main-logo {
     display: none;
-  }
-  .main-logo-new {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    display: block;
-  }
-  .main-logo-new img {
-    width: 90px;
-    cursor: pointer;
-    margin: 0 auto;
-  }
-
-  .main-search-div {
-    display: block;
-    position: relative;
-    right: 0;
-    z-index: 1000;
-  }
-
-  .main-search-overlay {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 10px;
-    z-index: 999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .main-search-wrapper input {
-    width: 100%;
-    padding: 20px;
-    font-size: 1rem;
-    font-style: italic;
-    font-weight: 600;
-    color: var(--text-color);
-    box-shadow: 0 5px 5px var(--text-color);
-    background-color: var(--bg-color);
-    border: none;
   }
 
   .main-inner-h-old {
@@ -907,7 +932,7 @@ button.main-btn2:hover {
     position: fixed;
     top: 0;
     left: 0;
-    width: 50%;
+    width: 43%;
     height: 100vh;
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -924,6 +949,7 @@ button.main-btn2:hover {
     display: flex;
     flex-direction: column;
     padding-top: 20px;
+    margin-bottom: 20px;
     width: 100%;
   }
 
@@ -935,7 +961,7 @@ button.main-btn2:hover {
 
   li.main-menu-items-wrapper-new {
     position: relative;
-    padding-bottom: 20px;
+    padding-bottom: -5px;
     font-weight: 600;
     width: 100%;
   }
@@ -946,16 +972,19 @@ button.main-btn2:hover {
 
   ul.main-sub-menu-new {
     /* position: absolute; */
-    width: 80%;
+    width: 90%;
     top: 100%;
     left: 0;
     margin: 0 auto;
     padding: 10px;
     background-color: var(--bg-color);
-    border-radius: 5px;
     z-index: 100;
     display: none;
-    box-shadow: 0 5px 3px var(--text-color);
+    border-bottom: 1px solid var(--text-color);
+    border-left: 1px solid var(--text-color);
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 10px;
     white-space: nowrap;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -1004,20 +1033,118 @@ button.main-btn2:hover {
   }
 
   .main-custom-links-new {
+    display: flex;
+    gap: 15px;
+    font-size: 1.05rem;
+    line-height: 2px;
+    padding-left: 15px;
+    align-items: center;
     cursor: pointer;
     text-decoration: none;
     color: var(--text-color);
-    display: block;
     width: 100%;
     word-wrap: break-word; /* this one dey break long word */
     /* Allow text to wrap to new lines */
   }
+
+  .logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-bottom: 50px;
+  }
+  .logout-btn p {
+    padding-right: 10px;
+  }
+
+  /* active user link profile */
+  .active-user-link {
+    width: 100%;
+    padding: 5px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    text-decoration: none;
+    gap: 15px;
+    position: relative;
+  }
+
+  .user-profile-picture {
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* border: 1px solid var(--text-color); */
+  }
+  .user-profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .active-status {
+    position: absolute;
+    top: 65.5%;
+    left: 11.5%;
+    width: 10px;
+    height: 10px;
+    z-index: 1000;
+    border-radius: 50%;
+    border: 1px solid rgb(227, 226, 226);
+    background-color: rgb(42, 196, 42);
+  }
+
+  .user-profile-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+  }
+  span.span11 {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  span.span22 {
+    font-size: 14px;
+    color: gray;
+  }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 901px) and (max-width: 1280px) {
+  .main-header-wrapper {
+    position: relative;
+    padding: 10px 30px 10px 30px;
+    height: 100%;
+    border-bottom: 2px solid var(--text-color);
+  }
+
+  li.main-menu-items-wrapper {
+    position: relative;
+    padding-right: 20px;
+    font-weight: 600;
+  }
+
   .main-inner-two input {
-    padding: 1px;
-    padding-left: 40px;
+    border: 2px solid var(--text-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 10px;
+    padding-left: 30px;
     width: 150px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    z-index: 1000;
+  }
+
+  .active-status {
+    display: none;
+  }
+
+  .logout p {
+    display: none;
   }
 }

@@ -20,3 +20,10 @@
     margin-top: 250px;
   }
 }
+
+/* Landscape and iPad View */
+@media (min-width: 600px) and (max-width: 900px) {
+  .soon-text {
+    margin-top: -100px;
+  }
+}

@@ -176,3 +176,9 @@ button.utme-test-btn2:hover {
     font-weight: 500;
   }
 }
+
+@media (min-width: 901px) and (max-width: 1280px) {
+  .utme-text-container h5 {
+    display: none;
+  }
+}

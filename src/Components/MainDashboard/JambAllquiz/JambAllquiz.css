@@ -86,3 +86,21 @@ span.cancel-pay {
     z-index: 1000;
   }
 }
+
+/* Landscape and iPad View */
+@media (min-width: 600px) and (max-width: 900px) {
+  .error-container {
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .error-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

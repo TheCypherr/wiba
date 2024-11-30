@@ -267,3 +267,49 @@ button.take-quiz {
     font-size: 0.8rem;
   }
 }
+
+/* Landscape and iPad View */
+@media (min-width: 600px) and (max-width: 900px) {
+  .allquiz-wrapper {
+    padding: 10px 45px 50px 45px;
+  }
+
+  p.started {
+    width: 400px;
+    font-size: 1rem;
+    padding-bottom: 10px;
+  }
+
+  .popup-container {
+    position: relative;
+    z-index: 1100;
+  }
+
+  .inner-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1100;
+    background-color: var(--bg-color);
+    width: 250px;
+    padding: 10px 10px 20px 10px;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .popup-texts li {
+    padding-bottom: 10px;
+    font-size: 0.8rem;
+    margin-left: -10px;
+  }
+}
+@media (min-width: 901px) and (max-width: 1280px) {
+  .allquiz-wrapper {
+    padding: 10px 90px 50px 90px;
+  }
+}

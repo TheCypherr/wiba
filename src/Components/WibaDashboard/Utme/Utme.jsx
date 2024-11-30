@@ -67,16 +67,37 @@ const Utme = () => {
         },
       },
       {
-        breakpoint: 1024,
+        breakpoint: 1280,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1194,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1180,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1104,
+        settings: {
+          slidesToShow: 4,
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 900,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
@@ -100,8 +121,8 @@ const Utme = () => {
               </div>
               <div className="text-container">
                 <h3>
-                  Math CBT: JAMB Math Questions to test your Readiness & Prepare
-                  you.
+                  Math CBT: JAMB Math CBT Questions to test your Readiness &
+                  Prepare you.
                 </h3>
                 <h5>Ace your Exams with WIBA</h5>
                 <Link to="#">
@@ -184,8 +205,8 @@ const Utme = () => {
               </div>
               <div className="text-container">
                 <h3>
-                  Physics CBT: Get prepared for JAMB Physics on WIBA with
-                  questions to help you Pass.
+                  Physics CBT: Get prepared for Physics on WIBA with questions
+                  to help you Pass.
                 </h3>
                 <h5>Practice on WIBA with Timer</h5>
                 <Link to="#">

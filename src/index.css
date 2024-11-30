@@ -13,6 +13,17 @@
   font-weight: 500;
 }
 
+body {
+  margin: 0;
+  transition: all 0.5s ease;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
 .logo {
   width: 100px;
   height: 45px;
@@ -50,21 +61,10 @@
   cursor: pointer;
 }
 
-body {
-  margin: 0;
-  transition: all 0.5s ease;
-  font-family: "Raleway", sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-  text-align: left;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
-
 .main-icon-div {
   position: fixed;
   top: 50%;
-  right: 3%;
+  right: 4%;
   z-index: 1;
 }
 
@@ -223,8 +223,8 @@ body {
 
   .main-icon-div {
     position: fixed;
-    top: 90%;
-    left: 0;
+    top: 85%;
+    left: 2%;
     z-index: 1;
   }
 
@@ -235,12 +235,16 @@ body {
 
 /* Landscape and iPad View */
 @media (min-width: 600px) and (max-width: 900px) {
-  /* .slick-prev,
-  .slick-next {
-    display: none;
+  .logo-new {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    width: 90px;
+    height: 43px;
+    background-image: var(--logo-image);
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
   }
-  .slick-prev::before,
-  .slick-next::before {
-    display: none;
-  } */
 }

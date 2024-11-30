@@ -524,7 +524,7 @@ const UserProfile = () => {
       id: "fullName",
       label: "Name & Surname",
       type: "text",
-      placeholder: "Oluwa Cypher",
+      placeholder: "Uche Kolade",
     },
     {
       id: "email",
@@ -536,7 +536,7 @@ const UserProfile = () => {
       id: "phone",
       label: "Phone",
       type: "text",
-      placeholder: "+234 701 2208 069",
+      placeholder: "+234 123 4567 891",
     },
     {
       id: "country",

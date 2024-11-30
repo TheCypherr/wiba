@@ -50,6 +50,10 @@ body {
   width: 200px;
 }
 
+p.title {
+  text-align: center;
+}
+
 .score-table {
   flex: 4;
   padding: 10px;

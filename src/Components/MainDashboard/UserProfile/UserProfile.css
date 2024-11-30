@@ -407,3 +407,118 @@ button.profile-btn {
     align-self: flex-end;
   }
 }
+
+/* Landscape and iPad View */
+@media (min-width: 600px) and (max-width: 900px) {
+  .profile-updated {
+    top: 10%;
+    left: 25%;
+    padding: 7px;
+    border-radius: 5px;
+  }
+  .profile-incomplete {
+    top: 10%;
+    left: 25%;
+    padding: 7px;
+    border-radius: 5px;
+  }
+
+  .user-profile {
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+    padding: 10px 10px 10px 10px;
+  }
+
+  .inner-profile1 {
+    display: none;
+  }
+
+  .profile-logo-container {
+    padding: 0px;
+    text-align: center;
+    align-items: center;
+    border-bottom: none;
+  }
+
+  .inner-profile2 {
+    flex: 0;
+    padding: 15px 10px;
+  }
+
+  .top-profile {
+    padding: 5px 15px;
+  }
+
+  .bottom-profile {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 20px 20px 20px;
+  }
+
+  .hide1 {
+    display: block;
+  }
+  .hide2 {
+    display: none;
+  }
+
+  .left-profile {
+    flex: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .profile-pic img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ddd;
+  }
+
+  .right-profile {
+    flex: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-container {
+    width: 100%;
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns: 2fr;
+    gap: 25px;
+  }
+
+  .form-input {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 5px 10px;
+    max-width: 100%;
+    width: 90%;
+  }
+
+  .form-input input {
+    margin: 1px 0;
+    margin-bottom: 7px;
+  }
+
+  .form-input span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 80%;
+  }
+
+  .form-input button {
+    align-self: flex-end;
+  }
+}

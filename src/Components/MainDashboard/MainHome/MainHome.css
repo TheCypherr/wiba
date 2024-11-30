@@ -141,7 +141,7 @@ body {
   }
   .home-btn {
     text-align: center;
-    padding: 0px 20px 0px 20px;
+    padding: 0px 20px 25px 20px;
   }
   .home-btn button {
     width: 100%;
@@ -151,5 +151,11 @@ body {
     border: navajowhite;
     background-color: var(--logo-color);
     color: var(--bg-color);
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1280px) {
+  .inner-home1 h1 {
+    font-size: 2.2rem;
   }
 }

@@ -91,7 +91,7 @@ const Overview = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 768) {
+      if (window.innerWidth <= 900) {
         // Adjust columns width for mobile view
         setColumns([
           { field: "id", headerName: "ID", width: 20 },

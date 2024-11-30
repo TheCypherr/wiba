@@ -18,12 +18,12 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
-  background-color: var(--bg-color);
+  /* background-color: var(--bg-color); */
   width: 300px;
   padding: 20px;
   text-align: center;
   border-radius: 20px;
-  border: 1px solid #fff;
+  /* border: 1px solid #fff; */
 }
 
 .popup-texts p {
