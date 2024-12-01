@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useFirebaseUser } from "../../../utils/FirebaseContext";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { auth } from "../../../config/Firebase";
 
 const Signup = () => {
@@ -45,6 +46,19 @@ const Signup = () => {
 
     try {
       setLoading(true); // show loading indicator
+
+      // Check if the username already exists in the 'User Profiles' collection
+      const usersRef = collection(db, "User Profiles");
+      const q = query(usersRef, where("username", "==", username)); // Query for username match
+      const querySnapshot = await getDocs(q);
+
+      // If there's any document returned, that means the username already exists
+      if (!querySnapshot.empty) {
+        setUsernameError("Username is already taken");
+        setLoading(false);
+        return;
+      }
+
       console.log("Creating user...");
 
       // Create user
@@ -88,7 +102,7 @@ const Signup = () => {
       } else if (error.code === "auth/weak-password") {
         setPasswordError("Password is too weak");
       } else {
-        setUsernameError("An unexpected error occurred");
+        setUsernameError("Username is already taken");
       }
     }
   };

@@ -14,6 +14,7 @@ import {
   FaChevronDown,
   FaGraduationCap,
   FaBook,
+  FaTrophy,
 } from "react-icons/fa";
 
 const Header = () => {
@@ -178,9 +179,9 @@ const Header = () => {
       icon: <FaGraduationCap size={27} />,
     },
     {
-      name: "Study Guide",
+      name: "Leader Board",
       link: "/login",
-      icon: <FaBook size={23} />,
+      icon: <FaTrophy size={23} />,
     },
     {
       name: "PDF Materials",
@@ -205,15 +206,15 @@ const Header = () => {
       link: "/login",
     },
     {
-      name: "Study Guide",
-      link: "/login",
-    },
-    {
       name: "PDF Materials",
       link: "/login",
     },
     {
       name: "UTME Past Questions",
+      link: "/login",
+    },
+    {
+      name: "Leader Board",
       link: "/login",
     },
   ];
@@ -398,7 +399,7 @@ const Header = () => {
                       >
                         {item.name}
                       </Link>
-                      {item.name !== "Study Guide" &&
+                      {item.name !== "Leader Board" &&
                         item.name !== "PDF Materials" &&
                         item.name !== "UTME Past Questions" &&
                         (activeMenu === item.name ? (

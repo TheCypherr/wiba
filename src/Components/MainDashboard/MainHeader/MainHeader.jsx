@@ -15,6 +15,7 @@ import {
   FaHome,
   FaGraduationCap,
   FaBook,
+  FaTrophy,
 } from "react-icons/fa";
 import { auth } from "../../../config/Firebase";
 import { signOut } from "firebase/auth";
@@ -176,9 +177,9 @@ const MainHeader = () => {
       icon: <FaGraduationCap size={27} />,
     },
     {
-      name: "Study Guide",
-      link: "/coming-soon",
-      icon: <FaBook size={23} />,
+      name: "Leader Board",
+      link: "/leader-board",
+      icon: <FaTrophy size={23} />,
     },
     {
       name: "PDF Materials",
@@ -209,16 +210,16 @@ const MainHeader = () => {
       link: "/categories/JambCBT",
     },
     {
-      name: "Study Guide",
-      link: "/coming-soon",
-    },
-    {
       name: "PDF Materials",
       link: "/categories/pdf-materials",
     },
     {
       name: "JAMB Past Questions",
       link: "/categories/past-questions",
+    },
+    {
+      name: "Leader Board",
+      link: "/leader-board",
     },
   ];
 
@@ -420,7 +421,7 @@ const MainHeader = () => {
                         >
                           {item.name}
                         </Link>
-                        {item.name !== "Study Guide" &&
+                        {item.name !== "Leader Board" &&
                           item.name !== "PDF Materials" &&
                           item.name !== "JAMB Past Questions" &&
                           (activeMenu === item.name ? (

@@ -8,6 +8,19 @@ body {
   background-color: var(--bg-color);
 }
 
+button.overview-btn {
+  width: 150px;
+  border-radius: 50px;
+  padding: 9px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--bg-color);
+  background-color: var(--logo-color);
+  color: var(--bg-color);
+  cursor: pointer;
+}
+
 .inner-overview {
   flex: 5;
   padding: 25px 30px;
@@ -90,6 +103,19 @@ button.deleteButton {
 
 /* Portrait View Responsiveness */
 @media (max-width: 600px) {
+  button.overview-btn {
+    width: 100px;
+    border-radius: 50px;
+    padding: 7px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--bg-color);
+    background-color: var(--logo-color);
+    color: var(--bg-color);
+    cursor: pointer;
+  }
+
   .score-data {
     margin-top: -30px;
     /* margin: 0 auto; */

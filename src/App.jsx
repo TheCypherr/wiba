@@ -39,6 +39,7 @@ import JambPastQuestion from "./Components/MainDashboard/JambPastQuestion/JambPa
 import ComingSoonNew from "./Components/MainDashboard/ComingSoonNew/ComingSoonNew";
 import PasswordReset from "./Components/WibaDashboard/PasswordReset/PasswordReset";
 import PdfMaterials from "./Components/MainDashboard/PdfMaterials/PdfMaterials";
+import LeaderBoard from "./Components/MainDashboard/LeaderBoard/LeaderBoard";
 
 function App() {
   return (
@@ -176,6 +177,15 @@ function App() {
               element={
                 <>
                   <Overview />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/leader-board"
+              element={
+                <>
+                  <LeaderBoard />
                   <Footer />
                 </>
               }

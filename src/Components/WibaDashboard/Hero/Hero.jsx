@@ -37,9 +37,8 @@ const Hero = () => {
             <div className="overlay">
               <h1>Your One-Stop Study Hub with Extensive Study Materials.</h1>
               <h3>
-                Gain access to a vast library of curated study guides, lecture
-                notes, and video lessons covering a wide range of subjects and
-                exam types..
+                Gain access to a vast library of curated lecture notes, and
+                video lessons covering a wide range of subjects and exam types..
               </h3>
             </div>
           </div>
@@ -91,9 +90,8 @@ const Hero = () => {
             <div className="overlay-new">
               <h1>Your One-Stop Study Hub with Extensive Study Materials.</h1>
               <h3>
-                Gain access to a vast library of curated study guides, lecture
-                notes, and video lessons covering a wide range of subjects and
-                exam types..
+                Gain access to a vast library of curated lecture notes, and
+                video lessons covering a wide range of subjects and exam types..
               </h3>
             </div>
           </div>

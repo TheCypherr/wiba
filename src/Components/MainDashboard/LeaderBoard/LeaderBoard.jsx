@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Overview.css";
+import "./LeaderBoard.css";
 import { Link, useNavigate } from "react-router-dom";
 import {
   FaSignOutAlt,
@@ -19,9 +19,9 @@ import {
   addDoc,
   collection,
   doc,
-  setDoc,
   serverTimestamp,
   getDocs,
+  getDoc,
   onSnapshot,
   deleteDoc,
   getFirestore,
@@ -33,7 +33,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { db } from "../../../config/Firebase";
 
-const Overview = () => {
+const LeaderBoard = () => {
   const { user, setUser } = useFirebaseUser();
   const [activeMenu, setActiveMenu] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -63,32 +63,12 @@ const Overview = () => {
   };
 
   const paginationModel = { page: 0, pageSize: 5 };
-  const actionColumn = [
-    {
-      field: "action",
-      headerName: "Action",
-      width: 100,
-      renderCell: (params) => {
-        const { firestoreId } = params.row; // Access firestoreId from the row data
-        return (
-          <div className="delete-score">
-            <button
-              className="deleteButton"
-              onClick={() => handleQuizDeletePopup(firestoreId)}
-            >
-              Delete
-            </button>
-          </div>
-        );
-      },
-    },
-  ];
 
   // user column for different screens
   const [columns, setColumns] = useState([
     { field: "id", headerName: "ID", width: 40 },
-    { field: "test", headerName: "Test Taken", width: 250 },
-    { field: "score", headerName: "Score", width: 100 },
+    { field: "username", headerName: "Username", width: 150 },
+    { field: "progress", headerName: "Progress (%)", width: 150 },
   ]);
 
   useEffect(() => {
@@ -97,15 +77,15 @@ const Overview = () => {
         // Adjust columns width for mobile view
         setColumns([
           { field: "id", headerName: "ID", width: 20 },
-          { field: "test", headerName: "Test Taken", width: 150 },
-          { field: "score", headerName: "Score", width: 80 },
+          { field: "username", headerName: "Username", width: 150 },
+          { field: "progress", headerName: "Progress (%)", width: 150 },
         ]);
       } else {
         // Default column widths for larger screens
         setColumns([
           { field: "id", headerName: "ID", width: 40 },
-          { field: "test", headerName: "Test Taken", width: 250 },
-          { field: "score", headerName: "Score", width: 100 },
+          { field: "username", headerName: "Username", width: 150 },
+          { field: "progress", headerName: "Progress (%)", width: 150 },
         ]);
       }
     };
@@ -177,18 +157,64 @@ const Overview = () => {
 
   // Show quiz score in the overview section
   const [quizScores, setQuizScores] = useState([]);
+  const [leaderboard, setLeaderboard] = useState([]);
   const [progress, setProgress] = useState(0);
 
-  // useEffect(() => {
-  //   const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       setUser(user); // Ensure user data is available after refresh
-  //     } else {
-  //       setUser(null); // Clear user state if no user is logged in
-  //     }
-  //   });
-  //   return () => unsubscribeAuth();
-  // }, []);
+  // Function to fetch leaderboard data
+  const fetchLeaderboard = async () => {
+    try {
+      // Fetch all progress documents
+      const usersProgressRef = collection(db, "userProgress");
+      const progressSnapshot = await getDocs(usersProgressRef);
+
+      const leaderboardData = [];
+
+      for (const progressDoc of progressSnapshot.docs) {
+        const userId = progressDoc.id; // Document ID is the userId
+        console.log("Fetching user profile for userId:", userId);
+
+        // Fetch the username from userProfiles
+        const userProfileRef = doc(db, "User Profiles", userId);
+        const userProfileDoc = await getDoc(userProfileRef);
+
+        let username = "Unknown User"; // Default username if not found
+        if (userProfileDoc.exists()) {
+          const userProfileData = userProfileDoc.data();
+          username = userProfileData.username || "Unknown User";
+          console.log("User profile found:", username);
+        } else {
+          console.error("User profile not found for userId:", userId);
+        }
+
+        // If the user is the logged-in user, change the username to "You"
+        if (userId === user.userId) {
+          username = "You";
+        }
+
+        // Fetch progress
+        const progressData = progressDoc.data();
+        const progressPercentage = progressData?.progress || 0;
+
+        leaderboardData.push({
+          username: username,
+          progress: progressPercentage, // Store raw numeric progress
+          displayProgress: `🏅 ${progressPercentage}%`, // For display purposes
+        });
+      }
+
+      // Sort by numerical progress and return the top 5
+      leaderboardData.sort((a, b) => b.progress - a.progress); // Use raw numeric value for sorting
+
+      return leaderboardData.slice(0, 5).map((entry, index) => ({
+        id: index + 1,
+        username: entry.username,
+        progress: entry.displayProgress, // Use the display version for final output
+      }));
+    } catch (error) {
+      console.error("Error fetching leaderboard data:", error);
+      return [];
+    }
+  };
 
   useEffect(() => {
     if (!user || !user.userId) {
@@ -234,8 +260,11 @@ const Overview = () => {
         const progressPercentage = calculateProgress(data); // Recalculate progress
         setProgress(progressPercentage); // Update progress
 
-        // Save progress to Firestore
-        saveProgressToFirestore(user.userId, progressPercentage);
+        // Create leaderboard based on userProgress in firestore
+        const leaderboardData = fetchLeaderboard(); // Awaited fetchLeaderboard data
+        leaderboardData.then((data) => {
+          setLeaderboard(data); // Update leaderboard with fetched data
+        });
       });
 
       // Cleanup listener on component unmount
@@ -268,25 +297,6 @@ const Overview = () => {
     return Math.floor((totalScore / maxScore) * 100); // Round down to nearest integer
   };
 
-  // Saving Percentage Progress to Firestore:
-  const saveProgressToFirestore = async (userId, progressPercentage) => {
-    if (progressPercentage === 0) {
-      return;
-    }
-
-    try {
-      const userProgressRef = doc(db, "userProgress", userId); // Create the userProgress document
-      await setDoc(
-        userProgressRef,
-        { progress: progressPercentage },
-        { merge: true }
-      ); // Save progress
-      console.log("Progress saved successfully for user", userId);
-    } catch (error) {
-      console.error("Error saving progress to Firestore:", error);
-    }
-  };
-
   // useEffect to prevent scrolling when popup is shown
   useEffect(() => {
     if (showPopup) {
@@ -296,48 +306,7 @@ const Overview = () => {
     }
   }, [showPopup]);
 
-  // Function to show the popup for Delete quiz score from overview section
-  const handleQuizDeletePopup = (firestoreId) => {
-    setSelectedFirestoreId(firestoreId); // Save the ID of the quiz to delete
-    setShowPopup(true);
-    window.scrollTo(0, 0);
-  };
-
-  // Function to confirm deletion of the quiz score
-  const confirmDelete = async () => {
-    setShowPopup(false); // Hide popup
-
-    try {
-      // Reference to the specific quiz score document
-      const docRef = doc(
-        db,
-        "userScores",
-        user.userId,
-        "quizzes",
-        selectedFirestoreId
-      );
-      await deleteDoc(docRef); // Delete the document from Firestore
-    } catch (error) {
-      console.error("Error deleting score:", error);
-      alert("Failed to delete score. Please try again.");
-    }
-  };
-
-  // Function to cancel deletion
-  const cancelDelete = () => {
-    setShowPopup(false); // Close the popup
-  };
-
   const menuItems = [
-    // {
-    //   name: "Categories",
-    //   link: "/categories/JambCBT",
-    //   subItems: [
-    //     { label: "UTME Quiz", link: "/categories/JambCBT" },
-    //     { label: "A Level Test", link: "/aLevel" },
-    //     { label: "100L Quiz", link: "/categories/allquiz" },
-    //   ],
-    // },
     {
       name: "Dashboard",
       link: "/main",
@@ -360,7 +329,7 @@ const Overview = () => {
     },
     {
       name: "Leader Board",
-      link: "/leader-board",
+      link: "/coming-soon",
       icon: <FaTrophy size={23} />,
     },
     {
@@ -483,14 +452,14 @@ const Overview = () => {
 
       <div className="inner-profile2">
         <div className="top-profile">
-          <p>Student Overview</p>
+          <p>Leader Board 🏆</p>
           <button
             className="profile-btn"
             onClick={() => {
-              handlePageLoading("/profile");
+              handlePageLoading("/overview");
             }}
           >
-            Profile
+            Overview
           </button>
         </div>
 
@@ -519,7 +488,7 @@ const Overview = () => {
 
           <div className="score-table">
             <div className="progress-top">
-              <h1>Quiz Scores</h1>
+              <h1>Leader Board 🏆</h1>
               <FaEllipsisV fontSize="small" />
             </div>
             <div
@@ -532,18 +501,18 @@ const Overview = () => {
               }}
             >
               <DataGrid
-                rows={quizScores}
-                columns={columns.concat(actionColumn)}
+                rows={leaderboard}
+                columns={columns}
                 initialState={{ pagination: { paginationModel } }}
-                pageSizeOptions={[4, 10]}
+                pageSizeOptions={[5, 10]}
                 checkboxSelection
                 sx={{
                   border: 0,
                   width: "100%",
                   maxWidth: {
                     xs: "300px", // For extra-small screens (mobile)
-                    sm: "450px", // For small screens (tablet)
-                    md: "700px", // For medium screens and above (desktop)
+                    sm: "400px", // For small screens (tablet)
+                    md: "400px", // For medium screens and above (desktop)
                   },
 
                   // General Styles for Entire Grid
@@ -568,12 +537,28 @@ const Overview = () => {
                       ? "var(--bg-color)"
                       : "var(--text-color)",
                     color: theme ? "var(--text-color)" : "var(--bg-color)",
+                    borderBottom: "none",
+                  },
+                  "& .MuiDataGrid-filler": {
+                    display: "none",
+                    borderBottom: "none",
+                  },
+                  "& .MuiDataGrid-cellEmpty": {
+                    backgroundColor: "transparent",
+                    border: "none",
+                    borderBottom: "none",
+                  },
+                  "& .MuiDataGrid-row--borderBottom": {
+                    backgroundColor: "transparent",
+                    border: "none",
+                    borderBottom: "none",
                   },
                   "& .MuiDataGrid-filler": {
                     backgroundColor: theme
                       ? "var(--bg-color)"
                       : "var(--text-color)",
                     color: theme ? "var(--text-color)" : "var(--bg-color)",
+                    borderBottom: "none",
                   },
 
                   // Pagination Styling (applies globally for this instance)
@@ -765,20 +750,6 @@ const Overview = () => {
         )}
       </div>
 
-      {showPopup && <div className="popup-backdrop"></div>}
-      {showPopup && (
-        <div className="popup-container">
-          <div className="popup-texts">
-            <h3>Are you sure you want to delete this quiz score?</h3>
-            <p>This action cannot be undone!</p>
-          </div>
-          <div className="popup-btns">
-            <button onClick={confirmDelete}>Yes</button>
-            <button onClick={cancelDelete}>No</button>
-          </div>
-        </div>
-      )}
-
       {loading && (
         <div className="load-overlay">
           <div className="load-slide">
@@ -790,4 +761,4 @@ const Overview = () => {
   );
 };
 
-export default Overview;
+export default LeaderBoard;

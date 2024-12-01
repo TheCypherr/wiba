@@ -12,6 +12,7 @@ import {
   FaHome,
   FaEdit,
   FaCheck,
+  FaTrophy,
 } from "react-icons/fa";
 import { useFirebaseUser } from "../../../utils/FirebaseContext";
 import {
@@ -491,9 +492,9 @@ const UserProfile = () => {
       icon: <FaGraduationCap size={27} />,
     },
     {
-      name: "Study Guide",
-      link: "/coming-soon",
-      icon: <FaBook size={23} />,
+      name: "Leader Board",
+      link: "/leader-board",
+      icon: <FaTrophy size={23} />,
     },
     {
       name: "PDF Materials",
@@ -603,11 +604,11 @@ const UserProfile = () => {
               <Link
                 to="#"
                 onClick={() => {
-                  handlePageLoading("/coming-soon");
+                  handlePageLoading("/leader-board");
                 }}
                 className="profile-custom-links"
               >
-                <FaBook size={20} /> Study Guide
+                <FaTrophy size={20} /> Leader Board
               </Link>
             </li>
             <li className="each-menu">
