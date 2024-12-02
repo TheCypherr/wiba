@@ -5,7 +5,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useFirebaseUser } from "../../../utils/FirebaseContext";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { auth } from "../../../config/Firebase";
+import { auth, db } from "../../../config/Firebase";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -54,6 +54,10 @@ const Signup = () => {
 
       // If there's any document returned, that means the username already exists
       if (!querySnapshot.empty) {
+        console.log(
+          "Query returned documents:",
+          querySnapshot.docs.map((doc) => doc.data())
+        );
         setUsernameError("Username is already taken");
         setLoading(false);
         return;
