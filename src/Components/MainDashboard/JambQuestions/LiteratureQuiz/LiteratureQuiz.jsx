@@ -73,7 +73,7 @@ const LiteratureQuiz = () => {
       const userQuizzesSnapshot = await getDocs(userQuizzesRef); // Fetch all quizzes taken by the user
 
       const quizzesTaken = userQuizzesSnapshot.size; // Count of quizzes taken
-      const docRef = doc(db, "User Profiles", user.userId);
+      const docRef = doc(db, "userProfiles", user.userId);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {

@@ -30,7 +30,7 @@ const Signup = () => {
     setUsernameError("");
     setPasswordError("");
 
-    // Check if any fields is empty
+    // Check if any fields are empty
     if (!email) {
       setEmailError("Input an email");
       return;
@@ -48,16 +48,12 @@ const Signup = () => {
       setLoading(true); // show loading indicator
 
       // Check if the username already exists in the 'User Profiles' collection
-      const usersRef = collection(db, "User Profiles");
+      const usersRef = collection(db, "userProfiles");
       const q = query(usersRef, where("username", "==", username)); // Query for username match
       const querySnapshot = await getDocs(q);
 
       // If there's any document returned, that means the username already exists
       if (!querySnapshot.empty) {
-        console.log(
-          "Query returned documents:",
-          querySnapshot.docs.map((doc) => doc.data())
-        );
         setUsernameError("Username is already taken");
         setLoading(false);
         return;
@@ -90,7 +86,7 @@ const Signup = () => {
       });
       console.log("profile updated with username", username);
 
-      setLoading(false); // dont show loading after successful signup
+      setLoading(false); // don't show loading after successful signup
       setSuccess(true); // Trigger success message
       setTimeout(() => {
         navigate("/main");
@@ -106,7 +102,10 @@ const Signup = () => {
       } else if (error.code === "auth/weak-password") {
         setPasswordError("Password is too weak");
       } else {
-        setUsernameError("Username is already taken");
+        // Don't overwrite username error here, as we already handled it above
+        if (!usernameError) {
+          setUsernameError("An unexpected error occurred");
+        }
       }
     }
   };

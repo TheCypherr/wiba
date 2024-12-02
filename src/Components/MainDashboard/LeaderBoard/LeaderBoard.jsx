@@ -174,7 +174,7 @@ const LeaderBoard = () => {
         console.log("Fetching user profile for userId:", userId);
 
         // Fetch the username from userProfiles
-        const userProfileRef = doc(db, "User Profiles", userId);
+        const userProfileRef = doc(db, "userProfiles", userId);
         const userProfileDoc = await getDoc(userProfileRef);
 
         let username = "Unknown User"; // Default username if not found

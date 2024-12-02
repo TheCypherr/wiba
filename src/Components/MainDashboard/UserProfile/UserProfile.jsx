@@ -93,7 +93,7 @@ const UserProfile = () => {
 
     try {
       setLoading(true);
-      await setDoc(doc(db, "User Profiles", user.userId), {
+      await setDoc(doc(db, "userProfiles", user.userId), {
         ...dataWithLabels,
         timeStamp: serverTimestamp(),
       });
@@ -114,7 +114,7 @@ const UserProfile = () => {
   const fetchUserProfile = async () => {
     if (!user) return;
     try {
-      const docRef = doc(db, "User Profiles", user.userId);
+      const docRef = doc(db, "userProfiles", user.userId);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
@@ -150,7 +150,7 @@ const UserProfile = () => {
   const fetchUserPaymentData = async () => {
     if (!user) return;
     try {
-      const docRef = doc(db, "User Profiles", user.userId);
+      const docRef = doc(db, "userProfiles", user.userId);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
@@ -280,7 +280,7 @@ const UserProfile = () => {
 
     try {
       await setDoc(
-        doc(db, "User Profiles", user.userId),
+        doc(db, "userProfiles", user.userId),
         {
           ...userPaymentData, // Existing user data
           paymentStatus: "Paid",
@@ -304,7 +304,7 @@ const UserProfile = () => {
 
     try {
       await setDoc(
-        doc(db, "User Profiles", user.userId),
+        doc(db, "userProfiles", user.userId),
         {
           ...userPaymentData, // Existing user data
           paymentStatus: "Paid",
@@ -345,7 +345,7 @@ const UserProfile = () => {
   useEffect(() => {
     const checkPaymentStatus = async () => {
       try {
-        const docRef = doc(db, "User Profiles", user.userId);
+        const docRef = doc(db, "userProfiles", user.userId);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
