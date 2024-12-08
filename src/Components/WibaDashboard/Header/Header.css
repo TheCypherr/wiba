@@ -10,7 +10,7 @@ body {
 
 .header-wrapper {
   position: relative;
-  padding: 10px 30px 10px 30px;
+  padding: 10px 15px 10px 15px;
   height: 100%;
   border-bottom: 2px solid var(--text-color);
 }
