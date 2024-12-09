@@ -10,7 +10,7 @@ body {
 
 .main-header-wrapper {
   position: relative;
-  padding: 10px 40px 10px 40px;
+  padding: 10px 25px 10px 25px;
   height: 100%;
   border-bottom: 2px solid var(--text-color);
 }
@@ -669,6 +669,26 @@ button.main-btn2:hover {
     /* Allow text to wrap to new lines */
   }
 
+  .social-media {
+    margin-left: 5px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: grey;
+    font-weight: 500;
+  }
+  .social-icon {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .social-text {
+    color: gray;
+    font-size: 1.1rem;
+    padding-bottom: 7px;
+  }
+
   .logout-btn {
     position: absolute;
     left: 7%;
@@ -1045,6 +1065,26 @@ button.main-btn2:hover {
     width: 100%;
     word-wrap: break-word; /* this one dey break long word */
     /* Allow text to wrap to new lines */
+  }
+
+  .social-media {
+    margin-left: 20px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: grey;
+    font-weight: 500;
+  }
+  .social-icon {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .social-text {
+    color: gray;
+    font-size: 1.1rem;
+    padding-bottom: 5px;
   }
 
   .logout-btn {
