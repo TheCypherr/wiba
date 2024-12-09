@@ -13,6 +13,8 @@ import {
   FaEdit,
   FaCheck,
   FaTrophy,
+  FaTwitter,
+  FaInstagram,
 } from "react-icons/fa";
 import { useFirebaseUser } from "../../../utils/FirebaseContext";
 import {
@@ -870,6 +872,26 @@ const UserProfile = () => {
                   ))}
                 </ul>
               </nav>
+
+              <div className="social-media">
+                <div className="social-icon">
+                  <a
+                    href="https://twitter.com/wiba_learn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaTwitter color="gray" />
+                  </a>
+                  <a
+                    href="https://instagram.com/wiba_learn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaInstagram color="gray" />
+                  </a>
+                </div>
+                <div className="social-text">@wiba_learn</div>
+              </div>
             </div>
 
             <div
