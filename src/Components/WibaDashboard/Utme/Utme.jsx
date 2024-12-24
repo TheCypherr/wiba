@@ -187,7 +187,7 @@ const Utme = () => {
                   Updated Biology JAMB Practice Questions to help you Ace your
                   Exam.
                 </h3>
-                <h5>Up to-date Biology Past Questions on WIBA </h5>
+                <h5>Biology Past Questions on WIBA </h5>
                 <Link to="#">
                   <button
                     className="test-btn"

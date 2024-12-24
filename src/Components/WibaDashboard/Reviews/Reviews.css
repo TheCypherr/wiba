@@ -8,7 +8,7 @@ body {
   background-color: var(--bg-color);
 }
 .review-wrapper {
-  padding: 130px 30px 100px 30px;
+  padding: 130px 50px 100px 50px;
 }
 .review-wrapper h1 {
   font-size: 2.2rem;
