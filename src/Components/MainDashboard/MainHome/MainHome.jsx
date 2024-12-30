@@ -1,12 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./MainHome.css";
-import { useFirebaseUser } from "../../../utils/FirebaseContext";
 import { useNavigate } from "react-router-dom";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { db } from "../../../config/Firebase";
+import { useFirebaseUser } from "../../../utils/FirebaseContext";
 
 const MainHome = () => {
   const { user } = useFirebaseUser();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [showDisclaimer, setShowDisclaimer] = useState(false);
+
+  // useEffect for Disclaimer pop-out
+  useEffect(() => {
+    const checkUserProfile = async () => {
+      if (!user) {
+        console.log("No user logged in");
+        return;
+      }
+
+      console.log("User:", user);
+
+      try {
+        // Access the userProfiles collection and get the specific user's document
+        const userProfileRef = doc(collection(db, "userProfiles"), user.userId);
+        const userProfileSnap = await getDoc(userProfileRef);
+
+        if (userProfileSnap.exists()) {
+          const userProfile = userProfileSnap.data();
+
+          // Check if fullName or phone is missing
+          if (!userProfile.fullName || !userProfile.phone) {
+            setShowDisclaimer(true);
+
+            const timer = setTimeout(() => {
+              setShowDisclaimer(false);
+            }, 10000);
+
+            return () => clearTimeout(timer); // Cleanup timeout
+          } else {
+            console.log("User profile is complete.");
+          }
+        } else {
+          setShowDisclaimer(true);
+
+          setTimeout(() => {
+            setShowDisclaimer(false);
+          }, 5000);
+          console.log("User profile document does not exist.");
+        }
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+      }
+    };
+
+    checkUserProfile();
+  }, [user, db]);
 
   // Function to handle Page Loading
   const handlePageLoading = (targetPage) => {
@@ -63,6 +112,22 @@ const MainHome = () => {
           <div className="load-slide">
             <div className="load-bar"></div>
           </div>
+        </div>
+      )}
+
+      {showDisclaimer && (
+        <div
+          className={`green-disclaimer ${
+            showDisclaimer ? "slide-in" : "slide-out"
+          }`}
+        >
+          <p>
+            {user
+              ? `Hi ${
+                  user.displayName.split(" ")[0]
+                }! Please complete your profile for easy navigation on WibA.`
+              : ""}
+          </p>
         </div>
       )}
     </section>
