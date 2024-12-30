@@ -234,7 +234,7 @@ const PostUtme = () => {
                 Practice Test for this University is in Progress. Kindly check
                 back or take the
                 <span className="span11"> General Post-UTME Test </span>in the
-                meantime.
+                main time.
               </p>
             )}
           </div>
