@@ -171,7 +171,7 @@ const Header = () => {
       icon: <FaGraduationCap size={27} />,
     },
     {
-      name: "A Level Test",
+      name: "Post-UTME Test",
       link: "/login",
       icon: <FaGraduationCap size={27} />,
     },
@@ -202,7 +202,7 @@ const Header = () => {
       name: "Categories",
       subItems: [
         { label: "JAMB CBT", link: "/login" },
-        { label: "A Level Test", link: "/login" },
+        { label: "Post-UTME Test", link: "/login" },
         { label: "100L Quiz", link: "/login" },
       ],
       link: "/login",

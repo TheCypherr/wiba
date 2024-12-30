@@ -469,7 +469,7 @@ const UserProfile = () => {
     //   link: "/categories/JambCBT",
     //   subItems: [
     //     { label: "UTME Quiz", link: "/categories/JambCBT" },
-    //     { label: "A Level Test", link: "/aLevel" },
+    //     { label: "Post-UTME Test", link: "/aLevel" },
     //     { label: "100L Quiz", link: "/categories/allquiz" },
     //   ],
     // },
@@ -484,8 +484,8 @@ const UserProfile = () => {
       icon: <FaGraduationCap size={27} />,
     },
     {
-      name: "A Level Test",
-      link: "/coming-soon",
+      name: "Post-UTME Test",
+      link: "/categories/post-utme",
       icon: <FaGraduationCap size={27} />,
     },
     {
@@ -584,11 +584,11 @@ const UserProfile = () => {
               <Link
                 to="#"
                 onClick={() => {
-                  handlePageLoading("/coming-soon");
+                  handlePageLoading("/categories/post-utme");
                 }}
                 className="profile-custom-links"
               >
-                <FaGraduationCap size={25} /> A Level Test
+                <FaGraduationCap size={25} /> Post-UTME Test
               </Link>
             </li>
             <li className="each-menu">

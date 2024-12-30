@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import "./JambAllquiz.css";
+import "./PostUtme.css";
 import { Link, useNavigate } from "react-router-dom";
-import { selectDepartment } from "../../../utils/JambData";
+import { selectUniversity } from "../../../utils/PostUtmeUnis";
 import { FaChevronDown } from "react-icons/fa";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../../../config/Firebase";
 import { useFirebaseUser } from "../../../utils/FirebaseContext";
 
-const JambAllquiz = () => {
+const PostUtme = () => {
   const { user } = useFirebaseUser();
-  const [facultyDropdown, setFacultyDropdown] = useState(selectDepartment[0]);
+  const [facultyDropdown, setFacultyDropdown] = useState(selectUniversity[0]);
   const [loading, setLoading] = useState(false);
-  // const [showDisclaimer, setShowDisclaimer] = useState(false);
+  const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [quizInstructionPopup, setQuizInstructionPopup] = useState(false);
   const [paymentPopup, setPaymentPopup] = useState(false);
   const [incomplete, setIncomplete] = useState(false);
@@ -38,7 +38,7 @@ const JambAllquiz = () => {
 
   const handleQuizChange = (event) => {
     const selectedId = parseInt(event.target.value, 10);
-    const selectedFaculty = selectDepartment.find(
+    const selectedFaculty = selectUniversity.find(
       (item) => item.id === selectedId
     );
     setFacultyDropdown(selectedFaculty);
@@ -112,26 +112,37 @@ const JambAllquiz = () => {
     setPaymentPopup(false);
   };
 
+  // useEffect for Disclaimer pop-out
+  useEffect(() => {
+    setShowDisclaimer(true);
+
+    const timer = setTimeout(() => {
+      setShowDisclaimer(false);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="allquiz-wrapper">
       <div className="allquiz-inner">
-        <h1>JAMB Practice Test</h1>
+        <h1>Post-UTME Practice Test</h1>
 
         <p className="started">
-          Get Started with well structured and grounded Jamb CBT questions to
-          prepare you for your <span>Exams.</span>
+          Take our well grounded and structured Post-UTME Test to get you ready
+          for the University of choice <span>Examination.</span>
         </p>
 
-        <div className="select-faculty department">
-          <p>Select Department: </p>
+        <div className="select-faculty department select-uni">
+          <p>Select University: </p>
           <select onChange={handleQuizChange}>
-            {selectDepartment.map((item) => (
+            {selectUniversity.map((item) => (
               <option key={item.id} value={item.id} className="option">
                 {item.label}
               </option>
             ))}
           </select>
-          <FaChevronDown className="select-icon department-icon" />
+          <FaChevronDown className="select-icon select-uni-icon" />
         </div>
 
         {paymentPopup && <div className="popup-backdrop"></div>}
@@ -171,7 +182,7 @@ const JambAllquiz = () => {
             {facultyDropdown.content.map((linkItem) => (
               <div key={linkItem.id} className="inner-popup">
                 <div className="popup-texts">
-                  <h3>CBT Instruction</h3>
+                  <h3>Post-UTME Instructions</h3>
                   <ul>
                     <li>
                       Once you start the Test, you cannot go back to previous
@@ -206,17 +217,26 @@ const JambAllquiz = () => {
         {facultyDropdown && (
           <div className="quiz-container">
             <h2>{facultyDropdown.label}</h2>
-            {facultyDropdown.content.map((linkItem) => (
-              <div key={linkItem.id} className="quiz-content">
-                <p>{linkItem.course}</p>
-                <button
-                  onClick={() => checkQuizAccess(linkItem.link)}
-                  className="take-quiz"
-                >
-                  Take Test
-                </button>
-              </div>
-            ))}
+            {facultyDropdown.content && facultyDropdown.content.length > 0 ? (
+              facultyDropdown.content.map((linkItem) => (
+                <div key={linkItem.id} className="quiz-content">
+                  <p>{linkItem.course}</p>
+                  <button
+                    onClick={() => checkQuizAccess(linkItem.link)}
+                    className="take-quiz"
+                  >
+                    Take Test
+                  </button>
+                </div>
+              ))
+            ) : (
+              <p className="cummulation">
+                Practice Test for this University is in Progress. Kindly check
+                back or take the
+                <span className="span11"> General Post-UTME Test </span>in the
+                meantime.
+              </p>
+            )}
           </div>
         )}
       </div>
@@ -232,8 +252,21 @@ const JambAllquiz = () => {
       {incomplete && (
         <div className="profile-incomplete slideIn">Incomplete Profile</div>
       )}
+
+      {showDisclaimer && (
+        <div
+          className={`disclaimer ${showDisclaimer ? "slide-in" : "slide-out"}`}
+        >
+          <p>
+            {/* The "General Test" in this section are Post-UTME Questions by
+            Universities that set these major subjects for their Exams. */}
+            The University Post-UTME is being updated. If you can't find your
+            Uni, exercise patience as the list is being updated.
+          </p>
+        </div>
+      )}
     </section>
   );
 };
 
-export default JambAllquiz;
+export default PostUtme;

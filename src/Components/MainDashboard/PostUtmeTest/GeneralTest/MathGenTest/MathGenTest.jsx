@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./EconomicsQuiz.css";
+import "./MathGenTest.css";
 import { Link, useNavigate } from "react-router-dom";
-import { jambEconomics as allQuestions } from "../../../../utils/JambQuestions/Economics.jsx";
+import { generalMaths as allQuestions } from "../../../../../utils/PostUtmeQuestions/General/Mathematics";
 import { FaChevronLeft, FaClock } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
 import {
@@ -12,11 +12,10 @@ import {
   serverTimestamp,
   collection,
 } from "firebase/firestore";
-import { db } from "../../../../config/Firebase";
-import { auth } from "../../../../config/Firebase";
-import { useFirebaseUser } from "../../../../utils/FirebaseContext";
+import { db } from "../../../../../config/Firebase";
+import { useFirebaseUser } from "../../../../../utils/FirebaseContext";
 
-const EconomicsQuiz = () => {
+const MathGenTest = () => {
   const { user } = useFirebaseUser();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
@@ -36,7 +35,7 @@ const EconomicsQuiz = () => {
   const navigate = useNavigate();
   let askedQuestions = [];
 
-  const testName = "JAMB Economics";
+  const testName = "Maths Post-UTME";
 
   // Function to handle Page Loading
   const handlePageLoading = (targetPage) => {
@@ -247,7 +246,7 @@ const EconomicsQuiz = () => {
 
     setTimeout(() => {
       setLoading(false);
-      navigate("/categories/JambCBT");
+      navigate("/categories/post-utme");
     }, 2000);
   };
 
@@ -362,7 +361,7 @@ const EconomicsQuiz = () => {
       )}
 
       <div className="quiz-type">
-        <h2>JAMB Economics</h2>
+        <h2>Maths Post-UTME</h2>
       </div>
 
       <div className="Gst113-inner">
@@ -484,4 +483,4 @@ const EconomicsQuiz = () => {
   );
 };
 
-export default EconomicsQuiz;
+export default MathGenTest;

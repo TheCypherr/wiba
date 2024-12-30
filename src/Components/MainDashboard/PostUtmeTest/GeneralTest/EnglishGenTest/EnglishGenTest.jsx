@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./EconomicsQuiz.css";
+import "./EnglishGenTest.css";
 import { Link, useNavigate } from "react-router-dom";
-import { jambEconomics as allQuestions } from "../../../../utils/JambQuestions/Economics.jsx";
+import { generalEnglish as allQuestions } from "../../../../../utils/PostUtmeQuestions/General/English";
 import { FaChevronLeft, FaClock } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
 import {
@@ -12,13 +12,13 @@ import {
   serverTimestamp,
   collection,
 } from "firebase/firestore";
-import { db } from "../../../../config/Firebase";
-import { auth } from "../../../../config/Firebase";
-import { useFirebaseUser } from "../../../../utils/FirebaseContext";
+import { db } from "../../../../../config/Firebase";
+import { useFirebaseUser } from "../../../../../utils/FirebaseContext";
 
-const EconomicsQuiz = () => {
+const EnglishGenTest = () => {
   const { user } = useFirebaseUser();
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentCompQuestion, setCurrentCompQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [showScore, setShowScore] = useState(false);
@@ -28,15 +28,16 @@ const EconomicsQuiz = () => {
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [timer, setTimer] = useState(30); // State to track time left
-  const timerIntervalRef = useRef(null); // Create a ref to store the interval ID
+  const [totalAnsweredQuestions, setTotalAnsweredQuestions] = useState(0);
+  const [timer, setTimer] = useState(30);
+  const timerIntervalRef = useRef(null);
   const [isTimerRunning, setIsTimerRunning] = useState(true); // Timer running status
   const [paymentPopup, setPaymentPopup] = useState(false);
   const [incomplete, setIncomplete] = useState(false);
   const navigate = useNavigate();
-  let askedQuestions = [];
+  let askedQuestions = []; // Array to track already asked questions
 
-  const testName = "JAMB Economics";
+  const testName = "English Post-UTME";
 
   // Function to handle Page Loading
   const handlePageLoading = (targetPage) => {
@@ -110,7 +111,13 @@ const EconomicsQuiz = () => {
     setPaymentPopup(false);
   };
 
-  // Function to shuffle and pick 30 random questions without repeats
+  // Function to handle page reload
+  const handlePageReload = () => {
+    window.scrollTo(0, 0);
+    window.location.href = "/gst113";
+  };
+
+  // Function to shuffle and pick a random number of questions (including sub-questions) without repeats
   const shuffleQuestions = (questionsArray, numQuestions) => {
     // Filter out already asked questions
     const remainingQuestions = questionsArray.filter(
@@ -154,7 +161,7 @@ const EconomicsQuiz = () => {
   };
 
   useEffect(() => {
-    // Shuffle and set 30 random questions when the component mounts
+    // Shuffle and set random questions when the component mounts
     const selectedQuestions = shuffleQuestions(allQuestions, 30);
     setShuffledQuestions(selectedQuestions);
   }, []);
@@ -206,12 +213,14 @@ const EconomicsQuiz = () => {
     setTimeout(() => {
       setLoading(false);
       setCurrentQuestion(0);
+      setCurrentCompQuestion(0);
       setScore(0);
       setSelectedAnswer("");
       setShowScore(false);
       setAnswers([]);
       setAnswered(false);
       setShowCorrectAnswer(false);
+      setTotalAnsweredQuestions(0);
       // then the state to shoffle another 30 questions
       const selectedQuestions = shuffleQuestions(allQuestions, 30);
       setShuffledQuestions(selectedQuestions);
@@ -230,7 +239,7 @@ const EconomicsQuiz = () => {
   const resumeTimer = () => {
     setIsTimerRunning(true);
     timerIntervalRef.current = setInterval(() => {
-      setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 60));
+      setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 30));
     }, 1000); // restart the timer interval
     console.log("Timer Resumed");
   };
@@ -238,7 +247,6 @@ const EconomicsQuiz = () => {
   const handleExitPopup = () => {
     setShowPopup(true); //show popup when user clicks
     pauseTimer();
-    window.scrollTo(0, 0);
   };
 
   const handleConfirmExit = () => {
@@ -247,7 +255,7 @@ const EconomicsQuiz = () => {
 
     setTimeout(() => {
       setLoading(false);
-      navigate("/categories/JambCBT");
+      navigate("/categories/post-utme");
     }, 2000);
   };
 
@@ -256,15 +264,7 @@ const EconomicsQuiz = () => {
     resumeTimer();
   };
 
-  useEffect(() => {
-    if (showPopup) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [showPopup]);
-
-  // Handle answer selection
+  // For Regular Answer Click
   const handleAnswerOptionClick = (option) => {
     setSelectedAnswer(option);
     setAnswered(true);
@@ -283,17 +283,14 @@ const EconomicsQuiz = () => {
       { question: shuffledQuestions[currentQuestion].question, isCorrect },
     ]);
 
-    // Clear the timer to prevent moving to the next question twice
-    clearInterval(timerIntervalRef.current);
-
-    // Move to the next question after 2 seconds
+    // Automatically move to the next question after 1.5 seconds
     setTimeout(() => {
       moveToNextQuestion();
-    }, 1500);
+    }, 1500); // 1.5 second delay
   };
 
   useEffect(() => {
-    if (isTimerRunning) {
+    if (isTimerRunning && !shuffledQuestions[currentQuestion]?.comprehension) {
       // Start the timer
       timerIntervalRef.current = setInterval(() => {
         setTimer((prevTimer) => {
@@ -338,6 +335,53 @@ const EconomicsQuiz = () => {
     }
   };
 
+  // For Comprehension Answer Click
+  const handleCompAnswerClick = (option) => {
+    setSelectedAnswer(option);
+    setAnswered(true);
+
+    const isCorrect =
+      option ===
+      shuffledQuestions[currentQuestion].questions[currentCompQuestion].answer;
+
+    if (isCorrect) {
+      setScore(score + 1); // Increment score by 1 for each correct answer
+    } else if (!isCorrect) {
+      setShowCorrectAnswer(true);
+    }
+
+    // Automatically move to the next question after 2 seconds
+    setTimeout(() => {
+      const nextCompQuestion = currentCompQuestion + 1;
+
+      // Check if there are more comprehension sub-questions
+      if (
+        nextCompQuestion < shuffledQuestions[currentQuestion].questions.length
+      ) {
+        setCurrentCompQuestion(nextCompQuestion); // Move to the next sub-question
+        setTotalAnsweredQuestions(totalAnsweredQuestions + 1); // Increase by 1 for each sub-question
+      } else {
+        // All comprehension sub-questions answered, move to the next main question
+        // setCurrentCompQuestion(0); // Reset comprehension question index
+        const nextQuestion = currentQuestion + 1;
+        setTotalAnsweredQuestions(totalAnsweredQuestions + 1); // Increase by 1 for each sub-question
+
+        // Check if there are more main questions
+        if (totalAnsweredQuestions + 1 < 30) {
+          setCurrentQuestion(nextQuestion); // Move to the next main question
+          setCurrentCompQuestion(0);
+        } else {
+          setShowScore(true); // All questions answered, show the score
+          // setCurrentCompQuestion(0);
+        }
+      }
+
+      setSelectedAnswer(""); // Clear the selected answer for the next question
+      setAnswered(false); // Reset answer state for new question
+      setShowCorrectAnswer(false); // Hide correct answer indicator
+    }, 1500); // 1.5-second delay
+  };
+
   return (
     <section className="Gst113-wrapper">
       <div className="main-logo quiz-logo">
@@ -362,7 +406,7 @@ const EconomicsQuiz = () => {
       )}
 
       <div className="quiz-type">
-        <h2>JAMB Economics</h2>
+        <h2>English Post-UTME</h2>
       </div>
 
       <div className="Gst113-inner">
@@ -400,6 +444,7 @@ const EconomicsQuiz = () => {
                     Question: <br /> {currentQuestion + 1}/
                     {shuffledQuestions.length}
                   </p>
+
                   <p>
                     Current Score: <br /> {score}
                   </p>
@@ -407,31 +452,99 @@ const EconomicsQuiz = () => {
                 <div className={`timer ${timer <= 5 ? "low" : ""}`}>
                   <FaClock />: {timer}
                 </div>
-                <div className="question">
-                  <p>{shuffledQuestions[currentQuestion].question}</p>
-                </div>
-                <div className="options">
-                  {shuffledQuestions[currentQuestion].options.map((option) => (
-                    <button
-                      key={option}
-                      onClick={() => handleAnswerOptionClick(option)}
-                      className={`option-button ${
-                        answered && option === selectedAnswer
-                          ? selectedAnswer ===
-                            shuffledQuestions[currentQuestion].answer
-                            ? "correct" // Mark selected correct option green
-                            : "wrong" // Mark selected wrong option red
-                          : showCorrectAnswer &&
-                            option === shuffledQuestions[currentQuestion].answer
-                          ? "correct" // Show correct answer in green if wrong selected
-                          : ""
-                      }`}
-                      disabled={!!selectedAnswer} // Disable buttons after selecting one
-                    >
-                      {option}
-                    </button>
-                  ))}
-                </div>
+
+                {/* Check if it's a comprehension question */}
+                {shuffledQuestions[currentQuestion]?.comprehension ? (
+                  <div className="comprehension-section">
+                    {/* Show comprehension passage */}
+                    <div className="comprehension-passage">
+                      <p className="instruction">
+                        {shuffledQuestions[currentQuestion].instruction}
+                      </p>
+                      <p>{shuffledQuestions[currentQuestion].comprehension}</p>
+                    </div>
+
+                    {/* Show comprehension questions */}
+                    <div className="comprehension-question">
+                      <p>
+                        {
+                          shuffledQuestions[currentQuestion].questions[
+                            currentCompQuestion
+                          ].question
+                        }
+                      </p>
+                      <div className="options">
+                        {shuffledQuestions[currentQuestion].questions[
+                          currentCompQuestion
+                        ].options.map((option) => (
+                          <button
+                            key={option}
+                            onClick={() =>
+                              handleCompAnswerClick(
+                                option,
+                                shuffledQuestions[currentQuestion].questions[
+                                  currentCompQuestion
+                                ].answer
+                              )
+                            }
+                            className={`option-button ${
+                              answered && option === selectedAnswer
+                                ? selectedAnswer ===
+                                  shuffledQuestions[currentQuestion].questions[
+                                    currentCompQuestion
+                                  ].answer
+                                  ? "correct" // Mark selected correct answer green
+                                  : "wrong" // Mark selected wrong answer red
+                                : showCorrectAnswer &&
+                                  option ===
+                                    shuffledQuestions[currentQuestion]
+                                      .questions[currentCompQuestion].answer
+                                ? "correct" // Show correct answer in green if wrong selected
+                                : ""
+                            }`}
+                            disabled={!!selectedAnswer} // Disable buttons after selecting one
+                          >
+                            {option}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="question">
+                    <div className="comprehension-passage2">
+                      <p className="instruction2">
+                        {shuffledQuestions[currentQuestion].instruction}
+                      </p>
+                    </div>
+                    <p>{shuffledQuestions[currentQuestion]?.question}</p>
+                    <div className="options">
+                      {shuffledQuestions[currentQuestion]?.options.map(
+                        (option) => (
+                          <button
+                            key={option}
+                            onClick={() => handleAnswerOptionClick(option)}
+                            className={`option-button ${
+                              answered && option === selectedAnswer
+                                ? selectedAnswer ===
+                                  shuffledQuestions[currentQuestion].answer
+                                  ? "correct" // Mark selected correct answer green
+                                  : "wrong" // Mark selected wrong answer red
+                                : showCorrectAnswer &&
+                                  option ===
+                                    shuffledQuestions[currentQuestion].answer
+                                ? "correct" // Show correct answer in green if wrong selected
+                                : ""
+                            }`}
+                            disabled={!!selectedAnswer} // Disable buttons after selecting one
+                          >
+                            {option}
+                          </button>
+                        )
+                      )}
+                    </div>
+                  </div>
+                )}
               </>
             )}
           </div>
@@ -484,4 +597,4 @@ const EconomicsQuiz = () => {
   );
 };
 
-export default EconomicsQuiz;
+export default EnglishGenTest;

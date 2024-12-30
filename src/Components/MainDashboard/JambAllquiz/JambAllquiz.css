@@ -39,6 +39,10 @@
   margin-bottom: 1px;
 }
 
+.required-text p {
+  line-height: 23px;
+}
+
 button.proceed-payment {
   padding: 10px;
   width: 100%;
@@ -84,6 +88,7 @@ span.cancel-pay {
     cursor: pointer;
     color: var(--text-color);
     z-index: 1000;
+    font-size: 14px;
   }
 }
 

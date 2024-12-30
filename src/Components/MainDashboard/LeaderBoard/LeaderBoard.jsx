@@ -320,8 +320,8 @@ const LeaderBoard = () => {
       icon: <FaGraduationCap size={27} />,
     },
     {
-      name: "A Level Test",
-      link: "/coming-soon",
+      name: "Post-UTME Test",
+      link: "/categories/post-utme",
       icon: <FaGraduationCap size={27} />,
     },
     {
@@ -387,11 +387,11 @@ const LeaderBoard = () => {
               <Link
                 to="#"
                 onClick={() => {
-                  handlePageLoading("/coming-soon");
+                  handlePageLoading("/categories/post-utme");
                 }}
                 className="profile-custom-links"
               >
-                <FaGraduationCap size={25} /> A Level Test
+                <FaGraduationCap size={25} /> Post-UTME Test
               </Link>
             </li>
             <li className="each-menu">

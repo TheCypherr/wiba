@@ -40,6 +40,10 @@ import ComingSoonNew from "./Components/MainDashboard/ComingSoonNew/ComingSoonNe
 import PasswordReset from "./Components/WibaDashboard/PasswordReset/PasswordReset";
 import PdfMaterials from "./Components/MainDashboard/PdfMaterials/PdfMaterials";
 import LeaderBoard from "./Components/MainDashboard/LeaderBoard/LeaderBoard";
+import PostUtme from "./Components/MainDashboard/PostUtme/PostUtme";
+import EnglishGenTest from "./Components/MainDashboard/PostUtmeTest/GeneralTest/EnglishGenTest/EnglishGenTest";
+import GeneralStudies from "./Components/MainDashboard/PostUtmeTest/GeneralTest/GeneralStudies/GeneralStudies";
+import MathGenTest from "./Components/MainDashboard/PostUtmeTest/GeneralTest/MathGenTest/MathGenTest";
 
 function App() {
   return (
@@ -163,6 +167,22 @@ function App() {
             <Route path="/jamb/commerce" element={<CommerceQuiz />} />
             <Route path="/jamb/economics" element={<EconomicsQuiz />} />
             <Route path="/jamb/account" element={<AccountQuiz />} />
+            <Route
+              path="/categories/post-utme"
+              element={
+                <>
+                  <MainHeader />
+                  <PostUtme />
+                  <Footer />
+                </>
+              }
+            />
+            <Route path="/post-utme/english" element={<EnglishGenTest />} />
+            <Route
+              path="/post-utme/generalPaper"
+              element={<GeneralStudies />}
+            />
+            <Route path="/post-utme/maths" element={<MathGenTest />} />
             <Route
               path="/profile"
               element={

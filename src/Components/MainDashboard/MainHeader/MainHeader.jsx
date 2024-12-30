@@ -154,7 +154,7 @@ const MainHeader = () => {
     //   link: "/categories/JambCBT",
     //   subItems: [
     //     { label: "UTME Quiz", link: "/categories/JambCBT" },
-    //     { label: "A Level Test", link: "/aLevel" },
+    //     { label: "Post-UTME Test", link: "/aLevel" },
     //     { label: "100L Quiz", link: "/categories/allquiz" },
     //   ],
     // },
@@ -169,8 +169,8 @@ const MainHeader = () => {
       icon: <FaGraduationCap size={27} />,
     },
     {
-      name: "A Level Test",
-      link: "/coming-soon",
+      name: "Post-UTME Test",
+      link: "/categories/post-utme",
       icon: <FaGraduationCap size={27} />,
     },
     {
@@ -206,7 +206,7 @@ const MainHeader = () => {
       name: "Categories",
       subItems: [
         { label: "JAMB CBT", link: "/categories/JambCBT" },
-        { label: "A Level Test", link: "/coming-soon" },
+        { label: "Post-UTME Test", link: "/categories/post-utme" },
         { label: "100L Quiz", link: "/categories/allquiz" },
       ],
       link: "/categories/JambCBT",

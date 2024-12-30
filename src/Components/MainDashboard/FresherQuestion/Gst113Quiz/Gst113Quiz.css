@@ -194,6 +194,7 @@ body {
 }
 .quiz-type h2 {
   line-height: 2px;
+  font-size: 1.3rem;
 }
 
 button.back {
@@ -309,7 +310,7 @@ button.back {
     width: 80%;
   }
   .quiz-type h2 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   .question-length {

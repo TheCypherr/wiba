@@ -82,7 +82,7 @@ const CrsQuiz = () => {
           // Full access granted
           handleRetakeQuiz();
           setLoading(false);
-        } else if (quizzesTaken >= 2) {
+        } else if (quizzesTaken >= 1) {
           // Restrict access and show payment popup
           setPaymentPopup(true);
           setLoading(false);
@@ -382,7 +382,7 @@ const CrsQuiz = () => {
             </div>
             <div className="retake">
               <button onClick={checkQuizAccess}>
-                <p>Retake Quiz</p> <FaRepeat />
+                <p>Retake Test</p> <FaRepeat />
               </button>
             </div>
             <div className="save">
@@ -453,9 +453,10 @@ const CrsQuiz = () => {
             <div className="required-text">
               <h2>Payment Required!</h2>
               <p>
-                To gain full access to all
-                <span className="span11"> JAMB Practice Test,</span> a one-time
-                payment of <span className="span11">#2,000</span> is required.
+                To gain access to all JAMB & Post-UTME Practice Test, a one-time
+                payment of
+                <span className="span11"> 2,000 NGN </span>
+                is required.
               </p>
             </div>
             <div>

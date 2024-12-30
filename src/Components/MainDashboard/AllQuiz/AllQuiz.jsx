@@ -48,6 +48,7 @@ const AllQuiz = () => {
     setQuizInstructionPopup(false);
   };
 
+  // useEffect for Disclaimer pop-out
   useEffect(() => {
     setShowDisclaimer(true);
 

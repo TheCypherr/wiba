@@ -1,0 +1,55 @@
+p.cummulation {
+  text-align: center;
+}
+
+.select-uni {
+  width: 360px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  font-weight: 600;
+}
+
+.select-uni select {
+  border: 2px solid var(--text-color);
+  color: var(--text-color);
+  width: 200px;
+}
+
+.select-uni-icon {
+  position: absolute;
+  left: 90.7%;
+  cursor: pointer;
+  color: var(--text-color);
+  z-index: 1000;
+}
+
+/* Portrait/Mobile View */
+@media (max-width: 600px) {
+  .select-uni {
+    justify-content: right;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    color: #000;
+  }
+  .select-uni select {
+    width: 45%;
+    font-size: 0.8rem;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
+    background-color: transparent;
+    border-radius: none;
+    appearance: none;
+  }
+
+  .select-uni-icon {
+    position: absolute;
+    left: 88.5%;
+    cursor: pointer;
+    color: var(--text-color);
+    z-index: 1000;
+    font-size: 14px;
+  }
+}

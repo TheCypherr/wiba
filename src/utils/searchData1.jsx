@@ -61,6 +61,11 @@ const searchData = [
   { id: 20, title: "Jamb Literature CBT", link: "/categories/JambCBT" },
   { id: 21, title: "Jamb Accounting CBT", link: "/categories/JambCBT" },
   { id: 22, title: "Jamb Economics CBT", link: "/categories/JambCBT" },
+  { id: 22, title: "Post-UTME Test", link: "/categories/post-utme" },
+  { id: 22, title: "Unilag Post-UTME", link: "/categories/post-utme" },
+  { id: 22, title: "Unical Post-UTME", link: "/categories/post-utme" },
+  { id: 22, title: "EKSU Post-UTME", link: "/categories/post-utme" },
+  { id: 22, title: "Unizik Post-UTME", link: "/categories/post-utme" },
 ];
 
 export default searchData;

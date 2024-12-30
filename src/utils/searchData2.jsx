@@ -21,6 +21,11 @@ const searchData2 = [
   { id: 20, title: "Jamb Literature CBT", link: "/login" },
   { id: 21, title: "Jamb Accounting CBT", link: "/login" },
   { id: 22, title: "Jamb Economics CBT", link: "/login" },
+  { id: 22, title: "Post-UTME Test", link: "/login" },
+  { id: 22, title: "Unilag Post-UTME", link: "/login" },
+  { id: 22, title: "Unical Post-UTME", link: "/login" },
+  { id: 22, title: "EKSU Post-UTME", link: "/login" },
+  { id: 22, title: "Unizik Post-UTME", link: "/login" },
 ];
 
 export default searchData2;
