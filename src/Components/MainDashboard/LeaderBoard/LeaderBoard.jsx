@@ -207,7 +207,7 @@ const LeaderBoard = () => {
       // Sort by numerical progress and return the top 5
       leaderboardData.sort((a, b) => b.progress - a.progress); // Use raw numeric value for sorting
 
-      return leaderboardData.slice(0, 5).map((entry, index) => ({
+      return leaderboardData.slice(0, 3).map((entry, index) => ({
         id: index + 1,
         username: entry.username,
         progress: entry.displayProgress, // Use the display version for final output
