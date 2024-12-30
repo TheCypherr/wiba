@@ -260,8 +260,8 @@ const PostUtme = () => {
           <p>
             {/* The "General Test" in this section are Post-UTME Questions by
             Universities that set these major subjects for their Exams. */}
-            The University Post-UTME is being updated. If you can't find your
-            Uni, exercise patience as the list is being updated.
+            The University Post-UTME Test are being updated. If you can't find
+            your Uni, exercise patience as the list is being updated.
           </p>
         </div>
       )}
