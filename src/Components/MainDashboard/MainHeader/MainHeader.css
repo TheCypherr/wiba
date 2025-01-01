@@ -749,7 +749,7 @@ button.main-btn2:hover {
   .active-status {
     position: absolute;
     top: 65%;
-    left: 17%;
+    left: 16%;
     width: 10px;
     height: 10px;
     z-index: 1000;
@@ -1128,8 +1128,8 @@ button.main-btn2:hover {
     border-radius: 50px;
     background-color: rgba(255, 0, 0, 0.846);
     color: #fff;
-    margin-top: 10px;
-    margin-bottom: 50px;
+    margin-top: 5px;
+    margin-bottom: 80px;
     margin-left: 15px;
     padding-left: 13px;
   }
