@@ -44,14 +44,22 @@ const Theme = () => {
   useEffect(() => {
     const savedTheme = JSON.parse(localStorage.getItem("theme"));
     if (savedTheme) {
+      // Apply saved theme
       setTheme(savedTheme);
-
-      // Apply saved theme CSS variables
       setBackground(savedTheme.background);
       setLogoBg(savedTheme.logoBg);
       setTextColor(savedTheme.textColor);
       setLogoTextColor(savedTheme.logoTextColor);
-      setLogoImage(savedTheme.background);
+      setLogoImage(savedTheme.logoImage);
+    } else {
+      // Apply and save default theme
+      setTheme(defaultTheme); // Optional but ensures state consistency
+      setBackground(defaultTheme.background);
+      setLogoBg(defaultTheme.logoBg);
+      setTextColor(defaultTheme.textColor);
+      setLogoTextColor(defaultTheme.logoTextColor);
+      setLogoImage(defaultTheme.logoImage);
+      localStorage.setItem("theme", JSON.stringify(defaultTheme));
     }
   }, []);
 
