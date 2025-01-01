@@ -85,11 +85,8 @@ const MainUtme = () => {
     <section className="main-utme-wrapper">
       <div className="main-inner-utme">
         <div className="main-utme-below">
-          <h1>Are you preparing for JAMB? (Take our quiz).</h1>
-          <h3>
-            Up to-date CBT Questions for Jamb Students along side 100L Practice
-            Questions for FRESHERS.
-          </h3>
+          <h1>Are you preparing for JAMB? (Take CBT).</h1>
+          <h3>Up to-date CBT Questions for Jamb Students.</h3>
         </div>
         <div className="utme-slider-divs">
           <Slider {...settings}>
@@ -102,11 +99,10 @@ const MainUtme = () => {
                   Math CBT: JAMB Math Questions to test your Readiness & Prepare
                   you.
                 </h3>
-                <h5>Ace your Exams with WIBA</h5>
                 <Link
                   onClick={() => handlePathNavigation("/categories/JambCBT")}
                 >
-                  <button className="utme-test-btn">Take Quiz</button>
+                  <button className="utme-test-btn">Take TEST</button>
                 </Link>
               </div>
             </div>
@@ -120,11 +116,10 @@ const MainUtme = () => {
                   Practice JAMB Accounting Questions to get you prepared for
                   your Exams
                 </h3>
-                <h5>Accounting Practice Questions on WIBA.</h5>
                 <Link
                   onClick={() => handlePathNavigation("/categories/JambCBT")}
                 >
-                  <button className="utme-test-btn">Take Quiz</button>
+                  <button className="utme-test-btn">Take TEST</button>
                 </Link>
               </div>
             </div>
@@ -138,11 +133,10 @@ const MainUtme = () => {
                   Updated Biology JAMB Practice Questions to help you Ace your
                   Exam.
                 </h3>
-                <h5>Up to-date Biology Past Questions on WIBA </h5>
                 <Link
                   onClick={() => handlePathNavigation("/categories/JambCBT")}
                 >
-                  <button className="utme-test-btn">Take Quiz</button>
+                  <button className="utme-test-btn">Take TEST</button>
                 </Link>
               </div>
             </div>
@@ -156,11 +150,10 @@ const MainUtme = () => {
                   Commerce CBT: Succeed in JAMB Commerce and have better
                   Understanding
                 </h3>
-                <h5>Improve your skills with WIBA Test</h5>
                 <Link
                   onClick={() => handlePathNavigation("/categories/JambCBT")}
                 >
-                  <button className="utme-test-btn">Take Quiz</button>
+                  <button className="utme-test-btn">Take TEST</button>
                 </Link>
               </div>
             </div>
@@ -168,7 +161,7 @@ const MainUtme = () => {
         </div>
         <div className="see-allquiz">
           <Link onClick={() => handlePathNavigation("/categories/JambCBT")}>
-            <button className="utme-test-btn2">See all Quiz</button>
+            <button className="utme-test-btn2">See all Test</button>
           </Link>
         </div>
       </div>

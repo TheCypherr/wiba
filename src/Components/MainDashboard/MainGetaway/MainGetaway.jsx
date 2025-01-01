@@ -18,7 +18,7 @@ const MainGetaway = () => {
 
   return (
     <section className="main-getaway-wrapper">
-      <h1>WIBA is a Proven Gateway to Academic Excellence</h1>
+      <h1>Your Gateway to Academic Excellence</h1>
       <div className="main-inner-getaway">
         <div className="main-getaway-one">
           <div className="main-flex-1">
@@ -56,10 +56,7 @@ const MainGetaway = () => {
               </div>
               <div className="main-get-text">
                 <h2>Exam Types</h2>
-                <p>
-                  On WIBA, you get standardized JAMB CBT, A-Level Test and
-                  Seasoned Questions for Freshers.
-                </p>
+                <p>On WibA, you get standardized JAMB CBT & Post-UTME Test.</p>
               </div>
             </div>
 
@@ -70,8 +67,8 @@ const MainGetaway = () => {
               <div className="main-get-text">
                 <h2>Proven Success</h2>
                 <p>
-                  Join thousands of students who have achieved their academic
-                  goals through our platform.
+                  Join other students who have achieved their academic goals
+                  through WibA.
                 </p>
               </div>
             </div>

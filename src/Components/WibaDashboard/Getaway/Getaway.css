@@ -32,19 +32,20 @@ body {
 .small-get {
   width: 37rem;
   border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: var(--bg-color);
   color: var(--text-color);
-  box-shadow: 0 2px 2px var(--text-color);
+  border: none;
+  border-left: 1px solid var(--text-color);
+  border-right: 1px solid var(--text-color);
+  border-bottom: 1px solid var(--text-color);
   padding: 15px;
   cursor: pointer;
   margin-bottom: 30px;
-}
-
-.small-get:hover {
-  background-color: #8e8e8f94;
 }
 
 .get-icon {
@@ -97,10 +98,6 @@ body {
   color: var(--text-color);
 }
 
-.step-one:hover {
-  background-color: #8e8e8fc6;
-}
-
 .step-one h2 {
   font-size: 1.3rem;
   line-height: 10px;
@@ -139,6 +136,10 @@ body {
 
 /* Portrait View Responsiveness */
 @media (max-width: 600px) {
+  .getaway-wrapper {
+    padding: 5px 30px 10px 30px;
+  }
+
   .getaway-wrapper h1 {
     font-size: 1.5rem;
   }
@@ -160,7 +161,10 @@ body {
     align-items: center;
   }
   .small-get {
-    width: 20rem;
+    margin: auto;
+    max-width: 100%;
+    width: 90%;
+    margin-bottom: 30px;
   }
   .get-icon {
     width: 30%;
@@ -194,12 +198,15 @@ body {
   }
 
   .step-one {
+    margin: auto;
+    max-width: 100%;
+    width: 90%;
     margin-top: 5px;
     margin-bottom: 15px;
     cursor: pointer;
-    width: 20rem;
     height: auto;
-    background-color: #8e8e8f94;
+    background-color: #444;
+    color: #f9f9f9;
     padding: 10px;
     padding-top: 1px;
     border-radius: 10px;
@@ -207,9 +214,11 @@ body {
   .step-one h2 {
     font-size: 1.2rem;
     line-height: 30px;
+    color: #f9f9f9;
   }
   .step-one p {
     font-size: 1rem;
+    color: #f9f9f9;
   }
   .note {
     width: 50%;

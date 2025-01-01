@@ -58,8 +58,7 @@ const Getaway = () => {
                 <h2>Exam Types</h2>
                 <p>
                   Ace a variety of exam formats, including standardized tests,
-                  UTME Exams, Seasoned Questions for Freshers and professional
-                  certifications.
+                  UTME Exams and professional certifications.
                 </p>
               </div>
             </div>

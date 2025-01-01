@@ -87,7 +87,8 @@ const FresherQuiz = () => {
         <div className="main-utme-below">
           <h1>What's your learning style as a Fresher?</h1>
           <h3>
-            Get ready for your 100L exams with carefully drafted quiz questions.
+            Get ready for your 100L Exams with carefully drafted practice
+            questions.
           </h3>
         </div>
         <div className="utme-slider-divs">

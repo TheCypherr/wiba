@@ -657,6 +657,8 @@ button.main-btn2:hover {
   }
 
   .main-custom-links-new {
+    margin: auto;
+    width: 100%;
     display: flex;
     gap: 15px;
     font-size: 1rem;
@@ -671,7 +673,6 @@ button.main-btn2:hover {
     /* background-color: #999; */
     border-radius: 50px;
     color: var(--text-color);
-    width: 100%;
     word-wrap: break-word; /* this one dey break long word */
     /* Allow text to wrap to new lines */
   }
@@ -705,7 +706,7 @@ button.main-btn2:hover {
   .logout-btn {
     position: absolute;
     left: 7%;
-    bottom: 15%;
+    bottom: 17%;
     width: 35%;
     padding-left: 12px;
     display: flex;
@@ -717,9 +718,6 @@ button.main-btn2:hover {
     border-radius: 50px;
     background-color: rgba(255, 0, 0, 0.846);
     color: #fff;
-  }
-  .logout-btn p {
-    /* padding-right: 10px; */
   }
 
   /* active user link profile */
@@ -751,12 +749,12 @@ button.main-btn2:hover {
   .active-status {
     position: absolute;
     top: 65%;
-    left: 15.5%;
+    left: 17%;
     width: 10px;
     height: 10px;
     z-index: 1000;
     border-radius: 50%;
-    border: 1px solid rgb(227, 226, 226);
+    border: 1.5px solid #fff;
     background-color: rgb(42, 196, 42);
   }
 
@@ -974,6 +972,7 @@ button.main-btn2:hover {
     width: 43%;
     height: 100vh;
     background-color: var(--bg-color);
+    border-right: 2px solid var(--text-color);
     color: var(--text-color);
     z-index: 100;
     padding: 10px;
@@ -1072,18 +1071,29 @@ button.main-btn2:hover {
   }
 
   .main-custom-links-new {
+    margin: auto;
+    width: 90%;
     display: flex;
     gap: 15px;
-    font-size: 1.05rem;
-    line-height: 2px;
-    padding-left: 15px;
+    font-size: 1rem;
+    line-height: 1px;
+    padding: 0px;
+    padding-left: 20px;
+    margin-bottom: 12px;
     align-items: center;
     cursor: pointer;
     text-decoration: none;
+    border: 1px solid var(--text-color);
+    /* background-color: #999; */
+    border-radius: 50px;
     color: var(--text-color);
-    width: 100%;
     word-wrap: break-word; /* this one dey break long word */
     /* Allow text to wrap to new lines */
+  }
+
+  .main-custom-links-new p {
+    margin-top: 12px;
+    margin-bottom: 12px;
   }
 
   .social-media {
@@ -1099,25 +1109,29 @@ button.main-btn2:hover {
     display: flex;
     align-items: center;
     gap: 5px;
+    margin-bottom: 45px;
   }
   .social-text {
     color: gray;
     font-size: 1rem;
-    padding-bottom: 5px;
+    margin-bottom: 50px;
   }
 
   .logout-btn {
     display: flex;
     align-items: center;
-    gap: 15px;
-    font-size: 1.1rem;
+    gap: 10px;
+    font-size: 1rem;
+    line-height: 1px;
     font-weight: 600;
-    padding-top: 50px;
-    padding-left: 20px;
-    padding-bottom: 50px;
-  }
-  .logout-btn p {
-    padding-right: 10px;
+    width: 30%;
+    border-radius: 50px;
+    background-color: rgba(255, 0, 0, 0.846);
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    margin-left: 15px;
+    padding-left: 13px;
   }
 
   /* active user link profile */

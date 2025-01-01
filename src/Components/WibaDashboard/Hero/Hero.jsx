@@ -77,9 +77,8 @@ const Hero = () => {
               <h1>Ace Your Exams with Accessible Study Materials.</h1>
               <h3>
                 Exam preparation can be a daunting task, with different
-                challenges. Wiba is here to guide you through these obstacles,
-                we'll you maximize your potential and succeed in your academic
-                pursuits.
+                challenges. Wiba is here to guide you through these obstacles
+                and help you succeed in your academic pursuits.
               </h3>
             </div>
           </div>

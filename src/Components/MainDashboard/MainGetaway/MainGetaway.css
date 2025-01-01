@@ -36,19 +36,20 @@ body {
 .main-small-get {
   width: 33rem;
   border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: var(--bg-color);
   color: var(--text-color);
-  box-shadow: 0 2px 2px var(--text-color);
+  border: none;
+  border-left: 1px solid var(--text-color);
+  border-right: 1px solid var(--text-color);
+  border-bottom: 1px solid var(--text-color);
   padding: 15px;
   cursor: pointer;
   margin-bottom: 30px;
-}
-
-.main-small-get:hover {
-  background-color: #8e8e8f94;
 }
 
 .main-get-icon {
@@ -67,7 +68,7 @@ body {
 /* Portrait View Responsiveness */
 @media (max-width: 600px) {
   .main-getaway-wrapper {
-    padding: 20px 20px 10px 20px;
+    padding: 20px 30px 10px 30px;
   }
   .main-getaway-wrapper h1 {
     font-size: 1.5rem;
@@ -90,7 +91,10 @@ body {
     align-items: center;
   }
   .main-small-get {
-    width: 20rem;
+    margin: auto;
+    max-width: 100%;
+    width: 90%;
+    margin-bottom: 30px;
   }
   .main-get-icon {
     width: 30%;
@@ -103,6 +107,10 @@ body {
   }
   .main-get-text h2 {
     line-height: 5px;
+    font-size: 1.2rem;
+  }
+  .main-get-text p {
+    font-size: 0.9rem;
   }
 }
 

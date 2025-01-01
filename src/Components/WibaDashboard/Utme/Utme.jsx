@@ -107,10 +107,10 @@ const Utme = () => {
     <section className="utme-wrapper">
       <div className="inner-utme">
         <div className="below">
-          <h1>Conquer all your Exam Challenges.</h1>
+          <h1>Conquer your Exam Challenges.</h1>
           <h3>
-            With up to-date CBT Questions for Jamb Students along side 100L
-            Courses Practice Questions for FRESHERS.
+            With up to-date CBT Questions for Jamb Students & Practice Questions
+            for FRESHERS.
           </h3>
         </div>
         <div className="slider-divs">
@@ -124,7 +124,6 @@ const Utme = () => {
                   Math CBT: JAMB Math CBT Questions to test your Readiness &
                   Prepare you.
                 </h3>
-                <h5>Ace your Exams with WIBA</h5>
                 <Link to="#">
                   <button
                     className="test-btn"
@@ -145,7 +144,6 @@ const Utme = () => {
                   Sharpen your English Skills for JAMB Success (Grammar &
                   Vocabulary)
                 </h3>
-                <h5>Authentic English JAMB Past Questions</h5>
                 <Link to="#">
                   <button
                     className="test-btn"
@@ -166,7 +164,6 @@ const Utme = () => {
                   Practice JAMB Accounting Questions to get you prepared for
                   your Exams
                 </h3>
-                <h5>Accounting Practice Questions on WIBA.</h5>
                 <Link to="#">
                   <button
                     className="test-btn"
@@ -187,7 +184,6 @@ const Utme = () => {
                   Updated Biology JAMB Practice Questions to help you Ace your
                   Exam.
                 </h3>
-                <h5>Biology Past Questions on WIBA </h5>
                 <Link to="#">
                   <button
                     className="test-btn"
@@ -208,7 +204,6 @@ const Utme = () => {
                   Physics CBT: Get prepared for Physics on WIBA with questions
                   to help you Pass.
                 </h3>
-                <h5>Practice on WIBA with Timer</h5>
                 <Link to="#">
                   <button
                     className="test-btn"
@@ -229,7 +224,6 @@ const Utme = () => {
                   Chemistry CBT: JAMB Chemistry Questions to Test your
                   Understanding.
                 </h3>
-                <h5>Get Confident with Practice Questions</h5>
                 <Link to="#">
                   <button
                     className="test-btn"
@@ -250,7 +244,6 @@ const Utme = () => {
                   Commerce CBT: Succeed in JAMB Commerce and have better
                   Understanding
                 </h3>
-                <h5>Improve your skills with WIBA Test</h5>
                 <Link to="#">
                   <button
                     className="test-btn"

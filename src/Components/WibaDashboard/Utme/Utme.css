@@ -34,7 +34,7 @@ body {
   margin-top: 30px;
   margin-bottom: 30px;
   width: 100px;
-  height: 340px;
+  height: 100%;
   /* overflow: hidden; */
   display: flex;
   align-items: center;
@@ -59,11 +59,15 @@ body {
   object-fit: cover;
 }
 .text-container {
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   color: var(--text-color);
   padding: 15px;
   padding-top: 0px;
   border-radius: 10px;
-  border-bottom: 2px solid var(--text-color);
+  border-bottom: 1.5px solid var(--text-color);
 }
 
 .text-container h3 {
@@ -111,6 +115,16 @@ button.test-btn:hover {
 
 /* Portrait View Responsiveness */
 @media (max-width: 600px) {
+  .text-container {
+    height: 160px;
+  }
+
+  .text-container h5 {
+    line-height: 5px;
+    margin-top: -5px;
+    font-weight: normal;
+  }
+
   .inner-utme {
     padding: 5px 20px 10px 20px;
   }

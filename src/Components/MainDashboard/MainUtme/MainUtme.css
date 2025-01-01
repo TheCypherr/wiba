@@ -34,7 +34,7 @@ body {
   margin-top: 30px;
   margin-bottom: 30px;
   width: 100px;
-  height: 350px;
+  height: 100%;
   /* overflow: hidden; */
   display: flex;
   align-items: center;
@@ -59,11 +59,15 @@ body {
   object-fit: cover;
 }
 .utme-text-container {
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   color: var(--text-color);
   padding: 15px;
   padding-top: 0px;
   border-radius: 10px;
-  /* box-shadow: 0 5px 5px var(--text-color); */
+  border-bottom: 1.5px solid var(--text-color);
 }
 
 .utme-text-container h3 {
@@ -135,6 +139,9 @@ button.utme-test-btn2:hover {
 @media (max-width: 600px) {
   .main-inner-utme {
     padding: 15px 20px 10px 20px;
+  }
+  .utme-text-container {
+    height: 160px;
   }
   .slick-slide > div {
     margin-right: 10px;
