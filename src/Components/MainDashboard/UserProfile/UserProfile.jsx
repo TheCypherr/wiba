@@ -476,36 +476,31 @@ const UserProfile = () => {
     {
       name: "Dashboard",
       link: "/main",
-      icon: <FaHome size={25} />,
+      icon: <FaHome size={22} />,
     },
     {
       name: "JAMB CBT",
       link: "/categories/JambCBT",
-      icon: <FaGraduationCap size={27} />,
+      icon: <FaGraduationCap size={22} />,
     },
     {
       name: "Post-UTME Test",
       link: "/categories/post-utme",
-      icon: <FaGraduationCap size={27} />,
+      icon: <FaGraduationCap size={22} />,
     },
     {
       name: "100L Quiz",
       link: "/categories/allquiz",
-      icon: <FaGraduationCap size={27} />,
-    },
-    {
-      name: "Leader Board",
-      link: "/leader-board",
-      icon: <FaTrophy size={23} />,
+      icon: <FaGraduationCap size={22} />,
     },
     {
       name: "PDF Materials",
       link: "/categories/pdf-materials",
-      icon: <FaBook size={23} />,
+      icon: <FaBook size={22} />,
     },
     {
-      name: "UTME Past Questions",
-      icon: <FaBook size={23} />,
+      name: "Past Questions",
+      icon: <FaBook size={22} />,
       link: "/categories/past-questions",
       // subItems: [
       //   { label: "English", link: "/past-question/english" },
@@ -513,6 +508,11 @@ const UserProfile = () => {
       //   { label: "Physics", link: "/past-question/physics" },
       //   { label: "Chemistry", link: "/past-question/chemistry" },
       // ],
+    },
+    {
+      name: "Leader Board",
+      link: "/leader-board",
+      icon: <FaTrophy size={22} color="gold" />,
     },
   ];
 
@@ -872,26 +872,6 @@ const UserProfile = () => {
                   ))}
                 </ul>
               </nav>
-
-              <div className="social-media">
-                <div className="social-icon">
-                  <a
-                    href="https://twitter.com/wiba_learn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaTwitter color="gray" />
-                  </a>
-                  <a
-                    href="https://instagram.com/wiba_learn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaInstagram color="gray" />
-                  </a>
-                </div>
-                <div className="social-text">@wiba_learn</div>
-              </div>
             </div>
 
             <div
@@ -901,7 +881,7 @@ const UserProfile = () => {
                 closeSideBar();
               }}
             >
-              <FaSignOutAlt color="red" size={22} />
+              <FaSignOutAlt color="white" size={15} />
               <p>Logout</p>
             </div>
           </div>

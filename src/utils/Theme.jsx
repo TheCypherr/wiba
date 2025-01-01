@@ -18,25 +18,25 @@ const Theme = () => {
   };
 
   const setBackground = (value) => {
-    updateCSSVariable("--bg-color", value ? "#fff" : "#000000");
+    updateCSSVariable("--bg-color", value ? "#000000" : "#fff");
   };
 
   const setLogoBg = (value) => {
-    updateCSSVariable("--logo-color", value ? "#2b33ff" : "#fff");
+    updateCSSVariable("--logo-color", value ? "#fff" : "#2b33ff");
   };
 
   const setTextColor = (value) => {
-    updateCSSVariable("--text-color", value ? "#fff" : "#000000");
+    updateCSSVariable("--text-color", value ? "#000000" : "#fff");
   };
 
   const setLogoTextColor = (value) => {
-    updateCSSVariable("--logo-text-color", value ? "#fff" : "#2b33ff");
+    updateCSSVariable("--logo-text-color", value ? "#2b33ff" : "#fff");
   };
 
   const setLogoImage = (value) => {
     updateCSSVariable(
       "--logo-image",
-      value ? "url('/logo.png')" : "url('/logo2.png')"
+      value ? "url('/logo2.png')" : "url('/logo.png')"
     );
   };
 
@@ -61,7 +61,7 @@ const Theme = () => {
       logoBg: !theme.logoBg,
       textColor: !theme.textColor,
       logoTextColor: !theme.logoTextColor,
-      logoImage: theme.background ? "/logo2.png" : "/logo.png",
+      logoImage: theme.background ? "/logo.png" : "/logo2.png",
     };
 
     setTheme(newTheme);
@@ -80,9 +80,9 @@ const Theme = () => {
   return (
     <div onClick={handleTheme} className="main-icon-div">
       {theme.background ? (
-        <FaMoon size={19} className="main-theme-icon" />
+        <FaSun size={19} className="main-theme-icon" />
       ) : (
-        <FaSun size={20} className="main-theme-icon" />
+        <FaMoon size={20} className="main-theme-icon" />
       )}
     </div>
   );

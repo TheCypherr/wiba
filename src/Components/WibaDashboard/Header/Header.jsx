@@ -168,32 +168,32 @@ const Header = () => {
     {
       name: "JAMB CBT",
       link: "/login",
-      icon: <FaGraduationCap size={27} />,
+      icon: <FaGraduationCap size={22} />,
     },
     {
       name: "Post-UTME Test",
       link: "/login",
-      icon: <FaGraduationCap size={27} />,
+      icon: <FaGraduationCap size={22} />,
     },
     {
       name: "100L Quiz",
       link: "/login",
-      icon: <FaGraduationCap size={27} />,
-    },
-    {
-      name: "Leader Board",
-      link: "/login",
-      icon: <FaTrophy size={23} />,
+      icon: <FaGraduationCap size={22} />,
     },
     {
       name: "PDF Materials",
       link: "/login",
-      icon: <FaBook size={23} />,
+      icon: <FaBook size={22} />,
     },
     {
-      name: "UTME Past Questions",
-      icon: <FaBook size={23} />,
+      name: "Past Questions",
+      icon: <FaBook size={22} />,
       link: "/login",
+    },
+    {
+      name: "Leader Board",
+      link: "/login",
+      icon: <FaTrophy size={22} color="gold" />,
     },
   ];
 

@@ -47,6 +47,10 @@ const Footer = () => {
           <p>© 2024 Wiba Inc.</p>
         </div>
       </div>
+
+      <div className="text-wiba">
+        <p>Text WibA on Instagram / Twitter @wiba_learn</p>
+      </div>
     </section>
   );
 };

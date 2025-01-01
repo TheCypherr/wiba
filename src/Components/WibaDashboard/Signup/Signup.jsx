@@ -123,7 +123,7 @@ const Signup = () => {
             <img src="illustrator3.png" alt="" />
           </div>
         </div>
-        <div className="inner-signup">
+        <div className="loginSide-two">
           <h1>Sign up</h1>
           <form onSubmit={handleSubmit}>
             <div className="signup-input1">

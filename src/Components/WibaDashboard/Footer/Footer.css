@@ -28,6 +28,13 @@ body {
   padding-top: -10px;
 }
 
+.text-wiba {
+  margin-top: -10px;
+  text-align: center;
+  color: grey;
+  font-size: 0.8rem;
+}
+
 .underline {
   border-bottom: 2px solid var(--text-color);
   margin-right: -25px;
