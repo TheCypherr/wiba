@@ -50,7 +50,7 @@ const Theme = () => {
       setLogoBg(savedTheme.logoBg);
       setTextColor(savedTheme.textColor);
       setLogoTextColor(savedTheme.logoTextColor);
-      // setLogoImage(savedTheme.logoImage);
+      setLogoImage(savedTheme.logoImage === "/logo2.png");
     } else {
       // Apply and save default theme
       setTheme(defaultTheme); // Optional but ensures state consistency
@@ -58,7 +58,7 @@ const Theme = () => {
       setLogoBg(defaultTheme.logoBg);
       setTextColor(defaultTheme.textColor);
       setLogoTextColor(defaultTheme.logoTextColor);
-      // setLogoImage(defaultTheme.logoImage);
+      setLogoImage(defaultTheme.logoImage === "/logo2.png");
       localStorage.setItem("theme", JSON.stringify(defaultTheme));
     }
   }, []);

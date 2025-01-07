@@ -670,16 +670,27 @@ const UserProfile = () => {
                 fontSize={40}
               />
             </div>
-            <div
-              className="confirmed-container"
-              type="button"
-              onClick={handlePayNow}
-            >
-              {paymentCompleted ? (
-                <button className="confirmed">Paid</button>
-              ) : (
-                <button className="not-confirmed">Pay Now</button>
-              )}
+
+            <div className="profile-div">
+              <div
+                className="confirmed-container"
+                type="button"
+                onClick={handlePayNow}
+              >
+                {paymentCompleted ? (
+                  <button className="confirmed">Paid</button>
+                ) : (
+                  <button className="not-confirmed">Pay Now</button>
+                )}
+              </div>
+              /
+              <div
+                className="confirmed-container"
+                type="button"
+                onClick={() => handlePageLoading("/categories/JambCBT")}
+              >
+                <button className="take">Take Test</button>
+              </div>
             </div>
           </div>
           <div className="right-profile">

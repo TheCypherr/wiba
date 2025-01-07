@@ -132,6 +132,13 @@ li.each-menu:hover {
   border: 4px solid #ddd;
 }
 
+.profile-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
 button.not-confirmed {
   width: 80px;
   border-radius: 50px;
@@ -154,6 +161,18 @@ button.confirmed {
   border: none;
   background-color: rgba(12, 166, 12, 0.922);
   color: #fff;
+  cursor: pointer;
+}
+button.take {
+  width: 80px;
+  border-radius: 50px;
+  padding: 5px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background-color: var(--logo-color);
+  color: var(--bg-color);
   cursor: pointer;
 }
 
