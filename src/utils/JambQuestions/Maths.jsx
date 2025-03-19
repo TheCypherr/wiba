@@ -897,7 +897,7 @@ export const JambMaths = [
   {
     question:
       "When a dealer sells a bicycle for ₦81, he makes a profit of 8%. What did he pay for the bicycle?",
-    options: ["₦75", "₦74.52", "₦75", "₦75.52"],
+    options: ["₦75", "₦74.52", "₦95", "₦75.52"],
     answer: "₦74.52",
   },
   {
@@ -1164,7 +1164,7 @@ export const JambMaths = [
     options: [
       "(a - 2b)(c + a - 2b)",
       "(a - 2b)(-a - 2b)",
-      "(a - 2b)(c + a - 2b)",
+      "(a - 2b)(c - a - 2b)",
       "(a - 2b)(a + 2b)",
     ],
     answer: "(a - 2b)(c + a - 2b)",

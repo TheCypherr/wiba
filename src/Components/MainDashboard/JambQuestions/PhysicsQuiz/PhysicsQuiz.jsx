@@ -28,7 +28,7 @@ const PhysicsQuiz = () => {
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [timer, setTimer] = useState(60); // State to track time left
+  const [timer, setTimer] = useState(50); // State to track time left
   const timerIntervalRef = useRef(null); // Create a ref to store the interval ID
   const [isTimerRunning, setIsTimerRunning] = useState(true); // Timer running status
   const [paymentPopup, setPaymentPopup] = useState(false);
@@ -215,7 +215,7 @@ const PhysicsQuiz = () => {
       // then the state to shoffle another 30 questions
       const selectedQuestions = shuffleQuestions(allQuestions, 30);
       setShuffledQuestions(selectedQuestions);
-      setTimer(60);
+      setTimer(50);
     }, 2000);
   };
 
@@ -230,7 +230,7 @@ const PhysicsQuiz = () => {
   const resumeTimer = () => {
     setIsTimerRunning(true);
     timerIntervalRef.current = setInterval(() => {
-      setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 60));
+      setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 50));
     }, 1000); // restart the timer interval
     console.log("Timer Resumed");
   };
@@ -314,7 +314,7 @@ const PhysicsQuiz = () => {
               ]);
             }
             moveToNextQuestion(); // Move to the next question
-            return 60; // Reset the timer for the next question
+            return 50; // Reset the timer for the next question
           }
         });
       }, 1000);
@@ -332,7 +332,7 @@ const PhysicsQuiz = () => {
       setSelectedAnswer(""); // Clear selected answer
       setAnswered(false); // Reset answered state
       setShowCorrectAnswer(false); // Hide correct answer
-      setTimer(60); // Reset timer for the next question
+      setTimer(50); // Reset timer for the next question
     } else {
       setShowScore(true); // Show score when the quiz ends
     }
@@ -353,6 +353,7 @@ const PhysicsQuiz = () => {
         <div className="popup-container">
           <div className="popup-texts">
             <h3>Are you sure you want to Exit?</h3>
+            <p>Your record would be lost!</p>
           </div>
           <div className="popup-btns">
             <button onClick={handleConfirmExit}>Yes</button>

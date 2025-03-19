@@ -44,6 +44,17 @@ import PostUtme from "./Components/MainDashboard/PostUtme/PostUtme";
 import EnglishGenTest from "./Components/MainDashboard/PostUtmeTest/GeneralTest/EnglishGenTest/EnglishGenTest";
 import GeneralStudies from "./Components/MainDashboard/PostUtmeTest/GeneralTest/GeneralStudies/GeneralStudies";
 import MathGenTest from "./Components/MainDashboard/PostUtmeTest/GeneralTest/MathGenTest/MathGenTest";
+import MathPractice from "./Components/MainDashboard/JambPracticeMode/MathPractice/MathPractice";
+import EnglishPractice from "./Components/MainDashboard/JambPracticeMode/EnglishPractice/EnglishPractice";
+import PhyPractice from "./Components/MainDashboard/JambPracticeMode/PhyPractice/PhyPractice";
+import BiologyPractice from "./Components/MainDashboard/JambPracticeMode/BiologyPractice/BiologyPractice";
+import ChmPractice from "./Components/MainDashboard/JambPracticeMode/ChmPractice/ChmPractice";
+import CrsPractice from "./Components/MainDashboard/JambPracticeMode/CrsPractice/CrsPractice";
+import GovtPractice from "./Components/MainDashboard/JambPracticeMode/GovtPractice/GovtPractice";
+import LitPractice from "./Components/MainDashboard/JambPracticeMode/LitPractice/LitPractice";
+import CommercePractice from "./Components/MainDashboard/JambPracticeMode/CommercePractice/CommercePractice";
+import AccountPractice from "./Components/MainDashboard/JambPracticeMode/AccountPractice/AccountPractice";
+import EcoPractice from "./Components/MainDashboard/JambPracticeMode/EcoPractice/EcoPractice";
 
 function App() {
   return (
@@ -167,13 +178,37 @@ function App() {
             <Route path="/jamb/commerce" element={<CommerceQuiz />} />
             <Route path="/jamb/economics" element={<EconomicsQuiz />} />
             <Route path="/jamb/account" element={<AccountQuiz />} />
+
+            {/* Practice Mode */}
+            <Route path="/math/practice-mode" element={<MathPractice />} />
+            <Route
+              path="/english/practice-mode"
+              element={<EnglishPractice />}
+            />
+            <Route path="/phy/practice-mode" element={<PhyPractice />} />
+            <Route path="/bio/practice-mode" element={<BiologyPractice />} />
+            <Route path="/chm/practice-mode" element={<ChmPractice />} />
+            <Route path="/crs/practice-mode" element={<CrsPractice />} />
+            <Route path="/govt/practice-mode" element={<GovtPractice />} />
+            <Route path="/literature/practice-mode" element={<LitPractice />} />
+            <Route
+              path="/commerce/practice-mode"
+              element={<CommercePractice />}
+            />
+            <Route
+              path="/account/practice-mode"
+              element={<AccountPractice />}
+            />
+            <Route path="/eco/practice-mode" element={<EcoPractice />} />
+
             <Route
               path="/categories/post-utme"
               element={
                 <>
-                  <MainHeader />
+                  {/* <MainHeader />
                   <PostUtme />
-                  <Footer />
+                  <Footer /> */}
+                  <ComingSoonNew />
                 </>
               }
             />

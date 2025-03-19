@@ -29,7 +29,7 @@ const MathQuiz = () => {
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [timer, setTimer] = useState(60); // State to track time left
+  const [timer, setTimer] = useState(50); // State to track time left
   const timerIntervalRef = useRef(null); // Create a ref to store the interval ID
   const [isTimerRunning, setIsTimerRunning] = useState(true); // Timer running status
   const [paymentPopup, setPaymentPopup] = useState(false);
@@ -83,7 +83,8 @@ const MathQuiz = () => {
           // Full access granted
           handleRetakeQuiz();
           setLoading(false);
-        } else if (quizzesTaken >= 1) {
+          //change this to >= 1 for when you need to automate payment method again
+        } else if (quizzesTaken >= 10000) {
           // Restrict access and show payment popup
           setPaymentPopup(true);
           setLoading(false);
@@ -218,7 +219,7 @@ const MathQuiz = () => {
       // then the state to shoffle another 30 questions
       const selectedQuestions = shuffleQuestions(allQuestions, 30);
       setShuffledQuestions(selectedQuestions);
-      setTimer(60);
+      setTimer(50);
     }, 2000);
   };
 
@@ -233,7 +234,7 @@ const MathQuiz = () => {
   const resumeTimer = () => {
     setIsTimerRunning(true);
     timerIntervalRef.current = setInterval(() => {
-      setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 60));
+      setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 50));
     }, 1000); // restart the timer interval
     console.log("Timer Resumed");
   };
@@ -317,7 +318,7 @@ const MathQuiz = () => {
               ]);
             }
             moveToNextQuestion(); // Move to the next question
-            return 60; // Reset the timer for the next question
+            return 50; // Reset the timer for the next question
           }
         });
       }, 1000);
@@ -335,7 +336,7 @@ const MathQuiz = () => {
       setSelectedAnswer(""); // Clear selected answer
       setAnswered(false); // Reset answered state
       setShowCorrectAnswer(false); // Hide correct answer
-      setTimer(60); // Reset timer for the next question
+      setTimer(50); // Reset timer for the next question
     } else {
       setShowScore(true); // Show score when the quiz ends
     }
@@ -356,6 +357,7 @@ const MathQuiz = () => {
         <div className="popup-container">
           <div className="popup-texts">
             <h3>Are you sure you want to Exit?</h3>
+            <p>Your record would be lost!</p>
           </div>
           <div className="popup-btns">
             <button onClick={handleConfirmExit}>Yes</button>
@@ -441,6 +443,7 @@ const MathQuiz = () => {
         )}
       </div>
 
+      {/* Payment Popup */}
       {paymentPopup && <div className="popup-backdrop"></div>}
       {paymentPopup && (
         <div className="popup-container">

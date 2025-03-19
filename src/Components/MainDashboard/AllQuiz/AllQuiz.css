@@ -195,15 +195,10 @@ button.take-quiz {
   background-color: #075419;
   color: #fff;
 }
-.popup-btns button:first-child:hover {
-  background-color: #28a745;
-}
+
 .popup-btns button:last-child {
   background-color: #de081e;
   color: #fff;
-}
-.popup-btns button:last-child:hover {
-  background-color: #dc3545;
 }
 
 /* Portrait/Mobile View */

@@ -171,7 +171,7 @@ button.take {
   font-weight: 600;
   cursor: pointer;
   border: none;
-  background-color: var(--logo-color);
+  background-color: #cbcb03;
   color: var(--bg-color);
   cursor: pointer;
 }

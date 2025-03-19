@@ -672,7 +672,7 @@ const UserProfile = () => {
             </div>
 
             <div className="profile-div">
-              <div
+              {/* <div
                 className="confirmed-container"
                 type="button"
                 onClick={handlePayNow}
@@ -683,13 +683,13 @@ const UserProfile = () => {
                   <button className="not-confirmed">Pay Now</button>
                 )}
               </div>
-              /
+              / */}
               <div
                 className="confirmed-container"
                 type="button"
-                onClick={() => handlePageLoading("/categories/JambCBT")}
+                // onClick={() => handlePageLoading("/categories/JambCBT")}
               >
-                <button className="take">Take Test</button>
+                <button className="take">Free Mode</button>
               </div>
             </div>
           </div>

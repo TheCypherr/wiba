@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./CommerceQuiz.css";
+import "./GovtPractice.css";
 import { Link, useNavigate } from "react-router-dom";
-import { jambCommerce as allQuestions } from "../../../../utils/JambQuestions/Commerce";
-import { FaChevronLeft, FaClock } from "react-icons/fa";
+import { jambGovernment as allQuestions } from "../../../../utils/JambQuestions/Government";
+import { FaChevronLeft, FaClock, FaTimes } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
 import {
   doc,
@@ -16,7 +16,7 @@ import { db } from "../../../../config/Firebase";
 import { auth } from "../../../../config/Firebase";
 import { useFirebaseUser } from "../../../../utils/FirebaseContext";
 
-const CommerceQuiz = () => {
+const GovtPractice = () => {
   const { user } = useFirebaseUser();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
@@ -28,6 +28,8 @@ const CommerceQuiz = () => {
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [showAiPopup, setShowAiPopup] = useState(false);
+  const [explanation, setExplanation] = useState(""); // AI explanation for wrong answer
   const [timer, setTimer] = useState(30); // State to track time left
   const timerIntervalRef = useRef(null); // Create a ref to store the interval ID
   const [isTimerRunning, setIsTimerRunning] = useState(true); // Timer running status
@@ -36,7 +38,7 @@ const CommerceQuiz = () => {
   const navigate = useNavigate();
   let askedQuestions = [];
 
-  const testName = "JAMB Commerce";
+  const testName = "JAMB Government";
 
   // Function to handle Page Loading
   const handlePageLoading = (targetPage) => {
@@ -198,6 +200,81 @@ const CommerceQuiz = () => {
       saveScoreToFirestore(); // Automatically save score when `showScore` is true
     }
   }, [showScore]);
+
+  // Function to handle Ai Popup
+  const handleAiPopup = () => {
+    setLoading(true);
+    pauseTimer();
+    window.scrollTo(0, 0);
+
+    setTimeout(() => {
+      setLoading(false);
+      setShowAiPopup(true);
+    }, 2000);
+  };
+
+  const handleCancelAiPopup = () => {
+    setShowAiPopup(false);
+    resumeTimer();
+  };
+
+  // Function to fetch an explanation for the correct answer from OpenAI API
+  const lastRequestTimeRef = useRef(0);
+
+  const fetchExplanation = async (currentQuestion, showCorrectAnswer) => {
+    const now = Date.now();
+    if (now - lastRequestTimeRef.current < 5000) {
+      // 5 seconds cooldown
+      console.warn("Too many requests. Please wait.");
+      return;
+    }
+    lastRequestTimeRef.current = now; // Update the time immediately
+
+    try {
+      console.log(import.meta.env.VITE_MISTRAL_API_KEY);
+
+      const response = await fetch(
+        "https://api.mistral.ai/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_MISTRAL_API_KEY}`,
+          },
+
+          body: JSON.stringify({
+            model: "mistral-tiny",
+            messages: [
+              {
+                role: "system",
+                content:
+                  "You are an AI that provides **very short** explanations for quiz answers (two or three sentences only).",
+              },
+              {
+                role: "user",
+                content: `Give a **very short** explanation (two or three sentences) for why the correct answer is: "${showCorrectAnswer}". Question: "${currentQuestion}"`,
+              },
+            ],
+            // max_tokens: 30,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.choices && data.choices.length > 0) {
+        setExplanation(data.choices[0].message.content.trim());
+      } else {
+        setExplanation("Sorry, I couldn't generate an explanation.");
+      }
+
+      // handleAiPopup(true);
+    } catch (error) {
+      console.error("Error fetching explanation:", error);
+      setExplanation("Failed to fetch explanation. Please try again.");
+      // handleAiPopup(true);
+    }
+  };
 
   // Function to retake quiz
   const handleRetakeQuiz = () => {
@@ -362,8 +439,8 @@ const CommerceQuiz = () => {
         </div>
       )}
 
-      <div className="quiz-type">
-        <h2>JAMB Commerce</h2>
+      <div className="type-2">
+        <h2>JAMB Government</h2>
       </div>
 
       <div className="Gst113-inner">
@@ -439,6 +516,64 @@ const CommerceQuiz = () => {
         )}
       </div>
 
+      {/* WibA AI PopUp */}
+      <div>
+        <button
+          className="wiba-ai-btn desktop-ai"
+          onClick={() => {
+            handleAiPopup();
+            fetchExplanation(
+              shuffledQuestions[currentQuestion].question,
+              shuffledQuestions[currentQuestion].answer
+            );
+          }}
+        >
+          <span className="ai-glow"></span>
+          <span className="text">WibA AI</span>
+        </button>
+        <button
+          className="wiba-ai-btn mobile-ai"
+          onClick={() => {
+            handleAiPopup();
+            fetchExplanation(
+              shuffledQuestions[currentQuestion].question,
+              shuffledQuestions[currentQuestion].answer
+            );
+          }}
+        >
+          <span className="ai-glow"></span>
+          <span className="text">AI</span>
+        </button>
+        {showAiPopup && <div className="popup-backdrop" />}
+        {showAiPopup && (
+          <div className="popup-container ai-popup">
+            <h3>WibA AI Explanation</h3>
+            <p>
+              Question:{" "}
+              <span className="not-bold">
+                {shuffledQuestions[currentQuestion].question
+                  ? shuffledQuestions[currentQuestion].question
+                  : "Unable to generate question!"}
+              </span>
+            </p>
+            <p>
+              Answer:{" "}
+              <span className="not-bold">
+                {shuffledQuestions[currentQuestion].answer}
+              </span>
+            </p>
+            <p>
+              Explanation: <span className="not-bold">{explanation}</span>
+            </p>
+            <FaTimes
+              size={20}
+              className="main-fa-times ai-btn"
+              onClick={handleCancelAiPopup}
+            />
+          </div>
+        )}
+      </div>
+
       {paymentPopup && <div className="popup-backdrop"></div>}
       {paymentPopup && (
         <div className="popup-container">
@@ -485,4 +620,4 @@ const CommerceQuiz = () => {
   );
 };
 
-export default CommerceQuiz;
+export default GovtPractice;

@@ -52,15 +52,20 @@ body {
   background-color: #075419;
   color: #fff;
 }
-.popup-btns button:first-child:hover {
-  background-color: #28a745;
-}
+
 .popup-btns button:last-child {
   background-color: #de081e;
   color: #fff;
 }
-.popup-btns button:last-child:hover {
-  background-color: #dc3545;
+
+.mode-btns button:first-child {
+  background-color: #cbcb03;
+  color: #fff;
+}
+
+.mode-btns button:last-child {
+  background-color: #075419;
+  color: #fff;
 }
 
 .popup-backdrop {
@@ -189,12 +194,30 @@ body {
   margin-bottom: 20px;
   text-align: center;
   width: 300px;
-  border: 1px solid var(--text-color);
+  border: 1px solid var(--bg-color);
   border-radius: 50px;
+  background-color: #075419;
 }
 .quiz-type h2 {
   line-height: 2px;
   font-size: 1.3rem;
+  color: #fff;
+}
+
+.type-2 {
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 300px;
+  border: 1px solid var(--bg-color);
+  border-radius: 50px;
+  background-color: #cbcb03;
+}
+.type-2 h2 {
+  line-height: 2px;
+  font-size: 1.3rem;
+  color: #fff;
 }
 
 button.back {

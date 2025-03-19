@@ -7,7 +7,7 @@ const Theme = () => {
     logoBg: true,
     textColor: false,
     logoTextColor: true,
-    logoImage: "/logo.png",
+    logoImage: "/logo2.png",
   };
 
   const [theme, setTheme] = useState(defaultTheme);
@@ -34,11 +34,9 @@ const Theme = () => {
   };
 
   const setLogoImage = (value) => {
-    updateCSSVariable(
-      "--logo-image",
-      value ? "url('/logo2.png')" : "url('/logo.png')"
-    );
+    document.documentElement.style.setProperty("--logo-image", `url('${value}')`);
   };
+  
 
   // Load saved theme from localStorage or use default
   useEffect(() => {
@@ -50,15 +48,21 @@ const Theme = () => {
       setLogoBg(savedTheme.logoBg);
       setTextColor(savedTheme.textColor);
       setLogoTextColor(savedTheme.logoTextColor);
-      setLogoImage(savedTheme.logoImage === "/logo2.png");
+      setLogoImage(savedTheme.logoImage);
+      // setLogoImage(savedTheme.logoImage === "/logo2.png");
     } else {
+      // Clear old theme
+      localStorage.removeItem("theme");
+
       // Apply and save default theme
       setTheme(defaultTheme); // Optional but ensures state consistency
       setBackground(defaultTheme.background);
       setLogoBg(defaultTheme.logoBg);
       setTextColor(defaultTheme.textColor);
       setLogoTextColor(defaultTheme.logoTextColor);
-      setLogoImage(defaultTheme.logoImage === "/logo2.png");
+      setLogoImage(defaultTheme.logoImage);
+      // setLogoImage(defaultTheme.logoImage === "/logo2.png");
+
       localStorage.setItem("theme", JSON.stringify(defaultTheme));
     }
   }, []);
@@ -82,7 +86,7 @@ const Theme = () => {
     setLogoBg(newTheme.logoBg);
     setTextColor(newTheme.textColor);
     setLogoTextColor(newTheme.logoTextColor);
-    setLogoImage(newTheme.background);
+    setLogoImage(newTheme.logoImage);
   };
 
   return (

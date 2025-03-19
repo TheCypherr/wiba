@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./CommerceQuiz.css";
+import "./PhyPractice.css";
 import { Link, useNavigate } from "react-router-dom";
-import { jambCommerce as allQuestions } from "../../../../utils/JambQuestions/Commerce";
-import { FaChevronLeft, FaClock } from "react-icons/fa";
+import { JambPhysics as allQuestions } from "../../../../utils/JambQuestions/Physics";
+import { FaChevronLeft, FaClock, FaTimes } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";
 import {
   doc,
@@ -16,7 +16,7 @@ import { db } from "../../../../config/Firebase";
 import { auth } from "../../../../config/Firebase";
 import { useFirebaseUser } from "../../../../utils/FirebaseContext";
 
-const CommerceQuiz = () => {
+const PhyPractice = () => {
   const { user } = useFirebaseUser();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
@@ -28,7 +28,9 @@ const CommerceQuiz = () => {
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [timer, setTimer] = useState(30); // State to track time left
+  const [showAiPopup, setShowAiPopup] = useState(false);
+  const [explanation, setExplanation] = useState(""); // AI explanation for wrong answer
+  const [timer, setTimer] = useState(50); // State to track time left
   const timerIntervalRef = useRef(null); // Create a ref to store the interval ID
   const [isTimerRunning, setIsTimerRunning] = useState(true); // Timer running status
   const [paymentPopup, setPaymentPopup] = useState(false);
@@ -36,7 +38,7 @@ const CommerceQuiz = () => {
   const navigate = useNavigate();
   let askedQuestions = [];
 
-  const testName = "JAMB Commerce";
+  const testName = "JAMB Physics";
 
   // Function to handle Page Loading
   const handlePageLoading = (targetPage) => {
@@ -82,7 +84,8 @@ const CommerceQuiz = () => {
           // Full access granted
           handleRetakeQuiz();
           setLoading(false);
-        } else if (quizzesTaken >= 1) {
+          //change this to >= 1 for when you need to automate payment method again
+        } else if (quizzesTaken >= 10000) {
           // Restrict access and show payment popup
           setPaymentPopup(true);
           setLoading(false);
@@ -199,6 +202,81 @@ const CommerceQuiz = () => {
     }
   }, [showScore]);
 
+  // Function to handl Ai Popup
+  const handleAiPopup = () => {
+    setLoading(true);
+    pauseTimer();
+    window.scrollTo(0, 0);
+
+    setTimeout(() => {
+      setLoading(false);
+      setShowAiPopup(true);
+    }, 2000);
+  };
+
+  const handleCancelAiPopup = () => {
+    setShowAiPopup(false);
+    resumeTimer();
+  };
+
+  // Function to fetch an explanation for the correct answer from OpenAI API
+  const lastRequestTimeRef = useRef(0);
+
+  const fetchExplanation = async (currentQuestion, showCorrectAnswer) => {
+    const now = Date.now();
+    if (now - lastRequestTimeRef.current < 5000) {
+      // 5 seconds cooldown
+      console.warn("Too many requests. Please wait.");
+      return;
+    }
+    lastRequestTimeRef.current = now; // Update the time immediately
+
+    try {
+      console.log(import.meta.env.VITE_MISTRAL_API_KEY);
+
+      const response = await fetch(
+        "https://api.mistral.ai/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_MISTRAL_API_KEY}`,
+          },
+
+          body: JSON.stringify({
+            model: "mistral-tiny",
+            messages: [
+              {
+                role: "system",
+                content:
+                  "You are an AI that provides **very short** explanations for quiz answers (two or three sentences only).",
+              },
+              {
+                role: "user",
+                content: `Give a **very short** explanation (two or three sentences) for why the correct answer is: "${showCorrectAnswer}". Question: "${currentQuestion}"`,
+              },
+            ],
+            // max_tokens: 30,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.choices && data.choices.length > 0) {
+        setExplanation(data.choices[0].message.content.trim());
+      } else {
+        setExplanation("Sorry, I couldn't generate an explanation.");
+      }
+
+      // handleAiPopup(true);
+    } catch (error) {
+      console.error("Error fetching explanation:", error);
+      setExplanation("Failed to fetch explanation. Please try again.");
+      // handleAiPopup(true);
+    }
+  };
+
   // Function to retake quiz
   const handleRetakeQuiz = () => {
     setLoading(true);
@@ -215,7 +293,7 @@ const CommerceQuiz = () => {
       // then the state to shoffle another 30 questions
       const selectedQuestions = shuffleQuestions(allQuestions, 30);
       setShuffledQuestions(selectedQuestions);
-      setTimer(30);
+      setTimer(50);
     }, 2000);
   };
 
@@ -230,7 +308,7 @@ const CommerceQuiz = () => {
   const resumeTimer = () => {
     setIsTimerRunning(true);
     timerIntervalRef.current = setInterval(() => {
-      setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 60));
+      setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 50));
     }, 1000); // restart the timer interval
     console.log("Timer Resumed");
   };
@@ -272,7 +350,7 @@ const CommerceQuiz = () => {
     const isCorrect = option === shuffledQuestions[currentQuestion].answer;
 
     if (isCorrect) {
-      setScore(score + 1); // Increment score by 1 for each correct answer
+      setScore(score + 1); // Increment score by 10 for each correct answer
     } else if (!isCorrect) {
       setShowCorrectAnswer(true);
     }
@@ -314,7 +392,7 @@ const CommerceQuiz = () => {
               ]);
             }
             moveToNextQuestion(); // Move to the next question
-            return 30; // Reset the timer for the next question
+            return 50; // Reset the timer for the next question
           }
         });
       }, 1000);
@@ -332,7 +410,7 @@ const CommerceQuiz = () => {
       setSelectedAnswer(""); // Clear selected answer
       setAnswered(false); // Reset answered state
       setShowCorrectAnswer(false); // Hide correct answer
-      setTimer(30); // Reset timer for the next question
+      setTimer(50); // Reset timer for the next question
     } else {
       setShowScore(true); // Show score when the quiz ends
     }
@@ -353,7 +431,6 @@ const CommerceQuiz = () => {
         <div className="popup-container">
           <div className="popup-texts">
             <h3>Are you sure you want to Exit?</h3>
-            <p>Your record would be lost!</p>
           </div>
           <div className="popup-btns">
             <button onClick={handleConfirmExit}>Yes</button>
@@ -362,8 +439,8 @@ const CommerceQuiz = () => {
         </div>
       )}
 
-      <div className="quiz-type">
-        <h2>JAMB Commerce</h2>
+      <div className="type-2">
+        <h2>JAMB Physics</h2>
       </div>
 
       <div className="Gst113-inner">
@@ -439,6 +516,64 @@ const CommerceQuiz = () => {
         )}
       </div>
 
+      {/* WibA AI PopUp */}
+      <div>
+        <button
+          className="wiba-ai-btn desktop-ai"
+          onClick={() => {
+            handleAiPopup();
+            fetchExplanation(
+              shuffledQuestions[currentQuestion].question,
+              shuffledQuestions[currentQuestion].answer
+            );
+          }}
+        >
+          <span className="ai-glow"></span>
+          <span className="text">WibA AI</span>
+        </button>
+        <button
+          className="wiba-ai-btn mobile-ai"
+          onClick={() => {
+            handleAiPopup();
+            fetchExplanation(
+              shuffledQuestions[currentQuestion].question,
+              shuffledQuestions[currentQuestion].answer
+            );
+          }}
+        >
+          <span className="ai-glow"></span>
+          <span className="text">AI</span>
+        </button>
+        {showAiPopup && <div className="popup-backdrop" />}
+        {showAiPopup && (
+          <div className="popup-container ai-popup">
+            <h3>WibA AI Explanation</h3>
+            <p>
+              Question:{" "}
+              <span className="not-bold">
+                {shuffledQuestions[currentQuestion].question
+                  ? shuffledQuestions[currentQuestion].question
+                  : "Unable to generate question!"}
+              </span>
+            </p>
+            <p>
+              Answer:{" "}
+              <span className="not-bold">
+                {shuffledQuestions[currentQuestion].answer}
+              </span>
+            </p>
+            <p>
+              Explanation: <span className="not-bold">{explanation}</span>
+            </p>
+            <FaTimes
+              size={20}
+              className="main-fa-times ai-btn"
+              onClick={handleCancelAiPopup}
+            />
+          </div>
+        )}
+      </div>
+
       {paymentPopup && <div className="popup-backdrop"></div>}
       {paymentPopup && (
         <div className="popup-container">
@@ -485,4 +620,4 @@ const CommerceQuiz = () => {
   );
 };
 
-export default CommerceQuiz;
+export default PhyPractice;

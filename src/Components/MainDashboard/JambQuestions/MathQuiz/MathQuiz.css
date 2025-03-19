@@ -1,0 +1,135 @@
+.ai-popup {
+  text-align: left;
+  overflow-y: auto;
+  width: 300px;
+  height: 300px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.ai-popup::-webkit-scrollbar {
+  display: none;
+}
+
+.ai-popup h3 {
+  text-align: center;
+}
+
+.ai-popup p {
+  font-weight: bold;
+}
+
+.ai-popup span {
+  font-weight: normal;
+}
+
+.ai-btn {
+  padding: 2px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  border-radius: 50%;
+  background-color: red;
+}
+
+/* WibA AI Btn Styling */
+.wiba-ai-btn {
+  position: relative;
+  background: linear-gradient(90deg, #0d47a1, #1e88e5);
+  border: none;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(30, 136, 229, 0.8);
+  margin-top: -30px;
+  overflow: hidden;
+}
+
+.wiba-ai-btn:hover {
+  background: linear-gradient(90deg, #1e88e5, #0d47a1);
+  box-shadow: 0 0 15px rgba(30, 136, 229, 1);
+}
+
+.wiba-ai-btn .ai-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(30, 136, 229, 0.4), transparent);
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: glow-animation 2s linear infinite;
+}
+
+@keyframes glow-animation {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.wiba-ai-btn .text {
+  z-index: 2;
+  position: relative;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 2px;
+}
+
+.mobile-ai {
+  display: none;
+}
+.desktop-ai {
+  display: block;
+  position: absolute;
+  top: 80%;
+  left: 10%;
+}
+
+/* Portrait View Responsiveness */
+@media (max-width: 600px) {
+  .wiba-ai-btn {
+    padding: 6px;
+  }
+  .wiba-ai-btn {
+    margin-top: 30px;
+  }
+  .desktop-ai {
+    display: none;
+  }
+
+  .mobile-ai {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 2%;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .wiba-ai-btn {
+    padding: 6px;
+  }
+  .wiba-ai-btn {
+    margin-top: 30px;
+  }
+  .desktop-ai {
+    display: none;
+  }
+
+  .mobile-ai {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+  }
+}
